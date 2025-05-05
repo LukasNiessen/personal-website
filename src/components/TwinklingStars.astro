@@ -1,0 +1,73 @@
+---
+/**
+ * TwinkleStars.astro
+ * This component creates twinkling stars that are appended to the galaxy on interval.
+ * Twinkle stars are removed from the document after the animation is completed.
+ * The svg below is just a template for the script to clone and append to the galaxy.
+ *
+ * Note: Currently disabled to maintain consistent animation style between light and dark modes.
+ */
+---
+
+<svg
+  id="twinkle-star"
+  class="template"
+  width="149"
+  height="149"
+  viewBox="0 0 149 149"
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg"
+  class="absolute left-full animate-twinkle"
+>
+  <circle cx="74" cy="74" r="11" fill="#ffc857"></circle>
+  <rect
+    y="141.421"
+    width="200"
+    height="10"
+    transform="rotate(-45 0 141.421)"
+    fill="url(#paint0_linear_4_2)"></rect>
+  <rect
+    x="7.07107"
+    width="200"
+    height="10"
+    transform="rotate(45 7.07107 0)"
+    fill="url(#paint1_linear_4_2)"></rect>
+  <defs>
+    <linearGradient
+      id="paint0_linear_4_2"
+      x1="0"
+      y1="146.421"
+      x2="200"
+      y2="146.421"
+      gradientUnits="userSpaceOnUse"
+    >
+      <stop stop-color="#262022"></stop>
+      <stop offset="0.445" stop-color="#ff7e33"></stop>
+      <stop offset="0.58721" stop-color="#ffc857"></stop>
+      <stop offset="1" stop-color="#262022"></stop>
+    </linearGradient>
+    <linearGradient
+      id="paint1_linear_4_2"
+      x1="7.07107"
+      y1="5"
+      x2="207.071"
+      y2="5"
+      gradientUnits="userSpaceOnUse"
+    >
+      <stop stop-color="#262022"></stop>
+      <stop offset="0.42" stop-color="#ff7e33"></stop>
+      <stop offset="0.555" stop-color="#ffc857"></stop>
+      <stop offset="1" stop-color="#262022"></stop>
+    </linearGradient>
+  </defs>
+</svg>
+
+<script is:inline>
+  // Function disabled - we're using the same bubbling animation for both dark and light modes
+  function generateTwinkleStar() {
+    // Disabled
+  }
+
+  // No interval for generating stars
+  // setInterval(generateTwinkleStar, 5000);
+</script>

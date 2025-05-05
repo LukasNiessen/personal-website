@@ -1,0 +1,257 @@
+---
+import { getCollection } from "astro:content"
+import PageLayout from "@layouts/PageLayout.astro"
+import ArrowCard from "@components/ArrowCard"
+import StackCard from "@components/StackCard.astro"
+import { SITE, SOCIALS, DICT_EN } from "@consts"
+import TwinklingStars from "@components/TwinklingStars.astro"
+import MeteorShower from "@components/MeteorShower.astro"
+import { t } from "@lib/utils"
+
+const PREVIEW_POSTS = 10
+const PREVIEW_PROJECTS = 10
+
+const posts = (await getCollection("blog"))
+  .filter(post => !post.data.draft)
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
+  .slice(0,PREVIEW_POSTS)
+
+const projects = (await getCollection("projects"))
+  .filter(project => !project.data.draft)
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
+  .slice(0,PREVIEW_PROJECTS)
+
+const stack = [
+  { 
+    text: "JavaScript", 
+    icon: "javascript", 
+    href: "https://www.javascript.com" 
+  },
+  { 
+    text: "TypeScript", 
+    icon: "typescript", 
+    href: "https://www.typescriptlang.org" 
+  },
+  { 
+    text: "React", 
+    icon: "react", 
+    href: "https://react.dev" 
+  },
+  { 
+    text: "Angular", 
+    icon: "angular", 
+    href: "https://angular.io" 
+  },
+  { 
+    text: "Java", 
+    icon: "java", 
+    href: "https://www.java.com" 
+  },
+  { 
+    text: "Azure", 
+    icon: "azure", 
+    href: "https://azure.microsoft.com" 
+  },
+  { 
+    text: "Google Cloud", 
+    icon: "gcp", 
+    href: "https://cloud.google.com" 
+  },
+  { 
+    text: "Tailwind", 
+    icon: "tailwind", 
+    href: "https://tailwindcss.com" 
+  },
+]
+---
+
+<PageLayout title="Home" description={SITE.DESCRIPTION}>
+
+  <!-- Light Mode: Particles -->
+  <div class='absolute inset-0 block dark:hidden'>
+    <div id='particles1' class='fixed inset-0 bg-warmAccent-secondary/10'></div>
+    <div id='particles2' class='fixed inset-0'></div>
+    <div id='particles3' class='fixed inset-0'></div>
+  </div>
+
+  <!-- Dark Theme: Stars -->
+  <div class='absolute inset-0 bg-warmBg-dark hidden dark:block'>
+    <div id='stars1' class='fixed inset-0'></div>
+    <div id='stars2' class='fixed inset-0'></div>
+    <div id='stars3' class='fixed inset-0'></div>
+  </div>
+
+  <!-- Dark Theme: Twinkling Stars / Metors -->
+  <div id="galaxy" class="fixed inset-0">
+    <div class="hidden dark:block">
+      <TwinklingStars/>
+      <MeteorShower/>
+    </div>
+  </div>
+
+  <script is:inline src="/js/bg.js"></script>
+  
+  <!-- HERO -->
+  <section class="relative h-screen w-full">
+    <div id="planetcont" class='animate absolute inset-0 top-1/4 overflow-hidden'>
+      <div id="crescent" class='absolute top-0 left-1/2 -translate-x-1/2 w-[250vw] min-h-[100vh] aspect-square rounded-full p-[1px] bg-gradient-to-b from-warmAccent-tertiary/25 dark:from-warmAccent-secondary/75 from-0% to-transparent to-5%'>
+        <div id="planet" class='w-full h-full bg-warmBg-light dark:bg-warmBg-dark rounded-full p-[1px] overflow-hidden flex justify-center'>
+          <div id="blur" class='w-full h-20 rounded-full bg-warmAccent-primary/15 dark:bg-warmAccent-secondary/25 blur-3xl'/>
+        </div>
+      </div>
+    </div>
+    <div class="animate absolute h-full w-full flex items-center justify-center">
+      <div class='relative w-full h-full flex items-center justify-center'>
+        <div class='p-5 text-center'>
+          <p class='animated text-3xl md:text-4xl mt-16 lg:text-5xl font-bold text-black dark:text-white'>
+            Software Architecture &
+            <br />
+            System Design
+          </p>
+          <p class='animated text-sm md:text-base lg:text-lg mt-10 opacity-75 max-w-2xl'>
+            {t("home.about")}
+          </p>
+          <div class='mt-10 flex justify-center'>
+            <a
+              href="#recent-posts"
+              id="scroll-to-next"
+              aria-label="Scroll to blog section"
+              class="group flex w-fit p-1.5 gap-1.5 text-sm items-center border rounded hover:bg-warmAccent-secondary/10 hover:dark:bg-warmAccent-primary/20 border-gray-300/50 dark:border-gray-500/50 transition-colors duration-300 ease-in-out"
+            > 
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke-width="2.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="stroke-current mt-1 group-hover:stroke-warmAccent-tertiary group-hover:dark:stroke-warmAccent-secondary rotate-[270deg]"
+            >
+              <line
+                x1="19"
+                y1="12"
+                x2="5"
+                y2="12"
+                class="scale-x-0 group-hover:scale-x-100 translate-x-3 group-hover:translate-x-0 transition-all duration-300 ease-in-out"
+              ></line>
+              <polyline
+                points="12 19 5 12 12 5"
+                class="translate-x-1 group-hover:translate-x-0 transition-all duration-300 ease-in-out"
+              ></polyline>
+            </svg>
+              <div
+                class="w-full group-hover:text-warmAccent-tertiary group-hover:dark:text-warmAccent-secondary transition-colors duration-300 ease-in-out"
+              >
+                Explore
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="relative bg-warmBg-light dark:bg-warmBg-dark">
+    <div class="mx-auto max-w-screen-sm p-5 space-y-24 pb-16">
+
+      <!-- Blog Preview Section -->
+      <section id="recent-posts" class="animate">
+        <div class="space-y-4">
+          <div class="flex justify-between">
+            <p class="font-semibold text-black dark:text-white">
+              {t("home.recent.posts")}
+            </p>
+            <a href="/blog" class="w-fit col-span-3 group flex gap-1 items-center underline decoration-[.5px] decoration-black/25 dark:decoration-white/50 hover:decoration-black dark:hover:decoration-white text-black dark:text-white underline-offset-2 blend">
+              <span class="text-black/75 dark:text-white/75 group-hover:text-black group-hover:dark:text-white blend">
+                {t("home.all.posts")}
+              </span>
+            </a>
+          </div>
+          <ul class="space-y-4">
+            {posts.map((post) => (
+              <li>
+                <ArrowCard entry={post} />
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      <!-- Project Preview Section -->
+      <!--
+      <section class="animate">
+        <div class="space-y-4">
+          <div class="flex justify-between">
+            <p class="font-semibold text-black dark:text-white">
+              {t("home.recent.projects")}
+            </p>
+            <a href="/projects" class="w-fit col-span-3 group flex gap-1 items-center underline decoration-[.5px] decoration-black/25 dark:decoration-white/50 hover:decoration-black dark:hover:decoration-white text-black dark:text-white underline-offset-2 blend">
+              <span class="text-black/75 dark:text-white/75 group-hover:text-black group-hover:dark:text-white blend">
+                {t("home.all.projects")}
+              </span>
+            </a>
+          </div>
+          <ul class="space-y-4">
+            {projects.map((project) => (
+              <li>
+                <ArrowCard entry={project} />
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+      -->
+
+      <!-- Contact Section -->
+      <section class="animate">
+        <div>
+          <p class="font-semibold text-black dark:text-white text-xl">
+            {t("home.connect")}
+          </p>
+          <p class="mt-4">
+            {t("home.interests")}
+            <br />
+            {t("home.connect.description")}
+          </p>
+          <div class="grid grid-cols-4 gap-y-2 mt-5 auto-cols-min">
+            {SOCIALS.map(social => (
+              <div class="col-span-1 flex items-center gap-1">
+                <span class="whitespace-nowrap truncate">
+                  {social.NAME}
+                </span>
+              </div>
+              <div class="col-span-3 truncate">
+                <a href={social.HREF} target="_blank" class="w-fit col-span-3 group flex gap-1 items-center underline decoration-[.5px] decoration-black/25 dark:decoration-white/50 hover:decoration-black dark:hover:decoration-white text-black dark:text-white underline-offset-2 blend">
+                  <span class="text-black/75 dark:text-white/75 group-hover:text-black group-hover:dark:text-white blend">
+                    {social.TEXT}
+                  </span>
+                </a>
+              </div>
+            ))}
+        </div>
+      </section>
+    </div>
+  </div>
+</PageLayout>
+
+<script is:inline>
+  document.addEventListener('DOMContentLoaded', function() {
+    const scrollButton = document.getElementById('scroll-to-next');
+    if (scrollButton) {
+      scrollButton.addEventListener('click', function(e) {
+        e.preventDefault();
+        // Get the target element by its ID
+        const targetSection = document.getElementById('recent-posts');
+        if (targetSection) {
+          // Use smooth scrolling with proper options
+          targetSection.scrollIntoView({ 
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    }
+  });
+</script>

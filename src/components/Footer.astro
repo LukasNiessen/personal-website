@@ -1,0 +1,173 @@
+---
+import { SITE, SOCIALS } from "@consts";
+import Container from "@components/Container.astro";
+import { t } from "@lib/utils";
+---
+
+<footer class="relative bg-warmBg-light dark:bg-warmBg-dark">
+  <div class="animate">
+    <section class="py-5">
+      <Container size="md">
+        <div class="flex items-center justify-center sm:justify-end">
+          <button
+            id="back-to-top"
+            aria-label="Back to top of page"
+            class="group flex w-fit p-1.5 gap-1.5 text-sm items-center border rounded hover:bg-gray-200/50 hover:dark:bg-gray-700/30 border-gray-300/50 dark:border-gray-500/50 transition-colors duration-300 ease-in-out"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke-width="2.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="stroke-current group-hover:stroke-warmAccent-tertiary group-hover:dark:stroke-warmAccent-secondary rotate-90"
+            >
+              <line
+                x1="19"
+                y1="12"
+                x2="5"
+                y2="12"
+                class="scale-x-0 group-hover:scale-x-100 translate-x-3 group-hover:translate-x-0 transition-all duration-300 ease-in-out"
+              ></line>
+              <polyline
+                points="12 19 5 12 12 5"
+                class="translate-x-1 group-hover:translate-x-0 transition-all duration-300 ease-in-out"
+              ></polyline>
+            </svg>
+            <div
+              class="w-full group-hover:text-warmAccent-tertiary group-hover:dark:text-warmAccent-secondary transition-colors duration-300 ease-in-out"
+            >
+              {t("footer.top")}
+            </div>
+          </button>
+        </div>
+      </Container>
+    </section>
+
+    <section
+      class="py-5 overflow-hidden whitespace-nowrap border-t border-gray-300/30 dark:border-gray-600/30"
+    >
+      <Container size="md">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div class="flex flex-col items-center sm:items-start">
+            <a
+              href="/"
+              class="flex gap-1 w-fit items-center font-semibold text-current hover:text-warmAccent-tertiary dark:hover:text-warmAccent-secondary transition-colors duration-300 ease-in-out"
+            >
+              <img
+                src="/portrait.jpg"
+                alt={SITE.TITLE}
+                class="size-6 rounded-full object-cover"
+              />
+              {SITE.TITLE}
+            </a>
+          </div>
+          <div class="flex gap-2 justify-center sm:justify-end items-center">
+            <span class="relative flex h-3 w-3">
+              <span
+                class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-300"
+              ></span>
+              <span
+                class="relative inline-flex rounded-full h-3 w-3 bg-green-500"
+              ></span>
+            </span>
+            {t("footer.systems")}
+          </div>
+        </div>
+      </Container>
+    </section>
+
+    <section
+      class="py-5 overflow-hidden whitespace-nowrap border-t border-gray-300/30 dark:border-gray-600/30"
+    >
+      <Container size="md">
+        <div class="h-full grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div
+            class="order-2 sm:order-1 flex flex-col items-center justify-center sm:items-start"
+          >
+            <!--
+            <div class="legal">
+              <a
+                href="/legal/terms"
+                class="text-current hover:text-warmAccent-tertiary dark:hover:text-warmAccent-secondary transition-colors duration-300 ease-in-out"
+              >
+                {t("footer.terms")}
+              </a> |
+              <a
+                href="/legal/privacy"
+                class="text-current hover:text-warmAccent-tertiary dark:hover:text-warmAccent-secondary transition-colors duration-300 ease-in-out"
+              >
+                {t("footer.privacy")}
+              </a>
+            </div>
+            -->
+            <div class="text-sm mt-2">
+              &copy; {new Date().getFullYear()}, {t("footer.rights")}
+            </div>
+          </div>
+
+          <div class="order-1 sm:order-2 flex justify-center sm:justify-end">
+            <div class="flex flex-wrap gap-1 items-center justify-center">
+              {
+                SOCIALS.map((SOCIAL) => (
+                  <a
+                    href={SOCIAL.HREF}
+                    target="_blank"
+                    aria-label={`${SITE.TITLE} on ${SOCIAL.NAME}`}
+                    class="group size-10 rounded-full p-2 items-center justify-center hover:bg-warmAccent-secondary/10 dark:hover:bg-warmAccent-primary/20 blend"
+                  >
+                    <svg class="size-full fill-current group-hover:fill-warmAccent-tertiary group-hover:dark:fill-warmAccent-secondary blend">
+                      <use href={`/social.svg#${SOCIAL.ICON}`} />
+                    </svg>
+                  </a>
+                ))
+              }
+            </div>
+          </div>
+        </div>
+      </Container>
+    </section>
+
+    <section class="py-4 border-t border-gray-300/30 dark:border-gray-600/30">
+      <Container size="md">
+        <div class="flex items-center justify-center">
+          <div
+            id="cookie-hint"
+            class="group flex items-center gap-2 text-sm text-black/70 dark:text-white/70 p-2 hover:text-black dark:hover:text-white transition-colors duration-300 ease-in-out"
+          >
+            <span
+              role="img"
+              aria-label="cookie"
+              class="text-base transform group-hover:rotate-12 transition-transform duration-300"
+              >🍪</span
+            >
+            <span>This site doesn't use cookies</span>
+          </div>
+        </div>
+      </Container>
+    </section>
+  </div>
+</footer>
+
+<script is:inline>
+  function goBackToTop(event) {
+    event.preventDefault();
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  }
+
+  function inintializeBackToTop() {
+    const backToTop = document.getElementById("back-to-top");
+    backToTop?.addEventListener("click", goBackToTop);
+  }
+
+  document.addEventListener("astro:after-swap", inintializeBackToTop);
+  inintializeBackToTop();
+</script>
+
+<script is:inline src="/js/cookie-rain.js"></script>

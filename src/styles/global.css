@@ -1,0 +1,217 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --copy-btn-margin: 10px;
+}
+
+/* Removed custom Atkinson font declarations */
+
+html {
+  overflow-y: scroll;
+  color-scheme: light;
+  background-color: theme("colors.warmBg.light");
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu,
+    Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  scroll-padding-top: 5rem; /* Add padding for fixed header */
+}
+
+html.dark {
+  color-scheme: dark;
+  background-color: theme("colors.warmBg.dark");
+}
+
+html,
+body {
+  @apply h-full w-full antialiased;
+  @apply bg-warmBg-light dark:bg-warmBg-dark;
+  @apply text-warmText-light dark:text-warmText-dark;
+}
+
+body {
+  @apply relative flex flex-col;
+}
+
+main {
+  @apply flex flex-col flex-1 bg-warmBg-light dark:bg-warmBg-dark;
+}
+
+header {
+  @apply border-b;
+  @apply transition-all duration-300 ease-in-out;
+}
+
+header:not(.scrolled) {
+  @apply bg-transparent border-transparent;
+}
+
+header.scrolled {
+  @apply bg-warmBg-light/75 dark:bg-warmBg-dark/50;
+  @apply border-gray-300/30 dark:border-gray-600/30;
+  @apply backdrop-blur-sm saturate-150;
+}
+
+article {
+  @apply prose dark:prose-invert max-w-full pb-12;
+}
+
+.page-heading {
+  @apply font-semibold text-warmText-light dark:text-warmText-dark;
+}
+
+.blend {
+  @apply transition-all duration-300 ease-in-out;
+}
+
+/** Light theme particles on home page */
+@keyframes animateParticle {
+  0% {
+    transform: translateY(0) rotate(0);
+    opacity: 0.7;
+  }
+  25% {
+    transform: translateY(-500px) translateX(20px) rotate(2deg);
+    opacity: 0.9;
+  }
+  50% {
+    transform: translateY(-1000px) translateX(-20px) rotate(-2deg);
+    opacity: 0.8;
+  }
+  75% {
+    transform: translateY(-1500px) translateX(10px) rotate(1deg);
+    opacity: 0.7;
+  }
+  100% {
+    transform: translateY(-2000px);
+    opacity: 0.5;
+  }
+}
+
+@keyframes animStar {
+  0% {
+    transform: translateY(0) translateX(0);
+    opacity: 0.6;
+  }
+  25% {
+    transform: translateY(-500px) translateX(15px);
+    opacity: 0.8;
+  }
+  50% {
+    transform: translateY(-1000px) translateX(-15px);
+    opacity: 0.7;
+  }
+  75% {
+    transform: translateY(-1500px) translateX(10px);
+    opacity: 0.6;
+  }
+  100% {
+    transform: translateY(-2000px);
+    opacity: 0.5;
+  }
+}
+
+/** styles for public /animation.js */
+.animate {
+  opacity: 0;
+  transform: translateY(50px);
+  transition:
+    opacity 1s ease,
+    transform 1s ease;
+}
+
+.animate.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+article img {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  display: block;
+  margin: 0 auto;
+}
+
+/**
+ * TWINKLE STARS
+ */
+
+#twinkle-star.template {
+  @apply absolute -left-full; /* hide offscreen */
+}
+
+#twinkle-star.twinkle {
+  @apply animate-twinkle; /* defined in tailwind.config */
+}
+
+/**
+ * Meteors
+ */
+
+#meteors .shower {
+  @apply absolute inset-0 top-0;
+  @apply left-1/2 -translate-x-1/2;
+  @apply w-screen aspect-square;
+}
+
+#meteors .meteor {
+  @apply animate-meteor; /* defined in tailwind.config */
+  @apply absolute top-1/2 left-1/2 w-px h-[75vh];
+  @apply bg-gradient-to-b from-warmAccent-primary to-transparent;
+}
+
+#meteors .shower.ur {
+  @apply rotate-45;
+}
+
+#meteors .shower.dr {
+  @apply rotate-135;
+}
+
+#meteors .shower.dl {
+  @apply rotate-225;
+}
+
+#meteors .shower.ul {
+  @apply rotate-315;
+}
+
+.copy-cnt {
+  @apply absolute w-full;
+  top: var(--copy-btn-margin);
+}
+.copy-btn {
+  @apply w-[30px] fixed;
+  left: calc(100% - var(--copy-btn-margin));
+  transform: translateX(-100%);
+}
+
+.copy-svg {
+  @apply w-full aspect-square text-white opacity-70 hover:opacity-90;
+}
+
+/**
+ * Cookie Rain Animation
+ */
+@keyframes fallCookie {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.8;
+  }
+  90% {
+    opacity: 0.7;
+  }
+  100% {
+    transform: translateY(100vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+.falling-cookie {
+  will-change: transform;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+}

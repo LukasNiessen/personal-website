@@ -1,0 +1,27 @@
+---
+/**
+ * Meteors.astro
+ * This component creates meteors that are appended to the galaxy on interval.
+ * Meteors are removed from the document after the animation is completed.
+ * There are four (4) meteor shower containers, one for each diagonal direction.
+ *
+ * Note: Currently disabled to maintain consistent animation style between light and dark modes.
+ */
+---
+
+<div id="meteors" class="hidden">
+  <!-- rotations defined in base.css & tailwind.config.mjs -->
+  <div class="shower ur"></div>
+  <div class="shower dr"></div>
+  <div class="shower dl"></div>
+  <div class="shower ul"></div>
+</div>
+
+<script>
+  function createMeteor() {
+    // Disabled to maintain consistent animation between light and dark mode
+  }
+
+  // No interval for generating meteors
+  // setInterval(createMeteor, 1500);
+</script>
