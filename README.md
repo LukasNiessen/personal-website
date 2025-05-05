@@ -1,10 +1,10 @@
-# 🌟 Lukas Niessen's Corner of the Web
+# Lukas Niessen's Corner of the Web
 
-Hey there! Welcome to my digital home. I built this site with Astro, Tailwind CSS, TypeScript, and a dash of React for the interactive bits.
+This is my to my digital home. I built this site with Astro, Tailwind CSS, TypeScript, and a dash of React for the interactive bits. The website is in **beta**.
 
 ## 🚀 Built For Performance and SEO
 
-- Pages weigh in under 100kb (fonts included!)
+- Pages weigh in under 100kb
 - Renders in about 40ms locally
 
 ## 🛠️ Dev Commands
@@ -27,8 +27,24 @@ Got the code? Here's how to play with it:
 
 ## 📜 License
 
-Copyright © 2025 Lukas Niessen. All rights reserved.
+MIT License
 
-### Proprietary License
+Copyright © 2025 Lukas Niessen.
 
-This website and its content are the exclusive property of Lukas Niessen. No part of this website, including but not limited to text, graphics, code, designs, and overall structure, may be reproduced, distributed, modified, or used in any form without prior written permission from Lukas Niessen.
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
