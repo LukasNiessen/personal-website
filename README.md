@@ -1,8 +1,12 @@
-# Lukas Niessen's Corner of the Web
+# Personal Blog
 
-This is my to my digital home. I built this site with Astro, Tailwind CSS, TypeScript, and a dash of React for the interactive bits. The website is in **beta**.
+This is my personal homepage and blog. I built this site with Astro, Tailwind CSS, TypeScript, and a dash of React for the interactive bits. The website is in **beta**.
+
+Feel free to use it however you like, privately or commercially.
 
 ## 🚀 Built For Performance and SEO
+
+Everything is static.
 
 - Pages weigh in under 100kb
 - Renders in about 40ms locally
