@@ -28,6 +28,12 @@ export default {
         DEFAULT: {
           css: {
             maxWidth: "full",
+            a: {
+              overflowWrap: "break-word",
+              wordWrap: "break-word",
+              wordBreak: "break-word",
+              hyphens: "auto",
+            },
           },
         },
       },

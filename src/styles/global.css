@@ -57,6 +57,25 @@ article {
   @apply prose dark:prose-invert max-w-full pb-12;
 }
 
+/* Fix for long links in markdown content causing horizontal scroll */
+article a {
+  @apply break-words hyphens-auto;
+  word-break: break-word;
+  overflow-wrap: anywhere;
+}
+
+/* Fix for long code blocks and pre elements */
+article pre {
+  @apply overflow-x-auto;
+  max-width: 100%;
+}
+
+article code:not(pre code) {
+  @apply break-words whitespace-normal;
+  word-break: break-word;
+  overflow-wrap: anywhere;
+}
+
 .page-heading {
   @apply font-semibold text-warmText-light dark:text-warmText-dark;
 }
