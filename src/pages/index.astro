@@ -2,8 +2,7 @@
 import { getCollection } from "astro:content"
 import PageLayout from "@layouts/PageLayout.astro"
 import ArrowCard from "@components/ArrowCard"
-import StackCard from "@components/StackCard.astro"
-import { SITE, SOCIALS, DICT_EN } from "@consts"
+import { SITE, SOCIALS } from "@consts"
 import TwinklingStars from "@components/TwinklingStars.astro"
 import MeteorShower from "@components/MeteorShower.astro"
 import { t } from "@lib/utils"
@@ -16,6 +15,7 @@ const posts = (await getCollection("blog"))
   .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
   .slice(0,PREVIEW_POSTS)
 
+/*
 const projects = (await getCollection("projects"))
   .filter(project => !project.data.draft)
   .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
@@ -63,6 +63,7 @@ const stack = [
     href: "https://tailwindcss.com" 
   },
 ]
+*/
 ---
 
 <PageLayout title="Home" description={SITE.DESCRIPTION}>
