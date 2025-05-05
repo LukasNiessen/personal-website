@@ -2,7 +2,6 @@
 import PageLayout from "@layouts/PageLayout.astro";
 import TwinklingStars from "@components/TwinklingStars.astro";
 import MeteorShower from "@components/MeteorShower.astro";
-import { t } from "@lib/utils";
 ---
 
 <PageLayout
@@ -114,7 +113,7 @@ import { t } from "@lib/utils";
     "💫",
     "🛸",
   ];
-  let emojiInterval = null;
+  let emojiInterval: NodeJS.Timeout | null = null;
 
   function createErrorEmoji() {
     const emoji = document.createElement("div");
