@@ -1,57 +1,205 @@
 ---
-import { type CollectionEntry, getCollection } from "astro:content"
+import { type CollectionEntry, getCollection } from "astro:content";
 
 type Props = {
-  entry: CollectionEntry<"blog"> | CollectionEntry<"projects">
-}
+  entry: CollectionEntry<"blog"> | CollectionEntry<"projects">;
+};
 
 // Get the requested entry
-const { entry } = Astro.props
-const { collection } = entry
-const { Content } = await entry.render()
+const { entry } = Astro.props;
+const { collection, data } = entry;
+const { Content } = await entry.render();
+const repoUrl = data.repoUrl;
+const xLink = collection === "blog" ? data.xLink : null;
+const linkedInLink = collection === "blog" ? data.linkedInLink : null;
 
 // Get the next and prev entries (modulo to wrap index)
 const items = (await getCollection(collection))
-  .filter(post => !post.data.draft)
-  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
-const index = items.findIndex(x => x.slug === entry.slug)
-const prev = items[(index - 1 + items.length) % items.length]
-const next = items[(index + 1) % items.length]
+  .filter((post) => !post.data.draft)
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+const index = items.findIndex((x) => x.slug === entry.slug);
+const prev = items[(index - 1 + items.length) % items.length];
+const next = items[(index + 1) % items.length];
 ---
 
 <div>
   <article>
-    <Content/>
+    <Content />
   </article>
+
+  {
+    repoUrl && (
+      <div class="my-8 p-4 border rounded-lg border-black/15 dark:border-white/20 text-center">
+        <p class="mb-3">
+          Did you find this article helpful? Check out the GitHub repository!
+        </p>
+        <a
+          href={repoUrl}
+          target="_blank"
+          class="group inline-flex gap-2 items-center px-4 py-2 rounded text-sm border border-black/25 dark:border-white/25 hover:bg-black/5 hover:dark:bg-white/15 blend"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="size-5"
+          >
+            <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" />
+            <path d="M9 18c-4.51 2-5-2-7-2" />
+          </svg>
+          <span class="text-current group-hover:text-black group-hover:dark:text-white blend">
+            Star this project on GitHub
+          </span>
+        </a>
+      </div>
+    )
+  }
+
+  {
+    (xLink || linkedInLink) && (
+      <div class="my-8 p-4 border rounded-lg border-black/15 dark:border-white/20">
+        <p class="mb-3 text-center">
+          Have a question or feedback? Join the conversation!
+        </p>
+        <div class="flex flex-wrap justify-center gap-3">
+          {xLink && (
+            <a
+              href={xLink}
+              target="_blank"
+              class="group flex gap-2 items-center px-4 py-2 rounded text-sm border border-black/25 dark:border-white/25 hover:bg-black/5 hover:dark:bg-white/15 blend"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="size-5"
+              >
+                <path d="M4 4l11.733 16h4.267l-11.733-16z" />
+                <path d="M4 20l6.768-6.768" />
+                <path d="M20 4l-6.768 6.768" />
+              </svg>
+              <span class="text-current group-hover:text-black group-hover:dark:text-white blend">
+                Discuss on X
+              </span>
+            </a>
+          )}
+          {linkedInLink && (
+            <a
+              href={linkedInLink}
+              target="_blank"
+              class="group flex gap-2 items-center px-4 py-2 rounded text-sm border border-black/25 dark:border-white/25 hover:bg-black/5 hover:dark:bg-white/15 blend"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="size-5"
+              >
+                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+                <rect width="4" height="12" x="2" y="9" />
+                <circle cx="4" cy="4" r="2" />
+              </svg>
+              <span class="text-current group-hover:text-black group-hover:dark:text-white blend">
+                Discuss on LinkedIn
+              </span>
+            </a>
+          )}
+        </div>
+      </div>
+    )
+  }
+
   <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-    <a href={`/${prev.collection}/${prev.slug}`} class="group p-4 gap-3 flex items-center border rounded-lg hover:bg-black/5 hover:dark:bg-white/10 border-black/15 dark:border-white/20 blend">
-      <div class="order-2 w-full h-full group-hover:text-black group-hover:dark:text-white blend">
+    <a
+      href={`/${prev.collection}/${prev.slug}`}
+      class="group p-4 gap-3 flex items-center border rounded-lg hover:bg-black/5 hover:dark:bg-white/10 border-black/15 dark:border-white/20 blend"
+    >
+      <div
+        class="order-2 w-full h-full group-hover:text-black group-hover:dark:text-white blend"
+      >
         <div class="flex flex-wrap gap-2">
-          <div class="text-sm uppercase">
-            Prev
-          </div>
+          <div class="text-sm uppercase">Prev</div>
         </div>
         <div class="font-semibold mt-3 text-black dark:text-white">
           {prev.data.title}
         </div>
       </div>
-      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="order-1 stroke-current group-hover:stroke-black group-hover:dark:stroke-white rotate-180">
-        <line x1="5" y1="12" x2="19" y2="12" class="scale-x-0 group-hover:scale-x-100 translate-x-4 group-hover:translate-x-1 transition-all duration-300 ease-in-out" />
-        <polyline points="12 5 19 12 12 19" class="translate-x-0 group-hover:translate-x-1 transition-all duration-300 ease-in-out" />
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="20"
+        height="20"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke-width="2.5"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="order-1 stroke-current group-hover:stroke-black group-hover:dark:stroke-white rotate-180"
+      >
+        <line
+          x1="5"
+          y1="12"
+          x2="19"
+          y2="12"
+          class="scale-x-0 group-hover:scale-x-100 translate-x-4 group-hover:translate-x-1 transition-all duration-300 ease-in-out"
+        ></line>
+        <polyline
+          points="12 5 19 12 12 19"
+          class="translate-x-0 group-hover:translate-x-1 transition-all duration-300 ease-in-out"
+        ></polyline>
       </svg>
     </a>
-    <a href={`/${next.collection}/${next.slug}`} class="group p-4 gap-3 flex items-center border rounded-lg hover:bg-black/5 hover:dark:bg-white/10 border-black/15 dark:border-white/20 transition-colors duration-300 ease-in-out">
-      <div class="w-full h-full text-right group-hover:text-black group-hover:dark:text-white blend">
-        <div class="text-sm uppercase">
-          Next
-        </div>
+    <a
+      href={`/${next.collection}/${next.slug}`}
+      class="group p-4 gap-3 flex items-center border rounded-lg hover:bg-black/5 hover:dark:bg-white/10 border-black/15 dark:border-white/20 transition-colors duration-300 ease-in-out"
+    >
+      <div
+        class="w-full h-full text-right group-hover:text-black group-hover:dark:text-white blend"
+      >
+        <div class="text-sm uppercase">Next</div>
         <div class="font-semibold mt-3 text-black dark:text-white">
           {next.data.title}
         </div>
       </div>
-      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="stroke-current group-hover:stroke-black group-hover:dark:stroke-white">
-        <line x1="5" y1="12" x2="19" y2="12" class="scale-x-0 group-hover:scale-x-100 translate-x-4 group-hover:translate-x-1 transition-all duration-300 ease-in-out" />
-        <polyline points="12 5 19 12 12 19" class="translate-x-0 group-hover:translate-x-1 transition-all duration-300 ease-in-out" />
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="20"
+        height="20"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke-width="2.5"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="stroke-current group-hover:stroke-black group-hover:dark:stroke-white"
+      >
+        <line
+          x1="5"
+          y1="12"
+          x2="19"
+          y2="12"
+          class="scale-x-0 group-hover:scale-x-100 translate-x-4 group-hover:translate-x-1 transition-all duration-300 ease-in-out"
+        ></line>
+        <polyline
+          points="12 5 19 12 12 19"
+          class="translate-x-0 group-hover:translate-x-1 transition-all duration-300 ease-in-out"
+        ></polyline>
       </svg>
     </a>
   </div>

@@ -1,12 +1,16 @@
 ---
 title: "ELI5: How does OIDC work?"
 summary: "OIDC explained. Super short summary, a detailed summary and a code snippet."
-date: "Mar 01 2025"
+date: "Mar 15 2025"
 draft: false
+repoUrl: "https://github.com/LukasNiessen/oidc-explained"
+xLink: "https://x.com/iamlukasniessen/status/1916203313478947318"
+linkedInLink: "https://www.linkedin.com/pulse/eli5-how-does-oidc-work-lukas-nie%C3%9Fen-7mz4e/"
 tags:
   - ELI5
   - Explained
-  - OAuth
+  - OIDC
+  - OpenID Connect
   - Authentication
   - IAM
   - Security

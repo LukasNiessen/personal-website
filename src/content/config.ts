@@ -21,6 +21,9 @@ const blog = defineCollection({
     date: z.coerce.date(),
     tags: z.array(z.string()),
     draft: z.boolean().optional(),
+    repoUrl: z.string(),
+    xLink: z.string().optional(),
+    linkedInLink: z.string().optional(),
   }),
 });
 
