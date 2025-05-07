@@ -4,6 +4,8 @@ This is my personal homepage and blog. I built this site with Astro, Tailwind CS
 
 Feel free to use it however you like, privately or commercially.
 
+![Screenshot homepage](screenshot_homepage.png?raw=true "Screenshot")
+
 ## 🚀 Built For Performance and SEO
 
 Everything is static.
