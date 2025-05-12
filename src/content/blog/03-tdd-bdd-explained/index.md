@@ -1,7 +1,7 @@
 ---
 title: "What is TDD and BDD?"
 summary: "TDD and BDD explained. Includes code samples in many languages."
-date: "Mar 15 2025"
+date: "May 10 2025"
 draft: false
 repoUrl: "https://github.com/LukasNiessen/tdd-bdd-explained"
 xLink: "https://x.com/iamlukasniessen/status/1920143646722003403"
