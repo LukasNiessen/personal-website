@@ -14,30 +14,6 @@ const posts = (await getCollection("blog"))
   .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
   .slice(0,PREVIEW_POSTS)
 
-// Personal schema for Lukas Niessen
-const personSchema = {
-  "@context": "https://schema.org",
-  "@type": "Person",
-  "name": "Lukas Niessen",
-  "jobTitle": "Software Architect & Full Stack Developer",
-  "url": Astro.site?.toString(),
-  "sameAs": SOCIALS.map(social => social.HREF).filter(href => !href.startsWith("mailto:")),
-  "description": t("home.about")
-};
-
-// WebSite schema for the homepage
-const websiteSchema = {
-  "@context": "https://schema.org",
-  "@type": "WebSite",
-  "name": SITE.TITLE,
-  "description": SITE.DESCRIPTION,
-  "url": Astro.site?.toString(),
-  "author": {
-    "@type": "Person",
-    "name": "Lukas Niessen"
-  }
-}
-
 /*
 const projects = (await getCollection("projects"))
   .filter(project => !project.data.draft)
