@@ -207,30 +207,38 @@ const stack = [
 
       <!-- Contact Section -->
       <section class="animate">
-        <div>
-          <p class="font-semibold text-black dark:text-white text-xl">
-            {t("home.connect")}
-          </p>
-          <p class="mt-4">
-            {t("home.interests")}
-            <br />
-            {t("home.connect.description")}
-          </p>
-          <div class="grid grid-cols-4 gap-y-2 mt-5 auto-cols-min">
-            {SOCIALS.map(social => (
-              <div class="col-span-1 flex items-center gap-1">
-                <span class="whitespace-nowrap truncate">
-                  {social.NAME}
-                </span>
-              </div>
-              <div class="col-span-3 truncate">
-                <a href={social.HREF} target="_blank" class="w-fit col-span-3 group flex gap-1 items-center underline decoration-[.5px] decoration-black/25 dark:decoration-white/50 hover:decoration-black dark:hover:decoration-white text-black dark:text-white underline-offset-2 blend">
-                  <span class="text-black/75 dark:text-white/75 group-hover:text-black group-hover:dark:text-white blend">
-                    {social.TEXT}
+        <div class="flex flex-col sm:flex-row gap-6 items-center">
+          <div class="w-full sm:w-2/3 order-2 sm:order-1">
+            <p class="font-semibold text-black dark:text-white text-xl">
+              {t("home.connect")}
+            </p>
+            <p class="mt-4">
+              {t("home.interests")}
+            </p>
+            <div class="grid grid-cols-4 gap-y-2 mt-5 auto-cols-min">
+              {SOCIALS.map(social => (
+                <div class="col-span-1 flex items-center gap-1">
+                  <span class="whitespace-nowrap truncate">
+                    {social.NAME}
                   </span>
-                </a>
-              </div>
-            ))}
+                </div>
+                <div class="col-span-3 truncate">
+                  <a href={social.HREF} target="_blank" class="w-fit col-span-3 group flex gap-1 items-center underline decoration-[.5px] decoration-black/25 dark:decoration-white/50 hover:decoration-black dark:hover:decoration-white text-black dark:text-white underline-offset-2 blend">
+                    <span class="text-black/75 dark:text-white/75 group-hover:text-black group-hover:dark:text-white blend">
+                      {social.TEXT}
+                    </span>
+                  </a>
+                </div>
+              ))}
+            </div>
+          </div>
+          <div class="w-full sm:w-1/3 flex justify-center order-1 sm:order-2 hidden sm:flex">
+            <img 
+              src="/portrait.avif" 
+              alt="lukas niessen portrait" 
+              class="size-40 rounded-xl object-cover shadow-md"
+            />
+          </div>
         </div>
       </section>
     </div>

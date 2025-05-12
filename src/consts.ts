@@ -34,7 +34,6 @@ export const DICT_EN: Dictionary = {
     "I love web, cloud, mathematics, piano, caffeine. Let's get in touch!",
   "home.education": "BSc in Mathematics at University of Bonn",
   "home.connect": "Getting in touch",
-  "home.connect.description": "Reach out to me via email or on social media.",
   "home.recent.projects": "Recent projects",
   "home.all.projects": "All projects",
   "home.recent.posts": "Recent posts",
@@ -89,8 +88,6 @@ export const DICT_DE: Dictionary = {
     "Ich liebe Web, Cloud, Mathematik, Klavier und Kaffee. Lass uns in Kontakt treten!",
   "home.education": "B.Sc. in Mathematik an der Universität Bonn",
   "home.connect": "Kontakt aufnehmen",
-  "home.connect.description":
-    "Erreiche mich per E-Mail oder über soziale Medien.",
   "home.recent.projects": "Aktuelle Projekte",
   "home.all.projects": "Alle Projekte",
   "home.recent.posts": "Aktuelle Beiträge",
@@ -193,5 +190,17 @@ export const SOCIALS: Socials = [
     ICON: "twitter-x",
     TEXT: "iamlukasniessen",
     HREF: "https://x.com/iamlukasniessen",
+  },
+  {
+    NAME: "Medium",
+    ICON: "medium",
+    TEXT: "lukasniessen",
+    HREF: "https://lukasniessen.medium.com/",
+  },
+  {
+    NAME: "Dev.to",
+    ICON: "dev-to",
+    TEXT: "lukasniessen",
+    HREF: "https://dev.to/lukasniessen",
   },
 ];
