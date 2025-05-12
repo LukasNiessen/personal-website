@@ -54,7 +54,7 @@ import Container from "@components/Container.astro";
           href="/search"
           aria-label={`Search blog posts and projects on ${SITE.TITLE}`}
           class={cn(
-            "hidden md:flex",
+            "hidden md:flex group relative",
             "size-9 rounded-full p-2 items-center justify-center",
             "border border-gray-300/30 dark:border-gray-600/30",
             "transition-colors duration-300 ease-in-out",
@@ -66,6 +66,11 @@ import Container from "@components/Container.astro";
           <svg class="size-full">
             <use href="/ui.svg#search"></use>
           </svg>
+          <span
+            class="absolute -bottom-8 left-1/2 -translate-x-1/2 whitespace-nowrap px-2 py-1 rounded text-xs bg-black text-white dark:bg-white dark:text-black opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
+          >
+            Search
+          </span>
         </a>
 
         <a
@@ -73,7 +78,7 @@ import Container from "@components/Container.astro";
           target="_blank"
           aria-label={`Rss feed for ${SITE.TITLE}`}
           class={cn(
-            "hidden md:flex",
+            "hidden md:flex group relative",
             "size-9 rounded-full p-2 items-center justify-center",
             "bg-transparent hover:bg-gray-200/50 hover:dark:bg-gray-700/30",
             "stroke-current hover:stroke-warmAccent-tertiary hover:dark:stroke-warmAccent-secondary",
@@ -84,13 +89,18 @@ import Container from "@components/Container.astro";
           <svg class="size-full">
             <use href="/ui.svg#rss"></use>
           </svg>
+          <span
+            class="absolute -bottom-8 left-1/2 -translate-x-1/2 whitespace-nowrap px-2 py-1 rounded text-xs bg-black text-white dark:bg-white dark:text-black opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
+          >
+            RSS Feed
+          </span>
         </a>
 
         <button
           id="header-theme-button"
           aria-label={`Toggle light and dark theme`}
           class={cn(
-            "hidden md:flex",
+            "hidden md:flex group relative",
             "size-9 rounded-full p-2 items-center justify-center",
             "bg-transparent hover:bg-gray-200/50 hover:dark:bg-gray-700/30",
             "stroke-current hover:stroke-warmAccent-tertiary hover:dark:stroke-warmAccent-secondary",
@@ -104,6 +114,11 @@ import Container from "@components/Container.astro";
           <svg class="size-full hidden dark:block">
             <use href="/ui.svg#moon"></use>
           </svg>
+          <span
+            class="absolute -bottom-8 left-1/2 -translate-x-1/2 whitespace-nowrap px-2 py-1 rounded text-xs bg-black text-white dark:bg-white dark:text-black opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
+          >
+            Toggle Dark Mode
+          </span>
         </button>
 
         <button
