@@ -90,10 +90,6 @@ const stack = [
 ---
 
 <PageLayout title="Home" description={SITE.DESCRIPTION}>
-  <!-- Structured Data for SEO -->
-  <script type="application/ld+json" set:html={JSON.stringify(personSchema)}></script>
-  <script type="application/ld+json" set:html={JSON.stringify(websiteSchema)}></script>
-
   <!-- Light Mode: Particles -->
   <div class='absolute inset-0 block dark:hidden'>
     <div id='particles1' class='fixed inset-0 bg-warmAccent-secondary/10'></div>
