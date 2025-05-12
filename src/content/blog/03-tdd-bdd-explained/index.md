@@ -1,5 +1,5 @@
 ---
-title: "What is TDD and BDD? Which is better?"
+title: "What is TDD and BDD?"
 summary: "TDD and BDD explained. Includes code samples in many languages."
 date: "Mar 15 2025"
 draft: false
