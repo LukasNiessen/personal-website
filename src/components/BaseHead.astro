@@ -40,6 +40,11 @@ const { title, description, image = "/portrait.avif" } = Astro.props;
 <title>{title}</title>
 <meta name="title" content={title} />
 <meta name="description" content={description} />
+<meta name="author" content="Lukas Niessen" />
+<meta
+  name="keywords"
+  content="Lukas Niessen, Software Architecture, System Design, Full Stack Development, {title}"
+/>
 
 <!-- Open Graph / Facebook -->
 <meta property="og:type" content="website" />

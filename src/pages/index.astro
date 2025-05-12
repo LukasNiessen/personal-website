@@ -8,12 +8,35 @@ import MeteorShower from "@components/MeteorShower.astro"
 import { t } from "@lib/utils"
 
 const PREVIEW_POSTS = 10
-const PREVIEW_PROJECTS = 10
 
 const posts = (await getCollection("blog"))
   .filter(post => !post.data.draft)
   .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
   .slice(0,PREVIEW_POSTS)
+
+// Personal schema for Lukas Niessen
+const personSchema = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Lukas Niessen",
+  "jobTitle": "Software Architect & Full Stack Developer",
+  "url": Astro.site?.toString(),
+  "sameAs": SOCIALS.map(social => social.HREF).filter(href => !href.startsWith("mailto:")),
+  "description": t("home.about")
+};
+
+// WebSite schema for the homepage
+const websiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": SITE.TITLE,
+  "description": SITE.DESCRIPTION,
+  "url": Astro.site?.toString(),
+  "author": {
+    "@type": "Person",
+    "name": "Lukas Niessen"
+  }
+}
 
 /*
 const projects = (await getCollection("projects"))
@@ -67,6 +90,9 @@ const stack = [
 ---
 
 <PageLayout title="Home" description={SITE.DESCRIPTION}>
+  <!-- Structured Data for SEO -->
+  <script type="application/ld+json" set:html={JSON.stringify(personSchema)}></script>
+  <script type="application/ld+json" set:html={JSON.stringify(websiteSchema)}></script>
 
   <!-- Light Mode: Particles -->
   <div class='absolute inset-0 block dark:hidden'>
@@ -235,7 +261,7 @@ const stack = [
           <div class="w-full sm:w-1/3 flex justify-center order-1 sm:order-2 hidden sm:flex">
             <img 
               src="/portrait.avif" 
-              alt="lukas niessen portrait" 
+              alt="Lukas Niessen - Software Architect and Full Stack Developer" 
               class="size-40 rounded-xl object-cover shadow-md"
             />
           </div>
