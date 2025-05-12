@@ -1,6 +1,6 @@
 # Personal Blog
 
-This is my personal homepage and blog. I built this site with Astro, Tailwind CSS, TypeScript, and a dash of React for the interactive bits. The website is in **beta**.
+This is my personal homepage and blog. I built this site with Astro, Tailwind CSS, TypeScript, and a dash of React for the interactive bits. The website is in **beta**. Link: https://lukasniessen.com
 
 Feel free to use it however you like, privately or commercially.
 
