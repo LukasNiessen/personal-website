@@ -1,0 +1,302 @@
+---
+import PageLayout from "@layouts/PageLayout.astro";
+import TopLayout from "@layouts/TopLayout.astro";
+import BottomLayout from "@layouts/BottomLayout.astro";
+import { COMPETITIONS } from "@consts";
+
+// Define types for the competition entries
+type CompetitionEntry = {
+  date: string;
+  description: string;
+  about?: string;
+  url?: string;
+};
+
+type YearGroup = {
+  year: string;
+  entries: CompetitionEntry[];
+};
+
+const competitions: YearGroup[] = [
+  {
+    year: "2012",
+    entries: [
+      {
+        date: "08.10.2012",
+        description:
+          "Won a subscription to MONOID through solving their problems",
+        about: "",
+      },
+      {
+        date: "10.12.2012",
+        description:
+          "3rd prize in the 1st round of the Mathematik-Wettbewerb Rheinland-Pfalz",
+      },
+    ],
+  },
+  {
+    year: "2013",
+    entries: [
+      {
+        date: "02.03.2013",
+        description:
+          "3rd prize in the Länderrunde (State Round) of the 52. Mathematik-Olympiade",
+        about: "",
+      },
+      {
+        date: "April 2013",
+        description: "85 points in the Känguru Wettbewerb",
+        about: "",
+      },
+      {
+        date: "10.10.2013",
+        description: "Won the Goldenes M 2013 at MONOID",
+        about:
+          "The highest price in this competition. Maximum one person each year among all participants may earn it.",
+        url: "https://monoid.mathematik.uni-mainz.de/goldenesM.php",
+      },
+      {
+        date: "28.10.2013",
+        description:
+          "2nd prize in the 1st round of the 53. Mathematik-Olympiade",
+      },
+      {
+        date: "16.12.2013",
+        description:
+          "2nd prize in the 1st round of the Mathematik-Wettbewerb Rheinland-Pfalz",
+      },
+      {
+        date: "2013",
+        description:
+          "Solved 22 out of 24 problems in Mathe im Advent correctly",
+        about: "",
+      },
+    ],
+  },
+  {
+    year: "2014",
+    entries: [
+      {
+        date: "09.01.2014",
+        description:
+          "Qualified for the 3rd round of the 53. Mathematik-Olympiade",
+      },
+      {
+        date: "21.07.2014",
+        description:
+          "3rd prize in the 3rd round of the 53. Mathematik-Olympiade",
+      },
+      {
+        date: "15.10.2014",
+        description: "1st prize at MONOID",
+        about: "",
+      },
+      {
+        date: "06.11.2014",
+        description:
+          "Qualified for the 2nd round of the 54. Mathematik-Olympiade",
+      },
+    ],
+  },
+  {
+    year: "2015",
+    entries: [
+      {
+        date: "10.02.2015",
+        description:
+          "Qualified for the 3rd round of the 54. Mathematik-Olympiade",
+      },
+      {
+        date: "01.07.2015",
+        description:
+          "3rd prize in the Länderrunde (State Round) of the 54. Mathematik-Olympiade",
+      },
+      {
+        date: "17.07.2015",
+        description:
+          "Prize in the 2nd round of the Mathematik-Wettbewerb Rheinland-Pfalz",
+      },
+      {
+        date: "17.07.2015",
+        description:
+          "Participation and victory in the colloquium of the 2nd competition round of the Mathematik-Wettbewerb Rheinland-Pfalz",
+      },
+      {
+        date: "28.10.2015",
+        description:
+          "Qualified for the 2nd round of the 55. Mathematik-Olympiade",
+      },
+    ],
+  },
+  {
+    year: "2016",
+    entries: [
+      {
+        date: "11.01.2016",
+        description:
+          "3rd prize in the 1st round of the Mathematik-Wettbewerb Rheinland-Pfalz",
+      },
+      {
+        date: "17. - 19.02.2016",
+        description:
+          "Successfully participated in the 3rd round of the Mathematik-Wettbewerb Rheinland-Pfalz",
+      },
+      {
+        date: "28.10.2016",
+        description:
+          "Qualified for the 2nd round of the 56. Mathematik-Olympiade",
+      },
+    ],
+  },
+  {
+    year: "2017",
+    entries: [
+      {
+        date: "20.01.2017",
+        description:
+          "Qualified for the 3rd round of the 56. Mathematik-Olympiade",
+      },
+      {
+        date: "18.03.2017",
+        description:
+          "3rd prize in the Länderrunde (State Round) of the 56. Mathematik-Olympiade",
+      },
+      {
+        date: "01.12.2017",
+        description:
+          "Successfully participated in the Mathematikcamp (Math Camp) for Advanced I (Mathematik-Olympiade)",
+      },
+    ],
+  },
+  {
+    year: "2019",
+    entries: [
+      {
+        date: "21.03.2019",
+        description:
+          "3rd prize as course LK 11 M1 of Gymnasium Nonnenwerth in Mathematik ohne Grenzen",
+      },
+      {
+        date: "15.05.2019",
+        description:
+          "Successful participation in the 1st round of the Bundeswettbewerb Künstliche Intelligenz (Federal Competition for Artificial Intelligence)",
+        about: "",
+      },
+      {
+        date: "Juni 2019",
+        description:
+          "2nd prize in the 1st round of the Bundeswettbewerb Mathematik (Federal Mathematics Competition) and qualified for the 2nd round",
+      },
+      {
+        date: "September 2019",
+        description:
+          "Successful participation in the 2nd round of the Bundeswettbewerb Mathematik (Federal Mathematics Competition)",
+      },
+      {
+        date: "25.10.2019",
+        description:
+          "Successful participation in the 59. Mathematik-Olympiade and qualified for the 2nd round",
+      },
+      {
+        date: "22.11.2019",
+        description:
+          "3rd prize for successful participation in Informatik-Biber (Beaver Computing Challenge)",
+        about: "",
+      },
+      {
+        date: "19.12.2019",
+        description:
+          "Successful participation in the Bundeswettbewerb Informatik (Federal Computer Science Competition) (BWINF) and qualified for the 2nd round",
+        about: "",
+      },
+    ],
+  },
+  {
+    year: "2020",
+    entries: [
+      {
+        date: "10.01.2020",
+        description:
+          'Opportunity to participate in the HPI "Fit-for-BWINF" Student Camp (as a result of successful BWINF participation)',
+      },
+      {
+        date: "14.01.2020",
+        description: "Successful participation in the Bolyai Team Competition",
+        about: "",
+      },
+      {
+        date: "24.01.2020",
+        description:
+          "Qualified for the 3rd round of the 59. Mathematik-Olympiade",
+      },
+      {
+        date: "12.02.2020",
+        description:
+          "Successful participation in JugendForscht (Youth Research) (Topic: AI with evolutionary algorithms)",
+        about: "",
+      },
+      {
+        date: "27.02.2020",
+        description:
+          "Opportunity to participate in the Mathe-Camp (Math Camp) (through the 3rd round of the MO)",
+      },
+    ],
+  },
+];
+---
+
+<PageLayout title={COMPETITIONS.TITLE} description={COMPETITIONS.DESCRIPTION}>
+  <TopLayout>
+    <div class="animate page-heading">
+      {COMPETITIONS.TITLE}
+    </div>
+  </TopLayout>
+  <BottomLayout>
+    <div class="animate">
+      <div class="mb-12 prose dark:prose-invert max-w-none">
+        <p>
+          During my school years, I took part in several math and computer
+          science competitions. Here is an an overview of most of my
+          participations and achievements from 2012 to 2020.
+        </p>
+      </div>
+      <div class="space-y-16">
+        {
+          competitions.map((yearGroup) => (
+            <div class="space-y-4">
+              <h2 class="text-2xl font-semibold text-black dark:text-white">
+                {yearGroup.year}
+              </h2>
+              <ul class="space-y-4">
+                {yearGroup.entries.map((entry) => (
+                  <li class="border-l-2 border-warmAccent-primary pl-4 py-1">
+                    <div class="font-medium text-black dark:text-white">
+                      {entry.date}
+                    </div>
+                    <div class="mt-1 text-black/80 dark:text-white/80">
+                      {entry.description}
+                    </div>
+                    {entry.url && (
+                      <a
+                        href={entry.url}
+                        target="_blank"
+                        class="hover:underline hover:text-warmAccent-tertiary dark:hover:text-warmAccent-secondary transition-colors"
+                      >
+                        {entry.url}
+                      </a>
+                    )}
+                    {entry.about && entry.about.length > 0 && (
+                      <div class="mt-1 text-sm text-black/60 dark:text-white/60 italic">
+                        {entry.about}
+                      </div>
+                    )}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </BottomLayout>
+</PageLayout>

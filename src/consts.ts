@@ -16,6 +16,9 @@ export const DICT_EN: Dictionary = {
   "projects.description": "Recent projects I have worked on.",
   "search.title": "Search",
   "search.description": "Search all posts and projects by keyword.",
+  "competitions.title": "Competitions",
+  "competitions.description":
+    "Academic competitions and awards I have received.",
 
   // Work page
   "work.mode.remote": "Remote",
@@ -44,6 +47,7 @@ export const DICT_EN: Dictionary = {
   "link.work": "Resume",
   "link.blog": "Blog",
   "link.projects": "Projects",
+  "link.competitions": "Competitions",
 
   // Footer
   "footer.terms": "Terms",
@@ -70,6 +74,9 @@ export const DICT_DE: Dictionary = {
   "search.title": "Suche",
   "search.description":
     "Durchsuche alle Beiträge und Projekte nach Stichwörtern.",
+  "competitions.title": "Wettbewerbe",
+  "competitions.description":
+    "Akademische Wettbewerbe und Auszeichnungen, die ich erhalten habe.",
 
   // Work page
   "work.mode.remote": "Remote",
@@ -138,6 +145,12 @@ export const SEARCH: Page = {
   DESCRIPTION: DICT_EN["search.description"],
 };
 
+// Competitions Page
+export const COMPETITIONS: Page = {
+  TITLE: DICT_EN["competitions.title"],
+  DESCRIPTION: DICT_EN["competitions.description"],
+};
+
 // Links
 export const LINKS: Links = [
   {
@@ -151,6 +164,10 @@ export const LINKS: Links = [
   {
     TEXT: DICT_EN["link.work"],
     HREF: "/work",
+  },
+  {
+    TEXT: DICT_EN["link.competitions"],
+    HREF: "/competitions",
   },
   // Projects link commented out to hide it from navigation
   // {
