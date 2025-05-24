@@ -27,7 +27,7 @@ Now the CAP Theorem states that in a distributed system, you need to decide whet
 
 **And in non-distributed systems?** CAP Theorem only applies to distributed systems. If you only have one database, you can totally have both. (Unless that DB server if down obviously, then you have neither.
 
-**Is this always the case?** No, if everything is _green_, we have both, consistency and availability. However, if a server looses internet access for example, or there is any other fault that occurs, THEN we have only one of the two, that is either have consistency or availability.
+**Is this always the case?** No, if everything is working and there are no issues, we have both, consistency and availability. However, if a server looses internet access for example, or there is any other fault that occurs, THEN we have only one of the two, that is either have consistency or availability.
 
 ### Example
 
