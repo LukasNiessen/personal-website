@@ -110,7 +110,7 @@ So our choice is: **When a partition happens, do you want Consistency OR Availab
 
 In other words, it's not "pick 2 out of 3," it's "partitions will happen, so pick C or A."
 
-## System Design Example 1: Social Media Feed
+## System Design Example 1: Netflix
 
 **Scenario:** Building Netflix
 
