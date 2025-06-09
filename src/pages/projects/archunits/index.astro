@@ -1,0 +1,416 @@
+---
+import PageLayout from "@layouts/PageLayout.astro";
+import TopLayout from "@layouts/TopLayout.astro";
+import BottomLayout from "@layouts/BottomLayout.astro";
+
+const title = "ArchUnitTS";
+const description = "The #1 architecture testing library for TypeScript";
+---
+
+<PageLayout title={title} description={description}>
+  <TopLayout>
+    <div class="animate page-heading">
+      {title}
+    </div>
+  </TopLayout>
+  <BottomLayout>
+    <div class="animate">
+      <div class="mb-12 prose dark:prose-invert max-w-none">
+        <p>
+          <a
+            href="https://github.com/LukasNiessen/ArchUnitTS"
+            target="_blank"
+            class="text-warmAccent-tertiary dark:text-warmAccent-secondary hover:underline"
+            >ArchUnitTS</a
+          > is an architecture testing library that helps enforce architecture rules
+          in TypeScript and JavaScript projects. It enables checking dependency directions,
+          detecting circular dependencies, enforcing coding standards and much more
+          - all with a simple setup and seamless pipeline integration.
+        </p>
+
+        <p>
+          The library is maintained by me (not full time) along with a small
+          team. It has become the most popular architecture testing library for
+          TypeScript, measured by GitHub stars.
+        </p>
+
+        Please note that the following features set and library comparison is
+        incomplete, please checkout the repo on GitHub for up to date
+        information.
+
+        <h3>Some Features</h3>
+        <ul>
+          <li>Detect and prevent circular dependencies</li>
+          <li>Enforce layer dependencies in your architecture</li>
+          <li>Apply naming conventions to enforce consistency</li>
+          <li>Measure code metrics like cohesion and lines of code</li>
+          <li>Define and validate custom architecture rules</li>
+          <li>Validate against UML diagrams</li>
+          <li>
+            Works with Jest, Vitest, Jasmine, Mocha and other testing frameworks
+          </li>
+        </ul>
+
+        <h3>Code Examples</h3>
+
+        <p>Here are a few examples showing how ArchUnitTS can be used:</p>
+
+        <h4>Checking for Circular Dependencies</h4>
+        <pre><code class="language-typescript">
+            const rule = projectFiles().inFolder('src/**').should().haveNoCycles();
+            await expect(rule).toPassAsync();
+        </code></pre>
+
+        <h4>Enforcing Layered Architecture</h4>
+        <pre><code class="language-typescript">
+            const rule = projectFiles()
+                .inFolder('src/presentation/**')
+                .shouldNot()
+                .dependOnFiles()
+                .inFolder('src/database/**');
+
+            await expect(rule).toPassAsync();
+        </code></pre>
+
+        <h4>Checking Code Metrics</h4>
+        <pre><code class="language-typescript">
+            const rule = metrics().count().linesOfCode().shouldBeBelow(1000);
+            await expect(rule).toPassAsync();
+
+            // LCOM metric (lack of cohesion of methods), low = high cohesion
+            const rule = metrics().lcom().lcom96b().shouldBeBelow(0.3);
+            await expect(rule).toPassAsync();
+        </code></pre>
+        <h3>Library Comparison</h3>
+        <p>
+          Here's how ArchUnitTS compares to other TypeScript architecture
+          testing libraries:
+        </p>
+
+        <div class="overflow-x-auto">
+          <table
+            class="min-w-full bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700"
+          >
+            <thead>
+              <tr class="bg-gray-100 dark:bg-gray-700">
+                <th
+                  class="px-4 py-2 border-b border-gray-300 dark:border-gray-600 text-left"
+                  >Feature</th
+                >
+                <th
+                  class="px-4 py-2 border-b border-gray-300 dark:border-gray-600 text-left"
+                  >ArchUnitTS</th
+                >
+                <th
+                  class="px-4 py-2 border-b border-gray-300 dark:border-gray-600 text-left"
+                  >Other Solutions</th
+                >
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td
+                  class="px-4 py-2 border-b border-gray-300 dark:border-gray-600"
+                  >API Stability</td
+                >
+                <td
+                  class="px-4 py-2 border-b border-gray-300 dark:border-gray-600"
+                  >✅ Stable</td
+                >
+                <td
+                  class="px-4 py-2 border-b border-gray-300 dark:border-gray-600"
+                  >⚠️ Unstable</td
+                >
+              </tr>
+              <tr>
+                <td
+                  class="px-4 py-2 border-b border-gray-300 dark:border-gray-600"
+                  >Circular Dependency Detection</td
+                >
+                <td
+                  class="px-4 py-2 border-b border-gray-300 dark:border-gray-600"
+                  >✅ Full support</td
+                >
+                <td
+                  class="px-4 py-2 border-b border-gray-300 dark:border-gray-600"
+                  >❌ Limited or none</td
+                >
+              </tr>
+              <tr>
+                <td
+                  class="px-4 py-2 border-b border-gray-300 dark:border-gray-600"
+                  >Layer Dependency Rules</td
+                >
+                <td
+                  class="px-4 py-2 border-b border-gray-300 dark:border-gray-600"
+                  >✅ Advanced patterns</td
+                >
+                <td
+                  class="px-4 py-2 border-b border-gray-300 dark:border-gray-600"
+                  >⚠️ Limited</td
+                >
+              </tr>
+              <tr>
+                <td
+                  class="px-4 py-2 border-b border-gray-300 dark:border-gray-600"
+                  >File Pattern Matching</td
+                >
+                <td
+                  class="px-4 py-2 border-b border-gray-300 dark:border-gray-600"
+                  >✅ Glob + Regex</td
+                >
+                <td
+                  class="px-4 py-2 border-b border-gray-300 dark:border-gray-600"
+                  >❌ Basic patterns</td
+                >
+              </tr>
+              <tr>
+                <td
+                  class="px-4 py-2 border-b border-gray-300 dark:border-gray-600"
+                  >Custom Rules</td
+                >
+                <td
+                  class="px-4 py-2 border-b border-gray-300 dark:border-gray-600"
+                  >✅ Full support</td
+                >
+                <td
+                  class="px-4 py-2 border-b border-gray-300 dark:border-gray-600"
+                  >❌ No</td
+                >
+              </tr>
+              <tr>
+                <td
+                  class="px-4 py-2 border-b border-gray-300 dark:border-gray-600"
+                  >Code Metrics</td
+                >
+                <td
+                  class="px-4 py-2 border-b border-gray-300 dark:border-gray-600"
+                  >✅ Comprehensive</td
+                >
+                <td
+                  class="px-4 py-2 border-b border-gray-300 dark:border-gray-600"
+                  >❌ No</td
+                >
+              </tr>
+              <tr>
+                <td
+                  class="px-4 py-2 border-b border-gray-300 dark:border-gray-600"
+                  >Empty Test Detection</td
+                >
+                <td
+                  class="px-4 py-2 border-b border-gray-300 dark:border-gray-600"
+                  >✅ Fails by default</td
+                >
+                <td
+                  class="px-4 py-2 border-b border-gray-300 dark:border-gray-600"
+                  >❌ No</td
+                >
+              </tr>
+              <tr>
+                <td
+                  class="px-4 py-2 border-b border-gray-300 dark:border-gray-600"
+                  >Debug Logging</td
+                >
+                <td
+                  class="px-4 py-2 border-b border-gray-300 dark:border-gray-600"
+                  >✅ Optional (configurable)</td
+                >
+                <td
+                  class="px-4 py-2 border-b border-gray-300 dark:border-gray-600"
+                  >❌ No</td
+                >
+              </tr>
+              <tr>
+                <td
+                  class="px-4 py-2 border-b border-gray-300 dark:border-gray-600"
+                  >LCOM Cohesion Analysis</td
+                >
+                <td
+                  class="px-4 py-2 border-b border-gray-300 dark:border-gray-600"
+                  >✅ Multiple algorithms</td
+                >
+                <td
+                  class="px-4 py-2 border-b border-gray-300 dark:border-gray-600"
+                  >❌ No</td
+                >
+              </tr>
+              <tr>
+                <td
+                  class="px-4 py-2 border-b border-gray-300 dark:border-gray-600"
+                  >Distance Metrics</td
+                >
+                <td
+                  class="px-4 py-2 border-b border-gray-300 dark:border-gray-600"
+                  >✅ Coupling & abstraction</td
+                >
+                <td
+                  class="px-4 py-2 border-b border-gray-300 dark:border-gray-600"
+                  >❌ No</td
+                >
+              </tr>
+              <tr>
+                <td
+                  class="px-4 py-2 border-b border-gray-300 dark:border-gray-600"
+                  >UML Diagram Validation</td
+                >
+                <td
+                  class="px-4 py-2 border-b border-gray-300 dark:border-gray-600"
+                  >✅ Supported</td
+                >
+                <td
+                  class="px-4 py-2 border-b border-gray-300 dark:border-gray-600"
+                  >❌ No</td
+                >
+              </tr>
+              <tr>
+                <td
+                  class="px-4 py-2 border-b border-gray-300 dark:border-gray-600"
+                  >Architecture Slicing</td
+                >
+                <td
+                  class="px-4 py-2 border-b border-gray-300 dark:border-gray-600"
+                  >✅ Supported</td
+                >
+                <td
+                  class="px-4 py-2 border-b border-gray-300 dark:border-gray-600"
+                  >❌ No</td
+                >
+              </tr>
+              <tr>
+                <td
+                  class="px-4 py-2 border-b border-gray-300 dark:border-gray-600"
+                  >Testing Framework Integration</td
+                >
+                <td
+                  class="px-4 py-2 border-b border-gray-300 dark:border-gray-600"
+                  >✅ Universal (Jest, Vitest, Jasmine, Mocha, etc.)</td
+                >
+                <td
+                  class="px-4 py-2 border-b border-gray-300 dark:border-gray-600"
+                  >⚠️ Limited</td
+                >
+              </tr>
+              <tr>
+                <td
+                  class="px-4 py-2 border-b border-gray-300 dark:border-gray-600"
+                  >HTML Report Generation</td
+                >
+                <td
+                  class="px-4 py-2 border-b border-gray-300 dark:border-gray-600"
+                  >✅ Rich dashboards</td
+                >
+                <td
+                  class="px-4 py-2 border-b border-gray-300 dark:border-gray-600"
+                  >❌ No</td
+                >
+              </tr>
+              <tr>
+                <td
+                  class="px-4 py-2 border-b border-gray-300 dark:border-gray-600"
+                  >TypeScript AST Analysis</td
+                >
+                <td
+                  class="px-4 py-2 border-b border-gray-300 dark:border-gray-600"
+                  >✅ Deep analysis</td
+                >
+                <td
+                  class="px-4 py-2 border-b border-gray-300 dark:border-gray-600"
+                  >⚠️ Basic</td
+                >
+              </tr>
+              <tr>
+                <td
+                  class="px-4 py-2 border-b border-gray-300 dark:border-gray-600"
+                  >Performance Optimization</td
+                >
+                <td
+                  class="px-4 py-2 border-b border-gray-300 dark:border-gray-600"
+                  >✅ Caching + parallel</td
+                >
+                <td
+                  class="px-4 py-2 border-b border-gray-300 dark:border-gray-600"
+                  >❌ No</td
+                >
+              </tr>
+              <tr>
+                <td
+                  class="px-4 py-2 border-b border-gray-300 dark:border-gray-600"
+                  >Error Messages</td
+                >
+                <td
+                  class="px-4 py-2 border-b border-gray-300 dark:border-gray-600"
+                  >✅ Detailed + clickable</td
+                >
+                <td
+                  class="px-4 py-2 border-b border-gray-300 dark:border-gray-600"
+                  >⚠️ Basic</td
+                >
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>Key Advantages</h3>
+        <p>
+          ArchUnitTS stands out from other TypeScript architecture testing
+          libraries with several unique features:
+        </p>
+        <ul>
+          <li>
+            <strong>Empty Test Protection:</strong> Automatically detects when tests
+            "pass" because they analyzed zero files due to typos or incorrect patterns,
+            preventing false positives.
+          </li>
+          <li>
+            <strong>Universal Testing Framework Support:</strong> Works with Jest,
+            Vitest, Jasmine, Mocha, and any other testing framework, plus special
+            syntax extensions for the most popular ones.
+          </li>
+          <li>
+            <strong>Advanced Logging:</strong> Comprehensive debugging support with
+            different log levels to understand what files are analyzed and why tests
+            pass or fail.
+          </li>
+          <li>
+            <strong>Code Metrics:</strong> Only library providing metrics like cohesion
+            (LCOM), coupling metrics, distance from main sequence, and custom metrics
+            for architectural insights.
+          </li>
+          <li>
+            <strong>Intelligent Error Messages:</strong> Detailed violation descriptions
+            with clickable file paths that jump directly to issues in your IDE.
+          </li>
+          <li>
+            <strong>Custom Rules & Metrics:</strong> Define your own architectural
+            rules and metrics tailored to your specific needs.
+          </li>
+          <li>
+            <strong>HTML Reports:</strong> Auto-generated dashboards with charts
+            and detailed breakdowns for CI/CD integration.
+          </li>
+          <li>
+            <strong>Nx Monorepo Support:</strong> Built-in support for Nx workspaces
+            with project graph integration and boundary enforcement.
+          </li>
+        </ul>
+
+        <div class="mt-8">
+          <a
+            href="https://github.com/LukasNiessen/ArchUnitTS"
+            target="_blank"
+            class="inline-block px-6 py-3 bg-warmAccent-tertiary dark:bg-warmAccent-secondary text-white rounded-md hover:bg-opacity-90 transition-all"
+          >
+            View on GitHub
+          </a>
+          <a
+            href="https://lukasniessen.github.io/ArchUnitTS/"
+            target="_blank"
+            class="inline-block ml-4 px-6 py-3 border border-warmAccent-tertiary dark:border-warmAccent-secondary text-warmAccent-tertiary dark:text-warmAccent-secondary rounded-md hover:bg-warmAccent-tertiary hover:bg-opacity-10 dark:hover:bg-warmAccent-secondary dark:hover:bg-opacity-10 transition-all"
+          >
+            Documentation
+          </a>
+        </div>
+      </div>
+    </div>
+  </BottomLayout>
+</PageLayout>

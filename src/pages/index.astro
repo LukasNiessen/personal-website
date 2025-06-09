@@ -90,7 +90,6 @@ const stack = [
 
   <script is:inline src="/js/bg.js"></script>
   
-  <!-- HERO -->
   <section class="relative h-screen w-full">
     <div id="planetcont" class='animate absolute inset-0 top-1/4 overflow-hidden'>
       <div id="crescent" class='absolute top-0 left-1/2 -translate-x-1/2 w-[250vw] min-h-[100vh] aspect-square rounded-full p-[1px] bg-gradient-to-b from-warmAccent-tertiary/25 dark:from-warmAccent-secondary/75 from-0% to-transparent to-5%'>
@@ -112,7 +111,6 @@ const stack = [
           </p>
           <div class='mt-10 flex justify-center'>
             <a
-              href="#recent-posts"
               id="scroll-to-next"
               aria-label="Scroll to blog section"
               class="group flex w-fit p-1.5 gap-1.5 text-sm items-center border rounded hover:bg-warmAccent-secondary/10 hover:dark:bg-warmAccent-primary/20 border-gray-300/50 dark:border-gray-500/50 transition-colors duration-300 ease-in-out"
@@ -154,6 +152,32 @@ const stack = [
 
   <div class="relative bg-warmBg-light dark:bg-warmBg-dark">
     <div class="mx-auto max-w-screen-sm p-5 space-y-24 pb-16">
+
+      <!-- ArchUnitTS Section -->
+      <section class="animate" id="archunitts">
+        <div class="space-y-4">
+          <p class="font-semibold text-black dark:text-white text-xl">
+            ArchUnitTS
+          </p>
+          <p class="text-black/80 dark:text-white/80">
+            I created and maintain ArchUnitTS and it has become the most popular architecture testing library for TypeScript. It helps enforce architecture rules, detect circular dependencies, and ensure coding standards in TypeScript and JavaScript projects. Measured by GitHub stars, ArchUnitTS is the #1 architecture testing library for TypeScript projects.
+          </p>          <div class="flex flex-wrap gap-3 mt-4">
+            <a 
+              href="/projects/archunits" 
+              class="inline-block px-4 py-2 bg-warmAccent-primary text-white rounded-md hover:opacity-80 transition-all text-sm"
+            >
+              Learn More
+            </a>
+            <a 
+              href="https://github.com/LukasNiessen/ArchUnitTS" 
+              target="_blank"
+              class="inline-block px-4 py-2 border border-warmAccent-primary text-warmAccent-primary rounded-md hover:bg-warmAccent-primary hover:bg-opacity-10 transition-all text-sm"
+            >
+              View on GitHub
+            </a>
+          </div>
+        </div>
+      </section>
 
       <!-- Blog Preview Section -->
       <section id="recent-posts" class="animate">
@@ -201,7 +225,7 @@ const stack = [
           </ul>
         </div>
       </section>
-      -->
+      -->      
 
       <!-- Contact Section -->
       <section class="animate">
@@ -250,7 +274,7 @@ const stack = [
       scrollButton.addEventListener('click', function(e) {
         e.preventDefault();
         // Get the target element by its ID
-        const targetSection = document.getElementById('recent-posts');
+        const targetSection = document.getElementById('archunitts');
         if (targetSection) {
           // Use smooth scrolling with proper options
           targetSection.scrollIntoView({ 
