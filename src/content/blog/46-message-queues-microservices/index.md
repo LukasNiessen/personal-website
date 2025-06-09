@@ -1,7 +1,7 @@
 ---
 title: 'Message Queues in Microservices: Decoupling Done Right'
 summary: 'Message queues are the backbone of microservices. Learn how they work, common patterns, and when to use them.'
-date: 'June 9 2025'
+date: 'December 5, 2023'
 draft: false
 repoUrl: ''
 xLink: ''

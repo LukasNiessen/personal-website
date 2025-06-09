@@ -1,7 +1,7 @@
 ---
 title: 'Redis with Spring Boot: Cache, Pub/Sub, and Beyond'
 summary: 'Redis is more than a cache. Learn how to use it effectively with Spring Boot for caching, messaging, and data structures.'
-date: 'June 9 2025'
+date: 'August 18, 2023'
 draft: false
 repoUrl: ''
 xLink: ''

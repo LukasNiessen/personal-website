@@ -1,7 +1,7 @@
 ---
 title: 'Why Kafka is Not a Real Message Queue'
 summary: 'Kafka is often compared to message queues, but it’s fundamentally different. Learn why and when to use Kafka.'
-date: 'June 9 2025'
+date: 'January 25, 2024'
 draft: false
 repoUrl: ''
 xLink: ''

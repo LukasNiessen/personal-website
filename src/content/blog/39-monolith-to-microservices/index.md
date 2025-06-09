@@ -1,7 +1,7 @@
 ---
 title: 'From Monolith to Microservices: A Spring Perspective'
 summary: 'Real-world guide to breaking down a monolith into microservices, focusing on Spring-specific challenges and solutions.'
-date: 'June 9 2025'
+date: 'March 15, 2022'
 draft: false
 repoUrl: ''
 xLink: ''

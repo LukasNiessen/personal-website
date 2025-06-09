@@ -1,7 +1,7 @@
 ---
 title: 'The Distributed Monolith: When Microservices Go Wrong'
 summary: 'How to identify and avoid the distributed monolith anti-pattern: all the complexity of microservices with none of the benefits.'
-date: 'June 9 2025'
+date: 'July 22, 2022'
 draft: false
 repoUrl: ''
 xLink: ''

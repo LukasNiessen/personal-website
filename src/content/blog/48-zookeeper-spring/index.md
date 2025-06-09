@@ -1,7 +1,7 @@
 ---
 title: 'Zookeeper: Coordination in Distributed Systems'
 summary: 'Zookeeper is the backbone of distributed systems. Learn its role, common patterns, and Spring microservices integration.'
-date: 'June 9 2025'
+date: 'April 10, 2024'
 draft: false
 repoUrl: ''
 xLink: ''

@@ -1,7 +1,7 @@
 ---
 title: 'RabbitMQ and Spring Boot: Beyond Hello World'
 summary: 'Deep dive into RabbitMQ patterns and Spring Boot integration, with real-world examples and common pitfalls.'
-date: 'June 9 2025'
+date: 'February 14, 2023'
 draft: false
 repoUrl: ''
 xLink: ''

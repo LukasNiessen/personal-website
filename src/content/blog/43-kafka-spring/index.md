@@ -1,7 +1,7 @@
 ---
 title: 'Kafka with Spring Boot: From Basics to Production'
 summary: 'Understanding Apache Kafka through Spring Boot, with real-world patterns and production considerations.'
-date: 'June 9 2025'
+date: 'May 30, 2023'
 draft: false
 repoUrl: ''
 xLink: ''

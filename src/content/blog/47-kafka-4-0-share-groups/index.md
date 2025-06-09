@@ -1,7 +1,7 @@
 ---
 title: 'Kafka 4.0: Real Message Queues with Share Groups'
 summary: 'Kafka 4.0 introduces Share Groups for real message queue semantics, along with other exciting updates like KRaft, performance improvements, and enhanced observability.'
-date: 'June 9 2025'
+date: 'November 15, 2024'
 draft: false
 repoUrl: ''
 xLink: ''

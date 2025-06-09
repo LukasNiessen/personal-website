@@ -1,7 +1,7 @@
 ---
 title: 'Message Queue Basics: Understanding the Fundamentals'
 summary: 'Learn the basics of Message Queues (MQ), including key terms, ASCII art, and the difference between events and messages.'
-date: 'June 9 2025'
+date: 'June 28, 2024'
 draft: false
 repoUrl: ''
 xLink: ''

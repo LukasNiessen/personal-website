@@ -1,7 +1,7 @@
 ---
 title: 'Hibernate Deep Dive: Beyond the Basics'
 summary: 'Understanding Hibernate performance, patterns, and pitfalls. Real examples of common issues and how to solve them.'
-date: 'June 9 2025'
+date: 'November 8, 2022'
 draft: false
 repoUrl: ''
 xLink: ''

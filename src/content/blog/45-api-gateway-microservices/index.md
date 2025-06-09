@@ -1,7 +1,7 @@
 ---
 title: 'API Gateway in Microservices: The Front Door to Your System'
 summary: 'API Gateways are essential in microservices. Learn their role, patterns, and how to implement them effectively.'
-date: 'June 9 2025'
+date: 'October 12, 2023'
 draft: false
 repoUrl: ''
 xLink: ''

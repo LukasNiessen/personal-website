@@ -109,12 +109,11 @@ const stack = [
           <p class='animated text-sm md:text-base lg:text-lg mt-10 opacity-75 max-w-2xl'>
             {t("home.about")}
           </p>
-          <div class='mt-10 flex justify-center'>
-            <a
+          <div class='mt-10 flex justify-center'>            <a
               id="scroll-to-next"
               aria-label="Scroll to blog section"
-              class="group flex w-fit p-1.5 gap-1.5 text-sm items-center border rounded hover:bg-warmAccent-secondary/10 hover:dark:bg-warmAccent-primary/20 border-gray-300/50 dark:border-gray-500/50 transition-colors duration-300 ease-in-out"
-            > 
+              class="group flex w-fit p-1.5 gap-1.5 text-sm items-center border rounded hover:bg-warmAccent-secondary/10 hover:dark:bg-warmAccent-primary/20 border-gray-300/50 dark:border-gray-500/50 transition-colors duration-300 ease-in-out cursor-pointer"
+            >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="20"
@@ -191,14 +190,21 @@ const stack = [
                 {t("home.all.posts")}
               </span>
             </a>
-          </div>
-          <ul class="space-y-4">
+          </div>          <ul class="space-y-4">
             {posts.map((post) => (
               <li>
                 <ArrowCard entry={post} />
               </li>
             ))}
           </ul>
+          <div class="flex justify-center mt-8">
+            <a 
+              href="/blog" 
+              class="inline-block px-6 py-3 bg-warmAccent-primary text-white rounded-md hover:opacity-80 transition-all text-sm font-medium"
+            >
+              See all articles
+            </a>
+          </div>
         </div>
       </section>
 
