@@ -15,8 +15,6 @@ Everything is static.
 
 ## 🛠️ Dev Commands
 
-Got the code? Here's how to play with it:
-
 | Command           | What It Does                               |
 | ----------------- | ------------------------------------------ |
 | `npm i`           | Gets all the goodies installed             |
