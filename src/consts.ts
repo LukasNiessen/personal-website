@@ -197,8 +197,8 @@ export const SOCIALS: Socials = [
 	{
 		NAME: 'LinkedIn',
 		ICON: 'linkedin',
-		TEXT: 'lukas-niessen',
-		HREF: 'http://linkedin.com/in/lukas-niessen',
+		TEXT: 'lukasniessen',
+		HREF: 'http://linkedin.com/in/lukasniessen',
 	},
 	{
 		NAME: 'X',
