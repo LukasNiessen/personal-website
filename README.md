@@ -36,7 +36,7 @@ Note that you can reuse this project however you like, including creating your o
 
 ## Todo
 
-- Proper CI, that is especially linting
+- Proper CD, that is especially linting
 
 ## 📜 License
 
