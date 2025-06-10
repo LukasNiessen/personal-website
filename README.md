@@ -40,4 +40,4 @@ Note that you can reuse this project however you like, including creating your o
 
 ## 📜 License
 
-MIT License
+This project is under the MIT License
