@@ -31,7 +31,7 @@ export const DICT_EN: Dictionary = {
 	// Home page
 	'home.subtitle': 'Software Architect & Full Stack Developer',
 	'home.about':
-		"I'm a Software Architect & Full Stack Developer with 7 years of experience, spanning startups, consulting and corporations. I led a frontend team and software architecture at SocialHubs. My tech stack includes: Azure, Google Cloud Platform, JavaScript, TypeScript, Angular, React, Java, Microservices, and MicroFrontends. I love writing and sharing knowledge... 😊",
+		"I'm a Software Architect, Ex-Founder & QA enthusiast with 8+ years of experience across startups, consulting, and enterprise environments. As the founder of SocialHubs, I scaled the company to over 1 million registered users and 11 employees before a successful exit in 2024. Today I lead frontend teams and drive software architecture standards at enterprise level. My tech stack includes: Google Cloud Platform, Azure, JavaScript, TypeScript, Angular, React, Java, Spring Boot, Microservices, and MicroFrontends. I love writing and sharing knowledge... 😊",
 	'home.interests':
 		"I love web, cloud, mathematics, piano, caffeine. Let's get in touch!",
 	'home.education': 'BSc in Mathematics at University of Bonn',
