@@ -4,8 +4,8 @@ summary: 'Very simple recap of what Infrastructure as Code is and why it matters
 date: 'Jan 01 2025'
 draft: false
 repoUrl: 'https://github.com/LukasNiessen/iac-explained'
-xLink: 'https://x.com/iamlukasniessen/status/'
-linkedInLink: 'https://www.linkedin.com/pulse//'
+xLink: 'https://x.com/iamlukasniessen/status/1937562059568480691'
+linkedInLink: 'https://www.linkedin.com/pulse/why-infrastructure-code-must-have-lukas-nie%25C3%259Fen-dtkbe/'
 tags:
   - IaC
   - Infrastructure
