@@ -235,9 +235,3 @@ resource "alicloud_security_group" "group" {
   vpc_id = alicloud_vpc.vpc.id
 }
 ```
-
-## Bottom Line
-
-These examples show how simple it is to define infrastructure across different cloud providers using Terraform. The syntax is clean, readable, and version-controllable. Once you have these files, you can deploy, modify, or destroy your infrastructure with simple commands like `terraform apply` or `terraform destroy`.
-
-Remember: Infrastructure as Code isn't just a nice-to-have anymore—it's essential for modern, scalable, and maintainable systems.
