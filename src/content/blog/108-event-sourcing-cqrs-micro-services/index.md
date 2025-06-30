@@ -3,9 +3,6 @@ title: "Event Sourcing, CQRS and Micro Services: Real FinTech Example from my Co
 summary: "This is a detailed breakdown of a FinTech project from my consulting career"
 date: "Jul 1 2025"
 draft: false
-repoUrl: "https://github.com/LukasNiessen/estimating-cost-tech-debt"
-xLink: "https://x.com/iamlukasniessen/status/"
-linkedInLink: "https://www.linkedin.com/pulse/data-/"
 tags:
   - Consulting
   - FinTech
