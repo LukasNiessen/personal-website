@@ -116,7 +116,7 @@ Better! We're doing CI/CD, our deployments are very frequent and much safer now,
 
 **The Problem:** But our infrastructure is still managed outside Git. Database configs, Kubernetes manifests, environment variables - they're all managed elsewhere. Our repo is not the single source of truth yet.
 
-## Step 3: GitOps (Git + Infrastructure as Code)
+## Step 3: Infracture as Code
 
 We now also move our infrastructure in the repo. We use Terraform in this example. Our repository structure now looks like:
 
