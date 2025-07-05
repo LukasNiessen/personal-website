@@ -24,7 +24,11 @@ Everything is static.
 
 ## Architecture
 
-I used Astro and React. The site therefore consists of static files. They are hosted on AWS S3. Additionally, I use CloudFront and Route 53.
+I used Astro and React. The site therefore consists of static files. They are hosted on AWS (S3 as a server for static web sites plus CloudFront).
+
+This project is push-based GitOps.
+
+You can find the infrastructure under `\infrastructure`. I use Terraform.
 
 ## Contributing
 
