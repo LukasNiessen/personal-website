@@ -1,11 +1,11 @@
 ---
-title: "Data related Non-Functional Requirements"
-summary: "Walk through of the most important Non-Functional Requirements that are data related."
-date: "May 16 2025"
+title: 'Data related Non-Functional Requirements'
+summary: 'Walk through of the most important Non-Functional Requirements that are data related.'
+date: 'May 16 2025'
 draft: false
-repoUrl: "https://github.com/LukasNiessen/tdd-bdd-explained"
-xLink: "https://x.com/iamlukasniessen/status/1923444639769432570"
-linkedInLink: "https://www.linkedin.com/pulse/data-related-non-functional-requirements-lukas-nie%25C3%259Fen-hvkae/"
+repoUrl: 'https://github.com/LukasNiessen/tdd-bdd-explained'
+xLink: 'https://x.com/iamlukasniessen/status/1923444639769432570'
+linkedInLink: 'https://www.linkedin.com/pulse/data-related-non-functional-requirements-lukas-nie%25C3%259Fen-hvkae/'
 tags:
   - Reliability
   - Scalibility
