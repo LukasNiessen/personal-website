@@ -41,7 +41,7 @@ jobs:
     runs-on: ubuntu-latest
 
     # Only run infrastructure deployment when infrastructure files change
-    #if: contains(github.event.commits[0].modified, 'infrastructure/')
+    if: contains(github.event.commits[0].modified, 'infrastructure/')
 
     steps:
       - name: Checkout code
@@ -58,9 +58,6 @@ jobs:
         uses: hashicorp/setup-terraform@v2
         with:
           terraform_version: "1.5.0"
-
-      - name: Change to infrastructure directory
-        run: cd infrastructure
 
       - name: Terraform Init
         run: terraform init

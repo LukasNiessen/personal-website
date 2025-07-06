@@ -28,17 +28,13 @@ I used Astro and React. The site therefore consists of static files. They are ho
 
 This project is push-based GitOps.
 
-You can find the infrastructure under `\infrastructure`. I use Terraform.
+You can find the infrastructure under `\infrastructure`. It uses Terraform.
 
 ## Contributing
 
 You are very welcome to contribute! I use GitHub Flow, so if you want to contribute, just create a feature/fix branch and create a PR when ready. As soon as it's merged, it will be automatically deployed.
 
 Note that you can reuse this project however you like, including creating your own blog from it by just replacing texts and images. 😊
-
-## Todo
-
-- Proper CD, that is especially linting
 
 ## 📜 License
 
