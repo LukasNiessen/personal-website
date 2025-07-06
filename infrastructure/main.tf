@@ -5,6 +5,16 @@ terraform {
       version = "~> 6.0"
     }
   }
+
+  // We would ideally add a dynamodb_table for locking
+  // the terraform state. However, we don't do it here
+  // as this is a tiny project and we also have no
+  // concurrent pipelines
+  backend "s3" {
+    bucket = "lukasniessen.com-tf-state"
+    key    = "state/terraform.tfstate"
+    region = "us-east-1"
+  }
 }
 
 provider "aws" {
