@@ -1,11 +1,11 @@
 ---
-title: 'What is GitOps: A Full Example with Code'
-summary: 'GitOps explained through the evolution of a simple blog deployment - from manual CI to full GitOps with Infrastructure as Code'
-date: 'Jul 4 2025'
+title: "What is GitOps: A Full Example with Code"
+summary: "GitOps explained through the evolution of a simple blog deployment - from manual CI to full GitOps with Infrastructure as Code"
+date: "Jul 4 2025"
 draft: false
-repoUrl: 'https://github.com/LukasNiessen/gitops-evolution-explained'
-xLink: 'https://x.com/iamlukasniessen/status/'
-linkedInLink: 'https://www.linkedin.com/pulse/'
+repoUrl: "https://github.com/LukasNiessen/gitops-evolution-explained"
+xLink: "https://x.com/iamlukasniessen/status/"
+linkedInLink: "https://www.linkedin.com/pulse/"
 tags:
   - GitOps
   - DevOps
@@ -60,7 +60,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: '16'
+          node-version: "16"
       - name: Install dependencies
         run: npm install
       - name: Run tests
@@ -94,7 +94,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: '16'
+          node-version: "16"
 
       # CI part
       - name: Install dependencies
@@ -188,21 +188,63 @@ jobs:
           kubectl apply -f infrastructure/kubernetes/
 ```
 
-Now everything is in our repo. We arrived at _GitOps_ now. Cool!
+Now everything is in our repo. There is only one issue left. What if someone goes and changes something without using the repo? For example manually changing the kubernetes configs. Then our repo becomes outdated and incorrect.
 
-## Push vs Pull-Based GitOps
+## Drift
 
-What we did above is **push-based GitOps** - our CI/CD pushes changes to the cluster.
+What I have described above is called _"drift"_. The actual system _"drifted"_ from our repo because someone made manual changes. This means we no longer have GitOps in this case: the repo is not actually the single source of truth.
 
-With **ArgoCD** or **Flux**, you can do **pull-based GitOps** instead. These tools run inside your cluster and continuously pull from Git, comparing what's in Git with what's running.
+This is why things like ArgoCD and Flux exist. I will explain at a very high level how they solve this issue in a second.
 
-Benefits of pull-based:
+**However**, if you can ensure that no one changes the system manually or in any other way besides Git, then it is still GitOps. It's just hard to really ensure that. But if you can, that's GitOps. It's called _push-based GitOps_. However, note that some people disagree, they say that push-based GitOps is not actually GitOps.
 
-- Better security (no external cluster access needed)
-- Drift detection (catches manual changes)
-- Self-healing (reverts unauthorized changes)
+## ArgoCD: Pull-Based GitOps
 
-Both approaches are GitOps. Pull-based is often preferred for production.
+ArgoCD (and Flux) solve the drift problem by constantly watching your Git repository and automatically syncing your cluster to match what's in Git. Instead of _pushing_ changes to your cluster, ArgoCD _pulls_ changes from your repo.
+
+Here's how it works: ArgoCD runs inside your Kubernetes cluster and continuously monitors your Git repository. Every few minutes, it checks if what's actually running in your cluster matches what's defined in your Git repo. If there's a difference, ArgoCD automatically fixes it.
+
+**The Problem with Push-Based GitOps:**
+
+```yaml
+# Someone runs this manually - oh no!
+kubectl scale deployment blog-backend --replicas=10
+```
+
+Now your cluster has 10 replicas, but your Git repo still says 3 replicas. Your system has drifted from Git.
+
+**The Solution with Pull-Based GitOps:**
+ArgoCD notices the drift and automatically scales back to 3 replicas because that's what Git says. This is called _"self-healing"_.
+
+Let's set up ArgoCD for our blog:
+
+```yaml
+# argocd/application.yaml
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: blog-app
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/your-username/my-blog
+    targetRevision: HEAD
+    path: infrastructure/kubernetes
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: blog
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+```
+
+Now we just remove the `kubectl apply` from our pipeline - ArgoCD takes care of that.
+
+And that's it! Now we have _real_ GitOps. ArgoCD automatically detects the change in Git and deploys the new image. If someone manually changes something in the cluster, ArgoCD will revert it back to match Git within minutes. Your cluster is always in sync with Git, no matter what.
 
 ## The GitOps Advantages
 
@@ -220,3 +262,9 @@ Every change is tracked. Who changed what, when, and why. Perfect for compliance
 
 **4. Declarative Infrastructure**
 Your infrastructure is code. It's testable, reviewable, and repeatable.
+
+**5. Self-Healing**
+With pull-based GitOps, your system automatically fixes drift. Someone manually changes something? It gets reverted automatically.
+
+**6. Enhanced Security**
+Your cluster doesn't need external access for deployments. ArgoCD runs inside the cluster and pulls changes, reducing the attack surface.
