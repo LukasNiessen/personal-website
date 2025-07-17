@@ -4,8 +4,8 @@ summary: "GitOps explained through the evolution of a simple blog deployment - f
 date: "Jul 4 2025"
 draft: false
 repoUrl: "https://github.com/LukasNiessen/gitops-evolution-explained"
-xLink: "https://x.com/iamlukasniessen/status/https://x.com/iamlukasniessen/status/1941232040353116431"
-linkedInLink: "https://www.linkedin.com/pulse/what-gitops-full-example-code-lukas-nie%C3%9Fen-tttde/?trackingId=KdtvFXKyJhLqTZjG%2BYljUg%3D%3D"
+xLink: "/https://x.com/iamlukasniessen/status/1941232040353116431"
+linkedInLink: "https://www.linkedin.com/pulse/what-gitops-full-example-code-lukas-nie%C3%9Fen-tttde"
 tags:
   - GitOps
   - DevOps
