@@ -1,19 +1,19 @@
 ---
-title: "Idempotence in System Design: Full example"
+title: "Idempotency in System Design: Full example"
 summary: "Understanding idempotence in system design with practical examples and real-world scenarios"
 date: "Jul 19 2025"
 draft: false
 xLink: ""
 tags:
   - System Design
-  - Idempotence
+  - Idempotency
   - Message Processing
   - Distributed Systems
 ---
 
-# Idempotence in System Design: Full example
+# Idempotency in System Design: Full example
 
-Idempotence is a concept frequently mentioned in system design. I will explain what it means in simple terms, briefly address common misunderstandings, and finish with a full example. 
+Idempotency is a concept frequently mentioned in system design. I will explain what it means in simple terms, briefly address common misunderstandings, and finish with a full example. 
 
 ## What Is It?
 
