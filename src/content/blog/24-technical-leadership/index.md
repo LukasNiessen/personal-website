@@ -1,3 +1,12 @@
+---
+title: "Technical Leadership: a modern approach"
+summary: "My view of how to lead tech teams in 2025"
+date: "February 02 2024"
+draft: false
+tags:
+  - Leadership
+---
+
 # Technical Leadership: a modern approach
 
 In this short article, I want to present what I think is the essence of being a (technical) leader in 2025. This is my personal view of course, however, I see that many colleagues in the industry share a very similar view. My leadership experience includes 4 years as a founder and head of architecture of a startup in the social media industry (quite successful IMO, over 200k monthly active users) where I've led over 15 people, project leadership in consulting, and more. 
