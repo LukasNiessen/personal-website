@@ -72,7 +72,9 @@ In 2025 this isn't just a nice-to-have, customers are expecting it. To remain co
 
 This is a more technical one but has cruicial business implications. 
 
-Headless means: Decoupling front end and back end. This makes your architecture _composable_, which means TODO.
+Headless means: Decoupling front end and back end. This makes your architecture _composable_, means you can architect your system using loosely-coupled, components where each component exposes well-defined interfaces, enabling you to swap out individual components (payment processing, inventory management, search, etc.) without cascading changes to other system components.
+
+Just as a side note, in a MACH architecture many of these components would be API-first microservices.
 
 Advantages are:
 - Deploy changes faster
