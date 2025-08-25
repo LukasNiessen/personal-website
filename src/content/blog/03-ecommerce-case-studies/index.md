@@ -1,3 +1,11 @@
+---
+title: "Personal case studies: E-commerce"
+summary: "Personal case studies: E-commerce"
+date: "April 05 2022"
+draft: false
+tags:
+  - E-Commerce
+---
 
 # Personal case studies: E-commerce
 
