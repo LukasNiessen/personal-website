@@ -31,7 +31,7 @@ export const DICT_EN: Dictionary = {
 	// Home page
 	'home.subtitle': 'Software Architect & Full Stack Developer',
 	'home.about':
-		'I am a Software Architect, Ex-Founder & QA enthusiast with over 8 years in the IT. I love writing and sharing knowledge 😃',
+		'I am a Software Architect, Ex-Founder & AI enthusiast with over 8 years in the IT. I love writing and sharing knowledge 😃',
 	'home.interests':
 		"I love web, cloud, mathematics, piano, caffeine. Let's get in touch!",
 	'home.education': 'BSc in Mathematics at University of Bonn',
