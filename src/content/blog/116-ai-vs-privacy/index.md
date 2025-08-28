@@ -1,6 +1,6 @@
 ---
 title: "Murder or Brain Wash AIs so they forget your private data? Rather not."
-summary: "Why Agentic AI a huge Security and Privacy Issue is"
+summary: "On the problem of making AIs forget data"
 date: "February 15 2025"
 draft: false
 tags:
