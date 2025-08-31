@@ -3,8 +3,6 @@ import { getCollection } from "astro:content"
 import PageLayout from "@layouts/PageLayout.astro"
 import ArrowCard from "@components/ArrowCard"
 import { SITE, SOCIALS } from "@consts"
-import TwinklingStars from "@components/TwinklingStars.astro"
-import MeteorShower from "@components/MeteorShower.astro"
 import { t } from "@lib/utils"
 
 const PREVIEW_POSTS = 10
@@ -66,88 +64,134 @@ const stack = [
 ---
 
 <PageLayout title="Home" description={SITE.DESCRIPTION}>
-  <!-- Light Mode: Particles -->
-  <div class='absolute inset-0 block dark:hidden'>
-    <div id='particles1' class='fixed inset-0 bg-warmAccent-secondary/10'></div>
-    <div id='particles2' class='fixed inset-0'></div>
-    <div id='particles3' class='fixed inset-0'></div>
-  </div>
-
-  <!-- Dark Theme: Stars -->
-  <div class='absolute inset-0 bg-warmBg-dark hidden dark:block'>
-    <div id='stars1' class='fixed inset-0'></div>
-    <div id='stars2' class='fixed inset-0'></div>
-    <div id='stars3' class='fixed inset-0'></div>
-  </div>
-
-  <!-- Dark Theme: Twinkling Stars / Metors -->
-  <div id="galaxy" class="fixed inset-0">
-    <div class="hidden dark:block">
-      <TwinklingStars/>
-      <MeteorShower/>
-    </div>
-  </div>
-
-  <script is:inline src="/js/bg.js"></script>
-  
-  <section class="relative h-screen w-full">
-    <div id="planetcont" class='animate absolute inset-0 top-1/4 overflow-hidden'>
-      <div id="crescent" class='absolute top-0 left-1/2 -translate-x-1/2 w-[250vw] min-h-[100vh] aspect-square rounded-full p-[1px] bg-gradient-to-b from-warmAccent-tertiary/25 dark:from-warmAccent-secondary/75 from-0% to-transparent to-5%'>
-        <div id="planet" class='w-full h-full bg-warmBg-light dark:bg-warmBg-dark rounded-full p-[1px] overflow-hidden flex justify-center'>
-          <div id="blur" class='w-full h-20 rounded-full bg-warmAccent-primary/15 dark:bg-warmAccent-secondary/25 blur-3xl'/>
-        </div>
-      </div>
-    </div>
-    <div class="animate absolute h-full w-full flex items-center justify-center">
-      <div class='relative w-full h-full flex items-center justify-center'>
-        <div class='p-5 text-center'>
-          <p class='mt-24 animated text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-black dark:text-white'>
-            Software Architecture &
-            <br />
-            System Design
-          </p>
-          <p class='animated text-sm md:text-base lg:text-lg mt-10 opacity-75 max-w-2xl'>
+  <!-- VANTA Fog Animation Background -->
+  <section id="vanta-hero" class="relative h-screen w-full overflow-hidden">
+    <!-- Animated Background Container -->
+    <div id="vanta-fog-bg" class="absolute inset-0 w-full h-full"></div>
+    
+    <!-- Content Container -->
+    <div class="relative z-10 h-full w-full flex items-center">
+      <div class="container mx-auto px-8 md:px-12 lg:px-16 flex items-center justify-center h-full">
+        <div class="w-full max-w-4xl text-center md:text-left">
+          <h1 class="text-4xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-black dark:text-white mb-6 leading-tight">
+            Lukas Niessen
+          </h1>
+          <p class="text-lg md:text-xl lg:text-2xl text-black/90 dark:text-white/90 max-w-3xl leading-relaxed mx-auto md:mx-0">
             {t("home.about")}
           </p>
-          <div class='mt-10 flex justify-center'>            <a
+          <div class="mt-8 flex justify-center md:justify-start">
+            <a
               id="scroll-to-next"
-              aria-label="Scroll to blog section"
-              class="group flex w-fit p-1.5 gap-1.5 text-sm items-center border rounded hover:bg-warmAccent-secondary/10 hover:dark:bg-warmAccent-primary/20 border-gray-300/50 dark:border-gray-500/50 transition-colors duration-300 ease-in-out cursor-pointer"
+              aria-label="Scroll to content section"
+              class="group inline-flex items-center gap-2 px-4 py-2 text-black dark:text-white border border-gray-400/70 dark:border-gray-600/50 rounded-lg hover:border-warmAccent-primary dark:hover:border-warmAccent-secondary hover:text-warmAccent-primary dark:hover:text-warmAccent-secondary transition-all duration-300 ease-in-out cursor-pointer"
             >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="20"
-              height="20"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke-width="2.5"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              class="stroke-current mt-1 group-hover:stroke-warmAccent-tertiary group-hover:dark:stroke-warmAccent-secondary rotate-[270deg]"
-            >
-              <line
-                x1="19"
-                y1="12"
-                x2="5"
-                y2="12"
-                class="scale-x-0 group-hover:scale-x-100 translate-x-3 group-hover:translate-x-0 transition-all duration-300 ease-in-out"
-              ></line>
-              <polyline
-                points="12 19 5 12 12 5"
-                class="translate-x-1 group-hover:translate-x-0 transition-all duration-300 ease-in-out"
-              ></polyline>
-            </svg>
-              <div
-                class="w-full group-hover:text-warmAccent-tertiary group-hover:dark:text-warmAccent-secondary transition-colors duration-300 ease-in-out"
+              <span class="text-base font-medium">Explore</span>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="stroke-current transition-transform duration-300 ease-in-out group-hover:translate-y-0.5"
               >
-                Explore
-              </div>
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
             </a>
           </div>
         </div>
       </div>
     </div>
   </section>
+
+  <!-- Scripts for VANTA animation -->
+  <script is:inline src="/js/three.r134.min.js"></script>
+  <script is:inline src="/js/vanta.fog.min.js"></script>
+  <script is:inline>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Function to initialize VANTA with appropriate colors based on theme
+      function initVanta() {
+        // Destroy existing VANTA instance if it exists
+        if (window.VANTA_INSTANCE) {
+          window.VANTA_INSTANCE.destroy();
+        }
+        
+        // Check if dark mode is active by looking at the HTML class
+        const isDarkMode = document.documentElement.classList.contains('dark');
+        
+        if (isDarkMode) {
+          // Dark mode colors
+          window.VANTA_INSTANCE = VANTA.FOG({
+            el: "#vanta-fog-bg",
+           mouseControls: true,
+  touchControls: true,
+  gyroControls: false,
+  minHeight: 200.00,
+  minWidth: 200.00,
+  highlightColor: 0x7f86e8,
+  midtoneColor: 0x00a3ff,
+  lowlightColor: 0x222222,
+  baseColor: 0x0,
+  blurFactor: 0.90,
+  speed: 1.50,
+  zoom: 0.10
+          });
+        } else {
+          // Light mode colors
+          window.VANTA_INSTANCE = VANTA.FOG({
+            el: "#vanta-fog-bg",
+            mouseControls: true,
+  touchControls: true,
+  gyroControls: false,
+  minHeight: 200.00,
+  minWidth: 200.00,
+  highlightColor: 0x7f86e8,
+  midtoneColor: 0x00a3ff,
+  lowlightColor: 0x222222,
+  baseColor: 0xffffff,
+  blurFactor: 0.90,
+  speed: 1.50,
+  zoom: 0.10
+          });
+        }
+      }
+
+      // Initialize VANTA
+      initVanta();
+
+      // Listen for theme changes
+      const observer = new MutationObserver(function(mutations) {
+        mutations.forEach(function(mutation) {
+          if (mutation.attributeName === 'class') {
+            initVanta();
+          }
+        });
+      });
+
+      observer.observe(document.documentElement, {
+        attributes: true,
+        attributeFilter: ['class']
+      });
+
+      // Handle scroll button
+      const scrollButton = document.getElementById('scroll-to-next');
+      if (scrollButton) {
+        scrollButton.addEventListener('click', function(e) {
+          e.preventDefault();
+          const targetSection = document.getElementById('archunitts');
+          if (targetSection) {
+            // Use smooth scrolling with proper options
+            targetSection.scrollIntoView({ 
+              behavior: 'smooth',
+              block: 'start'
+            });
+          }
+        });
+      }
+    });
+  </script>
 
   <div class="relative bg-warmBg-light dark:bg-warmBg-dark">
     <div class="mx-auto max-w-screen-sm p-5 space-y-24 pb-16">
@@ -272,22 +316,3 @@ const stack = [
     </div>
   </div>
 </PageLayout>
-
-<script is:inline>
-  document.addEventListener('DOMContentLoaded', function() {
-    const scrollButton = document.getElementById('scroll-to-next');
-    if (scrollButton) {
-      scrollButton.addEventListener('click', function(e) {
-        e.preventDefault();
-        const targetSection = document.getElementById('archunitts');
-        if (targetSection) {
-          // Use smooth scrolling with proper options
-          targetSection.scrollIntoView({ 
-            behavior: 'smooth',
-            block: 'start'
-          });
-        }
-      });
-    }
-  });
-</script>
