@@ -36,6 +36,10 @@ You are very welcome to contribute! I use GitHub Flow, so if you want to contrib
 
 Note that you can reuse this project however you like, including creating your own blog from it by just replacing texts and images. 😊
 
+## TODO
+
+- Remove images from articles as assets. Upload to a CDN for example and replace by links. The website's size will grow else, bad for SEO
+
 ## 📜 License
 
 This project is under the MIT License

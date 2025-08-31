@@ -91,6 +91,10 @@ As the leader you should set high standards. Lead by example.
 
 It's always the collective team or company success that matters. Not individual success.
 
+### Challenges and Mistakes
+
+Challenges should be seen as chances and mistakes should be seen as learning oppurtunities.
+
 ### Intent vs Impact
 
 Finally, I belive it's important to always seek to understand a person's intent before judging their behavior. Often intent and impact are very different.
