@@ -38,6 +38,8 @@ Note that you can reuse this project however you like, including creating your o
 
 ## TODO
 
+- Add linting
+- Add prettier or similar (should be auto applied in IDE as well)
 - Mobile first!
 - Make dark mode default
 - Blog part: categories needs UX/UI redoing, posts should rather be in cards, two per row, instead of one "big card" per row
