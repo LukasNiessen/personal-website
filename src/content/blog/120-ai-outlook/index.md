@@ -150,6 +150,8 @@ The sweet spot is helping companies bridge the gap between AI hype and practical
 
 Looking at the AI landscape ahead, the transformation (largely) isn't about replacement - it's about augmentation and liberation. AI excels at automating the repetitive, data-heavy cognitive tasks that bog us down: processing documents, analyzing patterns, generating first drafts, handling routine customer inquiries.
 
+**In financial services, for example, there are great AI models that extract info from financial reports and summarize it for bankers to analyze. This uses the power of generative AI to process a massive amount of text and detect weak points, which is do a degree the core business of banks.** Note that Mistral AI offers specifically trained models for this.
+
 This frees humans to focus on what we do best: building meaningful connections, strategic thinking, creative problem-solving, and leveraging emotional intelligence. The magic happens when AI handles the grunt work, allowing people to spend time on relationship-building, innovation, and complex decision-making that requires human judgment.
 
 But here's the thing - even for strategic work, AI shouldn't be sidelined. I think leaders should embrace AI as a "thought companion." Need to explore different scenarios for a business decision? AI can simulate outcomes. Stuck on a complex problem? AI can help you think through it from angles you might miss. It's like having a brilliant research assistant and brainstorming partner available 24/7.
@@ -157,5 +159,7 @@ But here's the thing - even for strategic work, AI shouldn't be sidelined. I thi
 Customer service is probably the clearest example of this revolution. Instead of humans spending their days answering the same questions over and over, AI handles the routine stuff while humans tackle the complex, emotionally nuanced interactions that actually build customer loyalty.
 
 But it applies to all, from IT, operations, R&D (research & development), finance, to logistics and more. There is also a noticable shift for many positions from hands-on work to more and more reviewing what the AI did - one example is the one of a software engineer.
+
+One can say: **AI makes business software intelligent**, mainly via **process automation and predictive analysis** -  these two make us use our resources better and make smarter decisions.
 
 The next 5 years will separate the companies that use AI to amplify human potential from those that see it as just another tech tool. The winners will be the ones who figure out this human-AI collaboration dance.
