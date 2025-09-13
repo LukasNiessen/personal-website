@@ -1,7 +1,7 @@
 ---
 title: "NSFW content detection via AI: How we solved it in my startup"
 summary: "Here is exactly how we tackled detecting NSFW content using AI in my startup SocialHubs UG"
-date: "January 04 2025"
+date: "September 13 2025"
 draft: false
 tags:
   - AI
@@ -61,7 +61,7 @@ The lite version wasn't bundled into the app - we made it downloadable when user
 
 Here's how our escalated detection system worked:
 
-1. **On-device inference**: When a user posts, we ran the image through the lite MobileNetV2 model directly on their device. If it flagged the content with high confidence (I think we used 0.9 as a treshold, meaning 9% confidence), we immediately showed an error message explaining why the content couldn't be posted, with clear instructions on how to contact us if they believed it was a false positive.
+1. **On-device inference**: When a user posts, we ran the image through the lite MobileNetV2 model directly on their device. If it flagged the content with high confidence (I think we used 0.9 as a treshold, meaning 90% confidence), we immediately showed an error message explaining why the content couldn't be posted, with clear instructions on how to contact us if they believed it was a false positive.
 
 2. **Upload and trust check**: If the on-device check passed, the image uploaded to our GCS bucket, triggering our Cloud Function. This function first performed the "clean slate" trust score calculation.
 
