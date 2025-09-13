@@ -147,6 +147,8 @@ Let me give you three examples from different industries that show why IoT actua
 
 **Problem**: BMW's ConnectedDrive services (navigation updates, entertainment, remote diagnostics, car sharing) needed a scalable global platform to handle rapidly increasing demand from new vehicle models.
 
+Reason: it was working but had caveats, such as overly monolithic parts that prevent a high degree of scalibility as well as much of it being hosted on-prem that also impose limitations. So Capgemini worked closely with key BMW stakeholders to develop a migration strategy that minimizes risk and impact on end customers. The goal was: cloud-native, highly scalable - they used AWS, common DevOps practices such as containerization, autosclaing, and data streams.
+
 **IoT Solution**:
 - Cloud-native vehicle connectivity platform on AWS
 - MQTT-based communication protocols for vehicle-to-backend connectivity
@@ -154,9 +156,11 @@ Let me give you three examples from different industries that show why IoT actua
 - High-level functions for security, data upload/download, vehicle wakeup, and message delivery
 - Containerized applications with autoscaling capabilities
 
-**Result**: Higher availability and scalability for connected services. The platform now handles mass software updates for millions of vehicles simultaneously and supports autonomous driving features.
+**Result**: Higher availability and scalability for connected services, as well as improved cost efficiency. The platform now handles mass software updates for millions of vehicles simultaneously and supports autonomous driving features.
 
 **Business Impact**: Improved service continuity, reduced response times to customer requests, and enhanced capacity for data-intensive products. The platform supports BMW's strategy for gaining digital-savvy customers and shapes the future of mobility.
+
+Note: the services we talk about here rely data connections between vehincles and backend services. This is a typical IoT scenario. Think of updates for navigation, online entertainment, software, functions activated overthe-air, remote diagnostics, vehicle wakup, and car sharing.
 
 ## What Consulting Companies Actually Do
 
