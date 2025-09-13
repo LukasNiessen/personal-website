@@ -156,4 +156,6 @@ But here's the thing - even for strategic work, AI shouldn't be sidelined. I thi
 
 Customer service is probably the clearest example of this revolution. Instead of humans spending their days answering the same questions over and over, AI handles the routine stuff while humans tackle the complex, emotionally nuanced interactions that actually build customer loyalty.
 
+But it applies to all, from IT, operations, R&D (research & development), finance, to logistics and more. There is also a noticable shift for many positions from hands-on work to more and more reviewing what the AI did - one example is the one of a software engineer.
+
 The next 5 years will separate the companies that use AI to amplify human potential from those that see it as just another tech tool. The winners will be the ones who figure out this human-AI collaboration dance.
