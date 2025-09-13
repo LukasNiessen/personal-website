@@ -32,6 +32,10 @@ Most common for home applications. Easy to set up, good data rates, but power-hu
 ### Cellular (4G/5G)
 Great for devices that need to work anywhere - think fleet tracking or remote monitoring. More expensive but very reliable. Industrial applications love this.
 
+### Satellite Broadband
+
+This is what Starlink offers, your device connects directly to a satellite. As of 2024, it's not yet used significantly in IoT systems but it's a growing trend, for simple reasons. You have global and wide-area coverage and you have very high resilienve and reliability (they don't have issues like local power outages or natural disasters).
+
 ### LPWAN (Low Power Wide Area Network)
 This includes technologies like LoRaWAN, Sigfox, and NB-IoT. Perfect for devices that need to send small amounts of data over long distances while using very little power. Think smart city applications - parking sensors, environmental monitoring.
 
