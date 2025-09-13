@@ -23,27 +23,51 @@ So here's a simple framework I use. It's a **lightweight framework**, lightweigh
 ## The 6 Buckets
 
 ```
-    IT Decision Framework
+    IT Decision Framework (Dragon Framework)
     
-    ┌─────────────┐  ┌─────────────┐  ┌─────────────┐
-    │ FINANCIALS  │  │  TIMELINE   │  │  RISKS &    │
-    │             │  │             │  │ CONSTRAINTS │
-    │ • Revenue   │  │ • How long? │  │             │
-    │ • Costs     │  │ • When?     │  │ • Will it   │
-    │   - One-time│  │ • Dependen  │  │   work?     │
-    │   - Ongoing │  │   cies      │  │ • Vendor    │
-    │             │  │             │  │ • Compliance│
-    └─────────────┘  └─────────────┘  └─────────────┘
+    ┌─────────────┐
+    │             │
+    │             │──── Revenue
+    │ FINANCIALS  │
+    │             │──── Costs ──── One-time
+    │             │           └─── Ongoing
+    └─────────────┘
     
-    ┌─────────────┐  ┌─────────────┐  ┌─────────────┐
-    │ SYNERGIES & │  │   CHANGE    │  │    OTHER    │
-    │ CONFLICTS   │  │ MANAGEMENT  │  │             │
-    │             │  │             │  │ Context-    │
-    │ • Current   │  │ • User      │  │ specific    │
-    │ • Future    │  │   adoption  │  │ stuff that  │
-    │ • Roadmap   │  │ • Training  │  │ doesn't fit │
-    │             │  │ • Process   │  │ elsewhere   │
-    └─────────────┘  └─────────────┘  └─────────────┘
+    ┌─────────────┐
+    │             │
+    │  TIMELINE   │
+    │             │
+    └─────────────┘
+    
+    ┌─────────────┐
+    │             │──── Success Risk
+    │             │
+    │   RISKS &   │──── Vendor Risk
+    │ CONSTRAINTS │
+    │             │──── Compliance
+    │             │
+    │             │──── Security
+    └─────────────┘
+    
+    ┌─────────────┐
+    │             │──── Current
+    │ SYNERGIES & │
+    │ CONFLICTS   │──── Future
+    │             │
+    └─────────────┘
+    
+    ┌─────────────┐
+    │             │
+    │   CHANGE    │
+    │ MANAGEMENT  │
+    │             │
+    └─────────────┘
+    
+    ┌─────────────┐
+    │             │
+    │    OTHER    │
+    │             │
+    └─────────────┘
 ```
 
 ## 1. Financials
