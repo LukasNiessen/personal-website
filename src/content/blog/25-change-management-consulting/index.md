@@ -66,6 +66,18 @@ It worked (but wasn't perfect, he still grumbled here and there).
 
 My lesson was that thinking about change management before needing it is very valuable. I totally understand the DevOps guy and our framing was a good one, true and worked - just I could have thought about that before :)
 
+## Change Management with Stakeholders
+
+So it's still the same. What changes is just that stakeholders and c-level execs care about different things than developers or DevOps people. They worry about:
+
+- Political capital and how the change reflects on them
+- Business continuity and risk to their departments
+- ROI and being able to justify the investment
+- Control over outcomes and timelines
+- Credit for success (and blame for failure)
+
+So here it's typically not about them fearing to lose personal relevance but more that they are not fully convinced that the business outcome is good. Maybe you have them on 8 out of 10 points, but these 2 points make them resist. It's key to figure out what the issue is.
+
 ## The Bottom Line
 
 Change management isn't rocket science, it's about understanding, empathy, clear and careful communication. About framing. Frameworks help, but empathy and patience matter more.
