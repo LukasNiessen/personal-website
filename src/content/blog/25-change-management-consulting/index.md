@@ -1,6 +1,6 @@
 ---
-title: "Change Management: The Consulting Reality"
-summary: "What actually works when implementing change in organizations - lessons from the trenches"
+title: "Change Management: My Experience"
+summary: "What actually works when implementing change in organizations - my experience"
 date: "Jan 1 1970"
 draft: false
 tags:
