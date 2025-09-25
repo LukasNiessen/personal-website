@@ -126,11 +126,9 @@ What I mean by this:
 
 ### Automization
 
-TODO: AB HIER ALLES CHECKEN
-
 **Automate the repetitive stuff, focus on the high-value interactions.**
 
-The goal is to eliminate manual tasks that slow down your pipeline and don't require human judgment. Here's what I automate:
+The goal is to eliminate manual tasks that slow down your pipeline and don't require human judgment. Examples:
 
 **Follow-up sequences:** CRM workflows that automatically send follow-up emails after demos, PoCs, or no-shows. Don't let deals die because someone forgot to follow up.
 
@@ -139,8 +137,6 @@ The goal is to eliminate manual tasks that slow down your pipeline and don't req
 **Document generation:** Templates for MSAs, SOWs, and technical proposals that auto-populate with deal-specific info from your CRM.
 
 **Pipeline hygiene:** Automated alerts when deals haven't moved stages in X days, or when key activities are overdue.
-
-**Lead qualification:** Chatbots or forms that capture basic qualification info before prospects even talk to sales.
 
 **My take:** Every hour you spend on administrative tasks is an hour not spent on discovery, relationship building, or closing deals. The compound effect of automation is huge - it's not just time savings, it's consistency and reduced human error.
 
@@ -152,63 +148,3 @@ Instead of sequential stages, run activities in parallel where possible and if i
 
 - Do your homework early. The more you understand about their environment, pain points, and decision process upfront, the fewer surprises later.
 - Don't let prospects become passive participants. Create shared timelines with clear next steps for both sides.
-
-
----------------------------------------------
----------------------------------------------
----------------------------------------------
-
-## A Real Example
-
-Let me share a specific example from my presales days. We had a deal with a manufacturing company for a data analytics platform. Initial timeline was 6 months - typical for their industry.
-
-**The situation:** Their current reporting system was manual Excel processes taking 2-3 days per report. New regulatory requirements meant they needed daily reporting starting in 4 months.
-
-**How we accelerated:**
-
-1. **Created urgency:** Mapped their manual process costs ($50K/month in analyst time) and regulatory risk (potential $2M fines)
-
-2. **Parallel validation:** Ran technical discovery and business case development simultaneously
-
-3. **Pre-built integration:** Instead of waiting for a formal PoC, we built a connector to their ERP system during the sales process
-
-4. **Executive sponsorship:** Got their COO involved early by framing this as regulatory compliance, not just efficiency
-
-5. **Phased approach:** Proposed a minimal viable solution for regulatory compliance first, with advanced analytics to follow
-
-**Result:** Closed in 8 weeks instead of 6 months. The key was connecting our solution to their urgent business need (regulatory compliance) rather than just the nice-to-have (better reporting).
-
-## Measuring Pipeline Velocity
-
-You can't manage what you don't measure. Track these metrics:
-
-### Average Deal Cycle Length
-By source, deal size, and industry. This gives you baseline expectations.
-
-### Stage Duration
-How long deals typically sit in each pipeline stage. Find your bottlenecks.
-
-### Stage Conversion Rates
-What percentage of opportunities move from discovery to demo to PoC to close?
-
-### Time to First Value
-How quickly can prospects see value? This drives urgency.
-
-## The Acceleration Mindset
-
-Here's my take: Pipeline acceleration isn't about rushing prospects or using high-pressure tactics. It's about removing friction and creating genuine urgency around solving their business problems.
-
-The best acceleration comes from deeply understanding what the customer values most and ensuring your sales process delivers on those values as quickly as possible.
-
-Remember - every day a deal sits in your pipeline without progressing is a day your competitor might be closing theirs.
-
-## Conclusion
-
-Pipeline momentum and acceleration are critical skills in modern presales. In a world where buyers have unlimited options and short attention spans, the ability to move deals efficiently through your pipeline often determines whether you hit your quota or miss it.
-
-The key is finding the right balance between thoroughness and speed. You need enough validation to build confidence, but not so much that you lose momentum.
-
-Start by measuring your current pipeline velocity, identify the biggest bottlenecks, and systematically address them. Your future self (and your quota) will thank you.
-
-What's your experience with pipeline acceleration? Have you found strategies that work particularly well in your industry or with your solution? I'd love to hear your thoughts.
-
