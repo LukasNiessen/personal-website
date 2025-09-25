@@ -102,7 +102,7 @@ Here are some tips that helped me in the past to accelerate the pipeline.
 
 ### Build Reusable Content Assets
 
-**This is probably the most important point.** Instead of building everything from scratch for each deal, collaborate with Product Management, Product Education, and Value Engineering to create reusable content for core and advanced product use cases.
+**This is probably the most important point.** Instead of building everything from scratch for each deal, collaborate with Product Management, Product Education, and Value Engineering to create reusable content for core and advanced product use cases. Have playbooks! Have clear standard processes!
 
 What I mean by this:
 
