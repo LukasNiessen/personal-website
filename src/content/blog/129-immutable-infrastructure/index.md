@@ -98,6 +98,20 @@ Keeping multiple versions of images around takes more storage space. But storage
 ### Initial Complexity
 Setting up the automation and tooling requires more upfront investment. But the payoff is immediate and compounds over time.
 
+## Databases and State
+
+This is where things get tricky. While application servers, load balancers, and stateless components can easily be made immutable, databases usually cannot. They are inherently stateful — you can't just throw them away and replace them like a container, the data would be deleted.
+
+That said, you can still apply immutable principles *around* databases:  
+
+- **Immutable DB Servers, Mutable Data:** You can rebuild and replace the underlying database server/VM/container, but the actual data is stored on persistent volumes or managed services.  
+
+- **Schema Migrations as Deployments:** Instead of manually changing schemas, migrations are version-controlled and applied in a controlled way, just like code.  
+
+- **Managed Databases:** Cloud providers (e.g., AWS RDS, Aurora, GCP Cloud SQL) abstract away server maintenance so you treat the DB as a service rather than patching it yourself.  
+
+In short, databases remain mutable because of their state, but you can still bring immutable practices to how you manage the *infrastructure around them*.
+
 ## A Practical Example with Terraform
 
 Here's how you might implement immutable infrastructure for a web application using Terraform and AWS:
@@ -208,6 +222,15 @@ spec:
 ```
 
 With ArgoCD or similar GitOps tools, you just update the image tag in Git, and the system handles the immutable deployment automatically.
+
+## Ephemeral vs Immutable
+
+These terms often get confused, so let me just address this super briefly and be incomplete.
+
+- **Ephemeral** means short-lived and disposable by design. For example, a Kubernetes pod or a CI job runner is ephemeral — it exists only for a task and then disappears.  
+- **Immutable** means unchangeable once created. An immutable server or image may live for a long time, but you never modify it in place — you replace it with a new version when you need changes.  
+
+In practice, immutable infrastructure often *uses* ephemeral resources, but the two are not the same.
 
 ## My Take
 
