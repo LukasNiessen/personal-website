@@ -297,6 +297,53 @@ const competitions: YearGroup[] = [
           ))
         }
       </div>
+
+      <!-- 3D Dragon Animation Section -->
+      <section class="animate mt-24">
+        <div
+          id="dragon-container"
+          class="relative w-full h-96 bg-gradient-to-b from-blue-50 to-purple-50 dark:from-gray-900 dark:to-blue-900 rounded-xl overflow-hidden shadow-lg"
+        >
+          <div
+            class="absolute bottom-4 left-4 text-xs text-black/50 dark:text-white/50 pointer-events-none z-10"
+          >
+            Interactive • Mouse controls enabled
+          </div>
+        </div>
+      </section>
     </div>
   </BottomLayout>
+
+  <!-- VANTA Fog Animation Script -->
+  <script is:inline src="/js/three.r134.min.js"></script>
+  <script is:inline src="/js/vanta.fog.min.js"></script>
+  <script is:inline>
+    document.addEventListener("DOMContentLoaded", function () {
+      const fogContainer = document.getElementById("dragon-container");
+
+      if (!fogContainer || !window.VANTA) return;
+
+      // Initialize VANTA Fog
+      const vantaFogEffect = VANTA.FOG({
+        el: fogContainer,
+        mouseControls: true,
+        touchControls: true,
+        gyroControls: false,
+        minHeight: 200.0,
+        minWidth: 200.0,
+        highlightColor: 0xa9dcff,
+        midtoneColor: 0x0,
+        lowlightColor: 0xaa71ff,
+        baseColor: 0x0,
+        blurFactor: 0.79,
+        speed: 1.5,
+        zoom: 0.1,
+      });
+
+      // Clean up on page unload
+      window.addEventListener("beforeunload", () => {
+        if (vantaFogEffect) vantaFogEffect.destroy();
+      });
+    });
+  </script>
 </PageLayout>

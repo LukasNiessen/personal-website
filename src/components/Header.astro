@@ -14,7 +14,7 @@ import Container from "@components/Container.astro";
       >
         <a
           href="/"
-          class="flex gap-1 items-center text-current hover:text-black dark:hover:text-white transition-colors duration-300 ease-in-out"
+          class="flex gap-2 items-center text-current hover:text-black dark:hover:text-white transition-colors duration-300 ease-in-out"
         >
           <img
             src="/portrait.avif"
@@ -39,7 +39,7 @@ import Container from "@components/Container.astro";
                   "transition-colors duration-300 ease-in-out",
                   pathname === LINK.HREF || "/" + subpath?.[0] === LINK.HREF
                     ? "bg-warmAccent-primary text-white font-bold"
-                    : "text-current hover:bg-warmAccent-secondary/10 dark:hover:bg-warmAccent-primary/20 hover:text-warmAccent-tertiary dark:hover:text-warmAccent-secondary"
+                    : "text-current hover:bg-warmAccent-primary/10 dark:hover:bg-warmAccent-primary/20 hover:text-warmAccent-primary dark:hover:text-warmAccent-primary"
                 )}
               >
                 {LINK.TEXT}
@@ -60,7 +60,7 @@ import Container from "@components/Container.astro";
             "transition-colors duration-300 ease-in-out",
             pathname === "/search" || "/" + subpath?.[0] === "/search"
               ? "pointer-events-none bg-warmAccent-primary stroke-white"
-              : "bg-transparent hover:bg-gray-200/50 hover:dark:bg-gray-700/30 stroke-current hover:stroke-warmAccent-tertiary hover:dark:stroke-warmAccent-secondary"
+              : "bg-transparent hover:bg-gray-200/50 hover:dark:bg-gray-700/30 stroke-current hover:stroke-warmAccent-primary hover:dark:stroke-warmAccent-primary"
           )}
         >
           <svg class="size-full">
@@ -81,7 +81,7 @@ import Container from "@components/Container.astro";
             "hidden md:flex group relative",
             "size-9 rounded-full p-2 items-center justify-center",
             "bg-transparent hover:bg-gray-200/50 hover:dark:bg-gray-700/30",
-            "stroke-current hover:stroke-warmAccent-tertiary hover:dark:stroke-warmAccent-secondary",
+            "stroke-current hover:stroke-warmAccent-primary hover:dark:stroke-warmAccent-primary",
             "border border-gray-300/30 dark:border-gray-600/30",
             "transition-colors duration-300 ease-in-out"
           )}
@@ -103,7 +103,7 @@ import Container from "@components/Container.astro";
             "hidden md:flex group relative",
             "size-9 rounded-full p-2 items-center justify-center",
             "bg-transparent hover:bg-gray-200/50 hover:dark:bg-gray-700/30",
-            "stroke-current hover:stroke-warmAccent-tertiary hover:dark:stroke-warmAccent-secondary",
+            "stroke-current hover:stroke-warmAccent-primary hover:dark:stroke-warmAccent-primary",
             "border border-gray-300/30 dark:border-gray-600/30",
             "transition-colors duration-300 ease-in-out"
           )}
@@ -128,7 +128,7 @@ import Container from "@components/Container.astro";
             "flex md:hidden",
             "size-9 rounded-full p-2 items-center justify-center",
             "bg-transparent hover:bg-gray-200/50 hover:dark:bg-gray-700/30",
-            "stroke-current hover:stroke-warmAccent-tertiary hover:dark:stroke-warmAccent-secondary",
+            "stroke-current hover:stroke-warmAccent-primary hover:dark:stroke-warmAccent-primary",
             "border border-gray-300/30 dark:border-gray-600/30",
             "transition-colors duration-300 ease-in-out"
           )}

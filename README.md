@@ -36,6 +36,14 @@ You are very welcome to contribute! I use GitHub Flow, so if you want to contrib
 
 Note that you can reuse this project however you like, including creating your own blog from it by just replacing texts and images. 😊
 
+## TODO
+
+- Add linting
+- Add prettier or similar (should be auto applied in IDE as well)
+- Mobile first!
+- Blog part: categories needs UX/UI redoing, posts should rather be in cards, two per row, instead of one "big card" per row
+- Remove images from articles as assets. Upload to a CDN for example and replace by links. The website's size will grow else, bad for SEO
+
 ## 📜 License
 
 This project is under the MIT License
