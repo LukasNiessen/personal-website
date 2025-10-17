@@ -15,7 +15,7 @@ This article is mainly aimed at developers looking to switch into technical sale
 
 ## Lead
 
-A lead is just a potential customer. This can be someone that signed up for a demo, someone in your contacts who you think might be interested in your product, someone who signed up for a free trial etc. There are however different types of leads and I will introduce them now. 
+A lead is just a potential customer. This can be someone that signed up for a demo, someone in your contacts who you think might be interested in your product, someone who signed up for a free trial etc. There are however different types of leads and I will introduce them now.
 
 To avoid confusion, a lead typically refers to a person. That person of course it usually associated to a company, and that company will hopefully become a customer one day.
 
@@ -33,10 +33,11 @@ This is the stage we desire. This is the stage we want in order to continue with
 
 Often, _BANT_ is used to see whether a lead is a good fit. BANT = Budget, Authority, Need, and Timeline. A SQL is often also called a _prospect_. BANT is just one framework though, _MEDDICC_ is another important one. Some teams also use no framework at all.
 
-SQLs are so important because they are the group of leads that are most likely to be converted into customers. 
+SQLs are so important because they are the group of leads that are most likely to be converted into customers.
 
 For example, imagine you're selling cloud infrastructure services. A SQL might be a CTO from a growing startup who has:
-- **Budget:** $50k+ annual cloud budget 
+
+- **Budget:** $50k+ annual cloud budget
 - **Authority:** Decision-making power for technical purchases
 - **Need:** Their current hosting can't handle traffic growth
 - **Timeline:** They need to migrate within 6 months due to a major product launch
@@ -57,7 +58,7 @@ What we want is to find many potential customers, also called _generating leads_
 
 **5. Scheduling a Meeting or Call:** Once a lead has shown strong interest in the product or service, we schedule a meeting or a call. Here we will dive deep into the lead's requirements, understand their challenges and pain points, and present tailored solutions. This is often called a _discovery call_ and might involve both the AE and a solution engineer if technical questions are expected.
 
-**6. Closing the Deal:** This is the final step of this process. When the lead shows a strong interest in the service or product and you've had a meeting or multiple already, it might be time for closing the deal. This includes making a deal proposal, which includes a summary of the customer's needs, a detailed explanation of the proposed solution, why and how that's good for the customer, pricing, terms and conditions and more. But it also includes negotiating aspects of the proposal. For complex technical sales, this might also include technical proofs of concept or pilot implementations. 
+**6. Closing the Deal:** This is the final step of this process. When the lead shows a strong interest in the service or product and you've had a meeting or multiple already, it might be time for closing the deal. This includes making a deal proposal, which includes a summary of the customer's needs, a detailed explanation of the proposed solution, why and how that's good for the customer, pricing, terms and conditions and more. But it also includes negotiating aspects of the proposal. For complex technical sales, this might also include technical proofs of concept or pilot implementations.
 
 This process is called sales pipeline. If we would outline the same process but write everything from the customer's perspective instead and notice that the amount of leads decreases with every step, it would be called sales funnel. However, these two terms are sometimes used interchangeably.
 
@@ -113,6 +114,7 @@ Let's say you're selling a data analytics platform to a logistics company:
 - **POC:** They might want to test with their actual data for 30 days to see the performance improvements.
 
 Or if you're selling cybersecurity software to a financial services company:
+
 - **Discovery:** Understanding their current security stack, compliance requirements (like PCI DSS), incident response procedures, and integration needs.
 - **Solution Design:** Showing how your solution fits into their existing security infrastructure without disrupting operations.
 - **Demo:** Demonstrating threat detection using scenarios relevant to financial services, like detecting suspicious transaction patterns.
@@ -141,9 +143,7 @@ The key difference from development is that instead of building solutions, you'r
 
 But ultimately, it's a matter of whether you like to sell or not. Personally, I think sales is a super interesting field to work in as, when you think about it, everything in life is basically sales. So becoming good at it is not just a career win :)
 
-
-<!---
----
+## <!---
 
 **Annual Recurring Revenue (ARR)**: This is sometimes seen as the holy grail metric. A $10K monthly commitment represents $120K ARR.
 
