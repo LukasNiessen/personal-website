@@ -46,7 +46,7 @@ While both tools can validate dependencies between modules, **ArchUnitTS goes fa
 
 ### 1. Code Metrics Analysis
 
-ArchUnitTS provides extensive code quality metrics that eslint-plugin-import completely lacks:
+ArchUnitTS provides code quality metrics that eslint-plugin-import lacks:
 
 - **LCOM (Lack of Cohesion of Methods)** metrics for measuring class cohesion
 - **Count metrics**: lines of code, method count, field count, statements per file
@@ -56,12 +56,10 @@ ArchUnitTS provides extensive code quality metrics that eslint-plugin-import com
 
 ### 2. Architecture Slices and Layers
 
-ArchUnitTS offers sophisticated architectural boundary validation:
-
+- **UML diagram validation** - validate actual code against PlantUML architectural diagrams
 - Project slices with `projectSlices().definedBy()` for defining architectural boundaries
 - Layer dependency validation across multiple architectural layers simultaneously
 - Slice-to-slice dependency rules (e.g., "services should not depend on controllers")
-- **UML diagram validation** - validate actual code against PlantUML architectural diagrams
 
 ### 3. Nx Monorepo Support
 
@@ -110,19 +108,17 @@ ArchUnitTS provides:
 - Detailed violation tracking and reporting
 - Session-based logging with timestamps
 
+In comparison, with linters you can't have logs AFAIK.
+
 ### 9. Pattern Matching Flexibility
 
-While both support glob patterns, ArchUnitTS offers:
+While linters also support glob patterns, ArchUnitTS offers:
 
 - Combined filtering methods (`inFolder()`, `withName()`, `inPath()`)
 - Class name matching for metrics (`forClassesMatching()`)
 - More flexible pattern combination strategies
 
-### 10. Architecture Fitness Functions
-
-ArchUnitTS is specifically designed to implement **architectural fitness functions** as part of evolutionary architecture practices.
-
-### 11. Circular Dependency Detection with Context
+### 10. Circular Dependency Detection with Context
 
 While eslint-plugin-import has `no-cycle`, ArchUnitTS provides:
 
@@ -130,42 +126,29 @@ While eslint-plugin-import has `no-cycle`, ArchUnitTS provides:
 - Better reporting of cycle paths
 - Integration with other architectural rules
 
-### 12. Class-Level Analysis
+### 11. Class-Level Analysis
 
-ArchUnitTS can analyze class structures, methods, and fields - not just module imports:
-
-- Method-to-field ratios
+ArchUnitTS can analyze class structures, methods, and fields - not just module imports, e.g.:
 - Class cohesion analysis
 - Field count restrictions per class type
 
-### 13. Performance Optimization
-
-- Built-in caching system for analysis results
-- Parallel processing capabilities
-- Configurable cache lifetime for long-running processes
-
-### 14. Architecture Documentation Validation
-
-- Validate code against architectural diagrams (PlantUML)
-- Support for component, package, class, and custom architecture diagrams
-- Enforce documented architectural decisions
-
 ## What eslint-plugin-import Does Better
 
-To be fair, eslint-plugin-import does have some advantages:
+However, to be fair, there are cases where eslint-plugin-import is suited better.
 
 - **Real-time feedback** - As a linter, it provides immediate feedback while coding
 - **Auto-fixing** - Can automatically fix certain issues (with `--fix` flag)
-- **Editor integration** - Native IDE/editor support as part of ESLint
-- **Import-specific rules** - More granular import/export validation (like `no-deprecated`, `no-anonymous-default-export`, etc.)
-- **Module resolution** - More sophisticated resolver system for various module systems
 - **Simpler setup** - Just ESLint configuration, no test files needed
+
+So if you want a quick _"real-time"_ enforcement, kind of _"linter-vibes"_, then eslint-plugin-import is the better option admittedly.
 
 ## The Bottom Line
 
-**ArchUnitTS** and **eslint-plugin-import** serve different purposes:
+IMO, ArchUnitTS and eslint-plugin-import (and others) serve different purposes.
 
-- Use **eslint-plugin-import** for day-to-day linting and immediate feedback on import/export issues
-- Use **ArchUnitTS** for comprehensive architecture testing, metrics analysis, and enforcing architectural boundaries as part of your CI/CD pipeline
+- **eslint-plugin-import** if you want immediate feedback on import/export issues
+- **ArchUnitTS** if you want declarative rules, comprehensive architecture testing, metrics analysis, and enforcing architectural boundaries as part of your CI/CD pipeline
 
-They're not mutually exclusive - in fact, they complement each other perfectly! Many teams use both: eslint-plugin-import for immediate developer feedback, and ArchUnitTS for deeper architectural validation in their test suites.
+---
+
+Either way, thank you for the great feedback and the suggestion to compare it to linters - I will add a comparison to the libary README also :)
