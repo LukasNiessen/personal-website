@@ -1,7 +1,7 @@
 ---
 title: 'ArchUnitTS vs eslint-plugin-import: My side project reached 200 stars on GitHub'
 summary: 'ArchUnitTS vs eslint-plugin-import comparison'
-date: 'Oct 15 2025'
+date: 'Oct 18 2025'
 draft: false
 repoUrl: ''
 xLink: ''
