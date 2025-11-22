@@ -28,7 +28,7 @@ I used Astro and React. The site therefore consists of static files. They are ho
 
 This project is push-based GitOps.
 
-You can find the infrastructure under `\infrastructure`. It uses Terraform.
+Please find the infrastructure in [this](https://github.com/LukasNiessen/lukasniessen.com-infrastructure) separate repo.
 
 ## Contributing
 

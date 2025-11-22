@@ -13,11 +13,234 @@ tags:
   - IaC
 ---
 
-# Terraform Basics: Infrastructure as Code Done Right
+# Terraform Basics & Best Practices: Infrastructure as Code Done Right
 
-Terraform is HashiCorp's Infrastructure as Code (IaC) tool that lets you define and provision infrastructure using declarative configuration files. Instead of clicking through AWS consoles or running shell scripts, you describe your desired infrastructure state, and Terraform makes it happen.
+I want to walk through some best practices of Terraform (TF) in here, as well as have some sort of a _cheat sheet_ for basic syntax and other basics.
 
-## Core Concepts
+## Best Practices
+
+### 1. Use Remote State with Versioning and Locking
+
+Terraform stores state in a `terraform.tfstate` file. **This file is the source of truth for Terraform!!** It's used for things like comparing current state (in that file) with your _'future plans'_ that you want to apply with `terraform apply`. So it's critically important.
+
+By default, it's stored locally. This is fine for solo projects, but a disaster for teams. If two people try to apply changes at the same time, they can corrupt the state. Plus, if you lose your laptop, you lose the state.
+
+The solution is **Remote State**. For AWS users, the standard pattern is using an S3 bucket for storage and a DynamoDB table for locking.
+
+**Why?**
+- **Single Source of Truth:** Everyone works off the same state.
+- **Locking:** DynamoDB prevents concurrent updates.
+- **Versioning:** S3 bucket versioning allows you to roll back if the state gets corrupted.
+
+**How to set it up:**
+
+First, you need the resources (bucket and table) to exist. You can create them manually or with a separate "bootstrap" Terraform project.
+
+```hcl
+# backend-resources.tf
+resource "aws_s3_bucket" "terraform_state" {
+  bucket = "my-company-terraform-state"
+ 
+  lifecycle {
+    prevent_destroy = true
+  }
+}
+
+resource "aws_s3_bucket_versioning" "enabled" {
+  bucket = aws_s3_bucket.terraform_state.id
+  versioning_configuration {
+    status = "Enabled"
+  }
+}
+
+resource "aws_dynamodb_table" "terraform_locks" {
+  name         = "terraform-locks"
+  billing_mode = "PAY_PER_REQUEST"
+  hash_key     = "LockID"
+
+  attribute {
+    name = "LockID"
+    type = "S"
+  }
+}
+```
+
+Then, configure your backend in your main Terraform code:
+
+```hcl
+terraform {
+  backend "s3" {
+    bucket         = "my-company-terraform-state"
+    key            = "global/s3/terraform.tfstate"
+    region         = "us-east-1"
+    dynamodb_table = "terraform-locks"
+    encrypt        = true
+  }
+}
+```
+
+### 2. Use Workspaces for Multiple Environments
+
+Managing `dev`, `staging`, and `prod` can be tricky. You don't want to copy-paste your entire folder structure three times. Terraform Workspaces allow you to use the same code for multiple environments.
+
+**Why?**
+It keeps your code DRY (Don't Repeat Yourself). You write the infrastructure definition once, and deploy it multiple times with different variables.
+
+**How to use it:**
+
+```bash
+terraform workspace new dev
+terraform workspace new prod
+terraform workspace select dev
+```
+
+In your code, you can reference `terraform.workspace` to change behavior:
+
+```hcl
+resource "aws_instance" "web" {
+  instance_type = terraform.workspace == "prod" ? "t3.medium" : "t3.micro"
+  
+  tags = {
+    Name = "web-server-${terraform.workspace}"
+  }
+}
+```
+
+### 3. Prefer `for_each` over `count`
+
+While `count` is simple, it has a major flaw: it relies on the list index. If you remove an item from the middle of the list, every resource after it shifts its index, causing Terraform to destroy and recreate them.
+
+**Why?**
+`for_each` uses a map key or a set of strings as a stable identifier. If you remove an item, only that specific resource is destroyed.
+
+**Example:**
+
+Don't do this (risky):
+```hcl
+variable "users" {
+  type    = list(string)
+  default = ["alice", "bob", "charlie"]
+}
+
+resource "aws_iam_user" "example" {
+  count = length(var.users)
+  name  = var.users[count.index]
+}
+```
+*If you remove "alice", "bob" becomes index 0 and "charlie" becomes index 1. Terraform will rewrite Bob's user to be Alice's old index, etc.*
+
+Do this instead (safe):
+```hcl
+resource "aws_iam_user" "example" {
+  for_each = toset(var.users)
+  name     = each.key
+}
+```
+
+### 4. Never Commit State Files to Git
+
+This is a critical security rule. The `terraform.tfstate` file contains the **full** configuration of your resources, including sensitive data like database passwords, private keys, and API tokens—even if you defined them as "sensitive" variables.
+
+**Why?**
+If you push this file to a public (or even private) repository, anyone with access to the repo has your secrets in plain text.
+
+**What to do:**
+Add these to your `.gitignore` immediately:
+
+```gitignore
+*.tfstate
+*.tfstate.backup
+.terraform/
+```
+
+Always use a remote backend (like S3) which supports encryption at rest.
+
+### 5. Use Modules for Code Reuse
+
+As your infrastructure grows, a single `main.tf` file becomes unmanageable. Modules allow you to package resources into reusable components.
+
+**Why?**
+- **Standardization:** You can enforce best practices (e.g., "all S3 buckets must be encrypted") by baking them into a module.
+- **Readability:** Your main configuration becomes a high-level description of *what* you want, rather than *how* to build it.
+
+**Example:**
+
+Instead of defining 50 lines of security group rules every time you need a web server, create a module:
+
+```hcl
+module "web_server_sg" {
+  source = "./modules/security-group"
+  
+  name        = "web-server"
+  vpc_id      = module.vpc.vpc_id
+  open_ports  = [80, 443]
+}
+```
+
+## Conventions & Folder Structure
+
+How you organize your Terraform code depends heavily on your project size and whether infrastructure is your main product or just a supporting player.
+
+### Scenario 1: The "App Repo" (Non-Dedicated)
+
+If you have a backend service (e.g., a Node.js API) and you want to keep the infrastructure code close to the application code, this is the way to go. This is common for microservices where each service owns its own infrastructure (like an S3 bucket or a DynamoDB table).
+
+**Structure:**
+
+```text
+my-app/
+├── src/              # Application code
+├── package.json
+├── ...
+└── infrastructure/   # Terraform code lives here
+    ├── main.tf       # Resources
+    ├── variables.tf  # Input variables
+    ├── outputs.tf    # Output values
+    ├── providers.tf  # Provider configuration
+    └── envs/         # Environment-specific variable files
+        ├── dev.tfvars
+        └── prod.tfvars
+```
+
+**Pros:**
+- Developers can change app code and infra in the same PR.
+- Context switching is minimized.
+
+**Cons:**
+- Harder to manage shared infrastructure (like a VPC) that multiple apps use.
+
+### Scenario 2: The "Infra Repo" (Dedicated)
+
+For shared infrastructure (VPCs, K8s clusters, databases used by multiple apps) or large-scale systems, a dedicated repository is better. This is often managed by a Platform or DevOps team.
+
+**Structure:**
+
+```text
+infrastructure-repo/
+├── modules/                  # Reusable modules (internal)
+│   ├── vpc/
+│   └── eks/
+├── environments/             # Live environments
+│   ├── dev/
+│   │   ├── main.tf           # Calls modules
+│   │   ├── variables.tf
+│   │   └── terraform.tfvars
+│   ├── staging/
+│   └── prod/
+└── README.md
+```
+
+**Pros:**
+- Clear separation of concerns.
+- Safer boundaries between environments (dev changes can't accidentally touch prod state if folders are separate).
+
+**Cons:**
+- More repositories to manage.
+- "It works on my machine" issues if app devs don't have visibility into infra changes.
+
+## Cheat Sheet
+
+Here a walk through and repetition, or cheat sheet, of syntax and other basics.
 
 ### Resources
 
@@ -145,7 +368,7 @@ provider "aws" {
 }
 ```
 
-## Practical Example: VPC Setup
+### Practical Example: VPC Setup
 
 Here's a common pattern for setting up a VPC (Virtual Private Cloud - AWS's isolated network environment):
 
@@ -209,11 +432,11 @@ resource "aws_route_table_association" "public" {
 }
 ```
 
-## For Loops and Dynamic Blocks
+### For Loops and Dynamic Blocks
 
 Terraform provides several ways to iterate and create multiple similar resources.
 
-### Count
+#### Count
 
 ```hcl
 resource "aws_instance" "web" {
@@ -229,7 +452,7 @@ resource "aws_instance" "web" {
 }
 ```
 
-### for_each
+#### for_each
 
 More flexible than count, especially when you need to reference resources by key:
 
@@ -262,7 +485,7 @@ When using `for_each` with a map, Terraform iterates over each key-value pair:
 
 So `"${each.key}-app"` becomes "dev-app" and "prod-app" respectively.
 
-### Dynamic Blocks
+#### Dynamic Blocks
 
 For creating nested blocks dynamically:
 
@@ -283,13 +506,13 @@ resource "aws_security_group" "web" {
 }
 ```
 
-## Modules
+### Modules
 
 Modules are reusable Terraform configurations. Think of them as functions - they take inputs (variables) and produce outputs. This is arguably the most important concept for scaling Terraform usage across teams and projects.
 
 **Why modules matter:** Instead of copying and pasting the same VPC configuration across 10 projects, you create a VPC module once and reuse it everywhere. When you need to add a security group rule to all VPCs, you update the module once instead of 10 separate configurations.
 
-### Creating a Module
+#### Creating a Module
 
 A module is just a directory containing `.tf` files. Here's a simple web server module:
 
@@ -368,7 +591,7 @@ output "public_ip" {
 }
 ```
 
-### Using the Module
+#### Using the Module
 
 ```hcl
 module "web_server" {
@@ -388,16 +611,16 @@ output "web_server_ip" {
 }
 ```
 
-## Essential Commands
+### Essential Commands
 
-### terraform init
+#### terraform init
 Initializes a Terraform working directory. Downloads providers and modules.
 
 ```bash
 terraform init
 ```
 
-### terraform plan
+#### terraform plan
 Shows what Terraform will do without actually doing it. Always run this before apply.
 
 ```bash
@@ -405,7 +628,7 @@ terraform plan
 terraform plan -out=tfplan  # Save plan to file
 ```
 
-### terraform apply
+#### terraform apply
 Creates, updates, or deletes infrastructure to match your configuration.
 
 ```bash
@@ -414,7 +637,7 @@ terraform apply tfplan      # Apply saved plan
 terraform apply -auto-approve  # Skip confirmation
 ```
 
-### terraform destroy
+#### terraform destroy
 Destroys all resources managed by the configuration.
 
 ```bash
@@ -422,7 +645,7 @@ terraform destroy
 terraform destroy -target=aws_instance.web  # Destroy specific resource
 ```
 
-### terraform fmt
+#### terraform fmt
 Formats Terraform files to a canonical style.
 
 ```bash
@@ -430,22 +653,22 @@ terraform fmt
 terraform fmt -recursive  # Format all files in subdirectories
 ```
 
-### terraform validate
+#### terraform validate
 Validates the configuration syntax.
 
 ```bash
 terraform validate
 ```
 
-## State Management
+### State Management
 
-### Terraform State File
+#### Terraform State File
 
 Terraform stores information about your infrastructure in a state file (`.tfstate`). This file maps your configuration to the real world and tracks resource metadata.
 
 **Important:** Never edit the state file manually. Use Terraform commands instead.
 
-### Remote State
+#### Remote State
 
 For team environments, store state remotely:
 
@@ -459,7 +682,7 @@ terraform {
 }
 ```
 
-### State Lock
+#### State Lock
 
 The `.terraform.lock.hcl` file locks dependency versions to ensure consistent builds across team members and environments.
 
