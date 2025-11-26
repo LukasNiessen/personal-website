@@ -1,7 +1,7 @@
 ---
-title: 'Terraform Basics: Infrastructure as Code Done Right'
-summary: 'A comprehensive guide to Terraform fundamentals, from resources to modules to state management'
-date: 'August 21 2024'
+title: 'Terraform: Best Practices and Cheat Sheet for the Basics'
+summary: 'A walkthrough of best practices for Terraform, as well as a collection in cheat sheet style for basic syntax and other basics'
+date: 'December 24 2025'
 draft: false
 repoUrl: ''
 xLink: ''
@@ -13,9 +13,9 @@ tags:
   - IaC
 ---
 
-# Terraform Basics & Best Practices: Infrastructure as Code Done Right
+# Terraform: Best Practices and Cheat Sheet for the Basics
 
-I want to walk through some best practices of Terraform (TF) in here, as well as have some sort of a _cheat sheet_ for basic syntax and other basics.
+I want to walk through some best practices of Terraform (TF) in here, as well as a provide a cheat sheet for basic syntax and other basics.
 
 ## Best Practices
 
@@ -25,16 +25,18 @@ Terraform stores state in a `terraform.tfstate` file. **This file is the source 
 
 By default, it's stored locally. This is fine for solo projects, but a disaster for teams. If two people try to apply changes at the same time, they can corrupt the state. Plus, if you lose your laptop, you lose the state.
 
-The solution is **Remote State**. For AWS users, the standard pattern is using an S3 bucket for storage and a DynamoDB table for locking.
+The solution is **Remote State**. For AWS users, the standard pattern is using an S3 bucket with built-in locking.
 
 **Why?**
 - **Single Source of Truth:** Everyone works off the same state.
-- **Locking:** DynamoDB prevents concurrent updates.
+- **Locking:** Prevents concurrent updates (avoids corruption).
 - **Versioning:** S3 bucket versioning allows you to roll back if the state gets corrupted.
 
-**How to set it up:**
+**How to set it up (Terraform 1.10+):**
 
-First, you need the resources (bucket and table) to exist. You can create them manually or with a separate "bootstrap" Terraform project.
+Since Terraform version 1.10, locking is handled using `use_lockfile = true` in the S3 backend. This means you **don't need DynamoDB anymore** - the lock is stored as a file in S3 itself. This is simpler and cheaper.
+
+First, create the S3 bucket:
 
 ```hcl
 # backend-resources.tf
@@ -52,7 +54,29 @@ resource "aws_s3_bucket_versioning" "enabled" {
     status = "Enabled"
   }
 }
+```
 
+Then, configure your backend:
+
+```hcl
+terraform {
+  backend "s3" {
+    bucket         = "my-company-terraform-state"
+    key            = "global/s3/terraform.tfstate"
+    region         = "us-east-1"
+    use_lockfile   = true
+    encrypt        = true
+  }
+}
+```
+
+#### For Terraform Versions Before 1.10
+
+If you're using an older version of Terraform (before 1.10), you'll need a **DynamoDB table** for state locking instead of `use_lockfile`.
+
+Create the DynamoDB table:
+
+```hcl
 resource "aws_dynamodb_table" "terraform_locks" {
   name         = "terraform-locks"
   billing_mode = "PAY_PER_REQUEST"
@@ -65,7 +89,7 @@ resource "aws_dynamodb_table" "terraform_locks" {
 }
 ```
 
-Then, configure your backend in your main Terraform code:
+And reference it in your backend configuration:
 
 ```hcl
 terraform {
@@ -73,7 +97,7 @@ terraform {
     bucket         = "my-company-terraform-state"
     key            = "global/s3/terraform.tfstate"
     region         = "us-east-1"
-    dynamodb_table = "terraform-locks"
+    dynamodb_table = "terraform-locks"  # Instead of use_lockfile
     encrypt        = true
   }
 }
@@ -145,7 +169,7 @@ This is a critical security rule. The `terraform.tfstate` file contains the **fu
 If you push this file to a public (or even private) repository, anyone with access to the repo has your secrets in plain text.
 
 **What to do:**
-Add these to your `.gitignore` immediately:
+Add these to your `.gitignore`:
 
 ```gitignore
 *.tfstate
@@ -157,15 +181,11 @@ Always use a remote backend (like S3) which supports encryption at rest.
 
 ### 5. Use Modules for Code Reuse
 
-As your infrastructure grows, a single `main.tf` file becomes unmanageable. Modules allow you to package resources into reusable components.
-
-**Why?**
-- **Standardization:** You can enforce best practices (e.g., "all S3 buckets must be encrypted") by baking them into a module.
-- **Readability:** Your main configuration becomes a high-level description of *what* you want, rather than *how* to build it.
+As your infrastructure grows, a single `main.tf` file becomes unmanageable. Modules allow you to package resources into reusable components. Besides making your code DRY it also helps with with standardization.
 
 **Example:**
 
-Instead of defining 50 lines of security group rules every time you need a web server, create a module:
+Instead of defining 50 lines of security group rules every time you need a web server, create a module and use it:
 
 ```hcl
 module "web_server_sg" {
@@ -219,7 +239,13 @@ For shared infrastructure (VPCs, K8s clusters, databases used by multiple apps) 
 infrastructure-repo/
 ├── modules/                  # Reusable modules (internal)
 │   ├── vpc/
+│       ├── main.tf
+│       ├── variables.tf
+│       └── outputs.tf
 │   └── eks/
+│       ├── main.tf
+│       ├── variables.tf
+│       └── outputs.tf
 ├── environments/             # Live environments
 │   ├── dev/
 │   │   ├── main.tf           # Calls modules
@@ -230,6 +256,9 @@ infrastructure-repo/
 └── README.md
 ```
 
+**Note on File Structure:**
+You'll notice a pattern: `main.tf`, `variables.tf`, and `outputs.tf` appear in almost every folder. This is the standard convention. Whether it's a root module (like `environments/dev`) or a reusable module (like `modules/vpc`), you should always split your code into these three files to keep things organized.
+
 **Pros:**
 - Clear separation of concerns.
 - Safer boundaries between environments (dev changes can't accidentally touch prod state if folders are separate).
@@ -237,6 +266,18 @@ infrastructure-repo/
 **Cons:**
 - More repositories to manage.
 - "It works on my machine" issues if app devs don't have visibility into infra changes.
+
+### How Terraform Knows What to Run
+
+You might wonder: *If I have `.tf` files everywhere, how does Terraform know which ones to execute?*
+
+**The Golden Rule:** Terraform only creates resources that are reachable from the **Root Module**.
+
+1.  **The Root:** When you run `terraform apply`, the current directory is the "Root Module". Terraform loads all `.tf` files in this folder *only*.
+2.  **The Tree:** It then looks for `module { ... }` blocks. If your root `main.tf` calls a module, Terraform loads that module's files.
+3.  **The Ignore:** If you have a folder `modules/database` full of valid code, but your root module never calls it, **Terraform ignores it completely**. It won't create those resources.
+
+This means you can have a library of 50 modules in your repo, but if your `main.tf` only uses one, Terraform only cares about that one.
 
 ## Cheat Sheet
 
@@ -312,7 +353,9 @@ You can provide variable values through `.tfvars` files, command line, or enviro
 
 ### Outputs
 
-Outputs expose information about your infrastructure after it's created.
+Outputs expose information about your infrastructure after it's created. They serve two main purposes:
+1. **CLI Visibility:** When you run `terraform apply`, outputs are printed to the console (e.g., the IP address of the server you just built).
+2. **Module Communication:** If you use modules, outputs are the *only* way to pass data from a child module back to the parent.
 
 ```hcl
 output "instance_ip" {
@@ -328,43 +371,89 @@ output "instance_id" {
 
 ### Locals
 
-Locals are named values that you can reuse throughout your configuration - think of them as internal variables.
+Locals are named values that you can reuse throughout your configuration - think of them as internal variables. They are great for simplifying complex logic or combining variables.
+
+A very common pattern is using `merge` to combine default tags with custom ones:
 
 ```hcl
 locals {
-  common_tags = {
+  # Define standard tags that every resource should have
+  default_tags = {
+    Project     = var.project_name
     Environment = var.environment
-    Project     = "WebApp"
     ManagedBy   = "Terraform"
   }
-  
-  name_prefix = "${var.environment}-webapp"
+
+  # Merge them with any extra tags passed in via variables
+  final_tags = merge(local.default_tags, var.custom_tags)
 }
 
 resource "aws_instance" "web" {
   ami           = data.aws_ami.ubuntu.id
   instance_type = var.instance_type
   
-  tags = local.common_tags
+  # Now the instance gets Project, Environment, ManagedBy, AND any custom tags
+  tags = local.final_tags
 }
 ```
 
-### Providers
+### Variables vs Locals
 
-Providers are plugins that interact with APIs of cloud platforms, SaaS providers, and other services.
+A common question is: *Why do we need both?*
+
+Think of your Terraform configuration as a **function**:
+- **Variables** are the **arguments** you pass to the function. They are the *public interface* that users can change (via `.tfvars` files).
+- **Locals** are **internal variables** inside the function. They are *private* and used for calculations or intermediate steps. Consumers of your module don't see them and can't change them directly.
+
+### Providers & The `terraform` Block
+
+The `terraform {}` block configures Terraform itself (versions, backend), while `provider` blocks configure the plugins that talk to APIs.
+
+**What is a Provider Block?**
+Think of a provider block as a **named set of credentials + configuration**. It creates a client that knows how to talk to an API (like AWS).
+
+**Multiple Providers & Aliases**
+You can have multiple instances of the same provider (e.g., to deploy to multiple AWS regions in one go). You distinguish them using `alias`.
+
+```hcl
+# 1. Default Provider (no alias)
+# Resources use this automatically unless told otherwise
+provider "aws" {
+  region = "eu-central-1"
+}
+
+# 2. Aliased Provider
+# Creates a separate client named "aws.us_east_1"
+provider "aws" {
+  alias  = "us_east_1"
+  region = "us-east-1"
+}
+
+resource "aws_s3_bucket" "example" {
+  bucket   = "my-global-bucket"
+  # Explicitly use the aliased provider
+  provider = aws.us_east_1
+}
+```
+
+**Why don't they overwrite each other?**
+Terraform treats them as separate objects in memory:
+- `provider "aws"` becomes the default client `aws`.
+- `provider "aws" { alias = "..." }` becomes a separate client `aws.alias`.
+
+**The `terraform` Block**
+This block is for global settings. Best practice is to keep it in a single file (often `versions.tf`) to have a central place for configuration.
 
 ```hcl
 terraform {
+  required_version = ">= 1.0"
   required_providers {
     aws = {
       source  = "hashicorp/aws"
       version = "~> 5.0"
     }
   }
-}
-
-provider "aws" {
-  region = var.aws_region
+  backend "s3" { ... }
 }
 ```
 
@@ -699,95 +788,3 @@ provider "registry.terraform.io/hashicorp/aws" {
 ```
 
 **Never delete this file.** Commit it to version control.
-
-## Terraform vs Other IaC Tools
-
-### Terraform vs CloudFormation
-
-**Terraform Pros:**
-- Multi-cloud support
-- More intuitive HCL syntax
-- Better state management
-- Larger ecosystem of providers
-- Plan functionality shows exact changes
-
-**Terraform Cons:**
-- State file management complexity
-- Learning curve for HCL
-- Requires separate tooling for some AWS-specific features
-
-**CloudFormation Pros:**
-- Native AWS integration
-- No state file to manage
-- Tight integration with AWS services
-- Automatic rollback on failure
-
-**CloudFormation Cons:**
-- AWS-only
-- JSON/YAML can be verbose
-- Slower to support new AWS features
-- Limited preview capabilities
-
-### Terraform vs Pulumi
-
-**Terraform Pros:**
-- Declarative approach
-- Mature ecosystem
-- Large community
-- Domain-specific language (HCL)
-
-**Terraform Cons:**
-- Limited programming constructs
-- State management complexity
-
-**Pulumi Pros:**
-- Use familiar programming languages (Python, TypeScript, Go, etc.)
-- Better for complex logic and calculations
-- Native testing frameworks
-- Object-oriented approach
-
-**Pulumi Cons:**
-- Smaller ecosystem
-- Steeper learning curve for traditional ops teams
-- Can lead to over-engineered infrastructure code
-
-### Terraform vs Ansible
-
-These tools serve different purposes but sometimes overlap:
-
-**Terraform Pros:**
-- Purpose-built for infrastructure provisioning
-- Better state management for infrastructure
-- Declarative approach ideal for infrastructure
-
-**Terraform Cons:**
-- Not designed for configuration management
-- Limited post-deployment capabilities
-
-**Ansible Pros:**
-- Excellent for configuration management
-- Agentless architecture
-- Great for application deployment
-- Imperative approach good for complex workflows
-
-**Ansible Cons:**
-- Weaker infrastructure provisioning
-- No native state tracking
-- Can be slower for large-scale operations
-
-## Best Practices
-
-1. **Always use version control** for your Terraform configurations
-2. **Use remote state** for team environments
-3. **Pin provider versions** to avoid unexpected changes
-4. **Use modules** for reusable components
-5. **Run terraform plan** before every apply
-6. **Use consistent naming conventions** and tagging
-7. **Separate environments** (dev, staging, prod) into different state files
-8. **Never commit secrets** to version control - use variables or secret management tools
-
-## Conclusion
-
-Terraform strikes an excellent balance between simplicity and power. Its declarative approach, multi-cloud support, and mature ecosystem make it the de facto standard for infrastructure as code. While it has a learning curve, the investment pays off quickly in terms of reproducibility, version control, and team collaboration.
-
-I personally prefer Terraform over proprietary IaC like CloudFormation or ARM templates since it's multiplatform and very widely known. Also, Terraform wins in maturity (also against Pulumi & co IMO) and the provider ecosystem is amazing.
