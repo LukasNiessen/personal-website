@@ -1,7 +1,7 @@
 ---
 title: 'Terraform: Best Practices and Cheat Sheet for the Basics'
 summary: 'A walkthrough of best practices for Terraform, as well as a collection in cheat sheet style for basic syntax and other basics'
-date: 'December 24 2025'
+date: 'November 24 2025'
 draft: false
 repoUrl: ''
 xLink: ''
