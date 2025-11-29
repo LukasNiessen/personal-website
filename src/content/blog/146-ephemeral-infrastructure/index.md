@@ -83,7 +83,7 @@ Compare this to traditional servers where you need to carefully provision, confi
 
 ## Kubernetes and Ephemeral Pods
 
-The most common place you'll encounter ephemeral infrastructure is Kubernetes. And the most common question I hear is: "Wait, if pods are ephemeral, how do I keep my data?"
+The most common place you'll encounter ephemeral infrastructure is Kubernetes. And a common question is: "Wait, if pods are ephemeral, how do I keep my data?"
 
 The answer is: **Pods are ephemeral. Data is not.**
 
@@ -124,19 +124,15 @@ This happens constantly in production Kubernetes clusters. And that's fine - in 
 
 ## The Mental Shift
 
-The hardest part about ephemeral infrastructure is the mindset change. We're used to treating servers as precious things that need care and feeding. Ephemeral infrastructure flips this completely.
+It is a mindset change. In the older days (and sometimes still today), we have treated servers as precious things that need care and feeding. Ephemeral infrastructure flips this.
 
 **Old mindset**: This server is important. If it breaks, we need to fix it carefully.
 
 **New mindset**: This pod is disposable. If it breaks, kill it and get a new one.
 
-It feels wrong at first. But once you embrace it, everything becomes simpler.
-
 ## What About Databases?
 
-This is always the tricky part. Databases are inherently stateful - they *are* the state. You can't just kill a database and start fresh without losing all your data.
-
-So databases are usually **not** ephemeral. They're the exception.
+Databases are inherently stateful, they *are* the state. You can't just kill a database and start fresh without losing all your data. So with databases it's a different story, are (usually) **not** ephemeral.
 
 That said, you can still apply ephemeral principles around databases:
 
@@ -155,7 +151,7 @@ In database clusters, replica nodes can be ephemeral. The primary handles writes
 
 ## Ephemeral vs Immutable
 
-I addressed this briefly in my article on immutable infrastructure, but it's worth clarifying again because these terms get mixed up constantly.
+I addressed this briefly in [my article on immutable infrastructure](https://lukasniessen.com/blog/129-immutable-infrastructure/), but it's worth clarifying again because these terms get mixed up constantly.
 
 **Ephemeral = Short-lived by design**
 - A CI runner that exists for 2 minutes
@@ -171,19 +167,13 @@ A resource can be both ephemeral and immutable (like a Kubernetes pod from an im
 
 ### Ephemeral Resources Are Usually Immutable
 
-Here's an important pattern: **ephemeral resources are typically immutable by design**.
+However: **ephemeral resources are typically immutable by design**.
 
-Think about it - if your pod only lives for a few hours and then gets replaced, why would you modify it? You wouldn't SSH in to install a package or change a config file. You'd just build a new image and redeploy.
+If your pod only lives for a few hours and then gets replaced, why would you modify it? You wouldn't SSH in to install a package or change a config file. You'd just build a new image and redeploy. So _ephemeral_ and _immutable_ are different things, but in practice they usually go hand in hand.
 
 This is why ephemeral infrastructure naturally pushes you toward immutability:
 
-- **Kubernetes pods** are immutable because they're based on container images that don't change
-- **Lambda functions** are immutable - you can't modify a running function, only deploy a new version
-- **CI/CD runners** are immutable - each job gets a fresh environment from a clean image
-
-The combination of ephemeral + immutable is incredibly powerful. The ephemeral nature means resources don't live long enough to accumulate changes. The immutable nature means they can't be modified even if they wanted to be.
-
-**Exception**: Not all ephemeral resources are immutable. For example, a temporary VM spun up for a specific task could theoretically be modified while it's running. But in practice, modern ephemeral infrastructure is almost always immutable too.
+**Exception**: Of course there are exceptions. For example, a temporary VM spun up for a specific task could theoretically be modified while it's running. But in practice, modern ephemeral infrastructure is almost always immutable too.
 
 ## Practical Example: Web Application
 
@@ -229,25 +219,9 @@ When a pod crashes and gets replaced, you lose the ability to SSH in and poke ar
 
 As we discussed with databases, not everything can be ephemeral. Stateful services require more careful design.
 
-### Cultural Resistance
-
-Teams used to SSHing into servers and manually fixing things will resist the ephemeral approach. "How do I troubleshoot if I can't log in?" It takes time to shift the culture.
-
-## My Take
-
-Ephemeral infrastructure is one of those ideas that sounds scary at first but makes everything better once you embrace it.
-
-The key benefits:
-- **Forces good practices**: Stateless design, proper logging, clean separation of concerns
-- **Self-healing by default**: Problems fix themselves through replacement
-- **No configuration drift**: Every instance starts clean
-- **Trivial scaling**: Just adjust the number of replicas
-
-The key challenge is the mental shift. You need to stop thinking about servers as pets and start thinking about them as cattle. Stop fixing things and start replacing things.
-
 ## In Practice
 
-Most modern systems are already partially ephemeral without people realizing it:
+Nowadays most modern systems are already partially ephemeral, it's almost a default in cloud native environments at least:
 
 - Your Kubernetes cluster? Ephemeral pods.
 - Your CI/CD pipeline? Ephemeral runners.
@@ -257,5 +231,3 @@ Most modern systems are already partially ephemeral without people realizing it:
 The question isn't "should I use ephemeral infrastructure?" but rather "how much of my system should be ephemeral?"
 
 **My answer**: Make everything ephemeral except the parts that absolutely need to be stateful (databases, message queues, etc.). And even then, make the compute ephemeral while keeping only the storage persistent.
-
-Don't fight it. Embrace the ephemerality. Your future self will thank you.
