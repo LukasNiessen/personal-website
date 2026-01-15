@@ -261,11 +261,7 @@ Not every architecture decision needs this full process. Here's a rough guide:
 
 For the big decisions, you might need to present a summary to leadership. That's different from the technical decision meeting - it's about getting approval and resources, not debating technical trade-offs.
 
-## A Modern 2025/2026 Perspective
-
-A few things have changed how architecture decisions work:
-
-### AI-Assisted Research
+### AI-Assistance
 
 LLMs are actually useful for RFC preparation. You can use them to:
 - Research trade-offs between technologies
