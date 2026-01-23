@@ -98,6 +98,10 @@ But that's not so problematic! If we design the operation of `Service B` to be i
 
 The only downside is a little bit of extra complexity (you need to come up with a way to make the operation idempotent) and a little bit of compute resources (potentially doing the same thing more than once unnecessarily). But usually, and definitely in our case, it's better than losing messages!
 
+#### At-Least-Once + Idempotency = Exactly-Once
+
+Here's the key insight: message queues like AWS SQS offer **at-least-once delivery** semantics. That means your message might arrive once, twice, or more. But if you combine that with an **idempotent operation**, you effectively get **exactly-once semantics**. The message might be processed multiple times, but because the operation is idempotent, the business outcome is the same as if it were processed exactly once. This is a practical and elegant solution to a hard distributed systems problem.
+
 #### Pitfalls
 
 There are several things to be careful with here. One thing that can happen is an infinite loop (a catastrophic failover). If you have an _"ill"_ message, for example of an invalid format, that makes your consuming service crash (`Service B`), it will stay on the queue. Meaning, `Service B` restarts just to consume the same ill message and crash again. And over and over. Even if your system doesn't have such issues, they will sooner or later arise, so you really should make use of a so called _dead-letter queue_ (or _message hospital_).
@@ -182,3 +186,18 @@ We would end up something like this:
 ![diag2](diag2.jpg "Diagram 2")
 
 Another note: We should to make the system actually fully resilient, put a queue in between OrderProcessService and NotificationService as well and do a similar thing.
+
+## Idempotency Has Scope
+
+Here's another common misunderstanding: people sometimes think idempotency means that **nothing changes at all** when you call an operation multiple times. That subsequent calls have literally zero impact on the system.
+
+That's not quite right. Idempotency applies to the **business operation**, not to the entire system state.
+
+For example, suppose we have an idempotent payment processing operation. If you call it three times with the same payment details, you should only create one transaction in the database. That's the business operation - it's idempotent. But that doesn't mean nothing happened on the second and third calls:
+
+- We still **logged** the call in our logs
+- We still **recorded the response time** and collected monitoring metrics
+- We still **validated** the request
+- We still **checked** if we'd processed it before
+
+All of that can (and should) happen. The key point is this: the underlying business operation that we are considering idempotent, not the entire state of the system. You should absolutely log the fact that a call was received. You should absolutely track metrics about it. Those are side effects that don't contradict idempotency.
