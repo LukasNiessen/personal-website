@@ -75,22 +75,38 @@ Here's an example template:
 One paragraph. What is this about and why are we discussing it?
 
 ## Context
-What's the current situation? What problem are we solving? 
+What's the current situation? What problem are we solving?
 Why now? Include relevant constraints, requirements, and background.
+
+## Priorities and Requirements (Ranked)
+
+This is the most important part. List what actually matters for this decision, in order of importance. Be specific and quantifiable where possible.
+
+1. **[Priority name]** - [Why this matters. What's the business or technical reason?]
+2. **[Priority name]** - [Why this matters?]
+3. **[Priority name]** - [Why this matters?]
+
+Example:
+1. **Cost** - We're operating at thin margins; any infrastructure cost increase directly impacts profitability
+2. **Development velocity** - Our roadmap depends on shipping three features this quarter
+3. **Operational complexity** - We have a small ops team; anything complex will create bottlenecks
+
+Note: People often disagree on decisions because they're weighing priorities differently. Making priorities explicit is where the real decision-making happens.
 
 ## Proposed Solutions
 
 ### Option A: [Name]
+
 Description of the approach.
 
-**Pros:**
-- ...
-
-**Cons:**
-- ...
+**How this performs against priorities:**
+- **Cost:** [How does this affect cost? High/Medium/Low impact and direction]
+- **Development velocity:** [How does this affect velocity?]
+- **Operational complexity:** [How does this affect ops complexity?]
 
 **Estimated effort:** X weeks/months
 **Risk level:** Low/Medium/High
+**Other trade-offs:** [Anything else worth noting]
 
 ### Option B: [Name]
 ...
@@ -99,7 +115,7 @@ Description of the approach.
 Often you should include this option. Sometimes the answer is "not now".
 
 ## Recommendation
-Which option do you recommend and why? This is your opinion as the author.
+Which option do you recommend and why? Focus on how it aligns with the priorities you outlined above.
 
 ## Stakeholders
 Who needs to be involved in this decision? Tag them.
@@ -114,6 +130,37 @@ What do you still need input on?
 ## Timeline
 When does this decision need to be made? What's driving that deadline?
 ```
+
+### Why Priorities Trump Pros/Cons Lists
+
+You might notice this template doesn't use "pros" and "cons" lists. That's intentional.
+
+A pros/cons list tells you *what* varies between options, but not *whether it matters*:
+
+```
+Option A
+Pros: Fast, Scalable
+Cons: No access management
+```
+
+This is almost useless unless everyone agrees on priority. Does speed matter more than access management? You don't know. Different people will read this and come to different conclusions. The loud voices in the meeting will win, not the best decision.
+
+The better approach: **Make your priorities explicit first, then evaluate options against them.** Now the same information tells a clear story:
+
+```
+Priorities:
+1. Must support access management (business requirement)
+2. Performance under 500ms (SLA requirement)
+
+Option A: Fast, Scalable, but no access management
+→ Fails priority #1. Ruled out.
+
+Option B: Slower but supports access management
+→ Meets priority #1, still hits the 500ms target
+→ Recommended
+```
+
+When priorities are ranked and clear, the decision often becomes obvious. And when people disagree, you're debating what *actually matters*, not arguing over vague trade-offs. This is where real consensus-building happens.
 
 ### Tagging the Right People
 
@@ -232,6 +279,69 @@ Brief summary of options that were rejected and why.
 ```
 
 IMO, you should keep ADRs short. They're reference documents, not essays. Link back to the RFC if people want the full context. However, that's up to you and your organization, every team writes ADRs a little different.
+
+## Step 5: Rollout and Checkpoints
+
+Making the decision is only half the battle. A good RFC should include a concrete rollout plan - not just "we'll implement this" but a clear path from current state to the desired outcome.
+
+### Why Rollout Plans Matter
+
+Many architecture decisions fail not because the decision was wrong, but because the implementation path was unclear or too ambitious. People push back on "massive paradigm shifts" not because they disagree with the direction, but because they can't see how to get there incrementally.
+
+A rollout plan lets you:
+- **Break large changes into manageable steps** - "Week 1-2 we set up the new infrastructure, week 3-4 we migrate 10% of traffic..."
+- **Identify blockers early** - "Oh, we can't do phase 2 without fixing that legacy API first"
+- **Reduce risk** - By rolling out in stages, you catch problems before they affect everything
+- **Maintain momentum** - Teams can start making progress even on large decisions
+
+### What a Good Rollout Plan Includes
+
+**Phases:** Break the work into clear, time-bound phases. Each phase should be completable and somewhat independent.
+
+```
+Phase 1 (Weeks 1-2): Setup and experimentation
+- Set up new database infrastructure
+- Run performance benchmarks
+- Checkpoint: Confirm performance meets requirements before proceeding
+
+Phase 2 (Weeks 3-5): Pilot with internal services
+- Migrate auth service to new system
+- Run in production with monitoring
+- Checkpoint: No incidents, performance stable before expanding
+
+Phase 3 (Weeks 6-8): Gradual customer rollout
+- Route 5% of traffic to new system
+- Monitor error rates and latency
+- Checkpoint: All metrics nominal before increasing traffic
+
+Phase 4 (Weeks 9-10): Full migration
+- Route 100% of traffic to new system
+- Monitor for one week
+- Deprecate old system
+
+Phase 5 (Week 11): Cleanup
+- Remove old system code
+- Document learnings
+```
+
+**Checkpoints:** Explicit decision points where you evaluate how things are going. At each checkpoint, you should have clear success criteria:
+
+- "Error rate stays below 0.1%"
+- "P99 latency under 200ms"
+- "No critical security issues found"
+- "Team velocity doesn't drop below 60% of baseline"
+
+If a checkpoint fails, you decide: Do we fix it and continue? Do we roll back? Do we adjust the plan?
+
+**Fallback plan:** If something goes wrong during rollout, what's the exit strategy? Can you quickly roll back? How long would a rollback take? This builds confidence in the plan.
+
+**Resource needs:** Be specific about what you need for each phase - people, infrastructure, time from other teams.
+
+### Who Writes the Rollout Plan?
+
+The RFC author should draft it, but the people who'll actually implement it (the team leads, architects, tech leads) should refine it. They'll spot what's realistic and what's not.
+
+Include the rollout plan in the RFC. It's part of the decision - not a separate implementation detail. This is often where the most important feedback comes from.
 
 ## When Stakeholders Need to Be Involved
 
