@@ -282,7 +282,7 @@ IMO, you should keep ADRs short. They're reference documents, not essays. Link b
 
 ## Step 5: Rollout and Checkpoints
 
-Making the decision is only half the battle. A good RFC should include a concrete rollout plan - not just "we'll implement this" but a clear path from current state to the desired outcome.
+Making the decision is only half the battle. Ideally an RFC should include a concrete rollout plan - not just "we'll implement this" but a clear path from current state to the desired outcome.
 
 ### Why Rollout Plans Matter
 
