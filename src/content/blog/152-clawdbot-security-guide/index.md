@@ -2,7 +2,6 @@
 title: 'ClawdBot: Setup Guide + How to NOT Get Hacked'
 summary: 'What ClawdBot is, how to set it up, and the security configuration most guides skip that will prevent your server from becoming an open door'
 date: 'Jan 26 2026'
-draft: false
 tags:
   - Security
   - AI
@@ -14,66 +13,119 @@ tags:
 
 ClawdBot is an open-source AI assistant that runs on your own server and connects to messaging apps like Telegram, WhatsApp, or Discord. You text it, it texts back. It can read your emails, manage files, run shell commands, and act on your behalf.
 
-While this is great, it's obviously dangerous. You're giving an AI access to a lot, if not all, sensitive information, and you even allow it to act on your behalf. Most setup guides focus on getting it running. This one shows you how to get it runnings but focuses on not getting hacked.
+This is obviously dangerous. You're giving an AI shell access to a server, API tokens to your email and calendar, and an interface anyone can potentially message. A scan of ClawdBot instances running on VPS providers shows many with the gateway port open with zero authentication. API keys, email access, file permissions - exposed directly to the internet. Most setup guides focus on getting it running. This one shows you also how to not get hacked.
 
-## What ClawdBot Does
+## The Setup (Secure Version)
 
-A few things make ClawdBot different from ChatGPT or Claude's web interface:
+From fresh Ubuntu VPS to hardened private AI server. Do it in this order.
 
-**Persistent memory.** It remembers conversations from weeks ago. Preferences. Context you mentioned once. It builds understanding over time rather than starting fresh each session.
+### 1) Lock Down SSH
 
-**Proactive messaging.** Normal AI waits for you to open it. ClawdBot can message you first: "You have 3 urgent emails" or "That meeting starts in 20 minutes."
-
-**Takes actions.** Not just answers questions. It sends emails, moves files, controls your browser, fills out forms. You give it access to tools and it uses them.
-
-**Runs 24/7 on your infrastructure.** Your data stays on your server. No third-party storing your conversations.
-
-Cost is roughly $25-50/month: a $5 VPS plus a Claude API subscription.
-
-## Why This Is a Security Problem
-
-You're giving an AI agent:
-- Shell access to a server
-- API tokens to your email, calendar, files
-- An interface anyone can potentially message
-
-A scan of ClawdBot instances running on VPS providers shows many of them have the gateway port open with zero authentication. These servers have API keys, email access, file permissions - exposed directly to the internet.
-
-This is a credentials breach waiting to happen.
-
-### Prompt Injection
-
-And that's just the infrastructure side. There's also the AI vulnerability: prompt injection.
-
-Someone in the ClawdBot community tested this. They sent an email from a random address to an account ClawdBot had access to. The email contained hidden instructions. ClawdBot followed them and deleted all emails. Including the trash folder.
-
-This wasn't theoretical. It happened.
-
-The UK's National Cyber Security Centre has stated that prompt injection is "impossible to eliminate entirely" from LLMs. OWASP ranks it as the #1 vulnerability in AI applications.
-
-Claude Opus 4.5 is specifically recommended because Anthropic trained it to resist prompt injection (internal testing shows ~99% resistance). That helps, but it's one layer. You need the others too.
-
-## Security Configuration
-
-Before connecting ClawdBot to anything important, configure these settings:
-
-### 1. Enable Sandbox Mode
-
-By default, agents can run commands directly on your OS.
-
-Check the security docs and enable isolation. This runs risky operations in a container instead of your actual system. If something goes wrong, the blast radius is contained.
-
-### 2. Run the Security Audit
+→ Keys only, no passwords, no root login.
 
 ```bash
-clawdbot security audit
+sudo nano /etc/ssh/sshd_config
+# Set explicitly:
+PasswordAuthentication no
+PermitRootLogin no
 ```
 
-If this fails, do not deploy. Fix whatever it flags first.
+```bash
+sudo sshd -t && sudo systemctl reload ssh
+```
 
-### 3. Whitelist Commands
+### 2) Default-Deny Firewall
 
-Don't let the agent run arbitrary commands. Explicitly list only what it needs:
+→ Block everything incoming by default.
+
+```bash
+sudo apt install ufw -y
+sudo ufw default deny incoming
+sudo ufw default allow outgoing
+sudo ufw allow OpenSSH
+sudo ufw enable
+```
+
+### 3) Brute-Force Protection
+
+→ Auto-ban IPs after failed login attempts.
+
+```bash
+sudo apt install fail2ban -y
+sudo systemctl enable --now fail2ban
+```
+
+### 4) Install Tailscale
+
+→ Your private VPN mesh network. This is what makes everything reachable only from your devices.
+
+```bash
+curl -fsSL https://tailscale.com/install.sh | sh
+sudo tailscale up
+```
+
+### 5) SSH Only via Tailscale
+
+→ No more public SSH exposure.
+
+```bash
+# Verify Tailscale is working first!
+tailscale status
+
+# Allow SSH only from Tailscale network
+sudo ufw allow from 100.64.0.0/10 to any port 22 proto tcp
+
+# Remove the public SSH rule
+sudo ufw delete allow OpenSSH
+```
+
+### 6) Web Ports Private Too
+
+→ ClawdBot gateway only accessible from your devices.
+
+```bash
+sudo ufw allow from 100.64.0.0/10 to any port 443 proto tcp
+sudo ufw allow from 100.64.0.0/10 to any port 80 proto tcp
+```
+
+### 7) Install Node.js 22
+
+→ ClawdBot requires version 22+. Ubuntu's default is older.
+
+```bash
+curl -fsSL https://deb.nodesource.com/setup_22.x | bash -
+apt install -y nodejs
+```
+
+### 8) Install ClawdBot
+
+```bash
+npm install -g clawdbot && clawdbot doctor
+```
+
+### 9) Lock ClawdBot to Owner Only
+
+→ Only you can message the bot. Add this to your ClawdBot config:
+
+```json
+{
+  "dmPolicy": "allowlist",
+  "allowFrom": ["YOUR_TELEGRAM_ID"],
+  "groupPolicy": "allowlist"
+}
+```
+
+Never add ClawdBot to group chats. Every person in that chat can issue commands to your server through the bot.
+
+### 10) Enable Sandbox Mode
+
+→ Runs risky operations in a container instead of your actual system.
+
+Check the security docs and enable isolation. If something goes wrong, the blast radius is contained.
+
+### 11) Whitelist Commands
+
+→ Don't let the agent run arbitrary commands. Explicitly list only what it needs:
 
 ```json
 {
@@ -84,120 +136,57 @@ Don't let the agent run arbitrary commands. Explicitly list only what it needs:
 
 If the agent gets hijacked through prompt injection, it can only execute what you've whitelisted.
 
-### 4. Scope API Tokens
+### 12) Scope API Tokens
 
-When connecting GitHub, Gmail, Google Drive: do not use full-access tokens.
+→ When connecting GitHub, Gmail, Google Drive: do not use full-access tokens.
 
 Give minimum permissions. Read-only where possible. If something goes wrong, damage is limited to what that specific token could do.
 
-### 5. Private Conversations Only
+### 13) Fix Credential Permissions
 
-Never add ClawdBot to group chats. Every person in that chat can issue commands to your server through the bot.
-
-### 6. Dedicated Phone Number for WhatsApp
-
-WhatsApp doesn't have a "bot" concept like Telegram. If you use WhatsApp, use a separate number. Your personal number connected to ClawdBot is unnecessary risk.
-
-## Securing the Gateway
-
-This is very important. The gateway is how ClawdBot exposes its interface. By default, if you open the port, it's accessible to anyone.
-
-**Do not expose the gateway port directly to the internet without authentication.**
-
-Two approaches that work:
-
-### Option A: Cloudflare Tunnel + Zero Trust
-
-Your server never exposes any ports publicly.
-
-Cloudflare Tunnel creates an outbound connection from your server to Cloudflare's network. Traffic routes through Cloudflare, which handles authentication before anything reaches your server.
-
-Set up Zero Trust policies to require login (Google, GitHub, email OTP). ClawdBot is only reachable after authenticating through Cloudflare.
-
-No open ports. No direct exposure.
-
-### Option B: Nginx Reverse Proxy + HTTPS + Auth
-
-Put Nginx in front of the gateway with HTTPS and basic auth:
-
-```nginx
-server {
-    listen 443 ssl;
-    server_name your-domain.com;
-
-    ssl_certificate /etc/letsencrypt/live/your-domain.com/fullchain.pem;
-    ssl_certificate_key /etc/letsencrypt/live/your-domain.com/privkey.pem;
-
-    location / {
-        auth_basic "Restricted";
-        auth_basic_user_file /etc/nginx/.htpasswd;
-
-        proxy_pass http://127.0.0.1:18789;
-        proxy_http_version 1.1;
-        proxy_set_header Upgrade $http_upgrade;
-        proxy_set_header Connection "upgrade";
-    }
-}
-```
-
-The gateway should never be reachable without authentication.
-
-## Setup Overview
-
-Once security is configured, the setup is straightforward.
-
-### 1. Get a VPS
-
-Hetzner, DigitalOcean, or similar. Cheapest tier (~$5/month) with 2GB RAM is enough.
-
-### 2. Install Node.js 22
-
-ClawdBot requires version 22+. Ubuntu's default is older.
+→ Don't leave secrets world-readable.
 
 ```bash
-curl -fsSL https://deb.nodesource.com/setup_22.x | bash -
-apt install -y nodejs
+chmod 700 ~/.clawdbot/credentials
+chmod 600 .env
 ```
 
-### 3. Install ClawdBot
+### 14) Run Security Audit
+
+→ Catches issues you missed. Don't skip this.
 
 ```bash
-curl -fsSL https://clawd.bot/install.sh | bash
+clawdbot security audit --deep
 ```
 
-Or via npm:
+If this fails, do not deploy. Fix whatever it flags first.
+
+## Verify Everything
 
 ```bash
-npm install -g clawdbot@latest
+sudo ufw status
+ss -tulnp
+tailscale status
+clawdbot doctor
 ```
 
-### 4. Run Setup Wizard
+Result should be:
+- No public SSH
+- No public web ports
+- Server only reachable via Tailscale
+- Bot responds only to you
 
-```bash
-clawdbot onboard --install-daemon
-```
-
-The wizard asks for:
-- Auth method (API key for Anthropic)
-- Model selection (choose Opus 4.5 for prompt injection resistance)
-- Messaging channel (Telegram is easiest)
-- Daemon installation (yes - keeps it running)
-
-### 5. Create Telegram Bot
+## Create Telegram Bot
 
 1. Open Telegram, search for @BotFather
 2. Send `/newbot`, follow prompts
 3. Copy the token it gives you
 4. Get your user ID from @userinfobot
-5. Enter both in the wizard
+5. Enter both in `clawdbot onboard --install-daemon`
 
-Restricting to your user ID means only you can message the bot.
-
-### 6. Approve Pairing
+### Approve Pairing
 
 After setup, message your bot on Telegram. It won't respond yet.
-
-In terminal:
 
 ```bash
 clawdbot pairing list telegram
@@ -206,14 +195,13 @@ clawdbot pairing approve telegram YOUR_CODE
 
 Now it should respond.
 
-### 7. Verify
+## A Note on Prompt Injection
 
-```bash
-clawdbot status
-clawdbot health
-```
+Someone in the ClawdBot community tested this. They sent an email from a random address to an account ClawdBot had access to. The email contained hidden instructions. ClawdBot followed them and deleted all emails. Including the trash folder.
 
-Green checkmarks means it's working.
+This wasn't theoretical. It happened.
+
+Claude Opus 4.5 is specifically recommended because Anthropic trained it to resist prompt injection (internal testing shows ~99% resistance). That helps, but it's one layer. The command whitelisting, sandboxing, and scoped API tokens are the others.
 
 ## Common Errors
 
@@ -233,4 +221,4 @@ Green checkmarks means it's working.
 - Troubleshooting: https://docs.clawd.bot/help/troubleshooting
 - GitHub: https://github.com/clawdbot/clawdbot
 
-The security docs are worth reading. Actually reading them, not skimming.
+The security docs are worth reading.
