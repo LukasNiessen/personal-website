@@ -1,0 +1,121 @@
+---
+const isProduction = import.meta.env.IS_PRODUCTION;
+const productionUrl = "https://lukasniessen.com";
+---
+
+{
+  !isProduction && (
+    <div
+      id="stage-banner"
+      class="fixed top-0 left-0 w-full z-[60] stage-banner"
+    >
+      <div class="stage-banner-inner flex items-center justify-center gap-3 px-4 py-2 text-sm">
+        <span class="stage-banner-text tracking-widest uppercase font-bold">
+          Testing Environment
+        </span>
+        <a
+          href={productionUrl}
+          class="stage-banner-btn flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider"
+        >
+          Go to Production
+          <svg
+            class="w-3 h-3"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.5"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"
+            />
+          </svg>
+        </a>
+      </div>
+    </div>
+  )
+}
+
+<style>
+  @import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap");
+
+  .stage-banner {
+    --banner-h: 42px;
+    height: var(--banner-h);
+  }
+
+  .stage-banner-inner {
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      #1a0000,
+      #4a0e0e,
+      #8b1a1a,
+      #c0392b,
+      #8b1a1a,
+      #4a0e0e,
+      #1a0000
+    );
+    background-size: 200% 100%;
+    animation: bannerShift 8s ease infinite;
+    border-bottom: 1px solid rgba(255, 60, 60, 0.3);
+    box-shadow:
+      0 0 15px rgba(255, 40, 40, 0.3),
+      0 0 30px rgba(255, 40, 40, 0.1),
+      inset 0 0 20px rgba(255, 60, 60, 0.05);
+  }
+
+  .stage-banner-text {
+    color: #ff4444;
+    text-shadow:
+      0 0 7px rgba(255, 68, 68, 0.8),
+      0 0 20px rgba(255, 68, 68, 0.5),
+      0 0 40px rgba(255, 68, 68, 0.3);
+    font-family: "Orbitron", monospace, sans-serif;
+    font-size: 0.8rem;
+    letter-spacing: 0.25em;
+  }
+
+  .stage-banner-btn {
+    color: #fff;
+    background: rgba(255, 60, 60, 0.2);
+    border: 1px solid rgba(255, 80, 80, 0.5);
+    text-shadow: 0 0 6px rgba(255, 68, 68, 0.6);
+    font-family: "Orbitron", monospace, sans-serif;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+  }
+
+  .stage-banner-btn:hover {
+    background: rgba(255, 60, 60, 0.4);
+    border-color: rgba(255, 100, 100, 0.8);
+    box-shadow:
+      0 0 10px rgba(255, 60, 60, 0.4),
+      0 0 20px rgba(255, 60, 60, 0.2);
+    color: #fff;
+  }
+
+  @keyframes bannerShift {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .stage-banner-text {
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+    }
+    .stage-banner-btn {
+      font-size: 0.6rem;
+      padding: 0.2rem 0.5rem;
+    }
+  }
+</style>

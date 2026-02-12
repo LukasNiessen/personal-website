@@ -18,6 +18,15 @@ html {
   scroll-padding-top: 5rem; /* Add padding for fixed header */
 }
 
+/* Stage banner offsets */
+html[data-env="stage"] {
+  scroll-padding-top: calc(5rem + 42px);
+}
+
+html[data-env="stage"] header {
+  top: 42px;
+}
+
 html.dark {
   color-scheme: dark;
   background-color: theme("colors.warmBg.dark");
