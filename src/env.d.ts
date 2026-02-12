@@ -2,7 +2,7 @@
 /// <reference types="astro/client" />
 
 interface ImportMetaEnv {
-  readonly IS_PRODUCTION: boolean;
+  readonly IS_PRODUCTION: string;
 }
 
 interface ImportMeta {

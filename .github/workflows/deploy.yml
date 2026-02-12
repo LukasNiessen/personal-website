@@ -28,7 +28,7 @@ jobs:
         run: npm ci
 
       - name: Build Astro site
-        run: npm run build --mode ${{ env.APP_ENV }}
+        run: ${{ env.APP_ENV == 'stage' && 'npm run build:stage' || 'npm run build' }}
 
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v2
