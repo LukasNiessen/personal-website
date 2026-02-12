@@ -13,7 +13,7 @@ jobs:
     env:
       APP_ENV: ${{ github.ref_name == 'main' && 'production' || 'stage' }}
 
-    environment: ${{ env.APP_ENV }}
+    environment: ${{ github.ref_name == 'main' && 'production' || 'stage' }}
 
     steps:
       - name: Checkout code
