@@ -1,12 +1,13 @@
 ---
-title: "Teams in IT: How to Structure, Scale and Not Lose Your Mind"
-summary: "How team structures shape the software you build, why Conway's Law still matters, and what strong ownership, platform teams and autonomy actually look like in practice"
-date: "Feb 21 2026"
+title: "Building My Own AI Research Assistant"
+summary: "Toy project announcement"
+date: "Feb 22 2026"
 tags:
-  - IT
-  - Teams
-  - Architecture
-  - Organization
+  - AI
+  - LLM
+  - RAG
+  - Research
+  - Papers
 ---
 
 # Building My Own AI Research Assistant
