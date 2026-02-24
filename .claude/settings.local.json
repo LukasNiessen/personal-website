@@ -1,7 +1,14 @@
 {
   "permissions": {
     "allow": [
-      "Bash(ls:*)"
+      "Bash(ls:*)",
+      "WebSearch",
+      "WebFetch(domain:packaging.python.org)",
+      "WebFetch(domain:docs.pytest.org)",
+      "WebFetch(domain:realpython.com)",
+      "WebFetch(domain:towardsdatascience.com)",
+      "WebFetch(domain:arjancodes.com)",
+      "WebFetch(domain:github.com)"
     ]
   }
 }
