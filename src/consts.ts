@@ -4,7 +4,7 @@ import type { Dictionary, Links, Page, Site, Socials } from "@types";
 export const DICT_EN: Dictionary = {
   // Global
   "site.title": "Lukas Niessen",
-  "site.description": "Software Architect and Full Stack Developer",
+  "site.description": "AI and Software Leader, Ex-Founder",
   "site.author": "Lukas Niessen",
 
   // Pages
@@ -30,11 +30,11 @@ export const DICT_EN: Dictionary = {
   "work.employmentType.freelance": "Freelance",
 
   // Home page
-  "home.subtitle": "Software Architect & Full Stack Developer",
+  "home.subtitle": "AI and Software Leader, Ex-Founder",
   "home.about":
-    "I am a Software & AI Architect and Ex-Founder with over 8 years in the IT. I love writing and sharing knowledge 😃",
+    "I advise leadership teams of large enterprises on AI and technology, helping them navigate high-stakes, strategic questions, particularly where AI is redefining industries and operating models. Alongside the advisory work, I lead teams in delivery and architecture, taking systems from initial problem framing through to production operation. I have deep experience designing and delivering enterprise-scale AI, software, data, and distributed systems, and previously built a SaaS startup from 0 users to over 1 million users and just myself to a team of 11 employees. I also build open source libraries with a team of fellow engineers, tackling QA and security, the two biggest bottlenecks of agentic engineering; ArchUnitTS has become the industry standard for architecture testing in TypeScript. My technical writing has been read more than a million times across Medium and this site.",
   "home.interests":
-    "I love web, cloud, mathematics, piano, caffeine. Let's get in touch!",
+    "I try really hard to avoid caffeine. Outside of work I go to the gym, do combat sports, mathematics, and play the piano. Let's get in touch!",
   "home.education": "BSc in Mathematics at University of Bonn",
   "home.connect": "Getting in touch",
   "home.recent.projects": "Recent projects",
@@ -61,7 +61,7 @@ export const DICT_EN: Dictionary = {
 export const DICT_DE: Dictionary = {
   // Global
   "site.title": "Lukas Niessen",
-  "site.description": "Software-Architekt und Full-Stack-Entwickler",
+  "site.description": "KI- und Software-Leader, Ex-Gründer",
   "site.author": "Lukas Niessen",
 
   // Pages
@@ -88,11 +88,11 @@ export const DICT_DE: Dictionary = {
   "work.employmentType.freelance": "Freiberuflich",
 
   // Home page
-  "home.subtitle": "Software-Architekt & Full-Stack-Entwickler",
+  "home.subtitle": "KI- und Software-Leader, Ex-Gründer",
   "home.about":
-    "Ich bin ein Software-Architekt & Full-Stack-Entwickler mit 7 Jahren Erfahrung in Startups und Beratung. Ich leitete ein Frontend-Team und die Software-Architektur bei SocialHubs. Mein Tech-Stack umfasst: Azure, Google Cloud Platform, JavaScript, TypeScript, Angular, React, Java, Microservices und MicroFrontends. Und... ich teile gerne Wissen. 😊",
+    "Ich berate Führungsteams großer Unternehmen zu KI und Technologie und begleite sie bei strategischen Weichenstellungen, insbesondere dort, wo KI ganze Branchen und Betriebsmodelle neu definiert. Neben der Beratung leite ich Teams in Umsetzung und Architektur, von der ersten Problemdefinition bis zum Produktivbetrieb. Ich habe umfassende Erfahrung im Design und in der Umsetzung von KI-, Software-, Daten- und verteilten Systemen im Enterprise-Maßstab und habe zuvor ein SaaS-Startup von 0 auf über 1 Million Nutzer und von mir allein auf ein Team von 11 Mitarbeitenden aufgebaut. Außerdem entwickle ich Open-Source-Bibliotheken mit einem Team von Mitentwicklern, die sich QA und Sicherheit widmen, den beiden größten Engpässen im agentischen Engineering; ArchUnitTS hat sich zum Industriestandard für Architektur-Tests in TypeScript entwickelt. Meine technischen Artikel wurden auf Medium und dieser Seite bereits über eine Million Mal gelesen.",
   "home.interests":
-    "Ich liebe Web, Cloud, Mathematik, Klavier und Kaffee. Lass uns in Kontakt treten!",
+    "Ich versuche wirklich sehr, Koffein zu vermeiden. Außerhalb der Arbeit gehe ich ins Fitnessstudio, mache Kampfsport, Mathematik und spiele Klavier. Lass uns in Kontakt treten!",
   "home.education": "B.Sc. in Mathematik an der Universität Bonn",
   "home.connect": "Kontakt aufnehmen",
   "home.recent.projects": "Aktuelle Projekte",
