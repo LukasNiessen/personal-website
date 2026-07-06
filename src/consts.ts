@@ -32,7 +32,7 @@ export const DICT_EN: Dictionary = {
   // Home page
   "home.subtitle": "AI and Software Leader, Ex-Founder",
   "home.about":
-    "I advise leadership teams of large enterprises on AI and technology, helping them navigate high-stakes, strategic questions, particularly where AI is redefining industries and operating models. Alongside the advisory work, I lead teams in delivery and architecture, taking systems from initial problem framing through to production operation. I have deep experience designing and delivering enterprise-scale AI, software, data, and distributed systems, and previously built a SaaS startup from 0 users to over 1 million users and just myself to a team of 11 employees. I also build open source libraries with a team of fellow engineers, tackling QA and security, the two biggest bottlenecks of agentic engineering; ArchUnitTS has become the industry standard for architecture testing in TypeScript. My technical writing has been read more than a million times across Medium and this site.",
+    "I advise leadership teams at large enterprises on AI and technology, and lead teams delivering enterprise-scale AI and software systems end to end. I previously built a SaaS startup from zero to over a million users, and now build open source libraries, including ArchUnitTS, the industry standard for architecture testing in TypeScript. My writing has been read more than a million times.",
   "home.interests":
     "I try really hard to avoid caffeine. Outside of work I go to the gym, do combat sports, mathematics, and play the piano. Let's get in touch!",
   "home.education": "BSc in Mathematics at University of Bonn",
@@ -90,7 +90,7 @@ export const DICT_DE: Dictionary = {
   // Home page
   "home.subtitle": "KI- und Software-Leader, Ex-Gründer",
   "home.about":
-    "Ich berate Führungsteams großer Unternehmen zu KI und Technologie und begleite sie bei strategischen Weichenstellungen, insbesondere dort, wo KI ganze Branchen und Betriebsmodelle neu definiert. Neben der Beratung leite ich Teams in Umsetzung und Architektur, von der ersten Problemdefinition bis zum Produktivbetrieb. Ich habe umfassende Erfahrung im Design und in der Umsetzung von KI-, Software-, Daten- und verteilten Systemen im Enterprise-Maßstab und habe zuvor ein SaaS-Startup von 0 auf über 1 Million Nutzer und von mir allein auf ein Team von 11 Mitarbeitenden aufgebaut. Außerdem entwickle ich Open-Source-Bibliotheken mit einem Team von Mitentwicklern, die sich QA und Sicherheit widmen, den beiden größten Engpässen im agentischen Engineering; ArchUnitTS hat sich zum Industriestandard für Architektur-Tests in TypeScript entwickelt. Meine technischen Artikel wurden auf Medium und dieser Seite bereits über eine Million Mal gelesen.",
+    "Ich berate Führungsteams großer Unternehmen zu KI und Technologie und leite Teams, die KI- und Software-Systeme im Enterprise-Maßstab End-to-End umsetzen. Zuvor habe ich ein SaaS-Startup von null auf über eine Million Nutzer aufgebaut. Heute entwickle ich Open-Source-Bibliotheken, darunter ArchUnitTS, den Industriestandard für Architektur-Tests in TypeScript. Meine Artikel wurden bereits über eine Million Mal gelesen.",
   "home.interests":
     "Ich versuche wirklich sehr, Koffein zu vermeiden. Außerhalb der Arbeit gehe ich ins Fitnessstudio, mache Kampfsport, Mathematik und spiele Klavier. Lass uns in Kontakt treten!",
   "home.education": "B.Sc. in Mathematik an der Universität Bonn",

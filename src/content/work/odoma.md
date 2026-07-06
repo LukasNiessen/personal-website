@@ -1,6 +1,6 @@
 ---
 company: "Odoma GmbH"
-role: "Full Stack Developer & Customer-Facing Technical Support"
+role: "Full Stack Developer"
 dateStart: "07/01/2017"
 dateEnd: "12/31/2019"
 location: "Cologne/Bonn Region, Germany"
