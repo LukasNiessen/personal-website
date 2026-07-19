@@ -1202,65 +1202,9 @@ That separation makes the system much easier to operate.
 
 ## Observability
 
-Streaming systems need observability beyond normal request logs.
+Track each run from request to completion: queue time, worker and model latency, time to first token, total duration, disconnects, errors, and cost.
 
-For each run, I would want to know:
-
-```text
-run_id
-user_id / tenant_id
-api pod that accepted the run
-worker pod that processed it
-model provider
-time to first token
-time to final token
-total duration
-number of events
-disconnect count
-reconnect count
-cancel requested
-cancel honored after how long
-tool call durations
-queue wait time
-error type
-cost
-```
-
-Time to first token is especially important.
-
-Users can tolerate a long full answer if they see progress quickly. They tolerate a blank spinner much less.
-
-So track:
-
-```text
-request received
-run created
-worker started
-model request sent
-first token received
-first token delivered to browser
-run completed
-```
-
-If first token is slow, you want to know where the time went.
-
-Was it queue wait? Model latency? Retrieval? Tool call? Proxy buffering? Frontend rendering?
-
-Without tracing, streaming failures become very confusing because everyone sees a different slice.
-
-The backend says:
-
-```text
-I wrote the token immediately.
-```
-
-The frontend says:
-
-```text
-I received nothing for 20 seconds.
-```
-
-Both can be true if the proxy buffered the response.
+Time to first token is especially useful because it tells you whether the delay happened in the queue, model, proxy, or frontend. The backend can write a token immediately while the browser receives nothing for 20 seconds because a proxy buffered the response. Trace both sides.
 
 ## Security And Multi-Tenancy
 
