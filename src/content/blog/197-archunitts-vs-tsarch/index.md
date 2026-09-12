@@ -25,9 +25,9 @@ I maintain ArchUnitTS, so let me put the conflict of interest on the table immed
 
 My conclusion is still quite clear:
 
-> For a new TypeScript architecture-testing setup in 2026, I would choose ArchUnitTS.
+> For a new TypeScript architecture-testing setup in 2026, ArchUnitTS is the only choice I can responsibly recommend.
 
-tsarch still works. The four rules from the Angular Architects article pass under Vitest. It also has more GitHub stars. But working in one demo is not the same as being the safer dependency for a long-lived codebase.
+tsarch can still execute basic rules, including the four from the Angular Architects article under Vitest, but it has extreme downsides: it is not actively maintained, its latest npm release is nearly two years old, its current CI is broken, it relies on TypeScript 3.9 internally, and a selector that matches nothing can silently produce a green test. ArchUnitTS, by contrast, is actively maintained, supports modern TypeScript project resolution, fails empty tests by default, provides substantially more rules, metrics, reports, and test-runner integrations, and was faster in both benchmark measurements. tsarch's higher GitHub star count reflects its longer history, not the safer choice for a new or long-lived codebase today.
 
 ## The short comparison
 
