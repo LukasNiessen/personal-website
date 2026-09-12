@@ -124,20 +124,14 @@ Old code can be perfectly good code. Old compiler infrastructure is different: m
 
 ## What tsarch still gets right
 
-There are good reasons why tsarch became popular.
-
-Its fluent API is readable. It brought the ArchUnit idea into TypeScript early. Its basic dependency, cycle, slice, Nx, and PlantUML concepts are useful. Its generic `.check()` method can be called from any test runner, which is why the Angular Architects Vitest example works even though tsarch only provides special matcher integration for Jest.
-
-The article's four rules are not fake. I ran them unchanged:
+tsarch works for basic architecture rules, and its generic `.check()` method can be called from any test runner. I ran the article's four rules unchanged with Vitest 4:
 
 - only stores may access clients;
 - only smart components may access stores, with locality exceptions;
 - stores must not access other stores;
 - dumb components must not access smart components.
 
-All four passed with Vitest 4.
-
-tsarch also has 661 GitHub stars versus 479 for ArchUnitTS at the time of writing. It has a longer history and a larger accumulated installed base. If a team already uses it successfully, has simple configuration, and accepts ownership of future compatibility work, a forced migration may not be worth the disruption.
+All four passed. tsarch also has 661 GitHub stars versus 479 for ArchUnitTS and a longer history. If a team already uses it successfully and accepts ownership of future compatibility work, it is unclear whether forcing a migration would be worth the disruption.
 
 That is the strongest case for tsarch. It is real, but it does not reverse the recommendation for a new project.
 
@@ -186,65 +180,28 @@ TypeScript dependency graph
 
 The Angular Architects article makes a strong case for closing the feedback loop for coding agents. ArchUnitTS closes more of that loop because the architecture model is not limited to one returned violation array.
 
-## 5. Performance: faster, but let us not turn one machine into a law
+## 5. Performance
 
 I used the exact [Angular Architects demo at commit `caaac81`](https://github.com/angular-architects/flights42/tree/caaac81f414188d2ca7410a6e1e236d4a200e5e4). The project runs Angular 21.2, TypeScript 5.9.3, and Vitest 4.0.18.
 
-For each library I started a fresh Node process, extracted the graph without a warm application cache, alternated execution order, and took the median of four runs. I compared internal, non-self import edges so synthetic bookkeeping and different external-module classification did not distort the equivalence check.
-
-Both libraries found exactly 198 internal edges.
+In two order-balanced, four-run measurements, both libraries found exactly the same 198 internal dependency edges:
 
 | Four-run median | ArchUnitTS | tsarch | Result |
 | --- | ---: | ---: | ---: |
 | Initial measurement | 3.812 s | 7.434 s | ArchUnitTS 1.95x faster |
 | Clean 2.5.0 rerun | 4.274 s | 5.171 s | ArchUnitTS 1.21x faster |
 
-The first result is the attractive headline: almost twice as fast. The second result is why benchmark sections need methodology. File-system cache state, antivirus activity, process startup, and machine load move these numbers considerably.
-
-The defensible conclusion is not "ArchUnitTS is always exactly twice as fast." It is:
-
 > ArchUnitTS produced the same internal dependency graph and was faster in both order-balanced measurements, with the observed advantage ranging from about 21% to 95%.
 
-For a test that runs after every agent turn, even the lower end is useful.
-
-## 6. Security: the honest answer is maintenance risk, not a proven consumer exploit
-
-It would be easy to look at the old toolchain and declare tsarch insecure. The evidence does not justify that sentence.
+## 6. Security and dependency maintenance
 
 A clean install of the Angular demo reported zero npm audit vulnerabilities, and a minimal consumer install of `tsarch@5.4.1` also reported zero. I found no evidence of a known vulnerability shipped to consumers through the current package.
 
-My local `npm audit` of ArchUnitTS 2.5.0's full locked development tree also returned zero. GitHub's repository security banner, however, currently lists [21 Dependabot alerts](https://github.com/LukasNiessen/ArchUnitTS/security/dependabot): 11 moderate and 10 high, but no critical alerts. Scanner state and advisory resolution can differ, so "my local audit is clean" should not be turned into "there is no security work left."
+A clean `npm ci` of the tsarch repository itself installed 1,489 packages and reported 130 audit findings, including 22 critical findings. ArchUnitTS 2.5.0's full locked development tree returned zero in my local audit, although GitHub currently lists [21 Dependabot alerts](https://github.com/LukasNiessen/ArchUnitTS/security/dependabot): 11 moderate and 10 high, with no critical alerts.
 
-The tsarch contributor tree is much less comfortable. A clean `npm ci` of the repository installed 1,489 packages and `npm audit` reported 130 findings, including 22 critical findings. Those results are dominated by old development and release tooling, so they are not proof that an application importing tsarch is exploitable.
+The tsarch [CI workflow](https://github.com/ts-arch/ts-arch/blob/main/.github/workflows/build.yaml) still targets Node 16, `actions/setup-node@v1`, `actions/cache@v2`, and `actions/checkout@v2`. Node 16 has been [end-of-life since August 2023](https://nodejs.org/en/about/previous-releases), the cache action is deprecated, and the latest tsarch `main` run is red. This does not demonstrate a consumer exploit, but it does show substantially greater dependency and maintenance risk.
 
-They are proof of maintenance work waiting to happen.
-
-The same pattern appears in CI. The [workflow](https://github.com/ts-arch/ts-arch/blob/main/.github/workflows/build.yaml) still targets Node 16, `actions/setup-node@v1`, `actions/cache@v2`, and `actions/checkout@v2`. Node 16 has been [end-of-life since August 2023](https://nodejs.org/en/about/previous-releases), and GitHub warned that workflows remaining on deprecated cache action versions would fail after the old cache service was retired in February 2025. The latest tsarch `main` run is red and failed before recording normal build steps.
-
-So my security conclusion is deliberately narrow:
-
-- there is no demonstrated consumer vulnerability that would justify calling tsarch unsafe;
-- the stale contributor dependency tree and broken CI increase supply-chain and maintenance risk;
-- ArchUnitTS's current, green, actively updated toolchain is the stronger operational position, while its own Dependabot alerts still deserve attention.
-
-## 7. Neither library sees every JavaScript dependency
-
-There is one shared limitation worth making explicit: both extractors currently center on static TypeScript `ImportDeclaration` nodes.
-
-That means teams should test their own use of:
-
-- dynamic `import()`;
-- CommonJS `require()`;
-- re-export-only barrel chains;
-- framework-generated or runtime-only dependency wiring.
-
-The Angular Architects article already notes that barrels can obscure a rule. That is a good warning for both libraries. Architecture tests are a deterministic line of defense, not a semantic proof of every runtime relationship.
-
-ArchUnitTS also has a narrower known caveat today: it adds synthetic self-edges so isolated project files remain visible in graph projections. A negative dependency rule whose source and target selectors overlap can therefore report `file → same file`. Cycle detection excludes these edges, but overlapping negative dependency rules may need to filter them until [the self-dependency issue](https://github.com/LukasNiessen/ArchUnitTS/issues/6) is resolved.
-
-I do not think this outweighs empty-test protection, active TypeScript support, or the broader feature set. But it belongs in a serious comparison.
-
-## 8. The projects are related, and that should be acknowledged
+## 7. The projects are related, and that should be acknowledged
 
 ArchUnitTS did not appear from nowhere. Its beginnings used code from the MIT-licensed tsarch project, which itself brought the ideas of Java's [ArchUnit](https://www.archunit.org/) to TypeScript. ArchUnitTS has since evolved substantially in maintenance, rules, metrics, reporting, integrations, and project resolution.
 
@@ -257,29 +214,13 @@ Respect for the origin does not require pretending the two packages are equivale
 
 ## My recommendation
 
-The Angular Architects architecture is good. The combination of architecture documentation, deterministic tests, and agent hooks is exactly where AI-assisted development should go.
+tsarch's largest problems are not its syntax or its ability to execute a few dependency rules. They are its lack of active maintenance, legacy TypeScript and CI toolchain, incomplete modern project resolution, and the possibility of silently green empty tests.
 
-I would only change the package behind the guardrail:
+ArchUnitTS is actively maintained, follows current TypeScript projects, fails safely when selectors match nothing, provides substantially more rules, metrics, integrations, and reports, and was faster in both benchmark measurements. For an existing and stable tsarch installation, forcing a migration may be questionable; for a new project, ArchUnitTS is the clear choice.
 
 ```bash
 npm install --save-dev archunit
 ```
-
-Choose ArchUnitTS for a new project when you care about:
-
-- active releases and current TypeScript behavior;
-- inherited and referenced `tsconfig` projects;
-- failing safely when selectors match nothing;
-- dedicated Jest, Vitest, and Jasmine ergonomics;
-- custom rules and architecture metrics;
-- dependency graphs and HTML reports;
-- a faster feedback loop in the tested Angular project.
-
-Keep tsarch when its existing installation is stable, its narrower feature set is sufficient, and your team is willing to own compatibility fixes. Its accumulated popularity and readable API are legitimate advantages. They are simply weaker than correctness and maintenance for a dependency whose job is to tell you whether the architecture is still protected.
-
-The point of an architecture test is trust.
-
-In 2026, ArchUnitTS gives me more of it.
 
 ## Sources and reproduction links
 
