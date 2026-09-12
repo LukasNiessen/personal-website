@@ -5,6 +5,8 @@ date: "Sep 12 2026"
 tags: ["TypeScript", "Software Architecture", "Testing", "AI", "Open Source"]
 ---
 
+![ArchUnitTS and tsarch on a subtle dependency-graph background](archunitts-vs-tsarch.png "ArchUnitTS vs. tsarch")
+
 Angular Architects recently published an excellent article about turning architecture into an executable contract for AI coding agents. The core idea is exactly right:
 
 ```text
