@@ -1,0 +1,107 @@
+```json
+{
+  "id": "1swen7c",
+  "author": "trolleid",
+  "category": "gift-promotion",
+  "subreddit": "remotepython",
+  "created_utc": 1777226411.0,
+  "created_at": "2026-04-26T20:00:11+02:00",
+  "permalink": "https://www.reddit.com/r/remotepython/comments/1swen7c/archunit_for_python_visualize_enforce/",
+  "link_url": "https://github.com/LukasNiessen/ArchUnitPython",
+  "is_self": false,
+  "crosspost_parent": null,
+  "removed_by_category": "reddit",
+  "body_state": "intact",
+  "eligible_for_voice": true,
+  "archive_only": false,
+  "reference_use": "historical_voice_only",
+  "retrieved_on": "2026-11-08",
+  "source": "Reddit authenticated submitted listing",
+  "title_sha256": "381bf7b182561ddcfa3d37a8a3b2f635a454536c680444748fce15b50f3bbed2",
+  "body_sha256": "57e6f7874af5c047d64a1423948113d9403ee5f86faf6a40b726bb3298cc040c",
+  "body_characters": 2897
+}
+```
+
+# Original title
+
+ArchUnit for Python: visualize + enforce dependencies. I've added your requested features!
+
+## Original body
+
+A week ago I posted about ArchUnitPython, my library for enforcing architecture rules in Python projects as unit tests.
+
+A few of you pointed out two very practical gaps for real Python codebases:  
+external dependencies, and type-only imports. **So to your request I’ve added both.**
+
+\------
+
+First a mini recap of what ArchUnitPython does:
+
+* Most tools catch style issues, formatting issues, or generic smells.
+* ArchUnitPython focuses on structural rules: wrong dependency directions, circular dependencies, naming convention drift, architecture/diagram mismatch, and so on.
+* You define those rules as tests, run them in pytest/unittest, and they automatically become part of CI/CD
+
+In other words: **ArchUnitPython allows you to enforce your architectural decisions by writing them as simple unit tests.**
+
+That matters more than ever in Claude Code / Codex times, because LLMs are great at generating code but they love to violate architectural boundaries, especially when they get stuck.
+
+Repo: [https://github.com/LukasNiessen/ArchUnitPython](https://github.com/LukasNiessen/ArchUnitPython)
+
+\------
+
+Now what’s new
+
+**1. External Dependency Rules**
+
+Before, ArchUnitPython could already enforce internal dependency rules like:
+
+*“presentation must not depend on database”* or *“services must not import api”*
+
+Now it can also enforce rules about imports to modules outside your project, for example:
+
+* domain code must not import requests
+* core logic must not import sqlalchemy
+* only certain layers may use pandas, boto3, etc.
+
+So you can now guard not just folder-to-folder boundaries, but also framework / SDK usage boundaries.
+
+Example:
+
+    rule = (
+        project_files("src/")
+        .in_folder("**/domain/**")
+        .should_not()
+        .depend_on_external_modules()
+        .matching("requests")
+    )
+    assert_passes(rule)
+
+This is especially useful in layered or hexagonal architectures where the real problem is often not “wrong local file import”, but “core code now directly depends on infrastructure/framework code”.
+
+**2. TYPE\_CHECKING-aware dependency analysis**
+
+Python has a common pattern for type-only imports:
+
+    from typing import TYPE_CHECKING
+    
+    if TYPE_CHECKING:
+        from my_app.models import User
+
+Those imports are used for static typing, but they are not real runtime coupling in the same way normal imports are.
+
+Previously, architecture analysis would still count them as ordinary dependencies.  
+Now you can choose to ignore them when checking architecture rules.
+
+Example:
+
+    assert_passes(
+        rule,
+        CheckOptions(ignore_type_checking_imports=True),
+    )
+
+This matters because modern Python codebases use type hints heavily, and otherwise architecture checks can become noisy or overly strict for relationships that only exist for typing.
+
+\------
+
+Very curious for any type of feedback! PRs are also highly welcome.

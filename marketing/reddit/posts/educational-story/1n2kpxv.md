@@ -1,0 +1,31 @@
+```json
+{
+  "id": "1n2kpxv",
+  "author": "trolleid",
+  "category": "educational-story",
+  "subreddit": "ChatGPT",
+  "created_utc": 1756406918.0,
+  "created_at": "2025-08-28T20:48:38+02:00",
+  "permalink": "https://www.reddit.com/r/ChatGPT/comments/1n2kpxv/agentic_ai_is_a_huge_security_issue_lukas_niessen/",
+  "link_url": "https://lukasniessen.com/blog/115-agentic-ai-privacy-issue/",
+  "is_self": false,
+  "crosspost_parent": null,
+  "removed_by_category": "moderator",
+  "body_state": "empty_link_post",
+  "eligible_for_voice": false,
+  "archive_only": true,
+  "reference_use": "archive_only",
+  "retrieved_on": "2026-11-08",
+  "source": "Reddit authenticated submitted listing",
+  "title_sha256": "0b8e96e081b6892b85fd8de8c1ab696c4585eb21ba24dee50a23c91c70bc7a10",
+  "body_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "body_characters": 0
+}
+```
+
+# Original title
+
+Agentic AI is a Huge Security Issue | Lukas Niessen
+
+## Original body
+

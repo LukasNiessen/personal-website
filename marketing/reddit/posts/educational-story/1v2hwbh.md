@@ -1,0 +1,31 @@
+```json
+{
+  "id": "1v2hwbh",
+  "author": "trolleid",
+  "category": "educational-story",
+  "subreddit": "Backend",
+  "created_utc": 1784639132.0,
+  "created_at": "2026-07-21T15:05:32+02:00",
+  "permalink": "https://www.reddit.com/r/Backend/comments/1v2hwbh/streaming_in_ai_apps_rest_sse_websockets_polling/",
+  "link_url": "https://medium.com/p/3bfe404f8f20",
+  "is_self": false,
+  "crosspost_parent": null,
+  "removed_by_category": "reddit",
+  "body_state": "empty_link_post",
+  "eligible_for_voice": false,
+  "archive_only": true,
+  "reference_use": "archive_only",
+  "retrieved_on": "2026-11-08",
+  "source": "Reddit authenticated submitted listing",
+  "title_sha256": "d2f9acf7d97acbc79db7c5aee5eb2669f582d549367a91cdd584de702afa1be8",
+  "body_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "body_characters": 0
+}
+```
+
+# Original title
+
+Streaming in AI Apps: REST, SSE, WebSockets, Polling, and the Backend Reality
+
+## Original body
+

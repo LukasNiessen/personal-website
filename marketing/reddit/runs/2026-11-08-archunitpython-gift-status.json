@@ -1,0 +1,147 @@
+{
+  "date": "2026-11-08",
+  "product": "ArchUnitPython",
+  "category": "gift-promotion",
+  "requested": 5,
+  "account": "127001-sweet-127001",
+  "account_authorized_by_user": true,
+  "entries": [
+    {
+      "id": "fastapi-domain",
+      "community": "FastAPI",
+      "kind": "post",
+      "title": "A small architecture test to keep FastAPI imports out of your domain layer",
+      "status": "pending_moderation",
+      "permalink": "https://www.reddit.com/r/FastAPI/comments/1xqwlen/a_small_architecture_test_to_keep_fastapi_imports/",
+      "post_id": "t3_1xqwlen",
+      "flair": "pip package",
+      "verification": "Author, title, body and rendered code verified; public moderation status pending final check.",
+      "current_ui_check": {
+        "url": "https://www.reddit.com/r/FastAPI/comments/1xqwlen/a_small_architecture_test_to_keep_fastapi_imports/",
+        "title": "A small architecture test to keep FastAPI imports out of your domain layer : r/FastAPI",
+        "post": {
+          "permalink": "/r/FastAPI/comments/1xqwlen/a_small_architecture_test_to_keep_fastapi_imports/",
+          "id": "t3_1xqwlen",
+          "post-title": "A small architecture test to keep FastAPI imports out of your domain layer",
+          "author": "127001-sweet-127001"
+        },
+        "notices": [
+          "Post is awaiting moderator approval."
+        ],
+        "comments": []
+      },
+      "moderation": "Post is awaiting moderator approval."
+    },
+    {
+      "id": "django-services",
+      "community": "django",
+      "kind": "post",
+      "title": "Keeping Django views out of your service modules with a pytest check",
+      "status": "submitted",
+      "permalink": "https://www.reddit.com/r/django/comments/1xqwmaz/keeping_django_views_out_of_your_service_modules/",
+      "post_id": "t3_1xqwmaz",
+      "flair": "Views",
+      "body_verified": true,
+      "rendered_code_blocks": 1,
+      "submitted_at": "2026-11-08T11:47:53.828606+00:00",
+      "moderation": "No removal or pending-approval notice shown in logged-in UI",
+      "current_ui_check": {
+        "url": "https://www.reddit.com/r/django/comments/1xqwmaz/keeping_django_views_out_of_your_service_modules/",
+        "title": "Keeping Django views out of your service modules with a pytest check : r/django",
+        "post": {
+          "permalink": "/r/django/comments/1xqwmaz/keeping_django_views_out_of_your_service_modules/",
+          "id": "t3_1xqwmaz",
+          "post-title": "Keeping Django views out of your service modules with a pytest check",
+          "author": "127001-sweet-127001"
+        },
+        "notices": [],
+        "comments": []
+      }
+    },
+    {
+      "id": "pythontips-type-checking",
+      "community": "pythontips",
+      "kind": "post",
+      "title": "Tip: distinguish TYPE_CHECKING imports from runtime dependencies in architecture tests",
+      "status": "submitted",
+      "permalink": "https://www.reddit.com/r/pythontips/comments/1xqwn0o/tip_distinguish_type_checking_imports_from/",
+      "post_id": "t3_1xqwn0o",
+      "flair": "Module",
+      "body_verified": true,
+      "rendered_code_blocks": 1,
+      "submitted_at": "2026-11-08T11:48:54.852187+00:00",
+      "moderation": "No removal or pending-approval notice shown in logged-in UI",
+      "current_ui_check": {
+        "url": "https://www.reddit.com/r/pythontips/comments/1xqwn0o/tip_distinguish_type_checking_imports_from/",
+        "title": "Tip: distinguish TYPE_CHECKING imports from runtime dependencies in architecture tests : r/pythontips",
+        "post": {
+          "permalink": "/r/pythontips/comments/1xqwn0o/tip_distinguish_type_checking_imports_from/",
+          "id": "t3_1xqwn0o",
+          "post-title": "Tip: distinguish TYPE_CHECKING imports from runtime dependencies in architecture tests",
+          "author": "127001-sweet-127001"
+        },
+        "notices": [],
+        "comments": []
+      }
+    },
+    {
+      "id": "madeinpython-dependency-map",
+      "community": "madeinpython",
+      "kind": "post",
+      "title": "A dependency map you can generate from your Python project's imports",
+      "status": "submitted",
+      "permalink": "https://www.reddit.com/r/madeinpython/comments/1xqwni8/a_dependency_map_you_can_generate_from_your/",
+      "post_id": "t3_1xqwni8",
+      "flair": null,
+      "body_verified": true,
+      "rendered_code_blocks": 1,
+      "submitted_at": "2026-11-08T11:49:55.135641+00:00",
+      "moderation": "No removal or pending-approval notice shown in logged-in UI",
+      "current_ui_check": {
+        "url": "https://www.reddit.com/r/madeinpython/comments/1xqwni8/a_dependency_map_you_can_generate_from_your/",
+        "title": "A dependency map you can generate from your Python project's imports : r/madeinpython",
+        "post": {
+          "permalink": "/r/madeinpython/comments/1xqwni8/a_dependency_map_you_can_generate_from_your/",
+          "id": "t3_1xqwni8",
+          "post-title": "A dependency map you can generate from your Python project's imports",
+          "author": "127001-sweet-127001"
+        },
+        "notices": [],
+        "comments": []
+      }
+    },
+    {
+      "id": "python-showcase-ci",
+      "community": "Python",
+      "kind": "comment",
+      "title": "ArchUnitPython: an architecture check for your existing pytest suite",
+      "status": "submitted",
+      "comment_id": "t1_19sbpb77b51yd",
+      "parent_thread": "t3_1xntm2j",
+      "permalink": "https://www.reddit.com/r/Python/comments/1xntm2j/comment/19sbpb77b51yd/",
+      "body_verified": true,
+      "rendered_code_blocks": 1,
+      "submitted_at": "2026-11-08T11:51:00.476579+00:00",
+      "moderation": "No removal or pending-approval notice shown in logged-in UI",
+      "current_ui_check": {
+        "url": "https://www.reddit.com/r/Python/comments/1xntm2j/comment/19sbpb77b51yd/",
+        "title": "Showcase Thread : r/Python",
+        "post": {
+          "permalink": "/r/Python/comments/1xntm2j/showcase_thread/",
+          "id": "t3_1xntm2j",
+          "post-title": "Showcase Thread",
+          "author": "AutoModerator"
+        },
+        "notices": [],
+        "comments": [
+          {
+            "id": "t1_19sbpb77b51yd",
+            "author": "127001-sweet-127001",
+            "removed": null,
+            "text": "127001-sweet-127001\n\u2022\n1m ago\n\nWhat My Project Does\n\nI maintain ArchUnitPython, a library that lets you write dependency and architecture rules as Python tests.\n\nHere's a small check you can add to an "
+          }
+        ]
+      }
+    }
+  ]
+}

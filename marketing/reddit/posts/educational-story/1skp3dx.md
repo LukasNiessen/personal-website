@@ -1,0 +1,31 @@
+```json
+{
+  "id": "1skp3dx",
+  "author": "trolleid",
+  "category": "educational-story",
+  "subreddit": "sre",
+  "created_utc": 1776116639.0,
+  "created_at": "2026-04-13T23:43:59+02:00",
+  "permalink": "https://www.reddit.com/r/sre/comments/1skp3dx/kubernetes_fundamentals_a_practical_reference/",
+  "link_url": "https://lukasniessen.medium.com/kubernetes-fundamentals-a-practical-reference-0a59e6bc1949",
+  "is_self": false,
+  "crosspost_parent": null,
+  "removed_by_category": "moderator",
+  "body_state": "empty_link_post",
+  "eligible_for_voice": false,
+  "archive_only": true,
+  "reference_use": "archive_only",
+  "retrieved_on": "2026-11-08",
+  "source": "Reddit authenticated submitted listing",
+  "title_sha256": "d2a9ed983ae0329fffefad2f4af45bc236199bdc3586e99f809eea5e5d05171c",
+  "body_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "body_characters": 0
+}
+```
+
+# Original title
+
+Kubernetes Fundamentals: A Practical Reference
+
+## Original body
+

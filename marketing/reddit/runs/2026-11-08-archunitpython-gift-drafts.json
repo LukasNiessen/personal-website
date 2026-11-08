@@ -1,0 +1,83 @@
+[
+  {
+    "id": "fastapi-domain",
+    "community": "FastAPI",
+    "kind": "post",
+    "category": "gift-promotion",
+    "title": "A small architecture test to keep FastAPI imports out of your domain layer",
+    "body": "If your FastAPI project keeps business logic in a separate domain layer, there's an easy way for that boundary to disappear: someone imports `HTTPException`, `Request`, or `Depends` directly into it. The endpoint still works, so the coupling can be easy to miss in a review.\n\nI maintain ArchUnitPython, a library for checking architecture rules with ordinary Python tests. Here's a useful rule for that setup:\n\n    from archunitpython import project_files, assert_passes\n\n    def test_domain_does_not_import_fastapi():\n        rule = (\n            project_files(\"src/\")\n            .in_path(\"**/domain/**\")\n            .should_not()\n            .depend_on_external_modules()\n            .matching(\"fastapi\")\n            .matching(\"fastapi.*\")\n        )\n        assert_passes(rule)\n\nThis checks Python files under your domain folders for direct FastAPI imports, including its submodules. Routers and other adapters can still use FastAPI. The rule is for projects where keeping that separation is an actual design decision.\n\nPoint `project_files` at your import root. For a `src/my_app/domain/` layout, that's `src/`.\n\nIt runs in pytest with the rest of your tests, so a future import that breaks the boundary can fail CI. This is static import analysis; it doesn't prove that the domain is free of every possible runtime dependency.\n\nRepo: https://github.com/LukasNiessen/ArchUnitPython",
+    "evidence": {
+      "release": "PyPI 1.8.1",
+      "validation": "Published 1.8.1: both top-level fastapi and fastapi submodule imports fail; framework-free domain passes.",
+      "public_repo": "https://github.com/LukasNiessen/ArchUnitPython",
+      "published_package": "https://pypi.org/project/archunitpython/1.8.1/",
+      "local_checkout_note": "Canonical local checkout is 1.6.1; snippets verified by feature-review agent against downloaded public 1.8.1 wheel.",
+      "selectors_note": "Use in_path for recursive file selection; in_folder(\"**/domain/**\") missed files directly inside domain in the 1.8.1 fixture."
+    }
+  },
+  {
+    "id": "django-services",
+    "community": "django",
+    "kind": "post",
+    "category": "gift-promotion",
+    "title": "Keeping Django views out of your service modules with a pytest check",
+    "body": "For Django projects that use service modules, here's a small boundary you can check automatically: views can call services, but services shouldn't import the views back.\n\nA helper starts in `views.py`, a service needs it, and suddenly business code depends on the HTTP entry point. Sometimes that also gives you a circular import. Sometimes it just makes the next change harder.\n\nI maintain ArchUnitPython, and this is one of the rules you can put directly into your test suite:\n\n    from archunitpython import project_files, assert_passes\n\n    def test_services_do_not_import_views():\n        rule = (\n            project_files(\"src/\")\n            .with_name(\"services.py\")\n            .should_not()\n            .depend_on_files()\n            .with_name(\"views.py\")\n        )\n        assert_passes(rule)\n\nThis example is for a layout such as `src/orders/services.py` and `src/orders/views.py`. Set the project root to match your import layout, and adjust the selectors if services or views are packages instead.\n\nThe rule stays narrow. Services can still use Django models and other allowed modules. You're checking the dependency direction your project has chosen, without asking reviewers to spot the same import every time.\n\nRun it through pytest and it becomes part of your existing CI checks.\n\nRepo: https://github.com/LukasNiessen/ArchUnitPython",
+    "evidence": {
+      "release": "PyPI 1.8.1",
+      "validation": "Published 1.8.1: services.py -> views.py fails; removing that dependency passes.",
+      "public_repo": "https://github.com/LukasNiessen/ArchUnitPython",
+      "published_package": "https://pypi.org/project/archunitpython/1.8.1/",
+      "local_checkout_note": "Canonical local checkout is 1.6.1; snippets verified by feature-review agent against downloaded public 1.8.1 wheel.",
+      "selectors_note": "Use in_path for recursive file selection; in_folder(\"**/domain/**\") missed files directly inside domain in the 1.8.1 fixture."
+    }
+  },
+  {
+    "id": "pythontips-type-checking",
+    "community": "pythontips",
+    "kind": "post",
+    "category": "gift-promotion",
+    "title": "Tip: distinguish TYPE_CHECKING imports from runtime dependencies in architecture tests",
+    "body": "When you check import boundaries, `TYPE_CHECKING` imports deserve a deliberate choice.\n\nFor example, a file can import a type under `if TYPE_CHECKING:` without importing that module at runtime. There's still a relationship between the types, but you may not want it to count when a rule is specifically about runtime coupling.\n\nI maintain ArchUnitPython. It has an opt-in setting for exactly that distinction:\n\n    from archunitpython import CheckOptions, project_files, assert_passes\n\n    def test_domain_does_not_import_infrastructure_at_runtime():\n        rule = (\n            project_files(\"src/\")\n            .in_path(\"**/domain/**\")\n            .should_not()\n            .depend_on_files()\n            .in_path(\"**/infrastructure/**\")\n        )\n        assert_passes(\n            rule,\n            CheckOptions(ignore_type_checking_imports=True),\n        )\n\nHere `src/` is the import root. Imports from domain files into infrastructure files are checked, while imports inside `if TYPE_CHECKING:` are excluded from the analysis.\n\nAn ordinary runtime import still fails the rule. That lets you keep the dependency check without treating every type hint as runtime coupling.\n\nLeave the option off if your architectural boundary is meant to forbid type-level dependencies too. The useful part is being explicit about which relationship the test is protecting.\n\nSource: https://github.com/LukasNiessen/ArchUnitPython",
+    "evidence": {
+      "release": "PyPI 1.8.1",
+      "validation": "Published 1.8.1: guarded TYPE_CHECKING import is excluded only with the option; ordinary runtime import still fails.",
+      "public_repo": "https://github.com/LukasNiessen/ArchUnitPython",
+      "published_package": "https://pypi.org/project/archunitpython/1.8.1/",
+      "local_checkout_note": "Canonical local checkout is 1.6.1; snippets verified by feature-review agent against downloaded public 1.8.1 wheel.",
+      "selectors_note": "Use in_path for recursive file selection; in_folder(\"**/domain/**\") missed files directly inside domain in the 1.8.1 fixture."
+    }
+  },
+  {
+    "id": "madeinpython-dependency-map",
+    "community": "madeinpython",
+    "kind": "post",
+    "category": "gift-promotion",
+    "title": "A dependency map you can generate from your Python project's imports",
+    "body": "For anyone whose Python project has grown past a few files: I added dependency graph exports to ArchUnitPython so you can inspect how the pieces actually connect.\n\nI maintain the library. Its main job is checking architecture rules through tests, but the graph is useful before you even decide which rules to write.\n\nYou can generate an HTML report and a Mermaid diagram from the same project:\n\n    from archunitpython import project_graph\n\n    graph = (\n        project_graph(\"src/\")\n        .titled(\"My Python project\")\n        .collapse_to_folder_depth(2)\n    )\n    graph.export_as_html(\"reports/dependencies.html\")\n    graph.export_as_mermaid(\"reports/dependencies.mmd\")\n\nPoint `project_graph` at your import root. Collapsing the graph to folders keeps a larger project readable instead of giving you one box for every file.\n\nYou can keep the Mermaid output with your documentation or attach the HTML report as a CI artifact. It gives you something concrete to inspect when a supposedly separate feature has acquired dependencies on half the project.\n\nThe graph follows imports the analysis can resolve. It's an import graph, not a runtime call trace, so it won't explain every relationship created dynamically while the program runs.\n\nThis is available in the published Python package, with no separate diagramming service to set up.\n\nRepo: https://github.com/LukasNiessen/ArchUnitPython",
+    "evidence": {
+      "release": "PyPI 1.8.1",
+      "validation": "Published 1.8.1: folder-collapsed HTML and Mermaid export paths were generated successfully.",
+      "public_repo": "https://github.com/LukasNiessen/ArchUnitPython",
+      "published_package": "https://pypi.org/project/archunitpython/1.8.1/",
+      "local_checkout_note": "Canonical local checkout is 1.6.1; snippets verified by feature-review agent against downloaded public 1.8.1 wheel.",
+      "selectors_note": "Use in_path for recursive file selection; in_folder(\"**/domain/**\") missed files directly inside domain in the 1.8.1 fixture."
+    }
+  },
+  {
+    "id": "python-showcase-ci",
+    "community": "Python",
+    "kind": "comment",
+    "category": "gift-promotion",
+    "title": "ArchUnitPython: an architecture check for your existing pytest suite",
+    "body": "**What My Project Does**\n\nI maintain ArchUnitPython, a library that lets you write dependency and architecture rules as Python tests.\n\nHere's a small check you can add to an existing pytest suite if your project is meant to stay free of circular imports:\n\n    from archunitpython import project_files, assert_passes\n\n    def test_no_import_cycles():\n        rule = project_files(\"src/\").should().have_no_cycles()\n        assert_passes(rule)\n\nUse your project's import root in place of `src/`. The check analyzes the imports it can resolve and reports detected cycles as test failures, so it can run alongside your other CI checks. You can also define rules for which layers or modules may depend on each other.\n\n**Target Audience**\n\nPython developers who already have architectural decisions they want to keep enforcing as the codebase changes. You can start with one rule for a recurring problem instead of writing a specification for the whole project.\n\n**Comparison**\n\nThis complements linters and type checkers: the tests express project-specific dependency boundaries and cycle rules. Import resolution has limitations, so check it against your project's import style and keep your normal tests too. The idea is inspired by Java's ArchUnit; this is a separate Python project.\n\nInstall with `pip install archunitpython`. Source and examples: https://github.com/LukasNiessen/ArchUnitPython",
+    "evidence": {
+      "release": "PyPI 1.8.1",
+      "validation": "Published 1.8.1: direct import app.services.b / reverse forms produce a detected cycle; removing reverse import passes. from app.services import b was not detected in the tested fixture; avoid comprehensive coverage claims.",
+      "public_repo": "https://github.com/LukasNiessen/ArchUnitPython",
+      "posting_format": "Comment only in currently pinned monthly showcase thread",
+      "published_package": "https://pypi.org/project/archunitpython/1.8.1/",
+      "local_checkout_note": "Canonical local checkout is 1.6.1; snippets verified by feature-review agent against downloaded public 1.8.1 wheel.",
+      "selectors_note": "Use in_path for recursive file selection; in_folder(\"**/domain/**\") missed files directly inside domain in the 1.8.1 fixture."
+    }
+  }
+]

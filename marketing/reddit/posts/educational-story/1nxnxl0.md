@@ -1,0 +1,31 @@
+```json
+{
+  "id": "1nxnxl0",
+  "author": "trolleid",
+  "category": "educational-story",
+  "subreddit": "aws",
+  "created_utc": 1759564200.0,
+  "created_at": "2025-10-04T09:50:00+02:00",
+  "permalink": "https://www.reddit.com/r/aws/comments/1nxnxl0/event_sourcing_cqrs_and_micro_services_real/",
+  "link_url": "https://lukasniessen.medium.com/this-is-a-detailed-breakdown-of-a-fintech-project-from-my-consulting-career-9ec61603709c",
+  "is_self": false,
+  "crosspost_parent": null,
+  "removed_by_category": "moderator",
+  "body_state": "empty_link_post",
+  "eligible_for_voice": false,
+  "archive_only": true,
+  "reference_use": "archive_only",
+  "retrieved_on": "2026-11-08",
+  "source": "Reddit authenticated submitted listing",
+  "title_sha256": "1ef046964a7b0c28144a0af803b609e132f1be9eccb09a61d8887a8ec4ab282a",
+  "body_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "body_characters": 0
+}
+```
+
+# Original title
+
+Event Sourcing, CQRS and Micro Services: Real FinTech Example from my Consulting Career
+
+## Original body
+
