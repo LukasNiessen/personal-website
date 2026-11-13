@@ -36,12 +36,6 @@ Use the references as the primary guide. These recurring traits are a starting p
 
 Whenever the article praises, criticizes, recommends, compares, or presents something in a particular light, check that framing against my current specification and relevant past writing. Use my supported priorities and reasoning where they apply instead of defaulting to the model's preferred take or a generic balanced overview.
 
-Examples to investigate in the source articles, not beliefs to impose on every topic:
-
-- Article 149 evaluates options against explicit, ranked priorities rather than an unweighted pros/cons list.
-- Articles 108 and 121 justify complexity and build/buy choices through concrete requirements, cost, time, and business value. This is not a blanket rejection of complex architectures.
-- Article 97 takes a strong positive position on infrastructure as code, including for small projects. Do not flatten a clear stance into artificial neutrality.
-
 Preserve the context and strength of a position. Do not turn a situational preference into a universal belief, invent a position on an unrelated topic, or invent personal experiences, clients, quotations, or anecdotes. If my position is unknown, explain what the evidence supports without claiming I have always believed it; ask a focused question only if the article's central thesis depends on an unknown personal stance. Treat past articles as voice and perspective references, and verify factual claims independently where needed.
 
 ## Avoid Generic LLM Prose
