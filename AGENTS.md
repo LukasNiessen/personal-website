@@ -1,3 +1,7 @@
+# Workspace routing
+
+For Reddit writing, posting, promotion, or marketing activity, first read `marketing/reddit/AGENTS.md` and follow its workflow. It contains the user's standing posting preference, product/subreddit registries, and frozen voice examples. Load those resources only for relevant tasks.
+
 # Blog Writing Workflow
 
 Use this workflow for `blog: [specification]` and any request to write or substantially rewrite an article for this site. Also accept `block: [specification]` when it clearly means a blog request. Everything after the prefix is the article specification, whether a topic, detailed instructions, or a mix. Do not load the article references for unrelated repository work.
