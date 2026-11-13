@@ -7,6 +7,8 @@ import subprocess
 import sys
 from urllib.parse import urlsplit
 
+import request_guard
+
 
 def run(script, *arguments):
     source = 'on run argv\nwith timeout of 10 seconds\ntell application "Microsoft Edge"\n' + script + '\nend tell\nend timeout\nend run\n'
@@ -22,6 +24,13 @@ def run(script, *arguments):
     return result.stdout.rstrip("\n")
 
 
+def reserve(kind):
+    result = request_guard.acquire(kind)
+    if result['status'] != 'reserved':
+        raise RuntimeError('No Reddit action performed: ' + json.dumps(result))
+    return result
+
+
 def open_tab(url):
     parsed = urlsplit(url)
     if url != "about:blank" and not (
@@ -29,6 +38,8 @@ def open_tab(url):
         and not parsed.username and not parsed.password
     ):
         raise ValueError("Open only about:blank or an HTTPS Reddit URL.")
+    if url != 'about:blank':
+        reserve('read')
     ids = run('''set taskWindow to make new window
 set taskWindowID to id of taskWindow
 delay 1
@@ -96,6 +107,8 @@ def main():
             command.add_argument("--expect-url", required=True, help="Exact URL observed in status")
         if name == "eval":
             command.add_argument("--js-file", type=Path, required=True)
+            command.add_argument("--network-kind", choices=("read", "post"),
+                                 help="Required when this eval makes one network request or submission")
     args = parser.parse_args()
     if args.command == "probe":
         print(json.dumps(probe()))
@@ -105,6 +118,8 @@ def main():
         value = run(TARGET + 'return URL of taskTab', args.window_id, args.tab_id)
         print(json.dumps({"window_id": args.window_id, "tab_id": args.tab_id, "url": value}))
     elif args.command == "eval":
+        if args.network_kind:
+            reserve(args.network_kind)
         print(evaluate(args.window_id, args.tab_id, args.expect_url, args.js_file.read_text()))
     else:
         close_tab(args.window_id, args.tab_id, args.expect_url)

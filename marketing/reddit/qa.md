@@ -51,3 +51,9 @@ See [browser.md](browser.md) for exact commands, setup requirements, and the bou
 ## Coverage limits
 
 Reddit may omit deleted/inaccessible history or apply a backend history cap even when pagination ends. All returned records carry removal/filter metadata; it does not establish the cause. Link-only posts have no body to reconstruct. Current subreddit rules and the selected product's release/API must be checked again for each real campaign.
+
+## Cache and pacing · 2026-11-14
+
+- Seeded 160 community entries from existing local records, including all 140 recoverable historical posting destinations. Forty rule snapshots and four unavailable responses expire two calendar months after their November 13 observation. Missing observations remain explicit misses. No Reddit request was needed to seed the cache.
+- Twenty offline tests passed: calendar-month expiry (including leap years), expired/missing entries, preservation of posting history, rejected 429 cache updates, concurrent pacing reservations, read/post intervals, Retry-After seconds/HTTP dates, cooldown recovery probes, malformed-state handling, and denial before browser navigation.
+- Existing frozen post bodies and the corpus manifest were unchanged. Pacing is a local load control; it does not establish community permission or guarantee moderation outcomes.
