@@ -1,6 +1,6 @@
 # Marketing
 
-The [Reddit workflow](reddit/AGENTS.md) is ready to use from this workspace. Its resources load only when relevant. Root `AGENTS.override.md` provides discovery without restoring the previously deleted root `AGENTS.md`; uppercase `AGENTS.md` is the conventional instruction filename. See the [official instruction discovery documentation](https://learn.chatgpt.com/docs/agent-configuration/agents-md). Existing chats that loaded instructions before this setup can start with “Read marketing/reddit/AGENTS.md, then ...”; new chats discover the root router.
+The [Reddit workflow](reddit/AGENTS.md) is ready to use from this workspace. Its resources load only when relevant. Root `AGENTS.override.md` routes Reddit tasks to this workflow and preserves the other repository conventions in root `AGENTS.md`; uppercase `AGENTS.md` is the conventional instruction filename. See the [official instruction discovery documentation](https://learn.chatgpt.com/docs/agent-configuration/agents-md). Existing chats that loaded instructions before this setup can start with “Read marketing/reddit/AGENTS.md, then ...”; new chats discover the root router.
 
 Example requests:
 
