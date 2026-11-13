@@ -1,0 +1,1770 @@
+{
+  "communities": {
+    "agent_ai": {
+      "checked_at": null,
+      "description": "Historical posting destination; audience not cached.",
+      "expires_at": null,
+      "fetch_status": "missing",
+      "rules_summary": [],
+      "source_urls": [],
+      "was_posted_to": true
+    },
+    "agentsofai": {
+      "checked_at": null,
+      "description": "Historical posting destination; audience not cached.",
+      "expires_at": null,
+      "fetch_status": "missing",
+      "rules_summary": [],
+      "source_urls": [],
+      "was_posted_to": true
+    },
+    "ai_agents": {
+      "checked_at": null,
+      "description": "Historical posting destination; audience not cached.",
+      "expires_at": null,
+      "fetch_status": "missing",
+      "rules_summary": [],
+      "source_urls": [],
+      "was_posted_to": true
+    },
+    "aiagents": {
+      "checked_at": null,
+      "description": "Historical posting destination; audience not cached.",
+      "expires_at": null,
+      "fetch_status": "missing",
+      "rules_summary": [],
+      "source_urls": [],
+      "was_posted_to": true
+    },
+    "angular": {
+      "checked_at": "2026-11-13",
+      "description": "Angular web framework development.",
+      "expires_at": "2027-01-13",
+      "fetch_status": "ok",
+      "rules_summary": [
+        "No structured rules were returned in the saved snapshot; this does not establish unrestricted posting permission."
+      ],
+      "source_urls": [
+        "https://www.reddit.com/r/angular/about/",
+        "https://www.reddit.com/r/angular/about/rules/"
+      ],
+      "was_posted_to": true
+    },
+    "angular2": {
+      "checked_at": null,
+      "description": "Historical posting destination; audience not cached.",
+      "expires_at": null,
+      "fetch_status": "missing",
+      "rules_summary": [],
+      "source_urls": [],
+      "was_posted_to": true
+    },
+    "angularjs": {
+      "checked_at": null,
+      "description": "Historical posting destination; audience not cached.",
+      "expires_at": null,
+      "fetch_status": "missing",
+      "rules_summary": [],
+      "source_urls": [],
+      "was_posted_to": true
+    },
+    "anthropic": {
+      "checked_at": null,
+      "description": "Historical posting destination; audience not cached.",
+      "expires_at": null,
+      "fetch_status": "missing",
+      "rules_summary": [],
+      "source_urls": [],
+      "was_posted_to": true
+    },
+    "argocd": {
+      "checked_at": null,
+      "description": "Historical posting destination; audience not cached.",
+      "expires_at": null,
+      "fetch_status": "missing",
+      "rules_summary": [],
+      "source_urls": [],
+      "was_posted_to": true
+    },
+    "artificialinteligence": {
+      "checked_at": null,
+      "description": "Historical posting destination; audience not cached.",
+      "expires_at": null,
+      "fetch_status": "missing",
+      "rules_summary": [],
+      "source_urls": [],
+      "was_posted_to": true
+    },
+    "automatedtesting": {
+      "checked_at": "2026-11-13",
+      "description": "Discussion of automated testing.",
+      "expires_at": "2027-01-13",
+      "fetch_status": "ok",
+      "rules_summary": [
+        "No structured rules were returned in the saved snapshot; this does not establish unrestricted posting permission."
+      ],
+      "source_urls": [
+        "https://www.reddit.com/r/automatedtesting/about/",
+        "https://www.reddit.com/r/automatedtesting/about/rules/"
+      ],
+      "was_posted_to": true
+    },
+    "aws": {
+      "checked_at": null,
+      "description": "Historical posting destination; audience not cached.",
+      "expires_at": null,
+      "fetch_status": "missing",
+      "rules_summary": [],
+      "source_urls": [],
+      "was_posted_to": true
+    },
+    "azure": {
+      "checked_at": null,
+      "description": "Historical posting destination; audience not cached.",
+      "expires_at": null,
+      "fetch_status": "missing",
+      "rules_summary": [],
+      "source_urls": [],
+      "was_posted_to": true
+    },
+    "azurecertification": {
+      "checked_at": null,
+      "description": "Historical posting destination; audience not cached.",
+      "expires_at": null,
+      "fetch_status": "missing",
+      "rules_summary": [],
+      "source_urls": [],
+      "was_posted_to": true
+    },
+    "backend": {
+      "checked_at": null,
+      "description": "Historical posting destination; audience not cached.",
+      "expires_at": null,
+      "fetch_status": "missing",
+      "rules_summary": [],
+      "source_urls": [],
+      "was_posted_to": true
+    },
+    "bevy": {
+      "checked_at": "2026-11-13",
+      "description": "Bevy engine news, games, plugins and discussion.",
+      "expires_at": "2027-01-13",
+      "fetch_status": "ok",
+      "rules_summary": [
+        "Follow Bevy's code of conduct: https://github.com/bevyengine/bevy/blob/main/CODE_OF_CONDUCT.md"
+      ],
+      "source_urls": [
+        "https://www.reddit.com/r/bevy/about/",
+        "https://www.reddit.com/r/bevy/about/rules/"
+      ],
+      "was_posted_to": false
+    },
+    "blogging": {
+      "checked_at": null,
+      "description": "Historical posting destination; audience not cached.",
+      "expires_at": null,
+      "fetch_status": "missing",
+      "rules_summary": [],
+      "source_urls": [],
+      "was_posted_to": true
+    },
+    "btechtards": {
+      "checked_at": null,
+      "description": "Historical posting destination; audience not cached.",
+      "expires_at": null,
+      "fetch_status": "missing",
+      "rules_summary": [],
+      "source_urls": [],
+      "was_posted_to": true
+    },
+    "buildinpublic": {
+      "checked_at": "2026-11-13",
+      "description": "Share project progress, lessons, challenges and feedback.",
+      "expires_at": "2027-01-13",
+      "fetch_status": "ok",
+      "rules_summary": [
+        "Share progress, lessons, challenges or useful feedback context; promotion alone is insufficient.",
+        "No spam, irrelevant advertising or misrepresentation; credit collaborators and protect private information.",
+        "Be transparent whether shared tools are free, paid or affiliate-linked; keep discussion civil."
+      ],
+      "source_urls": [
+        "https://www.reddit.com/r/buildinpublic/about/",
+        "https://www.reddit.com/r/buildinpublic/about/rules/"
+      ],
+      "was_posted_to": true
+    },
+    "bun": {
+      "checked_at": "2026-11-13",
+      "description": "Metadata conflicts: public description describes the Bun JS/TS runtime; sidebar says “Mecha buns.”",
+      "expires_at": "2027-01-13",
+      "fetch_status": "ok",
+      "notes": [
+        "Conflicting saved public description and sidebar; resolve audience fit from the normal page/composer before choosing this destination."
+      ],
+      "rules_summary": [
+        "No structured rules were returned in the saved snapshot; this does not establish unrestricted posting permission."
+      ],
+      "source_urls": [
+        "https://www.reddit.com/r/bun/about/",
+        "https://www.reddit.com/r/bun/about/rules/"
+      ],
+      "was_posted_to": false
+    },
+    "bunjs": {
+      "checked_at": "2026-11-13",
+      "description": "Bun JavaScript runtime; community was restricted.",
+      "expires_at": "2027-01-13",
+      "fetch_status": "ok",
+      "rules_summary": [
+        "Community was restricted; posting access is not established by the rules cache.",
+        "No structured rules were returned in the saved snapshot; this does not establish unrestricted posting permission."
+      ],
+      "source_urls": [
+        "https://www.reddit.com/r/bunjs/about/",
+        "https://www.reddit.com/r/bunjs/about/rules/"
+      ],
+      "was_posted_to": false
+    },
+    "c_programming": {
+      "checked_at": null,
+      "description": "Historical posting destination; audience not cached.",
+      "expires_at": null,
+      "fetch_status": "missing",
+      "rules_summary": [],
+      "source_urls": [],
+      "was_posted_to": true
+    },
+    "chatgpt": {
+      "checked_at": null,
+      "description": "Historical posting destination; audience not cached.",
+      "expires_at": null,
+      "fetch_status": "missing",
+      "rules_summary": [],
+      "source_urls": [],
+      "was_posted_to": true
+    },
+    "chatgptpro": {
+      "checked_at": null,
+      "description": "Historical posting destination; audience not cached.",
+      "expires_at": null,
+      "fetch_status": "missing",
+      "rules_summary": [],
+      "source_urls": [],
+      "was_posted_to": true
+    },
+    "claude": {
+      "checked_at": null,
+      "description": "Historical posting destination; audience not cached.",
+      "expires_at": null,
+      "fetch_status": "missing",
+      "rules_summary": [],
+      "source_urls": [],
+      "was_posted_to": true
+    },
+    "claudeai": {
+      "checked_at": null,
+      "description": "Historical posting destination; audience not cached.",
+      "expires_at": null,
+      "fetch_status": "missing",
+      "rules_summary": [],
+      "source_urls": [],
+      "was_posted_to": true
+    },
+    "claudecode": {
+      "checked_at": null,
+      "description": "Historical posting destination; audience not cached.",
+      "expires_at": null,
+      "fetch_status": "missing",
+      "rules_summary": [],
+      "source_urls": [],
+      "was_posted_to": true
+    },
+    "claudeskills": {
+      "checked_at": null,
+      "description": "Historical posting destination; audience not cached.",
+      "expires_at": null,
+      "fetch_status": "missing",
+      "rules_summary": [],
+      "source_urls": [],
+      "was_posted_to": true
+    },
+    "clawdbot": {
+      "checked_at": null,
+      "description": "Historical posting destination; audience not cached.",
+      "expires_at": null,
+      "fetch_status": "missing",
+      "rules_summary": [],
+      "source_urls": [],
+      "was_posted_to": true
+    },
+    "cloudcomputing": {
+      "checked_at": null,
+      "description": "Historical posting destination; audience not cached.",
+      "expires_at": null,
+      "fetch_status": "missing",
+      "rules_summary": [],
+      "source_urls": [],
+      "was_posted_to": true
+    },
+    "codequality": {
+      "checked_at": "2026-11-13",
+      "description": "Description unavailable in the saved response.",
+      "expires_at": "2027-01-13",
+      "fetch_status": "unavailable",
+      "http_status": 404,
+      "notes": [
+        "HTTP response did not provide usable rules; no account ban or permanent community status is inferred."
+      ],
+      "rules_summary": [],
+      "source_urls": [
+        "https://www.reddit.com/r/codequality/about/",
+        "https://www.reddit.com/r/codequality/about/rules/"
+      ],
+      "was_posted_to": false
+    },
+    "codex": {
+      "checked_at": null,
+      "description": "Historical posting destination; audience not cached.",
+      "expires_at": null,
+      "fetch_status": "missing",
+      "rules_summary": [],
+      "source_urls": [],
+      "was_posted_to": true
+    },
+    "coding": {
+      "checked_at": "2026-11-13",
+      "description": "Substantive programming-related links and discussion.",
+      "expires_at": "2027-01-13",
+      "fetch_status": "ok",
+      "rules_summary": [
+        "Links only; do not use irrelevant links to evade the ban on self-posts.",
+        "No advertisements or bare “I made this” showcases; substantive articles explaining technical challenges may fit.",
+        "Include meaningful programming content, usually code; no Discord links, tutorial-video spam, playlists, homework or beginner project-advice questions.",
+        "Native video was disabled in observed settings."
+      ],
+      "source_urls": [
+        "https://www.reddit.com/r/coding/about/",
+        "https://www.reddit.com/r/coding/about/rules/"
+      ],
+      "was_posted_to": false
+    },
+    "codinghelp": {
+      "checked_at": null,
+      "description": "Historical posting destination; audience not cached.",
+      "expires_at": null,
+      "fetch_status": "missing",
+      "rules_summary": [],
+      "source_urls": [],
+      "was_posted_to": true
+    },
+    "compsci": {
+      "checked_at": null,
+      "description": "Historical posting destination; audience not cached.",
+      "expires_at": null,
+      "fetch_status": "missing",
+      "rules_summary": [],
+      "source_urls": [],
+      "was_posted_to": true
+    },
+    "computerengineering": {
+      "checked_at": null,
+      "description": "Historical posting destination; audience not cached.",
+      "expires_at": null,
+      "fetch_status": "missing",
+      "rules_summary": [],
+      "source_urls": [],
+      "was_posted_to": true
+    },
+    "computerscience": {
+      "checked_at": null,
+      "description": "Historical posting destination; audience not cached.",
+      "expires_at": null,
+      "fetch_status": "missing",
+      "rules_summary": [],
+      "source_urls": [],
+      "was_posted_to": true
+    },
+    "cpp": {
+      "checked_at": null,
+      "description": "Historical posting destination; audience not cached.",
+      "expires_at": null,
+      "fetch_status": "missing",
+      "rules_summary": [],
+      "source_urls": [],
+      "was_posted_to": true
+    },
+    "csmajors": {
+      "checked_at": null,
+      "description": "Historical posting destination; audience not cached.",
+      "expires_at": null,
+      "fetch_status": "missing",
+      "rules_summary": [],
+      "source_urls": [],
+      "was_posted_to": true
+    },
+    "cybersecurity": {
+      "checked_at": null,
+      "description": "Historical posting destination; audience not cached.",
+      "expires_at": null,
+      "fetch_status": "missing",
+      "rules_summary": [],
+      "source_urls": [],
+      "was_posted_to": true
+    },
+    "database": {
+      "checked_at": null,
+      "description": "Historical posting destination; audience not cached.",
+      "expires_at": null,
+      "fetch_status": "missing",
+      "rules_summary": [],
+      "source_urls": [],
+      "was_posted_to": true
+    },
+    "databasedevelopment": {
+      "checked_at": null,
+      "description": "Historical posting destination; audience not cached.",
+      "expires_at": null,
+      "fetch_status": "missing",
+      "rules_summary": [],
+      "source_urls": [],
+      "was_posted_to": true
+    },
+    "dataengineering": {
+      "checked_at": null,
+      "description": "Historical posting destination; audience not cached.",
+      "expires_at": null,
+      "fetch_status": "missing",
+      "rules_summary": [],
+      "source_urls": [],
+      "was_posted_to": true
+    },
+    "deeplearning": {
+      "checked_at": null,
+      "description": "Historical posting destination; audience not cached.",
+      "expires_at": null,
+      "fetch_status": "missing",
+      "rules_summary": [],
+      "source_urls": [],
+      "was_posted_to": true
+    },
+    "deno": {
+      "checked_at": "2026-11-13",
+      "description": "Deno runtime and projects built around it.",
+      "expires_at": "2027-01-13",
+      "fetch_status": "ok",
+      "rules_summary": [
+        "No structured rules were returned in the saved snapshot; this does not establish unrestricted posting permission."
+      ],
+      "source_urls": [
+        "https://www.reddit.com/r/deno/about/",
+        "https://www.reddit.com/r/deno/about/rules/"
+      ],
+      "was_posted_to": true
+    },
+    "developersindia": {
+      "checked_at": null,
+      "description": "Historical posting destination; audience not cached.",
+      "expires_at": null,
+      "fetch_status": "missing",
+      "rules_summary": [],
+      "source_urls": [],
+      "was_posted_to": true
+    },
+    "devops": {
+      "checked_at": null,
+      "description": "devops ci iac operations; Shark tools, CI architecture checks",
+      "expires_at": null,
+      "fetch_status": "missing",
+      "notes": [
+        "Registry guidance recorded 2026-11-08; not a current rules fetch: thread: Weekly self-promotion thread; affiliation at top. No low-effort AI content or traffic-funnel posts."
+      ],
+      "rules_summary": [],
+      "source_urls": [],
+      "was_posted_to": true
+    },
+    "devtools": {
+      "checked_at": "2026-11-13",
+      "description": "Tools that help developers do their work.",
+      "expires_at": "2027-01-13",
+      "fetch_status": "ok",
+      "rules_summary": [
+        "Discuss useful developer tools.",
+        "Own projects are welcome with information about how they were built or why they matter; do not advertise services or spam."
+      ],
+      "source_urls": [
+        "https://www.reddit.com/r/devtools/about/",
+        "https://www.reddit.com/r/devtools/about/rules/"
+      ],
+      "was_posted_to": true
+    },
+    "django": {
+      "checked_at": "2026-11-13",
+      "description": "Django web development and community news.",
+      "expires_at": "2027-01-13",
+      "fetch_status": "ok",
+      "rules_summary": [
+        "Follow Django code of conduct and Reddit rules; remain relevant to Django web development.",
+        "Sharing own content is allowed alongside participation and sharing beyond self-promotion."
+      ],
+      "source_urls": [
+        "https://www.reddit.com/r/django/about/",
+        "https://www.reddit.com/r/django/about/rules/"
+      ],
+      "was_posted_to": true
+    },
+    "djangolearning": {
+      "checked_at": null,
+      "description": "Historical posting destination; audience not cached.",
+      "expires_at": null,
+      "fetch_status": "missing",
+      "rules_summary": [],
+      "source_urls": [],
+      "was_posted_to": true
+    },
+    "docker": {
+      "checked_at": null,
+      "description": "docker containers compose; DockerShark",
+      "expires_at": null,
+      "fetch_status": "missing",
+      "notes": [
+        "Registry guidance recorded 2026-11-08; not a current rules fetch: hold: Prior mod approval required, including OSS/tutorials; projects must be older than 3 months. AI content needs model/prompt disclosure; unauthorized bot posts prohibited."
+      ],
+      "rules_summary": [],
+      "source_urls": [],
+      "was_posted_to": true
+    },
+    "dotnet": {
+      "checked_at": null,
+      "description": "Historical posting destination; audience not cached.",
+      "expires_at": null,
+      "fetch_status": "missing",
+      "rules_summary": [],
+      "source_urls": [],
+      "was_posted_to": true
+    },
+    "engineeringstudents": {
+      "checked_at": null,
+      "description": "Historical posting destination; audience not cached.",
+      "expires_at": null,
+      "fetch_status": "missing",
+      "rules_summary": [],
+      "source_urls": [],
+      "was_posted_to": true
+    },
+    "experienceddevs": {
+      "checked_at": null,
+      "description": "Historical posting destination; audience not cached.",
+      "expires_at": null,
+      "fetch_status": "missing",
+      "rules_summary": [],
+      "source_urls": [],
+      "was_posted_to": true
+    },
+    "expressjs": {
+      "checked_at": "2026-11-13",
+      "description": "Express web application framework for Node.js.",
+      "expires_at": "2027-01-13",
+      "fetch_status": "ok",
+      "rules_summary": [
+        "No structured rules were returned in the saved snapshot; this does not establish unrestricted posting permission."
+      ],
+      "source_urls": [
+        "https://www.reddit.com/r/expressjs/about/",
+        "https://www.reddit.com/r/expressjs/about/rules/"
+      ],
+      "was_posted_to": false
+    },
+    "fastapi": {
+      "checked_at": "2026-11-13",
+      "description": "FastAPI and related Python web-development topics.",
+      "expires_at": "2027-01-13",
+      "fetch_status": "ok",
+      "rules_summary": [
+        "No spam; topics must relate to FastAPI or its ecosystem, including Starlette, Pydantic, deployment, async and ORMs.",
+        "Tutorials must teach something about FastAPI itself; merely using it as background is insufficient."
+      ],
+      "source_urls": [
+        "https://www.reddit.com/r/fastapi/about/",
+        "https://www.reddit.com/r/fastapi/about/rules/"
+      ],
+      "was_posted_to": true
+    },
+    "flask": {
+      "checked_at": null,
+      "description": "python flask backend; ArchUnitPython",
+      "expires_at": null,
+      "fetch_status": "missing",
+      "notes": [
+        "Registry guidance recorded 2026-11-08; not a current rules fetch: hold: Rule 5 prohibits AI-written posts. Skip this autonomous writing workflow; matching the author's voice does not create an exception."
+      ],
+      "rules_summary": [],
+      "source_urls": [],
+      "was_posted_to": false
+    },
+    "fluxcd": {
+      "checked_at": null,
+      "description": "Historical posting destination; audience not cached.",
+      "expires_at": null,
+      "fetch_status": "missing",
+      "rules_summary": [],
+      "source_urls": [],
+      "was_posted_to": true
+    },
+    "foss": {
+      "checked_at": "2026-11-13",
+      "description": "Free and open-source software.",
+      "expires_at": "2027-01-13",
+      "fetch_status": "ok",
+      "rules_summary": [
+        "Promoted software must be free and open source.",
+        "Stay on topic and civil; no unrelated spam."
+      ],
+      "source_urls": [
+        "https://www.reddit.com/r/foss/about/",
+        "https://www.reddit.com/r/foss/about/rules/"
+      ],
+      "was_posted_to": true
+    },
+    "frontend": {
+      "checked_at": null,
+      "description": "Historical posting destination; audience not cached.",
+      "expires_at": null,
+      "fetch_status": "missing",
+      "rules_summary": [],
+      "source_urls": [],
+      "was_posted_to": true
+    },
+    "fullstack": {
+      "checked_at": null,
+      "description": "Historical posting destination; audience not cached.",
+      "expires_at": null,
+      "fetch_status": "missing",
+      "rules_summary": [],
+      "source_urls": [],
+      "was_posted_to": true
+    },
+    "futurology": {
+      "checked_at": null,
+      "description": "Historical posting destination; audience not cached.",
+      "expires_at": null,
+      "fetch_status": "missing",
+      "rules_summary": [],
+      "source_urls": [],
+      "was_posted_to": true
+    },
+    "golang": {
+      "checked_at": null,
+      "description": "go architecture; ArchUnitGo",
+      "expires_at": null,
+      "fetch_status": "missing",
+      "notes": [
+        "Registry guidance recorded 2026-11-08; not a current rules fetch: review: Go-specific libraries/tools fit; avoid engagement hooks and generic calls to subscribe. Small-project thread is available."
+      ],
+      "rules_summary": [],
+      "source_urls": [],
+      "was_posted_to": true
+    },
+    "googlecloud": {
+      "checked_at": null,
+      "description": "Historical posting destination; audience not cached.",
+      "expires_at": null,
+      "fetch_status": "missing",
+      "rules_summary": [],
+      "source_urls": [],
+      "was_posted_to": true
+    },
+    "grafana": {
+      "checked_at": null,
+      "description": "Historical posting destination; audience not cached.",
+      "expires_at": null,
+      "fetch_status": "missing",
+      "rules_summary": [],
+      "source_urls": [],
+      "was_posted_to": true
+    },
+    "hashicorp": {
+      "checked_at": null,
+      "description": "Historical posting destination; audience not cached.",
+      "expires_at": null,
+      "fetch_status": "missing",
+      "rules_summary": [],
+      "source_urls": [],
+      "was_posted_to": true
+    },
+    "hermesagent": {
+      "checked_at": null,
+      "description": "Historical posting destination; audience not cached.",
+      "expires_at": null,
+      "fetch_status": "missing",
+      "rules_summary": [],
+      "source_urls": [],
+      "was_posted_to": true
+    },
+    "ibm": {
+      "checked_at": null,
+      "description": "Historical posting destination; audience not cached.",
+      "expires_at": null,
+      "fetch_status": "missing",
+      "rules_summary": [],
+      "source_urls": [],
+      "was_posted_to": true
+    },
+    "imadethis": {
+      "checked_at": "2026-11-13",
+      "description": "Showcase things you made, including open-source projects.",
+      "expires_at": "2027-01-13",
+      "fetch_status": "ok",
+      "rules_summary": [
+        "Sidebar welcomes work you made, including open-source software; no structured rules were returned."
+      ],
+      "source_urls": [
+        "https://www.reddit.com/r/imadethis/about/",
+        "https://www.reddit.com/r/imadethis/about/rules/"
+      ],
+      "was_posted_to": true
+    },
+    "indiatech": {
+      "checked_at": null,
+      "description": "Historical posting destination; audience not cached.",
+      "expires_at": null,
+      "fetch_status": "missing",
+      "rules_summary": [],
+      "source_urls": [],
+      "was_posted_to": true
+    },
+    "indiehackers": {
+      "checked_at": "2026-11-13",
+      "description": "Independent developers and bootstrapped products.",
+      "expires_at": "2027-01-13",
+      "fetch_status": "ok",
+      "rules_summary": [
+        "A product may be self-promoted once using Self Promotion flair, for feedback/critique rather than advertising.",
+        "MRR claims require proof; no karma-farming “what did you build” posts."
+      ],
+      "source_urls": [
+        "https://www.reddit.com/r/indiehackers/about/",
+        "https://www.reddit.com/r/indiehackers/about/rules/"
+      ],
+      "was_posted_to": true
+    },
+    "java": {
+      "checked_at": null,
+      "description": "Historical posting destination; audience not cached.",
+      "expires_at": null,
+      "fetch_status": "missing",
+      "rules_summary": [],
+      "source_urls": [],
+      "was_posted_to": true
+    },
+    "javascript": {
+      "checked_at": "2026-11-13",
+      "description": "JavaScript and related projects, including TypeScript.",
+      "expires_at": "2027-01-13",
+      "fetch_status": "ok",
+      "rules_summary": [
+        "Own or affiliated content must not constitute a majority of contributions; paid-product/service advertising is prohibited.",
+        "Include code with demos; no low-effort listicles, memes or clickbait.",
+        "No support requests or beginner content; new-user submissions can be automatically removed.",
+        "Native video was disabled in the observed settings."
+      ],
+      "source_urls": [
+        "https://www.reddit.com/r/javascript/about/",
+        "https://www.reddit.com/r/javascript/about/rules/"
+      ],
+      "was_posted_to": true
+    },
+    "kubernetes": {
+      "checked_at": null,
+      "description": "k8s operations agents; KubeShark",
+      "expires_at": null,
+      "fetch_status": "missing",
+      "notes": [
+        "Registry guidance recorded 2026-11-08; not a current rules fetch: thread: New tools go in weekly tools/projects thread. Disclose affiliation, give independent value, do not repeat a link within a month."
+      ],
+      "rules_summary": [],
+      "source_urls": [],
+      "was_posted_to": true
+    },
+    "learnjavascript": {
+      "checked_at": null,
+      "description": "Historical posting destination; audience not cached.",
+      "expires_at": null,
+      "fetch_status": "missing",
+      "rules_summary": [],
+      "source_urls": [],
+      "was_posted_to": true
+    },
+    "learnmachinelearning": {
+      "checked_at": null,
+      "description": "Historical posting destination; audience not cached.",
+      "expires_at": null,
+      "fetch_status": "missing",
+      "rules_summary": [],
+      "source_urls": [],
+      "was_posted_to": true
+    },
+    "learnprogramming": {
+      "checked_at": null,
+      "description": "Historical posting destination; audience not cached.",
+      "expires_at": null,
+      "fetch_status": "missing",
+      "rules_summary": [],
+      "source_urls": [],
+      "was_posted_to": true
+    },
+    "learnpython": {
+      "checked_at": null,
+      "description": "Historical posting destination; audience not cached.",
+      "expires_at": null,
+      "fetch_status": "missing",
+      "rules_summary": [],
+      "source_urls": [],
+      "was_posted_to": true
+    },
+    "learnrust": {
+      "checked_at": "2026-11-13",
+      "description": "Rust questions and project sharing; public description says no AI slop.",
+      "expires_at": "2027-01-13",
+      "fetch_status": "ok",
+      "rules_summary": [
+        "Structured rule describes a question-focused Rust community.",
+        "Public description also mentions project sharing and “No AI slop”; do not assume unrestricted AI-assisted promotion."
+      ],
+      "source_urls": [
+        "https://www.reddit.com/r/learnrust/about/",
+        "https://www.reddit.com/r/learnrust/about/rules/"
+      ],
+      "was_posted_to": false
+    },
+    "llm": {
+      "checked_at": null,
+      "description": "Historical posting destination; audience not cached.",
+      "expires_at": null,
+      "fetch_status": "missing",
+      "rules_summary": [],
+      "source_urls": [],
+      "was_posted_to": true
+    },
+    "llmdevs": {
+      "checked_at": null,
+      "description": "Historical posting destination; audience not cached.",
+      "expires_at": null,
+      "fetch_status": "missing",
+      "rules_summary": [],
+      "source_urls": [],
+      "was_posted_to": true
+    },
+    "llmstudio": {
+      "checked_at": null,
+      "description": "Historical posting destination; audience not cached.",
+      "expires_at": null,
+      "fetch_status": "missing",
+      "rules_summary": [],
+      "source_urls": [],
+      "was_posted_to": true
+    },
+    "localllama": {
+      "checked_at": null,
+      "description": "Historical posting destination; audience not cached.",
+      "expires_at": null,
+      "fetch_status": "missing",
+      "rules_summary": [],
+      "source_urls": [],
+      "was_posted_to": true
+    },
+    "localllm": {
+      "checked_at": null,
+      "description": "Historical posting destination; audience not cached.",
+      "expires_at": null,
+      "fetch_status": "missing",
+      "rules_summary": [],
+      "source_urls": [],
+      "was_posted_to": true
+    },
+    "machinelearning": {
+      "checked_at": null,
+      "description": "Historical posting destination; audience not cached.",
+      "expires_at": null,
+      "fetch_status": "missing",
+      "rules_summary": [],
+      "source_urls": [],
+      "was_posted_to": true
+    },
+    "madeinpython": {
+      "checked_at": "2026-11-13",
+      "description": "Projects made with Python.",
+      "expires_at": "2027-01-13",
+      "fetch_status": "ok",
+      "rules_summary": [
+        "Project must be made with Python; give a detailed explanation rather than a bare link.",
+        "No explicit content; criticism must remain civil."
+      ],
+      "source_urls": [
+        "https://www.reddit.com/r/madeinpython/about/",
+        "https://www.reddit.com/r/madeinpython/about/rules/"
+      ],
+      "was_posted_to": true
+    },
+    "madeinrust": {
+      "checked_at": "2026-11-13",
+      "description": "Showcase projects written in Rust.",
+      "expires_at": "2027-01-13",
+      "fetch_status": "ok",
+      "notes": [
+        "Coding-origin flair requirement was observed in the November 8 campaign UI; choose truthfully. No account-specific answer is cached here."
+      ],
+      "rules_summary": [
+        "Projects must relate to Rust; credit other authors when sharing their work.",
+        "Show why the project is interesting: visual projects need a short demo, chart or visual output; language/DSL/compiler projects can use clear before/after code.",
+        "Bare links and code-editor screenshots without useful demonstration are low effort."
+      ],
+      "source_urls": [
+        "https://www.reddit.com/r/madeinrust/about/",
+        "https://www.reddit.com/r/madeinrust/about/rules/"
+      ],
+      "was_posted_to": true
+    },
+    "millennials": {
+      "checked_at": null,
+      "description": "Historical posting destination; audience not cached.",
+      "expires_at": null,
+      "fetch_status": "missing",
+      "rules_summary": [],
+      "source_urls": [],
+      "was_posted_to": true
+    },
+    "mlscaling": {
+      "checked_at": null,
+      "description": "Historical posting destination; audience not cached.",
+      "expires_at": null,
+      "fetch_status": "missing",
+      "rules_summary": [],
+      "source_urls": [],
+      "was_posted_to": true
+    },
+    "nestjs": {
+      "checked_at": "2026-11-13",
+      "description": "NestJS and TypeScript server-side development.",
+      "expires_at": "2027-01-13",
+      "fetch_status": "ok",
+      "rules_summary": [
+        "Rule is titled “No self-promotion”; its description prohibits excessive self-promotion and references a 9:1 contribution ratio.",
+        "Keep information accurate and discussion civil."
+      ],
+      "source_urls": [
+        "https://www.reddit.com/r/nestjs/about/",
+        "https://www.reddit.com/r/nestjs/about/rules/"
+      ],
+      "was_posted_to": true
+    },
+    "nextjs": {
+      "checked_at": "2026-11-13",
+      "description": "Next.js full-stack web development.",
+      "expires_at": "2027-01-13",
+      "fetch_status": "ok",
+      "rules_summary": [
+        "Posts must be specifically relevant to Next.js and contain substantive effort.",
+        "Project/product/portfolio promotion and feedback requests belong in the weekly show-and-tell, not standalone posts.",
+        "No job requests or advertisements; stay civil."
+      ],
+      "source_urls": [
+        "https://www.reddit.com/r/nextjs/about/",
+        "https://www.reddit.com/r/nextjs/about/rules/"
+      ],
+      "was_posted_to": true
+    },
+    "node": {
+      "checked_at": "2026-11-13",
+      "description": "Node.js, JavaScript and TypeScript ecosystem.",
+      "expires_at": "2027-01-13",
+      "fetch_status": "ok",
+      "rules_summary": [
+        "No structured rules were returned in the saved snapshot; this does not establish unrestricted posting permission."
+      ],
+      "source_urls": [
+        "https://www.reddit.com/r/node/about/",
+        "https://www.reddit.com/r/node/about/rules/"
+      ],
+      "was_posted_to": true
+    },
+    "openai": {
+      "checked_at": null,
+      "description": "Historical posting destination; audience not cached.",
+      "expires_at": null,
+      "fetch_status": "missing",
+      "rules_summary": [],
+      "source_urls": [],
+      "was_posted_to": true
+    },
+    "openaicodex": {
+      "checked_at": null,
+      "description": "Historical posting destination; audience not cached.",
+      "expires_at": null,
+      "fetch_status": "missing",
+      "rules_summary": [],
+      "source_urls": [],
+      "was_posted_to": true
+    },
+    "openaidev": {
+      "checked_at": null,
+      "description": "Historical posting destination; audience not cached.",
+      "expires_at": null,
+      "fetch_status": "missing",
+      "rules_summary": [],
+      "source_urls": [],
+      "was_posted_to": true
+    },
+    "openclaw": {
+      "checked_at": null,
+      "description": "Historical posting destination; audience not cached.",
+      "expires_at": null,
+      "fetch_status": "missing",
+      "rules_summary": [],
+      "source_urls": [],
+      "was_posted_to": true
+    },
+    "openshift": {
+      "checked_at": null,
+      "description": "Historical posting destination; audience not cached.",
+      "expires_at": null,
+      "fetch_status": "missing",
+      "rules_summary": [],
+      "source_urls": [],
+      "was_posted_to": true
+    },
+    "opensourceprojects": {
+      "checked_at": null,
+      "description": "Audience and rules not cached.",
+      "expires_at": null,
+      "fetch_status": "missing",
+      "notes": [
+        "November 13 lookup stopped on HTTP 429; no successful rules observation exists. This is not a community-level ban."
+      ],
+      "rules_summary": [],
+      "source_urls": [],
+      "was_posted_to": false
+    },
+    "opentelemetry": {
+      "checked_at": null,
+      "description": "Historical posting destination; audience not cached.",
+      "expires_at": null,
+      "fetch_status": "missing",
+      "rules_summary": [],
+      "source_urls": [],
+      "was_posted_to": true
+    },
+    "opentofu": {
+      "checked_at": null,
+      "description": "Historical posting destination; audience not cached.",
+      "expires_at": null,
+      "fetch_status": "missing",
+      "rules_summary": [],
+      "source_urls": [],
+      "was_posted_to": true
+    },
+    "oraclecloud": {
+      "checked_at": null,
+      "description": "Historical posting destination; audience not cached.",
+      "expires_at": null,
+      "fetch_status": "missing",
+      "rules_summary": [],
+      "source_urls": [],
+      "was_posted_to": true
+    },
+    "postgresql": {
+      "checked_at": null,
+      "description": "Historical posting destination; audience not cached.",
+      "expires_at": null,
+      "fetch_status": "missing",
+      "rules_summary": [],
+      "source_urls": [],
+      "was_posted_to": true
+    },
+    "presale": {
+      "checked_at": null,
+      "description": "Historical posting destination; audience not cached.",
+      "expires_at": null,
+      "fetch_status": "missing",
+      "rules_summary": [],
+      "source_urls": [],
+      "was_posted_to": true
+    },
+    "productmanagement": {
+      "checked_at": null,
+      "description": "Historical posting destination; audience not cached.",
+      "expires_at": null,
+      "fetch_status": "missing",
+      "rules_summary": [],
+      "source_urls": [],
+      "was_posted_to": true
+    },
+    "programming": {
+      "checked_at": null,
+      "description": "Historical posting destination; audience not cached.",
+      "expires_at": null,
+      "fetch_status": "missing",
+      "rules_summary": [],
+      "source_urls": [],
+      "was_posted_to": true
+    },
+    "programmingprojects": {
+      "checked_at": "2026-11-13",
+      "description": "Small and medium programming projects, utilities and progress.",
+      "expires_at": "2027-01-13",
+      "fetch_status": "ok",
+      "rules_summary": [
+        "Sidebar welcomes project progress, useful resources and constructive feedback for small/medium programming projects.",
+        "No structured rules were returned in this snapshot."
+      ],
+      "source_urls": [
+        "https://www.reddit.com/r/programmingprojects/about/",
+        "https://www.reddit.com/r/programmingprojects/about/rules/"
+      ],
+      "was_posted_to": true
+    },
+    "prometheusmonitoring": {
+      "checked_at": null,
+      "description": "Historical posting destination; audience not cached.",
+      "expires_at": null,
+      "fetch_status": "missing",
+      "rules_summary": [],
+      "source_urls": [],
+      "was_posted_to": true
+    },
+    "pulumi": {
+      "checked_at": null,
+      "description": "pulumi iac; PulumiShark",
+      "expires_at": null,
+      "fetch_status": "missing",
+      "notes": [
+        "Registry guidance recorded 2026-11-08; not a current rules fetch: unknown: Pulumi-specific infrastructure workflow."
+      ],
+      "rules_summary": [],
+      "source_urls": [],
+      "was_posted_to": false
+    },
+    "pytest": {
+      "checked_at": "2026-11-13",
+      "description": "Description unavailable in the saved response.",
+      "expires_at": "2027-01-13",
+      "fetch_status": "unavailable",
+      "http_status": 403,
+      "notes": [
+        "HTTP response did not provide usable rules; no account ban or permanent community status is inferred."
+      ],
+      "rules_summary": [],
+      "source_urls": [
+        "https://www.reddit.com/r/pytest/about/",
+        "https://www.reddit.com/r/pytest/about/rules/"
+      ],
+      "was_posted_to": false
+    },
+    "python": {
+      "checked_at": null,
+      "description": "python architecture; ArchUnitPython",
+      "expires_at": null,
+      "fetch_status": "missing",
+      "notes": [
+        "Registry guidance recorded 2026-11-08; not a current rules fetch: thread: No standalone showcases; use the monthly showcase or applicable daily thread. Include source and a useful description."
+      ],
+      "rules_summary": [],
+      "source_urls": [],
+      "was_posted_to": true
+    },
+    "pythoncoding": {
+      "checked_at": "2026-11-13",
+      "description": "Advanced Python content, technical discussion and noteworthy projects.",
+      "expires_at": "2027-01-13",
+      "fetch_status": "ok",
+      "rules_summary": [
+        "Advanced Python only; no beginner tutorials/projects, generic help or learning-resource requests.",
+        "Project showcases must include source code and focus on it; no blogspam, low-effort or paywalled content, memes, or items being sold.",
+        "Code-review posts require working runnable code, PyPI dependencies listed in requirements.txt, and context explaining technical choices/architecture.",
+        "Video posts require Python relevance and takeaways in the post/comment plus code shared in text form."
+      ],
+      "source_urls": [
+        "https://www.reddit.com/r/pythoncoding/about/",
+        "https://www.reddit.com/r/pythoncoding/about/rules/"
+      ],
+      "was_posted_to": false
+    },
+    "pythonhelp": {
+      "checked_at": null,
+      "description": "Historical posting destination; audience not cached.",
+      "expires_at": null,
+      "fetch_status": "missing",
+      "rules_summary": [],
+      "source_urls": [],
+      "was_posted_to": true
+    },
+    "pythonjobs": {
+      "checked_at": null,
+      "description": "Historical posting destination; audience not cached.",
+      "expires_at": null,
+      "fetch_status": "missing",
+      "rules_summary": [],
+      "source_urls": [],
+      "was_posted_to": true
+    },
+    "pythonlearning": {
+      "checked_at": null,
+      "description": "Historical posting destination; audience not cached.",
+      "expires_at": null,
+      "fetch_status": "missing",
+      "rules_summary": [],
+      "source_urls": [],
+      "was_posted_to": true
+    },
+    "pythonlibraries": {
+      "checked_at": "2026-11-13",
+      "description": "Sharing, learning about and deploying Python libraries.",
+      "expires_at": "2027-01-13",
+      "fetch_status": "ok",
+      "rules_summary": [
+        "No structured rules were returned in the saved snapshot; this does not establish unrestricted posting permission."
+      ],
+      "source_urls": [
+        "https://www.reddit.com/r/pythonlibraries/about/",
+        "https://www.reddit.com/r/pythonlibraries/about/rules/"
+      ],
+      "was_posted_to": true
+    },
+    "pythonprogramming": {
+      "checked_at": "2026-11-13",
+      "description": "Python programming.",
+      "expires_at": "2027-01-13",
+      "fetch_status": "ok",
+      "rules_summary": [
+        "No structured rules were returned in the saved snapshot; this does not establish unrestricted posting permission."
+      ],
+      "source_urls": [
+        "https://www.reddit.com/r/pythonprogramming/about/",
+        "https://www.reddit.com/r/pythonprogramming/about/rules/"
+      ],
+      "was_posted_to": true
+    },
+    "pythonprojects2": {
+      "checked_at": null,
+      "description": "Historical posting destination; audience not cached.",
+      "expires_at": null,
+      "fetch_status": "missing",
+      "rules_summary": [],
+      "source_urls": [],
+      "was_posted_to": true
+    },
+    "pythontips": {
+      "checked_at": "2026-11-13",
+      "description": "One Python tip or trick per post.",
+      "expires_at": "2027-01-13",
+      "fetch_status": "ok",
+      "rules_summary": [
+        "One main Python tip with an explained code example; indent code by four spaces.",
+        "No help requests or redirects to lists/blogs of tips.",
+        "Observed submission type is text-only."
+      ],
+      "source_urls": [
+        "https://www.reddit.com/r/pythontips/about/",
+        "https://www.reddit.com/r/pythontips/about/rules/"
+      ],
+      "was_posted_to": true
+    },
+    "qualityassurance": {
+      "checked_at": null,
+      "description": "Historical posting destination; audience not cached.",
+      "expires_at": null,
+      "fetch_status": "missing",
+      "rules_summary": [],
+      "source_urls": [],
+      "was_posted_to": true
+    },
+    "rails": {
+      "checked_at": "2026-11-13",
+      "description": "Ruby on Rails development.",
+      "expires_at": "2027-01-13",
+      "fetch_status": "ok",
+      "rules_summary": [
+        "Clearly label content created with GenAI assistance.",
+        "Keep discussion respectful and substantive; no language bashing.",
+        "Job/recruiter posts belong in Work it Wednesday with salary, experience, timezone, location and work restrictions.",
+        "General Ruby-language posts are directed to r/ruby."
+      ],
+      "source_urls": [
+        "https://www.reddit.com/r/rails/about/",
+        "https://www.reddit.com/r/rails/about/rules/"
+      ],
+      "was_posted_to": true
+    },
+    "react": {
+      "checked_at": null,
+      "description": "Historical posting destination; audience not cached.",
+      "expires_at": null,
+      "fetch_status": "missing",
+      "rules_summary": [],
+      "source_urls": [],
+      "was_posted_to": true
+    },
+    "reactjs": {
+      "checked_at": null,
+      "description": "react ts jsx frontend; ArchUnitTS",
+      "expires_at": null,
+      "fetch_status": "missing",
+      "notes": [
+        "Registry guidance recorded 2026-11-08; not a current rules fetch: hold: Marketing/solicitation only in dedicated posts; AI excerpts need attribution and original thought. Do not assume an OSS showcase exempts a marketing campaign."
+      ],
+      "rules_summary": [],
+      "source_urls": [],
+      "was_posted_to": true
+    },
+    "reactnative": {
+      "checked_at": "2026-11-13",
+      "description": "React Native mobile development.",
+      "expires_at": "2027-01-13",
+      "fetch_status": "ok",
+      "rules_summary": [
+        "Self-promotion of a company is prohibited; non-promotional articles linking to a company site may qualify.",
+        "Require substantive React Native or closely related mobile-development value; no harassment.",
+        "Explain issues in the post rather than posting only a Stack Overflow link."
+      ],
+      "source_urls": [
+        "https://www.reddit.com/r/reactnative/about/",
+        "https://www.reddit.com/r/reactnative/about/rules/"
+      ],
+      "was_posted_to": true
+    },
+    "remotepython": {
+      "checked_at": null,
+      "description": "Historical posting destination; audience not cached.",
+      "expires_at": null,
+      "fetch_status": "missing",
+      "rules_summary": [],
+      "source_urls": [],
+      "was_posted_to": true
+    },
+    "ruby": {
+      "checked_at": "2026-11-13",
+      "description": "Ruby language discussion and news.",
+      "expires_at": "2027-01-13",
+      "fetch_status": "ok",
+      "rules_summary": [
+        "Keep discussion respectful and substantive; no language bashing.",
+        "Job/recruiter posts belong in the recurring Work it Wednesday thread and require salary, experience, timezone, location and work restrictions."
+      ],
+      "source_urls": [
+        "https://www.reddit.com/r/ruby/about/",
+        "https://www.reddit.com/r/ruby/about/rules/"
+      ],
+      "was_posted_to": true
+    },
+    "rubygems": {
+      "checked_at": "2026-11-13",
+      "description": "Description unavailable in the saved response.",
+      "expires_at": "2027-01-13",
+      "fetch_status": "unavailable",
+      "http_status": 403,
+      "notes": [
+        "HTTP response did not provide usable rules; no account ban or permanent community status is inferred."
+      ],
+      "rules_summary": [],
+      "source_urls": [
+        "https://www.reddit.com/r/rubygems/about/",
+        "https://www.reddit.com/r/rubygems/about/rules/"
+      ],
+      "was_posted_to": false
+    },
+    "rubyonrails": {
+      "checked_at": "2026-11-13",
+      "description": "Ruby on Rails discussion and news.",
+      "expires_at": "2027-01-13",
+      "fetch_status": "ok",
+      "rules_summary": [
+        "No structured rules were returned in the saved snapshot; this does not establish unrestricted posting permission."
+      ],
+      "source_urls": [
+        "https://www.reddit.com/r/rubyonrails/about/",
+        "https://www.reddit.com/r/rubyonrails/about/rules/"
+      ],
+      "was_posted_to": false
+    },
+    "rubyprogramming": {
+      "checked_at": "2026-11-13",
+      "description": "Description unavailable in the saved response.",
+      "expires_at": "2027-01-13",
+      "fetch_status": "unavailable",
+      "http_status": 403,
+      "notes": [
+        "HTTP response did not provide usable rules; no account ban or permanent community status is inferred."
+      ],
+      "rules_summary": [],
+      "source_urls": [
+        "https://www.reddit.com/r/rubyprogramming/about/",
+        "https://www.reddit.com/r/rubyprogramming/about/rules/"
+      ],
+      "was_posted_to": false
+    },
+    "rust": {
+      "checked_at": null,
+      "description": "rust crate architecture; ArchUnitRust",
+      "expires_at": null,
+      "fetch_status": "missing",
+      "notes": [
+        "Registry guidance recorded 2026-11-08; not a current rules fetch: hold: Pinned announcement prohibits AI-generated posts/articles, even partly. Simple project sharing goes in weekly work thread; that is not an AI-policy exception."
+      ],
+      "rules_summary": [],
+      "source_urls": [],
+      "was_posted_to": false
+    },
+    "rust_gamedev": {
+      "checked_at": "2026-11-13",
+      "description": "Game development with the Rust programming language.",
+      "expires_at": "2027-01-13",
+      "fetch_status": "ok",
+      "rules_summary": [
+        "Follow the Rust community code of conduct.",
+        "Posts concern game development in the Rust programming language, not the survival game named Rust."
+      ],
+      "source_urls": [
+        "https://www.reddit.com/r/rust_gamedev/about/",
+        "https://www.reddit.com/r/rust_gamedev/about/rules/"
+      ],
+      "was_posted_to": false
+    },
+    "rustprojects": {
+      "checked_at": "2026-11-13",
+      "description": "Rust tools, libraries and apps, including projects built with AI coding agents.",
+      "expires_at": "2027-01-13",
+      "fetch_status": "ok",
+      "rules_summary": [
+        "No excessive promotion, advertising or spam; be civil.",
+        "For AI-built projects, public description asks for the repository, what the agent did and what was checked; maintained/tested projects are expected."
+      ],
+      "source_urls": [
+        "https://www.reddit.com/r/rustprojects/about/",
+        "https://www.reddit.com/r/rustprojects/about/rules/"
+      ],
+      "was_posted_to": true
+    },
+    "saas": {
+      "checked_at": null,
+      "description": "Historical posting destination; audience not cached.",
+      "expires_at": null,
+      "fetch_status": "missing",
+      "rules_summary": [],
+      "source_urls": [],
+      "was_posted_to": true
+    },
+    "saassales": {
+      "checked_at": null,
+      "description": "Historical posting destination; audience not cached.",
+      "expires_at": null,
+      "fetch_status": "missing",
+      "rules_summary": [],
+      "source_urls": [],
+      "was_posted_to": true
+    },
+    "sales": {
+      "checked_at": null,
+      "description": "Historical posting destination; audience not cached.",
+      "expires_at": null,
+      "fetch_status": "missing",
+      "rules_summary": [],
+      "source_urls": [],
+      "was_posted_to": true
+    },
+    "salesengineers": {
+      "checked_at": null,
+      "description": "Historical posting destination; audience not cached.",
+      "expires_at": null,
+      "fetch_status": "missing",
+      "rules_summary": [],
+      "source_urls": [],
+      "was_posted_to": true
+    },
+    "salesforce": {
+      "checked_at": null,
+      "description": "Historical posting destination; audience not cached.",
+      "expires_at": null,
+      "fetch_status": "missing",
+      "rules_summary": [],
+      "source_urls": [],
+      "was_posted_to": true
+    },
+    "salesforcecareers": {
+      "checked_at": null,
+      "description": "Historical posting destination; audience not cached.",
+      "expires_at": null,
+      "fetch_status": "missing",
+      "rules_summary": [],
+      "source_urls": [],
+      "was_posted_to": true
+    },
+    "salestechniques": {
+      "checked_at": null,
+      "description": "Historical posting destination; audience not cached.",
+      "expires_at": null,
+      "fetch_status": "missing",
+      "rules_summary": [],
+      "source_urls": [],
+      "was_posted_to": true
+    },
+    "selenium": {
+      "checked_at": null,
+      "description": "Historical posting destination; audience not cached.",
+      "expires_at": null,
+      "fetch_status": "missing",
+      "rules_summary": [],
+      "source_urls": [],
+      "was_posted_to": true
+    },
+    "sideproject": {
+      "checked_at": "2026-11-13",
+      "description": "Share side projects and receive constructive feedback.",
+      "expires_at": "2027-01-13",
+      "fetch_status": "ok",
+      "rules_summary": [
+        "For project/startup links, use title format “[Project name] - [Short description]”.",
+        "Community is for project sharing and constructive feedback; no structured rules were returned."
+      ],
+      "source_urls": [
+        "https://www.reddit.com/r/sideproject/about/",
+        "https://www.reddit.com/r/sideproject/about/rules/"
+      ],
+      "was_posted_to": true
+    },
+    "sideprojects": {
+      "checked_at": "2026-11-13",
+      "description": "Share and discuss side projects.",
+      "expires_at": "2027-01-13",
+      "fetch_status": "ok",
+      "rules_summary": [
+        "Provide substantive project details: problem, technologies and resources; disclose affiliation.",
+        "Do not repeat the same project without significant updates; avoid affiliate links and participate beyond promotion.",
+        "No DM funnels or astroturfing; feedback must be constructive.",
+        "Use appropriate showcase flair, including a vibecoded showcase flair if that describes the project."
+      ],
+      "source_urls": [
+        "https://www.reddit.com/r/sideprojects/about/",
+        "https://www.reddit.com/r/sideprojects/about/rules/"
+      ],
+      "was_posted_to": true
+    },
+    "softwarearchitecture": {
+      "checked_at": null,
+      "description": "Historical posting destination; audience not cached.",
+      "expires_at": null,
+      "fetch_status": "missing",
+      "rules_summary": [],
+      "source_urls": [],
+      "was_posted_to": true
+    },
+    "softwaredevelopment": {
+      "checked_at": "2026-11-13",
+      "description": "Software-development methodologies, not general programming or release promotion.",
+      "expires_at": "2027-01-13",
+      "fetch_status": "ok",
+      "rules_summary": [
+        "Posts must concern software-development methodologies.",
+        "Not for career advice, general programming chat, new releases or developer recruitment.",
+        "Observed submission type is text-only."
+      ],
+      "source_urls": [
+        "https://www.reddit.com/r/softwaredevelopment/about/",
+        "https://www.reddit.com/r/softwaredevelopment/about/rules/"
+      ],
+      "was_posted_to": true
+    },
+    "softwareengineering": {
+      "checked_at": "2026-11-13",
+      "description": "Software engineering principles and technical discussion.",
+      "expires_at": "2027-01-13",
+      "fetch_status": "ok",
+      "rules_summary": [
+        "Original content that could be self-promotion requires prior moderator approval.",
+        "Eligible engineering-blog content must be novel/researched and not mass-crossposted; sites with service/contact/mailing-list promotion are restricted.",
+        "No general career/workplace discussion, job ads, tech support, hardware advice, coding help or memes.",
+        "AI discussion must address technical mechanisms rather than workplace/life repercussions; this rule is not an explicit AI-writing ban.",
+        "Native video was disabled in observed settings."
+      ],
+      "source_urls": [
+        "https://www.reddit.com/r/softwareengineering/about/",
+        "https://www.reddit.com/r/softwareengineering/about/rules/"
+      ],
+      "was_posted_to": true
+    },
+    "softwaretesting": {
+      "checked_at": null,
+      "description": "Historical posting destination; audience not cached.",
+      "expires_at": null,
+      "fetch_status": "missing",
+      "rules_summary": [],
+      "source_urls": [],
+      "was_posted_to": true
+    },
+    "springboot": {
+      "checked_at": null,
+      "description": "Historical posting destination; audience not cached.",
+      "expires_at": null,
+      "fetch_status": "missing",
+      "rules_summary": [],
+      "source_urls": [],
+      "was_posted_to": true
+    },
+    "sql": {
+      "checked_at": null,
+      "description": "Historical posting destination; audience not cached.",
+      "expires_at": null,
+      "fetch_status": "missing",
+      "rules_summary": [],
+      "source_urls": [],
+      "was_posted_to": true
+    },
+    "sre": {
+      "checked_at": null,
+      "description": "Historical posting destination; audience not cached.",
+      "expires_at": null,
+      "fetch_status": "missing",
+      "rules_summary": [],
+      "source_urls": [],
+      "was_posted_to": true
+    },
+    "sysadmin": {
+      "checked_at": null,
+      "description": "Historical posting destination; audience not cached.",
+      "expires_at": null,
+      "fetch_status": "missing",
+      "rules_summary": [],
+      "source_urls": [],
+      "was_posted_to": true
+    },
+    "technology": {
+      "checked_at": null,
+      "description": "Historical posting destination; audience not cached.",
+      "expires_at": null,
+      "fetch_status": "missing",
+      "rules_summary": [],
+      "source_urls": [],
+      "was_posted_to": true
+    },
+    "techsales": {
+      "checked_at": null,
+      "description": "Historical posting destination; audience not cached.",
+      "expires_at": null,
+      "fetch_status": "missing",
+      "rules_summary": [],
+      "source_urls": [],
+      "was_posted_to": true
+    },
+    "terraform": {
+      "checked_at": null,
+      "description": "terraform iac operations; TerraShark",
+      "expires_at": null,
+      "fetch_status": "missing",
+      "notes": [
+        "Registry guidance recorded 2026-11-08; not a current rules fetch: unknown: Use a real Terraform plan/state/workflow example."
+      ],
+      "rules_summary": [],
+      "source_urls": [],
+      "was_posted_to": true
+    },
+    "testautomation": {
+      "checked_at": "2026-11-13",
+      "description": "Test automation; community was restricted.",
+      "expires_at": "2027-01-13",
+      "fetch_status": "ok",
+      "rules_summary": [
+        "Community was restricted; posting access is not established by the rules cache.",
+        "No structured rules were returned in the saved snapshot; this does not establish unrestricted posting permission."
+      ],
+      "source_urls": [
+        "https://www.reddit.com/r/testautomation/about/",
+        "https://www.reddit.com/r/testautomation/about/rules/"
+      ],
+      "was_posted_to": false
+    },
+    "typescript": {
+      "checked_at": null,
+      "description": "ts architecture; ArchUnitTS",
+      "expires_at": null,
+      "fetch_status": "missing",
+      "notes": [
+        "Registry guidance recorded 2026-11-08; not a current rules fetch: hold: Rule against ChatGPT posts/comments. Otherwise projects need open source, repo link and actual TS utility."
+      ],
+      "rules_summary": [],
+      "source_urls": [],
+      "was_posted_to": true
+    },
+    "unittesting": {
+      "checked_at": "2026-11-13",
+      "description": "Learning unit testing; community was restricted.",
+      "expires_at": "2027-01-13",
+      "fetch_status": "ok",
+      "rules_summary": [
+        "Community was restricted; posting access is not established by the rules cache.",
+        "No structured rules were returned in the saved snapshot; this does not establish unrestricted posting permission."
+      ],
+      "source_urls": [
+        "https://www.reddit.com/r/unittesting/about/",
+        "https://www.reddit.com/r/unittesting/about/rules/"
+      ],
+      "was_posted_to": false
+    },
+    "vibecodedevs": {
+      "checked_at": null,
+      "description": "Historical posting destination; audience not cached.",
+      "expires_at": null,
+      "fetch_status": "missing",
+      "rules_summary": [],
+      "source_urls": [],
+      "was_posted_to": true
+    },
+    "vibecoding": {
+      "checked_at": null,
+      "description": "Historical posting destination; audience not cached.",
+      "expires_at": null,
+      "fetch_status": "missing",
+      "rules_summary": [],
+      "source_urls": [],
+      "was_posted_to": true
+    },
+    "vuejs": {
+      "checked_at": "2026-11-13",
+      "description": "Vue.js web development.",
+      "expires_at": "2027-01-13",
+      "fetch_status": "ok",
+      "rules_summary": [
+        "Keep posts accurate and up to date; be civil.",
+        "Self-promotion must be tasteful and restrained; do not flood the feed with courses, blog posts or referral links.",
+        "Search for existing submissions before posting duplicates."
+      ],
+      "source_urls": [
+        "https://www.reddit.com/r/vuejs/about/",
+        "https://www.reddit.com/r/vuejs/about/rules/"
+      ],
+      "was_posted_to": true
+    },
+    "webdev": {
+      "checked_at": null,
+      "description": "web js ts python; web-relevant ArchUnit projects",
+      "expires_at": null,
+      "fetch_status": "missing",
+      "notes": [
+        "Registry guidance recorded 2026-11-08; not a current rules fetch: hold: LLM posts/comments and commercial promotion prohibited. Human project showcases limited to Saturday with correct flair."
+      ],
+      "rules_summary": [],
+      "source_urls": [],
+      "was_posted_to": true
+    },
+    "zig": {
+      "checked_at": null,
+      "description": "zig architecture; ArchUnitZig",
+      "expires_at": null,
+      "fetch_status": "missing",
+      "notes": [
+        "Registry guidance recorded 2026-11-08; not a current rules fetch: hold: No engagement farming; AI-generated comments banned and high bar for AI-generated projects. Skip autonomous promotion."
+      ],
+      "rules_summary": [],
+      "source_urls": [],
+      "was_posted_to": false
+    }
+  },
+  "schema_version": 1
+}

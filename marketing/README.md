@@ -12,3 +12,5 @@ Example requests:
 A promotion request includes writing and publishing unless you ask for drafts only. Unspecified quantity defaults to three suitable destinations, or fewer if eligibility or limits prevent it. The setup itself publishes nothing. Browser login and JavaScript permission must be working before the first live run; see [browser setup](reddit/browser.md).
 
 Use [products](reddit/products.md) to find local source and public links, [subreddits](reddit/subreddits.md) to select an audience, and [posts](reddit/posts/README.md) for the frozen examples. New activity belongs in `reddit/runs/`, never in the example corpus. See [QA](reddit/qa.md) for what has actually been tested.
+
+Community rules are reused through a [two-month cache with basic request pacing](reddit/cache.md). Read only selected entries; missing observations do not trigger a bulk refresh.

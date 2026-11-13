@@ -1,10 +1,10 @@
 # Subreddit registry
 
-Candidate audiences, not a blanket permission to promote. Inspected 2026-11-08 using public Reddit pages; some search copies were several weeks old. Recheck the live sidebar, rules, pinned threads, account restrictions and recent posting history before each campaign. Rules win over old corpus examples. Do not disguise promotion as a question or rename it to bypass a restriction.
+Candidate audiences, not a blanket permission to promote. Inspected 2026-11-08 using public Reddit pages; some search copies were several weeks old. Use [cached descriptions and rules](cache.md) for two calendar months from their observation date. Refresh only a chosen missing/expired entry; honor newer guidance visible in the composer and check current thread/account context only when needed. Rules win over old corpus examples. Do not disguise promotion as a question or rename it to bypass a restriction.
 
 Filter by language and actual use case first. ArchUnitTS fits JS/TS, not Python/FastAPI; ArchUnitPython fits Python. Framework examples require verified compatibility. Other ArchUnit languages require the matching implementation to be usable. For Shark projects, follow the product registry's exact identity and supported tools.
 
-**Status:** `review` = relevant rule text read, still recheck live; `thread` = relevant promotion belongs in a designated thread; `hold` = this autonomous workflow should skip unless the stated restriction is resolved; `unknown` = community exists but rules were not exposed in the fetched page, inspect in browser before selecting. A `review` label is not approval. Community links below are the primary sidebar sources; each row also links the rules page.
+**Status:** `review` = relevant rule text read; use a fresh cache entry or refresh that entry; `thread` = relevant promotion belongs in a designated thread; `hold` = this autonomous workflow should skip unless the stated restriction is resolved; `unknown` = community exists but rules were not exposed in the fetched page, inspect in browser before selecting. A `review` label is not approval. Community links below are the primary sidebar sources; each row also links the rules page.
 
 | Community / rules | Tags and product fit | Status and short guidance |
 | --- | --- | --- |

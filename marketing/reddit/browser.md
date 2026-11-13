@@ -41,11 +41,11 @@ Use `close` with the same IDs and `--expect-url` to close only the owned tab whe
 
 ## Posting workflow
 
-1. Inspect the live subreddit rules and posting UI. Verify account, destination, post type, and required flair. Use the category examples and actual product evidence as described in `AGENTS.md`.
+1. Load the selected community from the [two-month cache](cache.md); do not refetch fresh rules. Inspect the posting UI and honor newer visible guidance. Verify account, destination, post type, and required flair. Use the category examples and actual product evidence as described in `AGENTS.md`.
 2. Inspect current controls and labels before writing selectors; Reddit's markup changes. Traverse open shadow roots if needed. Set inputs using their native setters and dispatch bubbling `input`/`change` events; inspect rendered values afterward. Rich-text editors may need their own input handling. Do not assume setting `innerHTML` changes editor state.
-3. Fill the title/body and any required flair. Read the final visible text back, checking code formatting and links. Submit once when the task authorizes publishing. Draft-only requests stop before submission.
+3. Fill the title/body and any required flair. Read the final visible text back, checking code formatting and links. Immediately before the authorized Submit action, reserve one post slot using `eval --network-kind post` or, for a native UI action, `request_guard.py acquire --kind post`. Submit once. Draft-only requests stop before submission.
 4. Wait for navigation or a visible submission result, then confirm the resulting permalink, author, title, body, and moderation status. For a comment in a promotion thread, verify its parent thread and body instead of a title. If the outcome is uncertain, inspect the profile's submissions or comments, matching the contribution type, before any retry. A created post may still be pending moderation or removed; report that accurately.
-5. Stop for a CAPTCHA, login/2FA prompt, browser permission prompt, rate limit, or subreddit prohibition. Do not replay the pasted GraphQL, tracking, reCAPTCHA, or signed partial-page requests to publish.
+5. On HTTP 429, use `request_guard.py rate-limit` with the response’s Retry-After value when present. Stop for a CAPTCHA, login/2FA prompt, browser permission prompt, rate limit, or subreddit prohibition. Do not replay the pasted GraphQL, tracking, reCAPTCHA, or signed partial-page requests to publish.
 
 Keep new post links and statuses in the run report, separate from the frozen example corpus. The live campaign validated Reddit's classic UI. A valid permalink and authenticated view do not by themselves guarantee public visibility or moderator approval.
 
@@ -58,3 +58,7 @@ The redesigned composer was verified with 18 unsubmitted video drafts, including
 - The rich-text editor accepted a clipboard paste event containing both plain text and escaped HTML paragraphs. Plain `insertText` collapsed paragraph breaks. Verify the final rendered body against the intended text, not just the event's return value.
 - Flair radio selection worked through JavaScript, but the dialog's Add button needed native keyboard activation. Confirm the dialog closes and the applied flair chip appears; a checked radio alone is insufficient.
 - Reddit disabled Save Draft for these video forms. Leave requested review tabs open and preserve a local text/metadata backup. A fresh composer URL does not restore their contents. Do not close or reload populated draft tabs during cleanup.
+
+Use [cache and request pacing](cache.md) for every campaign. Inspecting loaded DOM is local; navigation, fetches, and submissions consume action slots. Never batch multiple network requests in one JavaScript evaluation.
+
+`open` reserves a read slot automatically. For `eval` that makes one network request or a submission, pass `--network-kind read` or `--network-kind post`; omit it for local DOM inspection. A denied slot produces an error before JavaScript executes. For native keyboard submissions, reserve through `request_guard.py acquire --kind post` immediately before the one action. Do not reserve twice.
