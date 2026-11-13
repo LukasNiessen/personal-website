@@ -6,7 +6,7 @@ Workflow review only. No posts submitted or browser drafts changed. The frozen c
 
 The [Angular and Vue video drafts](2026-11-08-archunit-video-drafts.json) offered generic folder dependency checks with framework names attached. They met the old “one real feature + one community pain point” instruction, but did not demonstrate enough value for those audiences. These drafts were recorded as project showcases, so the revised quality threshold applies across categories, with stronger community tailoring for gift promotions.
 
-The workflow now compares a few evidence-backed angles before drafting and checks community relevance, substantive payoff, and demonstrable behavior before returning a draft or using the composer. It preserves simple explanations and rejects added complexity or hype as substitutes for usefulness.
+The workflow now selects one strong evidence-backed angle before drafting and checks community relevance, substantive payoff, and demonstrable behavior before returning a draft or using the composer. It preserves simple explanations and rejects added complexity or hype as substitutes for usefulness.
 
 ## Prompt review cases
 
