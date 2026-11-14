@@ -39,7 +39,15 @@ const { targetId, variant = "panel" } = Astro.props;
   .fog-glow {
     position: absolute;
     inset: 0;
-    background: radial-gradient(circle at var(--glow-x, 50%) var(--glow-y, 50%), #a9dcff55, transparent 45%);
+    background:
+      radial-gradient(
+        ellipse 38px 24px at calc(var(--glow-x, 50%) - 7px) calc(var(--glow-y, 50%) - 4px),
+        #b599ff4d 0%, #b599ff1a 45%, transparent 100%
+      ),
+      radial-gradient(
+        ellipse 26px 34px at calc(var(--glow-x, 50%) + 8px) calc(var(--glow-y, 50%) + 3px),
+        #8ce9ef38 0%, #8ce9ef12 40%, transparent 100%
+      );
     opacity: var(--glow-opacity, 0);
     transition: opacity 300ms ease-out;
   }
