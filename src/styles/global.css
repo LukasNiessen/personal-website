@@ -140,18 +140,30 @@ article code:not(pre code) {
   }
 }
 
-/** styles for public /animation.js */
+/* Content is visible by default. Only offscreen sections opt into a scroll reveal. */
 .animate {
-  opacity: 0;
-  transform: translateY(50px);
-  transition:
-    opacity 1s ease,
-    transform 1s ease;
+  opacity: 1;
+  transform: none;
+  transition: opacity 450ms ease, transform 450ms ease;
 }
 
-.animate.show {
+.animate.reveal-pending {
+  opacity: 0;
+  transform: translateY(16px);
+}
+
+.animate:focus-within {
   opacity: 1;
-  transform: translateY(0);
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate,
+  .animate.reveal-pending {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
 }
 
 article img {

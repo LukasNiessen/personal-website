@@ -4,7 +4,7 @@ import type { Dictionary, Links, Page, Site, Socials } from "@types";
 export const DICT_EN: Dictionary = {
   // Global
   "site.title": "Lukas Niessen",
-  "site.description": "AI and Software Leader, Ex-Founder",
+  "site.description": "Founder of DragonSec AI, AI and Software Leader",
   "site.author": "Lukas Niessen",
 
   // Pages
@@ -30,9 +30,9 @@ export const DICT_EN: Dictionary = {
   "work.employmentType.freelance": "Freelance",
 
   // Home page
-  "home.subtitle": "AI and Software Leader, Ex-Founder",
+  "home.subtitle": "Founder of DragonSec AI, AI and Software Leader",
   "home.about":
-    "I advise leadership teams at large enterprises on AI and technology, and lead teams delivering enterprise-scale AI and software systems end to end. I previously built a SaaS startup from zero to over a million users, and now build open source libraries, including ArchUnitTS, the industry standard for architecture testing in TypeScript. My writing has been read more than a million times.",
+    "I founded DragonSec AI, where we build software testing and IT security tools, including the ArchUnit architecture testing libraries. At Bain & Company, I advise leadership teams on AI and technology and lead teams delivering enterprise AI and software systems. Previously, I founded and scaled Social Hubs to over 1.5 million registered users. My writing has been read more than a million times.",
   "home.interests":
     "I try really hard to avoid caffeine. Outside of work I go to the gym, do combat sports, mathematics, and play the piano. Let's get in touch!",
   "home.education": "BSc in Mathematics at University of Bonn",
@@ -61,7 +61,7 @@ export const DICT_EN: Dictionary = {
 export const DICT_DE: Dictionary = {
   // Global
   "site.title": "Lukas Niessen",
-  "site.description": "KI- und Software-Leader, Ex-Gründer",
+  "site.description": "Gründer von DragonSec AI, KI- und Software-Leader",
   "site.author": "Lukas Niessen",
 
   // Pages
@@ -88,9 +88,9 @@ export const DICT_DE: Dictionary = {
   "work.employmentType.freelance": "Freiberuflich",
 
   // Home page
-  "home.subtitle": "KI- und Software-Leader, Ex-Gründer",
+  "home.subtitle": "Gründer von DragonSec AI, KI- und Software-Leader",
   "home.about":
-    "Ich berate Führungsteams großer Unternehmen zu KI und Technologie und leite Teams, die KI- und Software-Systeme im Enterprise-Maßstab End-to-End umsetzen. Zuvor habe ich ein SaaS-Startup von null auf über eine Million Nutzer aufgebaut. Heute entwickle ich Open-Source-Bibliotheken, darunter ArchUnitTS, den Industriestandard für Architektur-Tests in TypeScript. Meine Artikel wurden bereits über eine Million Mal gelesen.",
+    "Ich habe DragonSec AI gegründet. Dort entwickeln wir Werkzeuge für Softwaretests und IT-Sicherheit, darunter die ArchUnit-Bibliotheken für Architekturtests. Bei Bain & Company berate ich Führungsteams zu KI und Technologie und leite Teams, die KI- und Software-Systeme für Unternehmen umsetzen. Zuvor habe ich Social Hubs gegründet und auf über 1,5 Millionen registrierte Nutzer skaliert. Meine Artikel wurden bereits über eine Million Mal gelesen.",
   "home.interests":
     "Ich versuche wirklich sehr, Koffein zu vermeiden. Außerhalb der Arbeit gehe ich ins Fitnessstudio, mache Kampfsport, Mathematik und spiele Klavier. Lass uns in Kontakt treten!",
   "home.education": "B.Sc. in Mathematik an der Universität Bonn",

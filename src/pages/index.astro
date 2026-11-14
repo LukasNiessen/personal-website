@@ -2,6 +2,7 @@
 import { getCollection } from "astro:content"
 import PageLayout from "@layouts/PageLayout.astro"
 import ArrowCard from "@components/ArrowCard"
+import InteractiveFog from "@components/InteractiveFog.astro"
 import { SITE, SOCIALS } from "@consts"
 import { t } from "@lib/utils"
 
@@ -67,10 +68,10 @@ const stack = [
   <!-- VANTA Fog Animation Background -->
   <section id="vanta-hero" class="relative min-h-screen w-full overflow-hidden">
     <!-- Animated Background Container -->
-    <div id="vanta-fog-bg" class="absolute inset-0 w-full h-full"></div>
+    <InteractiveFog targetId="vanta-hero" variant="hero" />
     
     <!-- Content Container -->
-    <div class="relative z-10 h-full w-full flex items-center">
+    <div class="relative z-10 min-h-screen w-full flex items-center py-28">
       <div class="container mx-auto px-8 md:px-12 lg:px-16 flex items-center justify-center h-full">
         <div class="w-full max-w-4xl text-center md:text-left">
           <h1 class="text-4xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-black dark:text-white mb-6 leading-tight">
@@ -82,8 +83,9 @@ const stack = [
           <div class="mt-8 flex justify-center md:justify-start">
             <a
               id="scroll-to-next"
+              href="#archunit"
               aria-label="Scroll to content section"
-              class="group inline-flex items-center gap-2 px-4 py-2 text-black dark:text-white border border-gray-400/70 dark:border-gray-600/50 rounded-lg hover:border-warmAccent-primary dark:hover:border-warmAccent-secondary hover:text-warmAccent-primary dark:hover:text-warmAccent-secondary transition-all duration-300 ease-in-out cursor-pointer"
+              class="group inline-flex items-center gap-2 px-4 py-2 text-black dark:text-white border border-gray-400/70 dark:border-gray-600/50 rounded-lg hover:border-warmAccent-primary dark:hover:border-warmAccent-secondary hover:text-warmAccent-primary dark:hover:text-warmAccent-secondary transition-colors duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-warmAccent-secondary"
             >
               <span class="text-base font-medium">Explore</span>
               <svg
@@ -106,245 +108,136 @@ const stack = [
     </div>
   </section>
 
-  <!-- Scripts for VANTA animation -->
-  <script is:inline src="/js/three.r134.min.js"></script>
-  <script is:inline src="/js/vanta.fog.min.js"></script>
-  <script is:inline>
-    document.addEventListener('DOMContentLoaded', function() {
-      // Function to initialize VANTA with appropriate colors based on theme
-      function initVanta() {
-        // Destroy existing VANTA instance if it exists
-        if (window.VANTA_INSTANCE) {
-          window.VANTA_INSTANCE.destroy();
-        }
-        
-        // Check if dark mode is active by looking at the HTML class
-        const isDarkMode = document.documentElement.classList.contains('dark');
-        
-        if (isDarkMode) {
-          // Dark mode colors
-          window.VANTA_INSTANCE = VANTA.FOG({
-            el: "#vanta-fog-bg",
-           mouseControls: true,
-  touchControls: true,
-  gyroControls: false,
-  minHeight: 200.00,
-  minWidth: 200.00,
-  highlightColor: 0x7f86e8,
-  midtoneColor: 0x00a3ff,
-  lowlightColor: 0x222222,
-  baseColor: 0x0,
-  blurFactor: 0.90,
-  speed: 1.50,
-  zoom: 0.10
-          });
-        } else {
-          // Light mode colors
-          window.VANTA_INSTANCE = VANTA.FOG({
-            el: "#vanta-fog-bg",
-            mouseControls: true,
-  touchControls: true,
-  gyroControls: false,
-  minHeight: 200.00,
-  minWidth: 200.00,
-  highlightColor: 0x7f86e8,
-  midtoneColor: 0x00a3ff,
-  lowlightColor: 0x222222,
-  baseColor: 0xffffff,
-  blurFactor: 0.90,
-  speed: 1.50,
-  zoom: 0.10
-          });
-        }
-      }
-
-      // Initialize VANTA
-      initVanta();
-
-      // Listen for theme changes
-      const observer = new MutationObserver(function(mutations) {
-        mutations.forEach(function(mutation) {
-          if (mutation.attributeName === 'class') {
-            initVanta();
-          }
-        });
-      });
-
-      observer.observe(document.documentElement, {
-        attributes: true,
-        attributeFilter: ['class']
-      });
-
-      // Handle scroll button
-      const scrollButton = document.getElementById('scroll-to-next');
-      if (scrollButton) {
-        scrollButton.addEventListener('click', function(e) {
-          e.preventDefault();
-          const targetSection = document.getElementById('archunitts');
-          if (targetSection) {
-            // Use smooth scrolling with proper options
-            targetSection.scrollIntoView({ 
-              behavior: 'smooth',
-              block: 'start'
-            });
-          }
-        });
-      }
-    });
-  </script>
-
   <div class="relative bg-warmBg-light dark:bg-warmBg-dark">
     <div class="mx-auto max-w-screen-sm p-5 space-y-24 pb-16 mt-12">
 
-      <!-- ArchUnitTS Section -->
-      <section class="animate" id="archunitts">
+      <section class="animate project-card" id="archunit" aria-labelledby="archunit-title">
+        <span id="archunitts" class="block" aria-hidden="true"></span>
+        <span id="archunitpython" class="block" aria-hidden="true"></span>
         <div class="space-y-4">
+          <p class="text-xs font-semibold uppercase tracking-widest text-black/60 dark:text-white/60">Open source</p>
           <div class="flex items-center gap-3">
-            <img 
-              src="/archunitts-logo.png" 
-              alt="ArchUnitTS logo" 
-              class="size-8 rounded"
+            <img
+              src="/archunitts-logo.png"
+              alt=""
+              width="40"
+              height="40"
+              class="size-10 rounded"
               loading="lazy"
             />
-            <p class="font-semibold text-black dark:text-white text-xl">
-              ArchUnitTS
-            </p>
+            <h2 id="archunit-title" class="font-semibold text-black dark:text-white text-2xl">ArchUnit</h2>
           </div>
-          <p class="text-black/80 dark:text-white/80">
-            I created and maintain ArchUnitTS, a software architecture testing library. It helps enforce architecture rules, detect circular dependencies, and ensure coding standards in TypeScript and JavaScript projects. Measured by GitHub stars, ArchUnitTS is the #1 architecture testing library for TypeScript projects.
-          </p>          <div class="flex flex-wrap gap-3 mt-4">
-            <a 
-              href="/projects/archunits" 
-              class="inline-block px-4 py-2 bg-warmAccent-primary text-white rounded-md hover:opacity-80 transition-all text-sm"
-            >
-              Learn More
+          <p class="text-black/80 dark:text-white/80 leading-relaxed">
+            I build and maintain ArchUnit, a growing family of open source architecture testing libraries.
+            It started with ArchUnitTS and ArchUnitPython and now covers more languages and ecosystems.
+            Keep dependency rules, circular dependency checks, and architecture boundaries in your test suite,
+            so you can catch violations as the code changes.
+          </p>
+          <div class="flex flex-wrap gap-3 pt-2">
+            <a href="https://www.archunit.net/" target="_blank" rel="noopener noreferrer" class="project-link project-link-primary">
+              Explore ArchUnit <span aria-hidden="true">↗</span>
             </a>
-            <a 
-              href="https://github.com/LukasNiessen/ArchUnitTS" 
-              target="_blank"
-              class="inline-block px-4 py-2 border border-warmAccent-primary text-warmAccent-primary rounded-md hover:bg-warmAccent-primary hover:bg-opacity-10 transition-all text-sm"
-            >
-              View on GitHub
+            <a href="/projects/archunits" class="project-link project-link-secondary">
+              About ArchUnitTS
             </a>
           </div>
         </div>
       </section>
 
-      <!-- ArchUnitPython Section -->
-      <section class="animate" id="archunitpython">
-        <div class="space-y-4">
-          <div class="flex items-center gap-3">
-            <img
-              src="/archunitpython-logo.png"
-              alt="ArchUnitPython logo"
-              class="size-8 rounded"
-              loading="lazy"
-            />
-            <p class="font-semibold text-black dark:text-white text-xl">
-              ArchUnitPython
-            </p>
-          </div>
-          <p class="text-black/80 dark:text-white/80">
-            I created and maintain ArchUnitPython, bringing the same architecture testing approach as ArchUnitTS to Python. It lets you enforce dependency direction rules, detect circular dependencies, and validate naming conventions as regular unit tests, with integrations for pytest, FastAPI, and Django.
-          </p>
-          <div class="flex flex-wrap gap-3 mt-4">
-            <a
-              href="https://lukasniessen.github.io/ArchUnitPython/"
-              target="_blank"
-              class="inline-block px-4 py-2 bg-warmAccent-primary text-white rounded-md hover:opacity-80 transition-all text-sm"
-            >
-              Learn More
-            </a>
-            <a
-              href="https://github.com/LukasNiessen/ArchUnitPython"
-              target="_blank"
-              class="inline-block px-4 py-2 border border-warmAccent-primary text-warmAccent-primary rounded-md hover:bg-warmAccent-primary hover:bg-opacity-10 transition-all text-sm"
-            >
-              View on GitHub
-            </a>
-          </div>
+      <section aria-labelledby="skills-title" class="space-y-6">
+        <div class="space-y-2">
+          <h2 id="skills-title" class="font-semibold text-black dark:text-white text-2xl">AI coding skills</h2>
+          <p class="text-black/65 dark:text-white/65">Practical guidance for coding agents working with infrastructure.</p>
         </div>
-      </section>
+        <!-- TerraShark Section -->
+        <section class="animate project-card" id="terrashark">
+          <div class="space-y-4">
+            <div class="flex items-center gap-3">
+              <img
+                src="/terrashark-logo.png"
+                alt=""
+                width="32"
+                height="32"
+                class="size-8 rounded"
+                loading="lazy"
+              />
+              <h3 class="font-semibold text-black dark:text-white text-xl">
+                TerraShark
+              </h3>
+            </div>
+            <p class="text-black/80 dark:text-white/80">
+              I created TerraShark, a Terraform/OpenTofu skill that prevents IaC hallucinations by guiding LLMs through a failure-mode workflow. It’s token-efficient, security-first, and based on HashiCorp’s official best practices.
+            </p>
+            <div class="flex flex-wrap gap-3 mt-4">
+              <a
+                href="https://terraformskill.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="project-link project-link-primary"
+              >
+                Learn More
+              </a>
+              <a
+                href="https://github.com/LukasNiessen/terrashark"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="project-link project-link-secondary"
+              >
+                View on GitHub
+              </a>
+            </div>
+          </div>
+        </section>
 
-      <!-- TerraShark Section -->
-      <section class="animate" id="terrashark">
-        <div class="space-y-4">
-          <div class="flex items-center gap-3">
-            <img
-              src="/terrashark-logo.png"
-              alt="TerraShark logo"
-              class="size-8 rounded"
-              loading="lazy"
-            />
-            <p class="font-semibold text-black dark:text-white text-xl">
-              TerraShark
+        <!-- KubeShark Section -->
+        <section class="animate project-card" id="kubeshark">
+          <div class="space-y-4">
+            <div class="flex items-center gap-3">
+              <img
+                src="/kubeshark-logo.png"
+                alt=""
+                width="32"
+                height="32"
+                class="size-8 rounded"
+                loading="lazy"
+              />
+              <h3 class="font-semibold text-black dark:text-white text-xl">
+                KubeShark
+              </h3>
+            </div>
+            <p class="text-black/80 dark:text-white/80">
+              I created KubeShark, a Kubernetes skill for Claude Code and Codex that fixes hallucinations in generated manifests, Helm charts, and RBAC configs. It’s token-efficient and grounded in official Kubernetes docs, the NSA/CISA Hardening Guide, OWASP Kubernetes Top 10, and the CIS Benchmark.
             </p>
+            <div class="flex flex-wrap gap-3 mt-4">
+              <a
+                href="https://lukasniessen.github.io/kubernetes-skill/"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="project-link project-link-primary"
+              >
+                Learn More
+              </a>
+              <a
+                href="https://github.com/LukasNiessen/kubernetes-skill"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="project-link project-link-secondary"
+              >
+                View on GitHub
+              </a>
+            </div>
           </div>
-          <p class="text-black/80 dark:text-white/80">
-            I created TerraShark, a Terraform/OpenTofu skill that prevents IaC hallucinations by guiding LLMs through a failure-mode workflow. It’s token-efficient, security-first, and based on HashiCorp’s official best practices.
-          </p>
-          <div class="flex flex-wrap gap-3 mt-4">
-            <a
-              href="https://terraformskill.com/"
-              target="_blank"
-              class="inline-block px-4 py-2 bg-warmAccent-primary text-white rounded-md hover:opacity-80 transition-all text-sm"
-            >
-              Learn More
-            </a>
-            <a
-              href="https://github.com/LukasNiessen/terrashark"
-              target="_blank"
-              class="inline-block px-4 py-2 border border-warmAccent-primary text-warmAccent-primary rounded-md hover:bg-warmAccent-primary hover:bg-opacity-10 transition-all text-sm"
-            >
-              View on GitHub
-            </a>
-          </div>
-        </div>
-      </section>
+        </section>
 
-      <!-- KubeShark Section -->
-      <section class="animate" id="kubeshark">
-        <div class="space-y-4">
-          <div class="flex items-center gap-3">
-            <img
-              src="/kubeshark-logo.png"
-              alt="KubeShark logo"
-              class="size-8 rounded"
-              loading="lazy"
-            />
-            <p class="font-semibold text-black dark:text-white text-xl">
-              KubeShark
-            </p>
-          </div>
-          <p class="text-black/80 dark:text-white/80">
-            I created KubeShark, a Kubernetes skill for Claude Code and Codex that fixes hallucinations in generated manifests, Helm charts, and RBAC configs. It’s token-efficient and grounded in official Kubernetes docs, the NSA/CISA Hardening Guide, OWASP Kubernetes Top 10, and the CIS Benchmark.
-          </p>
-          <div class="flex flex-wrap gap-3 mt-4">
-            <a
-              href="https://lukasniessen.github.io/kubernetes-skill/"
-              target="_blank"
-              class="inline-block px-4 py-2 bg-warmAccent-primary text-white rounded-md hover:opacity-80 transition-all text-sm"
-            >
-              Learn More
-            </a>
-            <a
-              href="https://github.com/LukasNiessen/kubernetes-skill"
-              target="_blank"
-              class="inline-block px-4 py-2 border border-warmAccent-primary text-warmAccent-primary rounded-md hover:bg-warmAccent-primary hover:bg-opacity-10 transition-all text-sm"
-            >
-              View on GitHub
-            </a>
-          </div>
-        </div>
       </section>
 
       <!-- Blog Preview Section -->
       <section id="recent-posts" class="animate">
         <div class="space-y-4">
-          <div class="flex justify-between">
-            <p class="font-semibold text-black dark:text-white">
+          <div class="flex items-center justify-between gap-4">
+            <h2 class="font-semibold text-black dark:text-white text-2xl">
               {t("home.recent.posts")}
-            </p>
+            </h2>
             <a href="/blog" class="w-fit col-span-3 group flex gap-1 items-center underline decoration-[.5px] decoration-black/25 dark:decoration-white/50 hover:decoration-black dark:hover:decoration-white text-black dark:text-white underline-offset-2 blend">
               <span class="text-black/75 dark:text-white/75 group-hover:text-black group-hover:dark:text-white blend">
                 {t("home.all.posts")}
@@ -360,7 +253,7 @@ const stack = [
           <div class="flex justify-center mt-8">
             <a 
               href="/blog" 
-              class="inline-block px-6 py-3 bg-warmAccent-primary text-white rounded-md hover:opacity-80 transition-all text-sm font-medium"
+              class="project-link project-link-primary"
             >
               See all articles
             </a>
@@ -397,9 +290,9 @@ const stack = [
       <section class="animate">
         <div class="flex flex-col sm:flex-row gap-6 items-center">
           <div class="w-full sm:w-2/3 order-2 sm:order-1">
-            <p class="font-semibold text-black dark:text-white text-xl">
+            <h2 class="font-semibold text-black dark:text-white text-2xl">
               {t("home.connect")}
-            </p>
+            </h2>
             <p class="mt-4">
               {t("home.interests")}
             </p>
@@ -424,6 +317,8 @@ const stack = [
             <img 
               src="/portrait.avif" 
               alt="Lukas Niessen - Software Architect and Full Stack Developer" 
+              width="160"
+              height="160"
               class="size-40 rounded-xl object-cover shadow-md"
             />
           </div>
@@ -432,3 +327,35 @@ const stack = [
     </div>
   </div>
 </PageLayout>
+
+<style>
+  .project-card {
+    @apply rounded-2xl border border-black/10 dark:border-white/15 p-6 sm:p-7;
+    transition: border-color 200ms ease, box-shadow 200ms ease, opacity 450ms ease, transform 450ms ease;
+  }
+
+  .project-card:hover,
+  .project-card:focus-within {
+    @apply border-warmAccent-secondary/50 shadow-sm;
+  }
+
+  .project-link {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg px-4 py-2.5 text-sm font-medium;
+    @apply focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-warmAccent-secondary;
+    transition: background-color 200ms ease, border-color 200ms ease;
+  }
+
+  .project-link-primary {
+    @apply bg-warmAccent-primary text-slate-950 hover:bg-sky-300;
+  }
+
+  .project-link-secondary {
+    @apply border border-black/20 dark:border-white/25 text-sky-700 dark:text-sky-300;
+    @apply hover:bg-sky-50 dark:hover:bg-sky-950/40 hover:border-sky-500;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .project-card,
+    .project-link { transition: none; }
+  }
+</style>

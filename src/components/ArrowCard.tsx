@@ -2,7 +2,7 @@ import { formatDate } from "@lib/utils";
 import type { CollectionEntry } from "astro:content";
 
 type Props = {
-  entry: CollectionEntry<"blog"> | CollectionEntry<"projects">;
+  entry: Pick<CollectionEntry<"blog"> | CollectionEntry<"projects">, "collection" | "slug" | "data">;
   pill?: boolean;
 };
 
@@ -10,9 +10,9 @@ export default function ArrowCard({ entry, pill }: Props) {
   return (
     <a
       href={`/${entry.collection}/${entry.slug}`}
-      className="group p-4 gap-3 flex items-center border rounded-lg hover:bg-black/5 hover:dark:bg-white/10 border-black/15 dark:border-white/20 transition-colors duration-300 ease-in-out"
+      className="group p-5 gap-3 flex items-center border rounded-xl hover:bg-black/[0.025] dark:hover:bg-white/5 hover:border-warmAccent-secondary/60 focus-visible:border-warmAccent-secondary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-warmAccent-secondary motion-safe:hover:-translate-y-0.5 motion-safe:focus-visible:-translate-y-0.5 hover:shadow-sm border-black/15 dark:border-white/20 transition-all duration-200 ease-out motion-reduce:transition-none"
     >
-      <div className="w-full group-hover:text-black group-hover:dark:text-white blend">
+      <div className="w-full min-w-0 group-hover:text-black group-hover:dark:text-white blend">
         <div className="flex flex-wrap items-center gap-2">
           {pill && (
             <div className="text-sm capitalize px-2 py-0.5 rounded-full border border-black/15 dark:border-white/25">
@@ -49,18 +49,19 @@ export default function ArrowCard({ entry, pill }: Props) {
         strokeWidth="2.5"
         strokeLinecap="round"
         strokeLinejoin="round"
-        className="stroke-current group-hover:stroke-black group-hover:dark:stroke-white"
+        aria-hidden="true"
+        className="shrink-0 stroke-current group-hover:stroke-black group-hover:dark:stroke-white"
       >
         <line
           x1="5"
           y1="12"
           x2="19"
           y2="12"
-          className="scale-x-0 group-hover:scale-x-100 translate-x-4 group-hover:translate-x-1 transition-all duration-300 ease-in-out"
+          className="scale-x-0 group-hover:scale-x-100 group-focus-visible:scale-x-100 translate-x-4 group-hover:translate-x-1 group-focus-visible:translate-x-1 transition-all duration-200 ease-out motion-reduce:transition-none"
         />
         <polyline
           points="12 5 19 12 12 19"
-          className="translate-x-0 group-hover:translate-x-1 transition-all duration-300 ease-in-out"
+          className="translate-x-0 group-hover:translate-x-1 group-focus-visible:translate-x-1 transition-all duration-200 ease-out motion-reduce:transition-none"
         />
       </svg>
     </a>
