@@ -9,11 +9,6 @@ const { targetId, variant = "panel" } = Astro.props;
 
 <interactive-fog data-target={targetId} data-variant={variant} aria-hidden="true">
   <div class="fog-layer"></div>
-  <div class="fog-glow">
-    {[0, 1, 2, 3].map((ring) => (
-      <span class="pointer-ring" style={`animation-delay: ${ring * -0.9}s`}></span>
-    ))}
-  </div>
 </interactive-fog>
 
 <style>
@@ -40,40 +35,8 @@ const { targetId, variant = "panel" } = Astro.props;
     transition: transform 350ms ease-out;
   }
 
-  .fog-glow {
-    position: absolute;
-    left: var(--glow-x, 50%);
-    top: var(--glow-y, 50%);
-    width: 120px;
-    height: 120px;
-    border-radius: 50%;
-    transform: translate(-50%, -50%);
-    opacity: var(--glow-opacity, 0);
-    transition: opacity 300ms ease-out;
-  }
-
-  .pointer-ring {
-    position: absolute;
-    inset: 0;
-    border: 1px solid #168bd2;
-    border-radius: inherit;
-    animation: pointer-ripple 3.6s linear infinite;
-  }
-
-  :global(.dark) .pointer-ring,
-  interactive-fog[data-variant="panel"] .pointer-ring {
-    border-color: #8ddcff;
-  }
-
-  @keyframes pointer-ripple {
-    from { transform: scale(0.25); opacity: 0.35; }
-    to { transform: scale(1); opacity: 0; }
-  }
-
   @media (prefers-reduced-motion: reduce) {
     .fog-layer { transform: none; transition: none; }
-    .fog-glow { display: none; }
-    .pointer-ring { animation: none; }
   }
 </style>
 
@@ -176,15 +139,11 @@ const { targetId, variant = "panel" } = Astro.props;
         const y = (event.clientY - rect.top) / rect.height;
         pointerX = x * 2 - 1;
         pointerY = y * 2 - 1;
-        this.style.setProperty("--glow-x", `${x * 100}%`);
-        this.style.setProperty("--glow-y", `${y * 100}%`);
-        this.style.setProperty("--glow-opacity", "1");
         schedule();
       };
 
       const resetPointer = () => {
         pointerX = pointerY = 0;
-        this.style.setProperty("--glow-opacity", "0");
         schedule();
       };
 
