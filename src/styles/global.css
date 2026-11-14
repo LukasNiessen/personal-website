@@ -140,18 +140,30 @@ article code:not(pre code) {
   }
 }
 
-/** styles for public /animation.js */
+/* Content is visible by default. Only offscreen sections opt into a scroll reveal. */
 .animate {
-  opacity: 0;
-  transform: translateY(50px);
-  transition:
-    opacity 1s ease,
-    transform 1s ease;
+  opacity: 1;
+  transform: none;
+  transition: opacity 450ms ease, transform 450ms ease;
 }
 
-.animate.show {
+.animate.reveal-pending {
+  opacity: 0;
+  transform: translateY(16px);
+}
+
+.animate:focus-within {
   opacity: 1;
-  transform: translateY(0);
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate,
+  .animate.reveal-pending {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
 }
 
 article img {
@@ -205,18 +217,55 @@ article img {
   @apply rotate-315;
 }
 
-.copy-cnt {
-  @apply absolute w-full;
-  top: var(--copy-btn-margin);
+/* Reserve the toolbar row before JavaScript adds buttons to avoid a jump. */
+pre:has(> code),
+.prose pre:has(> code) {
+  padding-top: 3.5rem;
 }
+
+.code-block {
+  position: relative;
+  min-width: 0;
+  max-width: 100%;
+}
+
+.copy-cnt {
+  position: absolute;
+  top: var(--copy-btn-margin);
+  right: var(--copy-btn-margin);
+}
+
 .copy-btn {
-  @apply w-[30px] fixed;
-  left: calc(100% - var(--copy-btn-margin));
-  transform: translateX(-100%);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  min-height: 2rem;
+  padding: 0.25rem 0.5rem;
+  border: 1px solid rgb(255 255 255 / 25%);
+  border-radius: 0.375rem;
+  background: #24292e;
+  color: #fff;
+  font: 500 0.75rem/1.25 sans-serif;
+  cursor: pointer;
+}
+
+.copy-btn:hover {
+  background: #3b434b;
+}
+
+.copy-btn:focus-visible {
+  outline: 2px solid #66b9ff;
+  outline-offset: 2px;
+}
+
+.copy-btn[aria-disabled="true"] {
+  cursor: wait;
 }
 
 .copy-svg {
-  @apply w-full aspect-square text-white opacity-70 hover:opacity-90;
+  width: 1rem;
+  height: 1rem;
+  flex: none;
 }
 
 /**

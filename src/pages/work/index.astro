@@ -1,6 +1,7 @@
 ---
 import { getCollection } from "astro:content";
 import PageLayout from "@layouts/PageLayout.astro";
+import InteractiveFog from "@components/InteractiveFog.astro";
 import TopLayout from "@layouts/TopLayout.astro";
 import BottomLayout from "@layouts/BottomLayout.astro";
 import { WORK } from "@consts";
@@ -9,6 +10,7 @@ const collection = await getCollection("work");
 
 collection.sort(
   (a, b) =>
+    Number(b.data.dateEnd === "Now") - Number(a.data.dateEnd === "Now") ||
     new Date(b.data.dateStart).getTime() - new Date(a.data.dateStart).getTime()
 );
 
@@ -24,18 +26,23 @@ function formatWorkDate(input: Date | string) {
 
   const month = input.toLocaleDateString("en-US", {
     month: "short",
+    timeZone: "UTC",
   });
 
-  const year = new Date(input).getFullYear();
+  const year = input.getUTCFullYear();
   return `${month} ${year}`;
 }
 ---
 
 <PageLayout title={WORK.TITLE} description={WORK.DESCRIPTION}>
   <TopLayout>
-    <div class="animate page-heading">
+    <h1 class="page-heading text-3xl sm:text-4xl">
       {WORK.TITLE}
-    </div>
+    </h1>
+    <p class="mt-4 text-black/65 dark:text-white/65">
+      My work in AI, software, and building companies.
+      <a href="https://www.linkedin.com/in/lukasniessen/" target="_blank" rel="noopener noreferrer" class="underline underline-offset-4 hover:text-black dark:hover:text-white">View on LinkedIn <span aria-hidden="true">↗</span></a>
+    </p>
   </TopLayout>
   <BottomLayout>
     <ul>
@@ -47,9 +54,9 @@ function formatWorkDate(input: Date | string) {
               {formatWorkDate(entry.data.dateEnd)}
             </div>
             <div class="flex flex-col gap-1 mb-4">
-              <div class="text-xl text-black dark:text-white font-semibold">
+              <h2 class="text-xl text-black dark:text-white font-semibold">
                 {entry.data.company}
-              </div>
+              </h2>
               <div class="text-lg text-black dark:text-white font-semibold">
                 {entry.data.role}
               </div>
@@ -120,44 +127,13 @@ function formatWorkDate(input: Date | string) {
       id="topology-container"
       class="relative w-full h-96 mb-8 rounded-xl overflow-hidden shadow-lg"
     >
+      <InteractiveFog />
       <div
-        class="absolute bottom-4 left-4 text-xs text-white/70 pointer-events-none z-10"
+        class="absolute bottom-4 left-4 text-xs text-white/70 pointer-events-none z-10 motion-reduce:hidden"
       >
-        Interactive • Mouse controls enabled
+        Move your pointer or scroll
       </div>
     </div>
   </BottomLayout>
 
-  <!-- VANTA Fog Animation Script -->
-  <script is:inline src="/js/three.r134.min.js"></script>
-  <script is:inline src="/js/vanta.fog.min.js"></script>
-  <script is:inline>
-    document.addEventListener("DOMContentLoaded", function () {
-      const fogContainer = document.getElementById("topology-container");
-
-      if (!fogContainer || !window.VANTA) return;
-
-      // Initialize VANTA Fog
-      const vantaFogEffect = VANTA.FOG({
-        el: fogContainer,
-        mouseControls: true,
-        touchControls: true,
-        gyroControls: false,
-        minHeight: 200.0,
-        minWidth: 200.0,
-        highlightColor: 0x8d60ff,
-        midtoneColor: 0x0,
-        lowlightColor: 0x71ceff,
-        baseColor: 0x0,
-        blurFactor: 0.9,
-        speed: 1.5,
-        zoom: 0.1,
-      });
-
-      // Clean up on page unload
-      window.addEventListener("beforeunload", () => {
-        if (vantaFogEffect) vantaFogEffect.destroy();
-      });
-    });
-  </script>
 </PageLayout>

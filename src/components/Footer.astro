@@ -126,7 +126,7 @@ import { t } from "@lib/utils";
       </Container>
     </section>
 
-    <section class="py-4 border-t border-gray-300/30 dark:border-gray-600/30">
+    <section hidden class="py-4 border-t border-gray-300/30 dark:border-gray-600/30">
       <Container size="md">
         <div class="flex items-center justify-center">
           <div
@@ -171,7 +171,7 @@ import { t } from "@lib/utils";
     event.preventDefault();
     window.scrollTo({
       top: 0,
-      behavior: "smooth",
+      behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth",
     });
   }
 

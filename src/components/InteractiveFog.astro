@@ -1,0 +1,231 @@
+---
+interface Props {
+  targetId?: string;
+  variant?: "hero" | "panel";
+}
+
+const { targetId, variant = "panel" } = Astro.props;
+---
+
+<interactive-fog data-target={targetId} data-variant={variant} aria-hidden="true">
+  <div class="fog-layer"></div>
+  <div class="fog-glow"></div>
+</interactive-fog>
+
+<style>
+  interactive-fog {
+    position: absolute;
+    inset: 0;
+    display: block;
+    overflow: hidden;
+    pointer-events: none;
+    background: radial-gradient(ellipse at 25% 30%, #b1cefa, transparent 65%),
+      linear-gradient(135deg, #e2edff, #f0e8ff);
+  }
+
+  :global(.dark) interactive-fog,
+  interactive-fog[data-variant="panel"] {
+    background: radial-gradient(ellipse at 25% 30%, #27376c, transparent 65%),
+      linear-gradient(135deg, #111827, #241b3b);
+  }
+
+  .fog-layer {
+    position: absolute;
+    inset: -32px;
+    transform: translate3d(var(--fog-x, 0px), var(--fog-y, 0px), 0) scale(1.04);
+    transition: transform 350ms ease-out;
+  }
+
+  .fog-glow {
+    position: absolute;
+    left: var(--glow-x, 50%);
+    top: var(--glow-y, 50%);
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    opacity: var(--glow-opacity, 0);
+    transition: opacity 300ms ease-out;
+  }
+
+  .fog-glow::before,
+  .fog-glow::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border: 1.5px solid #168bd2;
+    border-radius: inherit;
+    animation: pointer-ripple 2.8s ease-out infinite;
+  }
+
+  .fog-glow::after { animation-delay: -1.4s; }
+
+  :global(.dark) .fog-glow::before,
+  :global(.dark) .fog-glow::after,
+  interactive-fog[data-variant="panel"] .fog-glow::before,
+  interactive-fog[data-variant="panel"] .fog-glow::after {
+    border-color: #8ddcff;
+  }
+
+  @keyframes pointer-ripple {
+    from { transform: scale(0.55); opacity: 0.7; }
+    to { transform: scale(1.1); opacity: 0; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .fog-layer { transform: none; transition: none; }
+    .fog-glow { display: none; }
+    .fog-glow::before,
+    .fog-glow::after { animation: none; }
+  }
+</style>
+
+<script>
+  type FogEffect = { destroy: () => void };
+  const fogWindow = window as typeof window & {
+    VANTA?: { FOG: (options: Record<string, unknown>) => FogEffect };
+  };
+  let scripts: Promise<void> | undefined;
+
+  function loadScript(src: string) {
+    return new Promise<void>((resolve, reject) => {
+      const script = document.createElement("script");
+      script.src = src;
+      script.onload = () => resolve();
+      script.onerror = () => reject(new Error(`Could not load ${src}`));
+      document.head.append(script);
+    });
+  }
+
+  function loadFog() {
+    return scripts ??= loadScript("/js/three.r134.min.js")
+      .then(() => loadScript("/js/vanta.fog.min.js"));
+  }
+
+  class InteractiveFog extends HTMLElement {
+    private cleanup?: () => void;
+
+    connectedCallback() {
+      this.cleanup?.();
+      const target = this.dataset.target
+        ? document.getElementById(this.dataset.target)
+        : this.parentElement;
+      const layer = this.querySelector<HTMLElement>(".fog-layer");
+      if (!target || !layer) return;
+
+      const motion = window.matchMedia("(prefers-reduced-motion: reduce)");
+      let effect: FogEffect | undefined;
+      let visible = false;
+      let disposed = false;
+      let version = 0;
+      let frame = 0;
+      let pointerX = 0;
+      let pointerY = 0;
+
+      const destroy = () => {
+        version++;
+        effect?.destroy();
+        effect = undefined;
+      };
+
+      const render = () => {
+        frame = 0;
+        if (motion.matches || !visible) return;
+        const rect = target.getBoundingClientRect();
+        const scroll = Math.max(-1, Math.min(1,
+          (window.innerHeight / 2 - rect.top - rect.height / 2) / window.innerHeight));
+        this.style.setProperty("--fog-x", `${pointerX * 18}px`);
+        this.style.setProperty("--fog-y", `${pointerY * 12 + scroll * 24}px`);
+      };
+
+      const schedule = () => {
+        if (!frame && visible && !motion.matches) frame = requestAnimationFrame(render);
+      };
+
+      const start = async () => {
+        destroy();
+        if (motion.matches || !visible || disposed) return;
+        const current = version;
+        try {
+          await loadFog();
+          if (current !== version || disposed || !visible || motion.matches) return;
+          const dark = this.dataset.variant === "panel" || document.documentElement.classList.contains("dark");
+          effect = fogWindow.VANTA?.FOG({
+            el: layer,
+            // FOG's shader does not use the pointer. Pan the decorative layer instead.
+            mouseControls: false,
+            touchControls: false,
+            gyroControls: false,
+            minHeight: 200,
+            minWidth: 200,
+            highlightColor: 0x7f86e8,
+            midtoneColor: 0x00a3ff,
+            lowlightColor: 0x222222,
+            baseColor: dark ? 0x000000 : 0xffffff,
+            blurFactor: 0.9,
+            speed: 1.1,
+            zoom: 0.45,
+          });
+          schedule();
+        } catch {
+          // The CSS gradient remains visible when WebGL or a script is unavailable.
+        }
+      };
+
+      const onPointer = (event: PointerEvent) => {
+        if (motion.matches || event.pointerType === "touch") return;
+        const rect = target.getBoundingClientRect();
+        const x = (event.clientX - rect.left) / rect.width;
+        const y = (event.clientY - rect.top) / rect.height;
+        pointerX = x * 2 - 1;
+        pointerY = y * 2 - 1;
+        this.style.setProperty("--glow-x", `${x * 100}%`);
+        this.style.setProperty("--glow-y", `${y * 100}%`);
+        this.style.setProperty("--glow-opacity", "1");
+        schedule();
+      };
+
+      const resetPointer = () => {
+        pointerX = pointerY = 0;
+        this.style.setProperty("--glow-opacity", "0");
+        schedule();
+      };
+
+      const onMotionChange = () => {
+        this.removeAttribute("style");
+        resetPointer();
+        void start();
+      };
+      const viewport = new IntersectionObserver(([entry]) => {
+        visible = entry.isIntersecting;
+        if (visible) void start();
+        else destroy();
+      });
+      const theme = new MutationObserver(() => { void start(); });
+      viewport.observe(target);
+      theme.observe(document.documentElement, { attributes: true, attributeFilter: ["class"] });
+      target.addEventListener("pointermove", onPointer);
+      target.addEventListener("pointerleave", resetPointer);
+      window.addEventListener("scroll", schedule, { passive: true });
+      motion.addEventListener("change", onMotionChange);
+
+      this.cleanup = () => {
+        disposed = true;
+        destroy();
+        cancelAnimationFrame(frame);
+        viewport.disconnect();
+        theme.disconnect();
+        target.removeEventListener("pointermove", onPointer);
+        target.removeEventListener("pointerleave", resetPointer);
+        window.removeEventListener("scroll", schedule);
+        motion.removeEventListener("change", onMotionChange);
+      };
+    }
+
+    disconnectedCallback() { this.cleanup?.(); }
+  }
+
+  if (!customElements.get("interactive-fog")) {
+    customElements.define("interactive-fog", InteractiveFog);
+  }
+</script>
