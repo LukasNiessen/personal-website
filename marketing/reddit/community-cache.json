@@ -572,7 +572,7 @@
         "https://www.reddit.com/r/expressjs/about/",
         "https://www.reddit.com/r/expressjs/about/rules/"
       ],
-      "was_posted_to": false
+      "was_posted_to": true
     },
     "fastapi": {
       "checked_at": "2026-11-13",
@@ -1260,11 +1260,13 @@
       "rules_summary": [
         "One main Python tip with an explained code example; indent code by four spaces.",
         "No help requests or redirects to lists/blogs of tips.",
-        "Observed submission type is text-only."
+        "Observed submission type is text-only.",
+        "Post flair is required; Module is available for third-party library tips (observed in the November 14 composer)."
       ],
       "source_urls": [
         "https://www.reddit.com/r/pythontips/about/",
-        "https://www.reddit.com/r/pythontips/about/rules/"
+        "https://www.reddit.com/r/pythontips/about/rules/",
+        "https://old.reddit.com/r/pythontips/submit?selftext=true"
       ],
       "was_posted_to": true
     },
@@ -1383,7 +1385,7 @@
         "https://www.reddit.com/r/rubyonrails/about/",
         "https://www.reddit.com/r/rubyonrails/about/rules/"
       ],
-      "was_posted_to": false
+      "was_posted_to": true
     },
     "rubyprogramming": {
       "checked_at": "2026-11-13",
