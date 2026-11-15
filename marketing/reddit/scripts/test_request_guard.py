@@ -27,22 +27,24 @@ class RequestGuardTests(unittest.TestCase):
         self.assertEqual(guard.acquire("read", self.path, 1015)["status"], "reserved")
 
     def test_post_spacing_survives_intervening_reads(self):
-        self.assertEqual(guard.acquire("post", self.path, 1000)["status"], "reserved")
+        guard.import_posts([], self.path, 1000)
+        self.assertEqual(guard.acquire("post", self.path, 1000, subreddit="angular")["status"], "reserved")
         self.assertEqual(guard.acquire("read", self.path, 1015)["status"], "reserved")
-        self.assertEqual(guard.acquire("post", self.path, 1030)["wait_seconds"], 90)
-        self.assertEqual(guard.acquire("post", self.path, 1120)["status"], "reserved")
+        self.assertEqual(guard.acquire("post", self.path, 1030, subreddit="angular")["wait_seconds"], 90)
+        self.assertEqual(guard.acquire("post", self.path, 1120, subreddit="angular")["status"], "reserved")
         self.assertEqual(guard.acquire("read", self.path, 1121)["wait_seconds"], 14)
 
     def test_cooldown_permits_only_one_read_probe_until_confirmed(self):
+        guard.import_posts([], self.path, 1000)
         guard.rate_limit("30", self.path, 1000)
         for kind in ("read", "post"):
-            self.assertEqual(guard.acquire(kind, self.path, 1020)["wait_seconds"], 10)
-        self.assertEqual(guard.acquire("post", self.path, 1030)["reason"], "read-only-probe-required")
+            self.assertEqual(guard.acquire(kind, self.path, 1020, subreddit="angular")["wait_seconds"], 10)
+        self.assertEqual(guard.acquire("post", self.path, 1030, subreddit="angular")["reason"], "read-only-probe-required")
         self.assertTrue(guard.acquire("read", self.path, 1030)["probe"])
         for kind in ("read", "post"):
-            self.assertEqual(guard.acquire(kind, self.path, 1100)["reason"], "probe-result-required")
+            self.assertEqual(guard.acquire(kind, self.path, 1100, subreddit="angular")["reason"], "probe-result-required")
         guard.probe_ok(self.path)
-        self.assertEqual(guard.acquire("post", self.path, 1100)["status"], "reserved")
+        self.assertEqual(guard.acquire("post", self.path, 1100, subreddit="angular")["status"], "reserved")
 
     def test_retry_after_seconds_http_date_and_invalid_fallback(self):
         now = datetime(2026, 11, 14, tzinfo=timezone.utc).timestamp()
@@ -64,7 +66,7 @@ class RequestGuardTests(unittest.TestCase):
         guard.rate_limit("30", self.path, 1000)
         guard.acquire("read", self.path, 1030)
         # An error such as HTTP 403 must not call probe_ok.
-        self.assertEqual(guard.acquire("post", self.path, 1200)["status"], "blocked")
+        self.assertEqual(guard.acquire("post", self.path, 1200, subreddit="angular")["status"], "blocked")
         # A repeated HTTP 429 instead records another cooldown.
         guard.rate_limit(None, self.path, 1031)
         self.assertFalse(guard.status(self.path, 1032)["probe_pending"])

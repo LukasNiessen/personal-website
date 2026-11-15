@@ -5,7 +5,7 @@ import json
 from pathlib import Path
 import subprocess
 import sys
-from urllib.parse import urlsplit
+from urllib.parse import parse_qs, urlsplit
 
 import request_guard
 
@@ -24,11 +24,24 @@ def run(script, *arguments):
     return result.stdout.rstrip("\n")
 
 
-def reserve(kind):
-    result = request_guard.acquire(kind)
+def reserve(kind, subreddit=None):
+    result = request_guard.acquire(kind, subreddit=subreddit) if subreddit is not None else request_guard.acquire(kind)
     if result['status'] != 'reserved':
         raise RuntimeError('No Reddit action performed: ' + json.dumps(result))
     return result
+
+
+def verify_post_target(url, subreddit):
+    subreddit = request_guard.subreddit_name(subreddit)
+    parsed = urlsplit(url)
+    if parsed.scheme != 'https' or parsed.hostname not in {'reddit.com', 'www.reddit.com', 'old.reddit.com'}:
+        raise ValueError('Post reservations require an HTTPS Reddit URL')
+    parts = parsed.path.strip('/').split('/')
+    targets = parse_qs(parsed.query).get('sr', [])
+    if len(parts) >= 2 and parts[0].lower() == 'r':
+        targets.append(parts[1])
+    if any(request_guard.subreddit_name(target) != subreddit for target in targets):
+        raise ValueError('Subreddit differs from the expected browser URL; no slot reserved')
 
 
 def open_tab(url):
@@ -93,7 +106,7 @@ def probe():
         close_tab(**target, expected_url="about:blank")
 
 
-def main():
+def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
     commands = parser.add_subparsers(dest="command", required=True)
     commands.add_parser("probe", help="Create a blank window, verify DOM events, then close it")
@@ -109,7 +122,8 @@ def main():
             command.add_argument("--js-file", type=Path, required=True)
             command.add_argument("--network-kind", choices=("read", "post"),
                                  help="Required when this eval makes one network request or submission")
-    args = parser.parse_args()
+            command.add_argument("--subreddit", help="Required for post evaluations; enforces the weekly cap")
+    args = parser.parse_args(argv)
     if args.command == "probe":
         print(json.dumps(probe()))
     elif args.command == "open":
@@ -118,9 +132,17 @@ def main():
         value = run(TARGET + 'return URL of taskTab', args.window_id, args.tab_id)
         print(json.dumps({"window_id": args.window_id, "tab_id": args.tab_id, "url": value}))
     elif args.command == "eval":
+        if args.network_kind == 'post' and not args.subreddit:
+            parser.error('--subreddit is required with --network-kind post')
+        if args.network_kind == 'post':
+            verify_post_target(args.expect_url, args.subreddit)
+        javascript = args.js_file.read_text()
         if args.network_kind:
-            reserve(args.network_kind)
-        print(evaluate(args.window_id, args.tab_id, args.expect_url, args.js_file.read_text()))
+            slot = reserve(args.network_kind, args.subreddit)
+            if args.network_kind == 'post':
+                # Emit before execution so a timeout still leaves an identifiable reservation.
+                print(json.dumps(slot), file=sys.stderr, flush=True)
+        print(evaluate(args.window_id, args.tab_id, args.expect_url, javascript))
     else:
         close_tab(args.window_id, args.tab_id, args.expect_url)
 

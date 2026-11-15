@@ -35,7 +35,7 @@ The initial inventory contains 160 communities, including all 140 known posting 
 
 ## Basic pacing
 
-The browser helper reserves a read slot automatically for `open`. For an evaluation that makes one request or submits, pass `--network-kind read` or `--network-kind post`. Use `request_guard.py acquire` before other navigation or native UI submission actions; do not reserve twice for the same action. Cached reads and inspection of an already loaded DOM do not need a slot. The guard never sends requests or sleeps; it either reserves a slot or returns `wait_seconds`/a blocked state. Wait that long while doing useful local work, then acquire once more. Do not poll the guard rapidly.
+The browser helper reserves a read slot automatically for `open`. For an evaluation that makes one request or submits, pass `--network-kind read` or `--network-kind post --subreddit NAME`. Use `request_guard.py acquire` before other navigation or native UI submission actions; do not reserve twice for the same action. Cached reads and inspection of an already loaded DOM do not need a slot. The guard never sends requests or sleeps; it either reserves a slot or returns `wait_seconds`/a blocked state. Wait that long while doing useful local work, then acquire once more. Do not poll the guard rapidly.
 
 - At least **15 seconds** between read/navigation requests; one at a time. No parallel fetches or loops that scan many communities in one browser evaluation.
 - At least **120 seconds** between submissions, including comments. Longer community-specific intervals and Reddit cooldowns win. A reserved slot is not permission to publish irrelevant or repetitive content.
@@ -47,10 +47,37 @@ These are simple load controls, not a guarantee of acceptance or protection from
 ```sh
 python3 marketing/reddit/scripts/request_guard.py status
 python3 marketing/reddit/scripts/request_guard.py acquire --kind read
-python3 marketing/reddit/scripts/request_guard.py acquire --kind post
+python3 marketing/reddit/scripts/request_guard.py acquire --kind post --subreddit angular
 python3 marketing/reddit/scripts/request_guard.py rate-limit --retry-after '120'
 # Only after a granted read-only probe returns a verified successful response:
 python3 marketing/reddit/scripts/request_guard.py probe-ok
 ```
 
 Pacing state is local, outside Git, and shared between worktrees on this Mac. Do not delete or relocate it to reset a limit. Once an action slot is granted, use it for one action only. Record every new posting destination with `mark-posted` after verifying the submission.
+
+## Weekly posting cap
+
+At most **two promotional contributions per subreddit in a rolling seven-day window**, shared across products, campaigns, accounts and worktrees on this Mac. A designated-thread promotion comment also counts. There is no extra per-subreddit cooldown; the existing global request spacing and stricter community rules remain. A post at Tuesday 14:00 leaves the window the following Tuesday at 14:00, not at a calendar-week reset.
+
+`was_posted_to` is only an ever-posted inventory flag. Rule-cache expiry does not reset posting history. The request guard keeps timestamped publication IDs and pending reservations in its shared local state, outside Git. It checks and reserves the weekly slot atomically with the pacing slot, before executing a submission. A denial reports `next_available_at` as Unix seconds; choose another eligible community or report the shortfall.
+
+Before a campaign, reuse the account-history check already required by the workflow. Merge relevant observed submissions and promotional comments with their actual Reddit creation timestamps, including removed/filtered publications. Do not use the time a run report was written. A temporary JSON file contains only:
+
+```json
+[{"id":"t3_abc123","subreddit":"angular","created_at":1794612835}]
+```
+
+Import that file with `import-posts --file /tmp/recent-posts.json`. Imports merge by Reddit ID and never erase existing history. On first use or migration from the older guard, posting is blocked until history is imported; reads still work. The [November 15 seed](runs/2026-11-15-posting-history.json) contains 38 observed ArchUnit submissions from the saved account snapshot, including all 16 recent campaign posts. It is a bootstrap snapshot, not a replacement for checking newer activity before a future campaign. If account history is unavailable or incomplete, do not claim it is empty or publish until the relevant seven-day window is accounted for.
+
+```sh
+python3 marketing/reddit/scripts/request_guard.py import-posts --file marketing/reddit/runs/2026-11-15-posting-history.json
+python3 marketing/reddit/scripts/request_guard.py status --subreddit angular
+# Use either browser eval --network-kind post --subreddit angular, OR one native-action reservation:
+python3 marketing/reddit/scripts/request_guard.py acquire --kind post --subreddit angular
+# After inspecting the resulting permalink and its actual creation time:
+python3 marketing/reddit/scripts/request_guard.py confirm-post --reservation pending_ID --post-id t3_ID --created-at UNIX_SECONDS
+# Only after visible validation/rejection or another verified non-submission:
+python3 marketing/reddit/scripts/request_guard.py cancel-post --reservation pending_ID --reason 'Observed proof that nothing was submitted'
+```
+
+The browser helper prints the reservation ID before executing JavaScript, including when execution later times out. Ambiguous attempts keep their slot until resolved; `status` lists pending reservations. After finding a successful post in account history, confirm that same reservation, even if its ID was already imported. Never cancel because of a timeout, moderation removal or pending approval. Cancellation does not undo global pacing. These are submission records, not a content-duplicate detector.

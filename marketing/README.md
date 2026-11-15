@@ -16,3 +16,5 @@ Use [products](reddit/products.md) to find local source and public links, [subre
 The three categories support several [writing forms](reddit/writing-forms.md), so a batch can keep the same purpose without repeating one outline. The [November 15 research](reddit/runs/2026-11-15-writing-research.md) records outside examples, account response, and major-community coverage. Reuse these notes instead of repeating the research per post.
 
 Community rules are reused through a [two-month cache with basic request pacing](reddit/cache.md). Read only selected entries; missing observations do not trigger a bulk refresh.
+
+Promotion campaigns also enforce [at most two contributions per subreddit in any rolling seven days](reddit/cache.md#weekly-posting-cap), across products and campaigns.
