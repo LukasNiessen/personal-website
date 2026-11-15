@@ -40,6 +40,8 @@ Author, community, title, rendered body and code are inspected after submission.
 
 Twelve drafts have no assigned destination. They are alternatives, not permission to repeat the same promotion in a community or fill a quota in unrelated communities. The Rust game-development candidate was skipped because the saved fixture did not demonstrate enough game-specific value. Automatic approval review rejected the PythonCoding submission over its rule against items being sold; that draft remains unsubmitted.
 
+Followup, 2026-11-15: the user clarified that these libraries are free and open source. Future advanced, source-focused PythonCoding contributions should be evaluated on that basis, without treating promotion as a paid sale. The earlier rejection and unsubmitted status remain part of this run's history. See the [writing and audience review](2026-11-15-writing-research.md).
+
 [Draft text](2026-11-14-archunit-gift-drafts.md) · [Current statuses and structured drafts](2026-11-14-archunit-gift-drafts.json) · [Technical verification](2026-11-14-archunit-gift-verification.json) · [Destination exclusions](2026-11-14-archunit-gift-destinations.json)
 
 Release evidence and positive/negative fixtures were reused: TS 2.5.5, Python 1.8.1, Rust 0.0.2, Ruby 1.0.0. Account history was checked once for this campaign (34 submissions and two comments) and updated with these outcomes. The frozen voice corpus was unchanged.
