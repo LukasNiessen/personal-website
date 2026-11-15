@@ -7,10 +7,11 @@ repoUrl: "https://github.com/LukasNiessen/tdd-bdd-explained"
 xLink: "https://x.com/iamlukasniessen/status/1920143646722003403"
 linkedInLink: "https://www.linkedin.com/pulse/what-tdd-bdd-which-better-lukas-nie%25C3%259Fen-ihh3e/"
 tags:
+  - Programming
   - TDD
   - BDD
-  - Test Driven Development
-  - Behavior Driven Development
+  - Test-Driven Development
+  - Behavior-Driven Development
   - Testing
   - ELI5
   - Explained

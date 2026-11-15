@@ -6,10 +6,12 @@ draft: false
 xLink: ""
 linkedInLink: ""
 tags:
-  - decision-making
-  - IT strategy
-  - frameworks
-  - business
+  - Business
+  - Leadership
+  - Programming
+  - Decision-Making
+  - IT Strategy
+  - Frameworks
 ---
 
 # The DRAGON Framework (TDF): Simple IT Decision Framework

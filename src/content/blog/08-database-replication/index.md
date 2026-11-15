@@ -7,6 +7,7 @@ repoUrl: "https://github.com/LukasNiessen/database-replication"
 xLink: "https://x.com/iamlukasniessen/status/1924098784809648615"
 linkedInLink: "https://www.linkedin.com/pulse/eli5-database-replication-lukas-nie%25C3%259Fen-tbeae/"
 tags:
+  - Programming
   - Replication
   - Master-Slave
   - Leaderless

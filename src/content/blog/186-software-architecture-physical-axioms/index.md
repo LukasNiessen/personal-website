@@ -3,7 +3,7 @@ title: "Software Architecture Has Physical Axioms"
 summary: "Software architecture is not floating above physics. Voltage, bits, time, locality, failure, capacity, and energy all shape the systems we build."
 date: "Jul 08 2026"
 tags:
-  - Architecture
+  - Programming
   - Software Architecture
   - System Design
   - Computer Science

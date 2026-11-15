@@ -7,11 +7,12 @@ repoUrl: ''
 xLink: ''
 linkedInLink: ''
 tags:
+  - Programming
   - Java
   - Hibernate
   - Performance
   - JPA
-  - Database
+  - Databases
 ---
 
 # Hibernate Deep Dive: Beyond the Basics

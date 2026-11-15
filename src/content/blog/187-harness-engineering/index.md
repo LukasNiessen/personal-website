@@ -4,8 +4,9 @@ summary: "Agent = Model + Harness. Where the term came from, what a harness actu
 date: "Jul 28 2026"
 tags:
   - AI
+  - Programming
   - Agents
-  - Architecture
+  - Software Architecture
   - LLM
   - Software Engineering
 ---

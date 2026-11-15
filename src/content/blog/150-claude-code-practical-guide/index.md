@@ -8,8 +8,9 @@ xLink: ''
 linkedInLink: ''
 tags:
   - AI
-  - Developer Tools
+  - Programming
   - Productivity
+  - Developer Tools
   - Claude Code
 ---
 

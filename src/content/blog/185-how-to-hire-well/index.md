@@ -3,10 +3,11 @@ title: "How to Hire Well: Bezos, Musk, Revolut, and Two Hires of My Own"
 summary: "A short, practical rundown of hiring wisdom from Bezos, Musk, and Revolut's talent playbook, a ranked list of masterclass hiring stories, and two of my own hires that landed on opposite ends of the outcome spectrum."
 date: "Jul 08 2026"
 tags:
-  - Hiring
-  - Management
+  - Business
   - Leadership
   - Startups
+  - Hiring
+  - Management
   - Talent
 ---
 

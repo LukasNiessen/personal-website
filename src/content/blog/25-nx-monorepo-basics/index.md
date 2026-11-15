@@ -7,6 +7,8 @@ repoUrl: ''
 xLink: ''
 linkedInLink: ''
 tags:
+  - Programming
+  - Productivity
   - Nx
   - Monorepo
   - CI/CD

@@ -7,6 +7,7 @@ repoUrl: ''
 xLink: ''
 linkedInLink: ''
 tags:
+  - Programming
   - Software Architecture
   - Hexagonal Architecture
   - Clean Architecture

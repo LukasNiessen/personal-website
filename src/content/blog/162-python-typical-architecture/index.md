@@ -3,11 +3,12 @@ title: "Python Project Architecture — The Two Most Common Patterns"
 summary: "Python doesn't tell you how to structure your project. Here's how most teams actually do it, and why."
 date: 2026-02-24
 tags:
-  - python
-  - fastapi
-  - architecture
-  - software-engineering
-  - best-practices
+  - Programming
+  - Python
+  - FastAPI
+  - Software Architecture
+  - Software Engineering
+  - Best Practices
 ---
 
 Python doesn't care how you organize your code. And that's both a blessing and a curse.

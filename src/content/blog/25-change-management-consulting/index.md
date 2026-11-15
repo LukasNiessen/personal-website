@@ -4,9 +4,10 @@ summary: "What actually works when implementing change in organizations - my exp
 date: "Jan 1 1970"
 draft: false
 tags:
+  - Business
+  - Leadership
   - Change Management
   - Consulting
-  - Leadership
   - Organizations
 ---
 

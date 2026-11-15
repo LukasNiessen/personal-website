@@ -4,6 +4,8 @@ summary: "Absolute basic and just semi-correct breakdown of Internet of Things, 
 date: "September 12 2024"
 draft: false
 tags:
+  - Business
+  - Programming
   - IoT
   - Internet of Things
 ---

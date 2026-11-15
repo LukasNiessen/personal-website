@@ -4,8 +4,10 @@ summary: "The very basics of presales for a solution architect"
 date: "May 01 2025"
 draft: false
 tags:
-  - Presales
+  - Business
   - Sales
+  - Negotiation
+  - Presales
   - Solution Architect
 ---
 

@@ -1,4 +1,6 @@
 ---
+import "@styles/fog-posters.css";
+
 interface Props {
   targetId?: string;
   variant?: "hero" | "panel";
@@ -8,6 +10,7 @@ const { targetId, variant = "panel" } = Astro.props;
 ---
 
 <interactive-fog data-target={targetId} data-variant={variant} aria-hidden="true">
+  <div class="fog-poster"></div>
   <div class="fog-layer"></div>
 </interactive-fog>
 
@@ -18,30 +21,51 @@ const { targetId, variant = "panel" } = Astro.props;
     display: block;
     overflow: hidden;
     pointer-events: none;
-    background: radial-gradient(ellipse at 25% 30%, #b1cefa, transparent 65%),
-      linear-gradient(135deg, #e2edff, #f0e8ff);
+    background: #cad4f4;
   }
 
   :global(.dark) interactive-fog,
   interactive-fog[data-variant="panel"] {
-    background: radial-gradient(ellipse at 25% 30%, #27376c, transparent 65%),
-      linear-gradient(135deg, #111827, #241b3b);
+    background: #18243d;
+  }
+
+  .fog-poster {
+    position: absolute;
+    inset: -32px;
+    background: var(--fog-poster) center / cover;
+    filter: brightness(0.965);
+    animation: fog-drift 16s ease-in-out infinite alternate;
+  }
+
+  @keyframes fog-drift {
+    from { transform: translate3d(-6px, -4px, 0) scale(1.04); }
+    to { transform: translate3d(6px, 4px, 0) scale(1.07); }
+  }
+
+  interactive-fog[data-ready] .fog-poster {
+    animation-play-state: paused;
   }
 
   .fog-layer {
     position: absolute;
     inset: -32px;
+    opacity: 0;
     transform: translate3d(var(--fog-x, 0px), var(--fog-y, 0px), 0) scale(1.04);
-    transition: transform 350ms ease-out;
+    transition: transform 350ms ease-out, opacity 180ms ease-out;
+  }
+
+  interactive-fog[data-ready] .fog-layer {
+    opacity: 1;
   }
 
   @media (prefers-reduced-motion: reduce) {
     .fog-layer { transform: none; transition: none; }
+    .fog-poster { animation: none; }
   }
 </style>
 
 <script>
-  type FogEffect = { destroy: () => void };
+  import { addFogFocus, type FogEffect, type FogPointer } from "@lib/fog-focus";
   const fogWindow = window as typeof window & {
     VANTA?: { FOG: (options: Record<string, unknown>) => FogEffect };
   };
@@ -50,6 +74,8 @@ const { targetId, variant = "panel" } = Astro.props;
   function loadScript(src: string) {
     return new Promise<void>((resolve, reject) => {
       const script = document.createElement("script");
+      // Download both dependencies together, but execute THREE before VANTA.
+      script.async = false;
       script.src = src;
       script.onload = () => resolve();
       script.onerror = () => reject(new Error(`Could not load ${src}`));
@@ -58,8 +84,10 @@ const { targetId, variant = "panel" } = Astro.props;
   }
 
   function loadFog() {
-    return scripts ??= loadScript("/js/three.r134.min.js")
-      .then(() => loadScript("/js/vanta.fog.min.js"));
+    return scripts ??= Promise.all([
+      loadScript("/js/three.r134.min.js"),
+      loadScript("/js/vanta.fog.min.js"),
+    ]).then(() => undefined);
   }
 
   class InteractiveFog extends HTMLElement {
@@ -75,17 +103,20 @@ const { targetId, variant = "panel" } = Astro.props;
 
       const motion = window.matchMedia("(prefers-reduced-motion: reduce)");
       let effect: FogEffect | undefined;
-      let visible = false;
+      const initialRect = target.getBoundingClientRect();
+      let visible = initialRect.bottom > 0 && initialRect.top < window.innerHeight;
       let disposed = false;
       let version = 0;
       let frame = 0;
       let pointerX = 0;
       let pointerY = 0;
+      const pointer: FogPointer = { x: 0, y: 0, active: false };
 
       const destroy = () => {
         version++;
         effect?.destroy();
         effect = undefined;
+        delete this.dataset.ready;
       };
 
       const render = () => {
@@ -112,7 +143,7 @@ const { targetId, variant = "panel" } = Astro.props;
           const dark = this.dataset.variant === "panel" || document.documentElement.classList.contains("dark");
           effect = fogWindow.VANTA?.FOG({
             el: layer,
-            // FOG's shader does not use the pointer. Pan the decorative layer instead.
+            // The component handles pan and local shader detail in CSS pixels.
             mouseControls: false,
             touchControls: false,
             gyroControls: false,
@@ -126,9 +157,14 @@ const { targetId, variant = "panel" } = Astro.props;
             speed: 1.1,
             zoom: 0.45,
           });
+          if (effect?.renderer) {
+            addFogFocus(effect, pointer);
+            this.dataset.ready = "true";
+          }
           schedule();
         } catch {
-          // The CSS gradient remains visible when WebGL or a script is unavailable.
+          destroy();
+          // The initial fog texture remains visible if WebGL or a script is unavailable.
         }
       };
 
@@ -139,11 +175,15 @@ const { targetId, variant = "panel" } = Astro.props;
         const y = (event.clientY - rect.top) / rect.height;
         pointerX = x * 2 - 1;
         pointerY = y * 2 - 1;
+        pointer.x = event.clientX;
+        pointer.y = event.clientY;
+        pointer.active = true;
         schedule();
       };
 
       const resetPointer = () => {
         pointerX = pointerY = 0;
+        pointer.active = false;
         schedule();
       };
 
@@ -153,6 +193,7 @@ const { targetId, variant = "panel" } = Astro.props;
         void start();
       };
       const viewport = new IntersectionObserver(([entry]) => {
+        if (visible === entry.isIntersecting) return;
         visible = entry.isIntersecting;
         if (visible) void start();
         else destroy();
@@ -164,6 +205,8 @@ const { targetId, variant = "panel" } = Astro.props;
       target.addEventListener("pointerleave", resetPointer);
       window.addEventListener("scroll", schedule, { passive: true });
       motion.addEventListener("change", onMotionChange);
+      // Start the visible hero immediately; the observer only manages later visibility changes.
+      if (visible) void start();
 
       this.cleanup = () => {
         disposed = true;

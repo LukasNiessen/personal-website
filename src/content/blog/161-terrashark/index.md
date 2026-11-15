@@ -3,8 +3,10 @@ title: "TerraShark: How I Fixed LLM Hallucinations in Terraform Without Burning 
 summary: "Every LLM I tried kept hallucinating Terraform code. Existing skills fixed that but destroyed my token budget. So I built TerraShark - a failure-mode-first skill that prevents hallucinations while staying lean."
 date: "Feb 23 2026"
 tags:
-  - Terraform
   - AI
+  - Programming
+  - Productivity
+  - Terraform
   - Developer Tools
   - Infrastructure as Code
   - Claude Code

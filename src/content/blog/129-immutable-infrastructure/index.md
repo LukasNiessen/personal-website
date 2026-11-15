@@ -7,9 +7,10 @@ repoUrl: ''
 xLink: ''
 linkedInLink: ''
 tags:
+  - Programming
   - Infrastructure
   - DevOps
-  - Cloud
+  - Cloud Computing
   - Terraform
 ---
 

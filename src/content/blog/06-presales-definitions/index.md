@@ -4,8 +4,10 @@ summary: "The very basics for technical sales and presales"
 date: "May 01 2025"
 draft: false
 tags:
-  - Presales
+  - Business
   - Sales
+  - Career
+  - Presales
   - Solution Architect
 ---
 

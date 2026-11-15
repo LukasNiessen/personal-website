@@ -5,7 +5,8 @@ date: "Oct 7 2023"
 draft: false
 xLink: ""
 tags:
-  - Domain Driven Design
+  - Programming
+  - Domain-Driven Design
   - DDD
 ---
 

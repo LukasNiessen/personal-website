@@ -4,7 +4,8 @@ summary: "A high-level and practical explanation of polling, long polling, SSE, 
 date: "Jun 11 2026"
 tags:
   - AI
-  - Architecture
+  - Programming
+  - Software Architecture
   - Streaming
   - Server-Sent Events
   - WebSockets

@@ -7,6 +7,9 @@ repoUrl: ''
 xLink: ''
 linkedInLink: ''
 tags:
+  - Business
+  - AI
+  - Sales
   - Consulting
 ---
 

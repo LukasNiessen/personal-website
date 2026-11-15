@@ -6,9 +6,13 @@ draft: false
 xLink: "/https://x.com/iamlukasniessen/status/"
 linkedInLink: "https://www.linkedin.com/pulse/"
 tags:
+  - Business
+  - Leadership
+  - Startups
+  - Programming
+  - Career
   - IT
   - Lessons
-  - Carreer
   - Advice
 ---
 

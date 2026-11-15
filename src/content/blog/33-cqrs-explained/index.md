@@ -7,6 +7,7 @@ repoUrl: ''
 xLink: ''
 linkedInLink: ''
 tags:
+  - Programming
   - Software Architecture
   - CQRS
   - Design Patterns

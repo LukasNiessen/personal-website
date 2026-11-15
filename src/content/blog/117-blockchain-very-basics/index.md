@@ -4,6 +4,8 @@ summary: "Absolute basic and just semi-correct breakdown of blockchain, kind of 
 date: "April 03 2021"
 draft: false
 tags:
+  - Business
+  - Programming
   - Blockchain
 ---
 

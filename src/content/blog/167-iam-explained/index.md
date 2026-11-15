@@ -3,6 +3,7 @@ title: "IAM: Everything You Need to Know"
 summary: "The full picture of Identity and Access Management - from login flows and tokens to backend validation and client-side storage"
 date: "Apr 12 2026"
 tags:
+  - Programming
   - IAM
   - Security
   - Authentication

@@ -7,7 +7,8 @@ repoUrl: ''
 xLink: ''
 linkedInLink: ''
 tags:
-  - Architecture
+  - Programming
+  - Software Architecture
   - Fitness Functions
   - Code Quality
   - Testing

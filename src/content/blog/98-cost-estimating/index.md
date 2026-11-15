@@ -7,6 +7,8 @@ repoUrl: "https://github.com/LukasNiessen/estimating-cost-tech-debt"
 xLink: "https://x.com/iamlukasniessen/status/"
 linkedInLink: "https://www.linkedin.com/pulse/data-/"
 tags:
+  - Business
+  - Programming
   - Estimate
   - Cost
   - Stakeholder

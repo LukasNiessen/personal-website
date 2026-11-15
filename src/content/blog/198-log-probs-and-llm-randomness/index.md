@@ -4,6 +4,7 @@ summary: "The neural network does deterministic calculations. The results descri
 date: "Nov 7 2026"
 tags:
   - AI
+  - Programming
   - LLM
   - Machine Learning
   - Privacy

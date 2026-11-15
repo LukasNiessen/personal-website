@@ -4,6 +4,9 @@ summary: "How to handle requirements that evolve during a project"
 date: "Jan 1 1970"
 draft: true
 tags:
+  - Business
+  - Leadership
+  - Programming
   - Project Management
   - Requirements
   - Consulting

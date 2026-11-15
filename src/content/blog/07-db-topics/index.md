@@ -4,6 +4,7 @@ summary: "A super simple explanation of data processing patterns with real Mongo
 date: "August 03 2023"
 draft: false
 tags:
+  - Programming
   - OLAP
   - OLTP
   - Batch Processing

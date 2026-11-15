@@ -7,6 +7,7 @@ repoUrl: "https://github.com/LukasNiessen/oauth-explained"
 xLink: "https://x.com/iamlukasniessen/status/1916198973292810551"
 linkedInLink: "https://www.linkedin.com/pulse/eli5-how-does-oauth-work-lukas-nie%C3%9Fen-yxmke/"
 tags:
+  - Programming
   - ELI5
   - Explained
   - OAuth

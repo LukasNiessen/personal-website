@@ -2,7 +2,13 @@
 title: "ArchUnitTS vs. tsarch in 2026: Which Architecture Test Should You Choose?"
 summary: "Angular Architects recently recommended tsarch for AI coding agents. The idea is excellent. But for a new TypeScript project in 2026, the maintenance, correctness, feature, and performance evidence points to ArchUnitTS."
 date: "Sep 12 2026"
-tags: ["TypeScript", "Software Architecture", "Testing", "AI", "Open Source"]
+tags:
+  - AI
+  - Programming
+  - TypeScript
+  - Software Architecture
+  - Testing
+  - Open Source
 ---
 
 ![ArchUnitTS and tsarch on a subtle dependency-graph background](archunitts-vs-tsarch.png "ArchUnitTS vs. tsarch")

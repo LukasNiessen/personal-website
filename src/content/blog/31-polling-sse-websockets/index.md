@@ -7,6 +7,7 @@ repoUrl: ''
 xLink: ''
 linkedInLink: ''
 tags:
+  - Programming
   - Real-time Communication
   - WebSockets
   - Server-Sent Events

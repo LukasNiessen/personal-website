@@ -7,10 +7,12 @@ repoUrl: ''
 xLink: ''
 linkedInLink: ''
 tags:
+  - Business
+  - Sales
   - Presales
   - Demo
   - Technical Validation
-  - Framework
+  - Frameworks
 ---
 
 # Presales: How to Handle Questions During Demos - A Framework

@@ -3,9 +3,11 @@ title: "How Extortionists Took Telegram Off the App Store, And How Scammers Made
 summary: "One person planted illegal content in a single public group and Apple pulled an app used by a billion people. The method is far more interesting than the outage, and it is the same cat and mouse game scammers played against my own social networks for years, profitably."
 date: "Aug 4 2026"
 tags:
+  - Business
+  - Startups
+  - Programming
   - Security
   - Content Moderation
-  - Startups
   - Social Media
   - Fraud
 ---

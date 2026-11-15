@@ -3,7 +3,8 @@ title: "Architecture Testing in Python with ArchUnitPython"
 summary: "ArchUnitPython brings architecture testing to the Python ecosystem. Enforce layer boundaries, detect circular dependencies, and keep your codebase honest, all from pytest."
 date: "Apr 16 2026"
 tags:
-  - Architecture
+  - Programming
+  - Software Architecture
   - Python
   - ArchUnit
   - Open Source

@@ -7,11 +7,12 @@ repoUrl: ''
 xLink: ''
 linkedInLink: ''
 tags:
-  - Zookeeper
+  - Programming
+  - ZooKeeper
   - Distributed Systems
   - Spring Boot
   - Coordination
-  - Architecture
+  - Software Architecture
 ---
 
 # Zookeeper: Coordination in Distributed Systems

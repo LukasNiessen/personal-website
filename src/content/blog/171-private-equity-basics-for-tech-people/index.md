@@ -3,10 +3,12 @@ title: "Private Equity Basics for Tech People"
 summary: "A practical crash course on private equity: how funds work, how deals work, the words people use, what matters when building PE software, and where AI actually changes the workflow."
 date: "Apr 29 2024"
 tags:
-  - Private Equity
+  - Business
   - Finance
-  - Product
   - AI
+  - Programming
+  - Private Equity
+  - Product
   - FinTech
 ---
 

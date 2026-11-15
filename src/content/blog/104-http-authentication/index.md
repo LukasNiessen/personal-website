@@ -7,6 +7,7 @@ repoUrl: "https://github.com/LukasNiessen/http-authentication-explained"
 xLink: "https://x.com/iamlukasniessen/status/1923060304746877082"
 linkedInLink: "https://www.linkedin.com/pulse/http-authentication-simplest-overview-lukas-nie%25C3%259Fen-vuhle"
 tags:
+  - Programming
   - HTTP
   - Authentication
   - Basic Authentication

@@ -7,8 +7,11 @@ repoUrl: ''
 xLink: ''
 linkedInLink: ''
 tags:
-  - roadmap
-  - management
+  - Business
+  - Leadership
+  - Programming
+  - Roadmaps
+  - Management
 ---
 
 # How to create Roadmaps?

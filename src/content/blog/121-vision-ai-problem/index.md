@@ -4,7 +4,10 @@ summary: "Here is exactly how we tackled detecting NSFW content using AI in my s
 date: "September 13 2025"
 draft: false
 tags:
+  - Business
+  - Startups
   - AI
+  - Programming
 ---
 
 # NSFW content detection via AI: How we solved it in my startup

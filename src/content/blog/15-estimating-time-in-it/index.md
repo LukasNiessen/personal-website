@@ -7,6 +7,9 @@ repoUrl: ''
 xLink: ''
 linkedInLink: ''
 tags:
+  - Leadership
+  - Programming
+  - Productivity
   - Project Management
   - Agile
   - Software Estimation

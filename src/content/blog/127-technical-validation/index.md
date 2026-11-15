@@ -7,8 +7,10 @@ repoUrl: ''
 xLink: ''
 linkedInLink: ''
 tags:
-  - Presales
+  - Business
+  - Programming
   - Sales
+  - Presales
 ---
 
 # Presales: How to get the technical validation? What tradeoffs are there?

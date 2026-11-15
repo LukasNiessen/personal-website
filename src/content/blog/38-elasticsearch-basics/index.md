@@ -7,6 +7,7 @@ repoUrl: ''
 xLink: ''
 linkedInLink: ''
 tags:
+  - Programming
   - Elasticsearch
   - Search
   - Databases
