@@ -1,5 +1,5 @@
 ---
-title: "Private Equity Basics for Tech People"
+title: "[Retired] Private Equity Basics for Tech People"
 summary: "A practical crash course on private equity: how funds work, how deals work, the words people use, what matters when building PE software, and where AI actually changes the workflow."
 date: "Apr 29 2024"
 tags:
@@ -12,7 +12,7 @@ tags:
   - FinTech
 ---
 
-# Private Equity Basics for Tech People
+# [Retired] Private Equity Basics for Tech People
 
 Private equity is one of those fields that sounds more mysterious than it actually is.
 
