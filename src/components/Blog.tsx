@@ -18,7 +18,7 @@ const topicNames = [
 ];
 
 const controlClass =
-  "w-full min-h-11 rounded-lg border border-black/15 dark:border-white/20 bg-white dark:bg-neutral-950 px-3 py-2 text-sm text-black dark:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-warmAccent-secondary";
+  "w-full min-w-0 min-h-10 rounded-lg border border-black/15 dark:border-white/20 bg-white dark:bg-neutral-950 px-2.5 py-1.5 text-sm text-black dark:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-warmAccent-secondary";
 
 export default function Blog({ data, tags }: Props) {
   const [query, setQuery] = useState("");
@@ -94,7 +94,7 @@ export default function Blog({ data, tags }: Props) {
           aria-pressed={selectedTags.has(tag)}
           aria-controls="blog-results"
           className={cn(
-            "min-h-9 rounded-full border px-3 py-1.5 text-sm transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-warmAccent-secondary",
+            "min-h-9 rounded-full border px-2.5 py-1 text-xs font-medium transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-warmAccent-secondary",
             selectedTags.has(tag)
               ? "border-sky-700 bg-sky-700 text-white dark:border-sky-300 dark:bg-sky-300 dark:text-black"
               : "border-black/15 dark:border-white/20 hover:bg-black/5 dark:hover:bg-white/10"
@@ -108,10 +108,10 @@ export default function Blog({ data, tags }: Props) {
 
   return (
     <div className="space-y-6">
-      <section aria-label="Find articles" className="rounded-xl border border-black/10 dark:border-white/15 bg-black/[0.02] dark:bg-white/[0.03] p-4 sm:p-5">
-        <div className="grid gap-4 min-[360px]:grid-cols-2">
-          <div className="min-[360px]:col-span-2">
-            <label htmlFor="blog-search" className="mb-2 block text-sm font-medium text-black dark:text-white">
+      <section aria-label="Find articles" className="rounded-xl border border-black/10 dark:border-white/15 bg-black/[0.02] dark:bg-white/[0.03] p-3 sm:p-4">
+        <div className="grid grid-cols-2 gap-2 sm:grid-cols-[minmax(0,1fr)_9rem_7rem]">
+          <div className="min-w-0 col-span-2 sm:col-span-1">
+            <label htmlFor="blog-search" className="mb-1 block text-xs font-medium text-black dark:text-white">
               Search articles
             </label>
             <input
@@ -119,14 +119,14 @@ export default function Blog({ data, tags }: Props) {
               type="search"
               value={query}
               onChange={(event) => setQuery(event.target.value)}
-              placeholder="Search titles, summaries, and tags"
+              placeholder="Title, summary, or tag"
               autoComplete="off"
               className={controlClass}
               aria-controls="blog-results"
             />
           </div>
-          <div>
-            <label htmlFor="blog-sort" className="mb-2 block text-sm font-medium text-black dark:text-white">
+          <div className="min-w-0">
+            <label htmlFor="blog-sort" className="mb-1 block text-xs font-medium text-black dark:text-white">
               Sort by
             </label>
             <select id="blog-sort" value={sort} onChange={(event) => setSort(event.target.value as SortOrder)} className={controlClass} aria-controls="blog-results">
@@ -136,8 +136,8 @@ export default function Blog({ data, tags }: Props) {
               <option value="title-desc">Title: Z to A</option>
             </select>
           </div>
-          <div>
-            <label htmlFor="blog-year" className="mb-2 block text-sm font-medium text-black dark:text-white">
+          <div className="min-w-0">
+            <label htmlFor="blog-year" className="mb-1 block text-xs font-medium text-black dark:text-white">
               Year
             </label>
             <select id="blog-year" value={year} onChange={(event) => setYear(event.target.value)} className={controlClass} aria-controls="blog-results">
@@ -148,22 +148,22 @@ export default function Blog({ data, tags }: Props) {
         </div>
 
         {topics.length > 0 && (
-          <fieldset className="mt-5" aria-describedby="blog-filter-help">
-            <legend className="mb-3 text-sm font-medium text-black dark:text-white">Topics</legend>
-            <ul className="flex flex-wrap gap-2">
+          <fieldset className="mt-3" aria-describedby="blog-filter-help">
+            <legend className="mb-2 text-xs font-medium text-black dark:text-white">Topics</legend>
+            <ul className="flex flex-wrap gap-1.5">
               {topics.map(renderTag)}
             </ul>
           </fieldset>
         )}
-        <p id="blog-filter-help" className="mt-3 text-xs text-black/60 dark:text-white/60">
+        <p id="blog-filter-help" className="mt-2 text-xs text-black/60 dark:text-white/60">
           Articles must match every selected topic and tag.
         </p>
 
-        <details className="mt-4 border-t border-black/10 dark:border-white/15 pt-4">
+        <details className="mt-2 border-t border-black/10 dark:border-white/15 pt-2">
           <summary className="cursor-pointer rounded text-sm font-medium text-black dark:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-warmAccent-secondary">
             Browse tags{selectedDetailedTags.length > 0 ? ` (${selectedDetailedTags.length} selected)` : ` (${detailedTags.length})`}
           </summary>
-          <div className="mt-4 space-y-3">
+          <div className="mt-2 space-y-2">
             <label htmlFor="blog-tag-search" className="sr-only">Find a tag</label>
             <input
               id="blog-tag-search"
@@ -175,7 +175,7 @@ export default function Blog({ data, tags }: Props) {
               className={controlClass}
             />
             <div className="max-h-56 overflow-y-auto overscroll-contain p-1" role="group" aria-label="Tags" aria-describedby="blog-filter-help">
-              <ul className="flex flex-wrap gap-2">
+              <ul className="flex flex-wrap gap-1.5">
                 {visibleTags.map(renderTag)}
               </ul>
               {visibleTags.length === 0 && <p className="py-2 text-sm">No matching tags.</p>}
@@ -184,10 +184,10 @@ export default function Blog({ data, tags }: Props) {
         </details>
 
         {selectedTags.size > 0 && (
-          <ul className="mt-4 flex flex-wrap gap-2" aria-label="Selected filters">
+          <ul className="mt-2 flex flex-wrap gap-1.5" aria-label="Selected filters">
             {[...selectedTags].map((tag) => (
               <li key={tag}>
-                <button type="button" onClick={() => toggleTag(tag)} aria-label={`Remove ${topics.includes(tag) ? "topic" : "tag"}: ${tag}`} className="inline-flex min-h-9 items-center gap-2 rounded-full bg-sky-100 px-3 py-1.5 text-sm text-sky-950 dark:bg-sky-950 dark:text-sky-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-warmAccent-secondary">
+                <button type="button" onClick={() => toggleTag(tag)} aria-label={`Remove ${topics.includes(tag) ? "topic" : "tag"}: ${tag}`} className="inline-flex min-h-9 items-center gap-2 rounded-full bg-sky-100 px-2.5 py-1 text-xs font-medium text-sky-950 dark:bg-sky-950 dark:text-sky-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-warmAccent-secondary">
                   {tag}<span aria-hidden="true">×</span>
                 </button>
               </li>
