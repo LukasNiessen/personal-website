@@ -51,12 +51,17 @@
       "was_posted_to": true
     },
     "angular2": {
-      "checked_at": null,
-      "description": "Historical posting destination; audience not cached.",
-      "expires_at": null,
-      "fetch_status": "missing",
-      "rules_summary": [],
-      "source_urls": [],
+      "checked_at": "2026-11-15",
+      "description": "Archived Angular community; new discussion has moved to r/angular.",
+      "expires_at": "2027-01-15",
+      "fetch_status": "ok",
+      "rules_summary": [
+        "Moderator merger announcement says r/angular2 remains available as an archive; new questions, releases, articles, tutorials, libraries and general discussion should go to r/angular.",
+        "Do not count Angular2 as a second live posting destination. Historical posts are research references only."
+      ],
+      "source_urls": [
+        "https://www.reddit.com/r/Angular2/comments/1uer01e/announcement_we_are_merging_with_rangular/"
+      ],
       "was_posted_to": true
     },
     "angularjs": {
@@ -572,7 +577,7 @@
         "https://www.reddit.com/r/expressjs/about/",
         "https://www.reddit.com/r/expressjs/about/rules/"
       ],
-      "was_posted_to": false
+      "was_posted_to": true
     },
     "fastapi": {
       "checked_at": "2026-11-13",
@@ -1160,15 +1165,18 @@
       "was_posted_to": false
     },
     "python": {
-      "checked_at": null,
-      "description": "python architecture; ArchUnitPython",
-      "expires_at": null,
-      "fetch_status": "missing",
-      "notes": [
-        "Registry guidance recorded 2026-11-08; not a current rules fetch: thread: No standalone showcases; use the monthly showcase or applicable daily thread. Include source and a useful description."
+      "checked_at": "2026-11-15",
+      "description": "Python programming; library showcases routed to designated threads.",
+      "expires_at": "2027-01-15",
+      "fetch_status": "ok",
+      "rules_summary": [
+        "No standalone showcase posts; use the appropriate monthly showcase or daily thread. Older showcase-format rules do not override this routing.",
+        "Projects need source code, descriptive text and Python relevance. Required showcase sections: What My Project Does, Target Audience, Comparison; follow current thread instructions.",
+        "Use descriptive titles and English. No paywalled/subscription resources, banned links such as Medium, or low-quality blogs; help questions belong in LearnPython."
       ],
-      "rules_summary": [],
-      "source_urls": [],
+      "source_urls": [
+        "https://www.reddit.com/r/Python/about/rules/"
+      ],
       "was_posted_to": true
     },
     "pythoncoding": {
@@ -1176,6 +1184,9 @@
       "description": "Advanced Python content, technical discussion and noteworthy projects.",
       "expires_at": "2027-01-13",
       "fetch_status": "ok",
+      "notes": [
+        "2026-11-15 user clarification: the ArchUnit libraries are free/open source. Do not treat their promotion as a paid sale by default. Advanced source-focused project requirements still apply; this note is not a new rules observation."
+      ],
       "rules_summary": [
         "Advanced Python only; no beginner tutorials/projects, generic help or learning-resource requests.",
         "Project showcases must include source code and focus on it; no blogspam, low-effort or paywalled content, memes, or items being sold.",
@@ -1260,11 +1271,13 @@
       "rules_summary": [
         "One main Python tip with an explained code example; indent code by four spaces.",
         "No help requests or redirects to lists/blogs of tips.",
-        "Observed submission type is text-only."
+        "Observed submission type is text-only.",
+        "Post flair is required; Module is available for third-party library tips (observed in the November 14 composer)."
       ],
       "source_urls": [
         "https://www.reddit.com/r/pythontips/about/",
-        "https://www.reddit.com/r/pythontips/about/rules/"
+        "https://www.reddit.com/r/pythontips/about/rules/",
+        "https://old.reddit.com/r/pythontips/submit?selftext=true"
       ],
       "was_posted_to": true
     },
@@ -1295,24 +1308,37 @@
       "was_posted_to": true
     },
     "react": {
-      "checked_at": null,
-      "description": "Historical posting destination; audience not cached.",
-      "expires_at": null,
-      "fetch_status": "missing",
-      "rules_summary": [],
-      "source_urls": [],
+      "checked_at": "2026-11-15",
+      "description": "React.js community for professionals and hobbyists.",
+      "expires_at": "2027-01-15",
+      "fetch_status": "ok",
+      "rules_summary": [
+        "Posts must relate to the React JavaScript library; be respectful.",
+        "No low-effort content; explicitly includes links to articles with LLM-generated content. Do not infer this is a blanket prohibition on every assisted technical contribution, or a permission for marketing.",
+        "No blanket self-promotion ban was returned; inspect visible posting guidance and account context before choosing a specific contribution."
+      ],
+      "source_urls": [
+        "https://www.reddit.com/r/react/about/",
+        "https://www.reddit.com/r/react/about/rules/"
+      ],
       "was_posted_to": true
     },
     "reactjs": {
-      "checked_at": null,
-      "description": "react ts jsx frontend; ArchUnitTS",
-      "expires_at": null,
-      "fetch_status": "missing",
-      "notes": [
-        "Registry guidance recorded 2026-11-08; not a current rules fetch: hold: Marketing/solicitation only in dedicated posts; AI excerpts need attribution and original thought. Do not assume an OSS showcase exempts a marketing campaign."
+      "checked_at": "2026-11-15",
+      "description": "React UI framework and its ecosystem.",
+      "expires_at": "2027-01-15",
+      "fetch_status": "ok",
+      "rules_summary": [
+        "Be courteous and inclusive; respect differing technical tradeoffs. Contributions should add value, with active participation encouraged.",
+        "Demo videos must include source, preferably runnable. Portfolios belong in the Sunday portfolio thread; help questions belong in the monthly beginner thread.",
+        "No raw AI output. Shared AI material requires service attribution and original thought, such as why it is trustworthy.",
+        "Commercial marketing, lead generation and solicitation are restricted to dedicated posts. The linked Reactiflux policy distinguishes relevant contributor-made work usable without paying from advertising; do not assume all OSS showcases are banned or that all promotion is exempt."
       ],
-      "rules_summary": [],
-      "source_urls": [],
+      "source_urls": [
+        "https://www.reddit.com/r/reactjs/about/",
+        "https://www.reddit.com/r/reactjs/about/rules/",
+        "https://www.reactiflux.com/promotion"
+      ],
       "was_posted_to": true
     },
     "reactnative": {
@@ -1383,7 +1409,7 @@
         "https://www.reddit.com/r/rubyonrails/about/",
         "https://www.reddit.com/r/rubyonrails/about/rules/"
       ],
-      "was_posted_to": false
+      "was_posted_to": true
     },
     "rubyprogramming": {
       "checked_at": "2026-11-13",
@@ -1681,15 +1707,18 @@
       "was_posted_to": false
     },
     "typescript": {
-      "checked_at": null,
-      "description": "ts architecture; ArchUnitTS",
-      "expires_at": null,
-      "fetch_status": "missing",
-      "notes": [
-        "Registry guidance recorded 2026-11-08; not a current rules fetch: hold: Rule against ChatGPT posts/comments. Otherwise projects need open source, repo link and actual TS utility."
+      "checked_at": "2026-11-15",
+      "description": "TypeScript development and tools with specific TypeScript utility.",
+      "expires_at": "2027-01-15",
+      "fetch_status": "ok",
+      "rules_summary": [
+        "Posts must be TypeScript-focused. Projects must be open source, link their source, and provide TS utility beyond merely being written in TS; no general advertising even if free.",
+        "No excessive self-promotion; no recruitment outside the sticky.",
+        "Rule 5 is ChatGPT comment/post: authors must formulate their own opinions. Skip autonomous AI-written posts/comments."
       ],
-      "rules_summary": [],
-      "source_urls": [],
+      "source_urls": [
+        "https://www.reddit.com/r/typescript/about/rules/"
+      ],
       "was_posted_to": true
     },
     "unittesting": {
@@ -1742,15 +1771,19 @@
       "was_posted_to": true
     },
     "webdev": {
-      "checked_at": null,
-      "description": "web js ts python; web-relevant ArchUnit projects",
-      "expires_at": null,
-      "fetch_status": "missing",
-      "notes": [
-        "Registry guidance recorded 2026-11-08; not a current rules fetch: hold: LLM posts/comments and commercial promotion prohibited. Human project showcases limited to Saturday with correct flair."
+      "checked_at": "2026-11-15",
+      "description": "Web development; autonomous AI-written posts/comments are excluded.",
+      "expires_at": "2027-01-15",
+      "fetch_status": "ok",
+      "rules_summary": [
+        "No excessive self-promotion; 9:1 guidance. Commercial promotions/solicitations prohibited.",
+        "Project/portfolio showcases and feedback requests only on Showoff Saturday with correct flair; this does not waive other rules.",
+        "Low-effort prohibition explicitly includes LLM-generated posts/comments. Skip this autonomous writing workflow.",
+        "No memes/bad-design screenshots; assistance needs context, research and a specific problem; general career questions belong in the monthly thread."
       ],
-      "rules_summary": [],
-      "source_urls": [],
+      "source_urls": [
+        "https://www.reddit.com/r/webdev/about/rules/"
+      ],
       "was_posted_to": true
     },
     "zig": {

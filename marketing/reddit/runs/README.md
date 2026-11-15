@@ -15,3 +15,5 @@ Requested: 3; submitted: 2; skipped: 1.
 ```
 
 Record comments as comments. Do not count drafts as submissions. No credentials, cookies, or copied account/session data.
+
+For a batch, record the chosen writing form alongside its category so repeated packaging is visible. Requested writing/performance reviews may save compact public post metrics and source links here, with observation date, post age, format and moderation caveats. Keep raw account exports and third-party post bodies out of the repository; the frozen voice corpus stays unchanged.

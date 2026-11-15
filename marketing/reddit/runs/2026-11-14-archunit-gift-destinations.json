@@ -1,0 +1,119 @@
+{
+  "checked_date": "2026-11-13",
+  "complete_initial_communities": 40,
+  "complete_additional_unique_communities": 4,
+  "sources": {
+    "nestjs": {
+      "rules_url": "https://www.reddit.com/r/nestjs/about/rules/",
+      "reason": "Rule description restricts excessive promotion with 9:1 participation guidance; recent account activity is predominantly promotion."
+    },
+    "nextjs": {
+      "rules_url": "https://www.reddit.com/r/nextjs/about/rules/",
+      "reason": "Standalone shilling is restricted; weekly show-and-tell is an exception. No fitted contribution in a current thread was established in this campaign."
+    },
+    "reactnative": {
+      "rules_url": "https://www.reddit.com/r/reactnative/about/rules/",
+      "reason": "Explicit no self-promotion rule"
+    },
+    "javascript": {
+      "rules_url": "https://www.reddit.com/r/javascript/about/rules/",
+      "reason": "Promotion ratio/advertising restrictions; account recent activity is predominantly promotion"
+    },
+    "node": {
+      "rules_url": "https://www.reddit.com/r/node/about/rules/",
+      "reason": "Previous campaign post removed by moderator; do not repost without resolving the reason"
+    },
+    "vuejs": {
+      "rules_url": "https://www.reddit.com/r/vuejs/about/rules/",
+      "reason": "Previous campaign post removed by Reddit; no new attempt in this run"
+    },
+    "rustprojects": {
+      "rules_url": "https://www.reddit.com/r/rustprojects/about/rules/",
+      "reason": "Previous campaign post removed by Reddit; no new attempt in this run"
+    },
+    "SideProject": {
+      "rules_url": "https://www.reddit.com/r/SideProject/about/rules/",
+      "reason": "Previous campaign post removed by Reddit; no new attempt in this run"
+    },
+    "indiehackers": {
+      "rules_url": "https://www.reddit.com/r/indiehackers/about/rules/",
+      "reason": "Previous promotion removed by moderator; no new attempt in this run"
+    },
+    "FastAPI": {
+      "rules_url": "https://www.reddit.com/r/FastAPI/about/rules/",
+      "reason": "Previous promotion still recorded as automod_filtered; do not replace a pending post"
+    },
+    "sideprojects": {
+      "rules_url": "https://www.reddit.com/r/sideprojects/about/rules/",
+      "reason": "Rule requires significant updates for repeat project posts and participation beyond promotion; not established"
+    },
+    "django": {
+      "rules_url": "https://www.reddit.com/r/django/about/rules/",
+      "reason": "Rule calls for participation beyond own content; recent account activity did not establish it for another promotion"
+    },
+    "learnrust": {
+      "rules_url": "https://www.reddit.com/r/learnrust/about/rules/",
+      "reason": "Question-focused community; do not disguise promotion as a help request"
+    },
+    "bun": {
+      "rules_url": "https://www.reddit.com/r/bun/about/rules/",
+      "reason": "Conflicting saved metadata: public description identifies the JS/TS runtime, while sidebar says Mecha buns. Audience fit was not established."
+    },
+    "bunjs": {
+      "rules_url": "https://www.reddit.com/r/bunjs/about/rules/",
+      "reason": "Restricted community; no posting authorization established"
+    },
+    "unittesting": {
+      "rules_url": "https://www.reddit.com/r/unittesting/about/rules/",
+      "reason": "Restricted community"
+    },
+    "testautomation": {
+      "rules_url": "https://www.reddit.com/r/testautomation/about/rules/",
+      "reason": "Restricted community"
+    },
+    "rubygems": {
+      "rules_url": "https://www.reddit.com/r/rubygems/about/rules/",
+      "reason": "HTTP 403; community eligibility unavailable"
+    },
+    "RubyProgramming": {
+      "rules_url": "https://www.reddit.com/r/RubyProgramming/about/rules/",
+      "reason": "HTTP 403; community eligibility unavailable"
+    },
+    "pytest": {
+      "rules_url": "https://www.reddit.com/r/pytest/about/rules/",
+      "reason": "HTTP 403; community eligibility unavailable"
+    },
+    "codequality": {
+      "rules_url": "https://www.reddit.com/r/codequality/about/rules/",
+      "reason": "HTTP 404"
+    },
+    "softwareengineering": {
+      "rules_url": "https://www.reddit.com/r/softwareengineering/about/rules/",
+      "reason": "Moderator approval/self-promotion/AI restrictions; not eligible for this autonomous campaign"
+    },
+    "softwaredevelopment": {
+      "rules_url": "https://www.reddit.com/r/softwaredevelopment/about/rules/",
+      "reason": "Scope excludes general programming, new releases, and generic tool promotion"
+    },
+    "coding": {
+      "rules_url": "https://www.reddit.com/r/coding/about/rules/",
+      "reason": "Link-only community with advertising and project-post constraints; no fitted gift contribution established"
+    },
+    "Deno": {
+      "rules_url": "https://www.reddit.com/r/Deno/about/rules/",
+      "reason": "Deno runtime/import compatibility not verified; no community-specific runnable example established"
+    },
+    "bevy": {
+      "rules_url": "https://www.reddit.com/r/bevy/about/rules/",
+      "reason": "No Bevy-specific integration evidence established; generic Rust compatibility is insufficient for a gift promotion"
+    }
+  },
+  "notes": [
+    "No exclusion is a claim of an account-wide ban.",
+    "A community omitted from exclusions is not automatically eligible.",
+    "At the initial scan stop, pinned-thread and composer checks had not been completed; this is historical scan status, not the resumed campaign status.",
+    "Previously known AI bans in typescript, rust, flask, opensource, and webdev were not rechecked; they remain unselected."
+  ],
+  "initial_scan_stop_reason": "HTTP 429 while checking opensourceprojects; remaining planned checks not performed",
+  "recovery": "One read-only Angular rules probe returned HTTP 200 after cooldown; selected composers were subsequently checked using cached rules and visible guidance."
+}

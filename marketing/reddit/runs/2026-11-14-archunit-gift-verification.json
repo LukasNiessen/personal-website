@@ -1,0 +1,143 @@
+{
+  "prepared_date": "2026-11-14",
+  "evidence_collection_started": "2026-11-13",
+  "temporary_evidence_directory": "/private/tmp/reddit-gifts-2026-11-13",
+  "published_sources": {
+    "ArchUnitTS": "https://registry.npmjs.org/archunit/2.5.5",
+    "ArchUnitPython": "https://pypi.org/pypi/archunitpython/1.8.1/json",
+    "ArchUnitRust": "https://crates.io/api/v1/crates/archunit/0.0.2",
+    "ArchUnitRuby": "https://rubygems.org/gems/archunit/versions/1.0.0"
+  },
+  "products": {
+    "ArchUnitTS": {
+      "package": "archunit@2.5.5",
+      "executed": [
+        "Public entry points and own internal imports pass",
+        "Outside deep service import fails",
+        "Nested internal barrel import fails",
+        "Intentional public re-export passes",
+        "All four fixture variants compile with TypeScript",
+        "Forward and reverse queries include the direct-import chain and exclude an unrelated module",
+        "Collapsed HTML graph renders"
+      ],
+      "caveats": [
+        "Static import analysis, not Angular runtime analysis",
+        "Graph example checked against direct imports; do not assume every re-export path is traversed",
+        "An empty-selection cycle-rule claim did not pass the fixture; it is not used in the drafts"
+      ]
+    },
+    "ArchUnitPython": {
+      "package": "archunitpython==1.8.1",
+      "executed": [
+        {
+          "case": "type-only counts by default",
+          "violations": 1
+        },
+        {
+          "case": "type-only can be excluded",
+          "violations": 0
+        },
+        {
+          "case": "ordinary import still fails",
+          "violations": 1
+        },
+        {
+          "case": "literal dynamic import fails",
+          "violations": 1
+        },
+        {
+          "case": "computed dynamic target not inferred",
+          "violations": 0
+        },
+        {
+          "case": "migration edge explicitly ignored",
+          "violations": 0
+        },
+        {
+          "case": "external dependency fails",
+          "violations": 1
+        },
+        {
+          "case": "unrelated external dependency allowed",
+          "violations": 0
+        },
+        {
+          "case": "empty selector fails",
+          "violations": 1
+        },
+        {
+          "case": "collapsed graph contains both groups",
+          "passed": true
+        }
+      ],
+      "caveats": [
+        "Computed runtime import target not inferred in the fixture",
+        "TYPE_CHECKING exclusion is opt-in"
+      ]
+    },
+    "ArchUnitRust": {
+      "package": "archunit=0.0.2",
+      "executed": [
+        "Unfiltered parent/child structural cycle is reported",
+        "Excluding Mod and PubUse removes structural-only cycle",
+        "Ordinary import evidence keeps the cycle violation",
+        "Missing subject selector fails",
+        "Reverse graph contains dependent parent",
+        "HTML graph renders",
+        "External std import passes allowlist and fails denylist",
+        "Feature-gated external import remains in conservative source graph"
+      ],
+      "caveats": [
+        "Syntax-based; does not expand macros or build-script-generated code",
+        "cfg branches are a conservative union",
+        "Validation harness compiled and ran; this is not a claim that a full game engine integration was tested"
+      ]
+    },
+    "ArchUnitRuby": {
+      "package": "archunit 1.0.0; Ruby 4.0.6 for validation",
+      "executed": [
+        {
+          "case": "imports-only does not see a mixin constant",
+          "violations": 0
+        },
+        {
+          "case": "constant mode catches include without require",
+          "violations": 1
+        },
+        {
+          "case": "unrelated model passes",
+          "violations": 0
+        },
+        {
+          "case": "qualified constant reference is caught",
+          "violations": 1
+        },
+        {
+          "case": "empty selector fails",
+          "violations": 1
+        },
+        {
+          "case": "graph retains constant reference evidence",
+          "passed": true
+        },
+        "Custom component load path resolves prohibited import",
+        "Unrelated import remains allowed",
+        "Nested gem lib discovered without evaluating gemspec"
+      ],
+      "caveats": [
+        "Constant-reference analysis is opt-in",
+        "Unresolved and ambiguous constant ownership are not assigned guessed targets",
+        "No full Rails application was booted"
+      ]
+    }
+  },
+  "voice_examples_read": [
+    "1wer83k",
+    "1weelhz",
+    "1weepfx",
+    "1uibssl",
+    "1swek3h",
+    "1swex79"
+  ],
+  "voice_notes": "Direct author voice; concrete developer problem; explain the useful distinction and limits; no fabricated requested-feature origin, copied headlines, em dashes, or popularity claims."
+}

@@ -57,3 +57,10 @@ Reddit may omit deleted/inaccessible history or apply a backend history cap even
 - Seeded 160 community entries from existing local records, including all 140 recoverable historical posting destinations. Forty rule snapshots and four unavailable responses expire two calendar months after their November 13 observation. Missing observations remain explicit misses. No Reddit request was needed to seed the cache.
 - Twenty offline tests passed: calendar-month expiry (including leap years), expired/missing entries, preservation of posting history, rejected 429 cache updates, concurrent pacing reservations, read/post intervals, Retry-After seconds/HTTP dates, cooldown recovery probes, malformed-state handling, and denial before browser navigation.
 - Existing frozen post bodies and the corpus manifest were unchanged. Pacing is a local load control; it does not establish community permission or guarantee moderation outcomes.
+
+
+## Weekly cap · 2026-11-15
+
+The posting helper now reserves at most two promotional contributions per subreddit over the previous seven days, across campaigns and worktrees. Missing history or subreddit information blocks posting. Reservations count before JavaScript executes; actual publication IDs/times replace them after verification. Only verified non-submissions can release pending reservations. Legacy pacing/cooldown state migrates without resetting it.
+
+Offline checks cover the third-post rejection, exact seven-day boundary, independent and case-normalized communities, concurrent reservations, unchanged capacity on pacing denial, history imports in either confirmation order, cancellation, corrupted state, missing/wrong browser destination and ambiguous execution. No live Reddit submissions were used for this validation.
