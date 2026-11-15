@@ -6,8 +6,9 @@ draft: false
 repoUrl: "https://github.com/LukasNiessen/database-partitioning"
 xLink: "https://x.com/iamlukasniessen/status/1924125876771324067"
 tags:
+  - Programming
   - Partitioning
-  - Database
+  - Databases
   - ELI5
 ---
 

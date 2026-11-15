@@ -3,8 +3,9 @@ title: "The Twelve-Factor App: Does It Still Hold Up in 2026?"
 summary: "12-Factor App: 15 Years Later"
 date: "Feb 12 2026"
 tags:
+  - Programming
   - Cloud Native
-  - Architecture
+  - Software Architecture
   - DevOps
   - Microservices
   - Kubernetes

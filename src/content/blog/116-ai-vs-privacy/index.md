@@ -5,9 +5,10 @@ date: "February 15 2025"
 draft: false
 tags:
   - AI
-  - Agents
+  - Politics
   - Privacy
-  - Security
+  - GDPR
+  - AI Ethics
 ---
 
 # Murder or Brain Wash AIs so they forget your private data? Rather not.

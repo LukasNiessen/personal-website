@@ -7,6 +7,9 @@ repoUrl: ''
 xLink: ''
 linkedInLink: ''
 tags:
+  - Business
+  - Programming
+  - Sales
   - Presales
   - GitOps
   - Terraform

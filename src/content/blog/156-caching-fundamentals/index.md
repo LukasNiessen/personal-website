@@ -3,6 +3,8 @@ title: "Caching in 2026: Fundamentals, Invalidation, and Why It Matters More Tha
 summary: "A deep dive into caching fundamentals - why it's one of the hardest problems in computer science, the difference between invalidation and eviction, and how to think about caching in modern distributed systems"
 date: "Feb 8 2026"
 tags:
+  - AI
+  - Programming
   - Caching
   - System Design
   - Distributed Systems

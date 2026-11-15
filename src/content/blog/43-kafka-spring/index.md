@@ -7,11 +7,12 @@ repoUrl: ''
 xLink: ''
 linkedInLink: ''
 tags:
+  - Programming
   - Kafka
   - Spring Boot
   - Messaging
   - Streaming
-  - Architecture
+  - Software Architecture
 ---
 
 # Kafka with Spring Boot: From Basics to Production

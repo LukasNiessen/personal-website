@@ -4,7 +4,9 @@ summary: "An outlook for the futurure with AI, personal viewpoint"
 date: "January 04 2025"
 draft: false
 tags:
+  - Business
   - AI
+  - Productivity
 ---
 
 # AI outlook

@@ -3,8 +3,11 @@ title: "Modern SaaS, AI, and the Return of Service-Led Deployment"
 summary: "How SaaS is moving from low-touch self-service toward AI-assisted enterprise deployment, why this is not entirely new, and how companies can borrow the good parts of consulting without becoming consulting."
 date: "May 28 2026"
 tags:
-  - SaaS
+  - Business
+  - Startups
   - AI
+  - Sales
+  - SaaS
   - Forward Deployed Engineer
   - Product Strategy
   - Enterprise Software

@@ -4,7 +4,10 @@ summary: "My view of how to lead tech teams in 2025"
 date: "February 02 2024"
 draft: false
 tags:
+  - Business
   - Leadership
+  - Startups
+  - Programming
 ---
 
 # Technical Leadership: a modern approach

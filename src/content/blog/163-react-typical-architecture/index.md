@@ -3,11 +3,12 @@ title: "React Project Architecture — How to Actually Structure a Frontend"
 summary: "React gives you components and hooks. Everything else is your problem. Here's how to organize the rest."
 date: 2026-02-24
 tags:
-  - react
-  - typescript
-  - architecture
-  - frontend
-  - software-engineering
+  - Programming
+  - React
+  - TypeScript
+  - Software Architecture
+  - Frontend
+  - Software Engineering
 ---
 
 React is not a framework. It's a library. It gives you a component model, a handful of hooks, and a rendering engine. That's it. It has no opinion about routing, state management, data fetching, or how you organize your files. The official React docs literally say: "React doesn't have opinions on how you put files into folders."

@@ -7,10 +7,11 @@ repoUrl: "https://github.com/LukasNiessen/programming-paradigms-explained"
 xLink: "https://x.com/iamlukasniessen/status/1921983986294726905"
 linkedInLink: "https://www.linkedin.com/pulse/programming-paradigms-what-weve-learned-do-lukas-nie%25C3%259Fen-1jewe/"
 tags:
+  - Programming
   - Programming Paradigms
-  - Objective-Oriented Programming
+  - Object-Oriented Programming
   - OOP
-  - Structured Programmning
+  - Structured Programming
   - Functional Programming
 ---
 

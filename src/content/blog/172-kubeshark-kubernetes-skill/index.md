@@ -4,8 +4,10 @@ summary: "Why I built an open-source Kubernetes skill that makes AI diagnose sec
 date: "May 02 2026"
 repoUrl: "https://github.com/LukasNiessen/kubernetes-skill"
 tags:
-  - Kubernetes
   - AI
+  - Programming
+  - Productivity
+  - Kubernetes
   - Claude Code
   - Codex
   - Open Source

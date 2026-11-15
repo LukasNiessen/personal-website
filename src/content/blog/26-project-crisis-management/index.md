@@ -4,10 +4,12 @@ summary: "How to handle unexpected problems, stakeholder panic, and last-minute 
 date: "Jan 1 1970"
 draft: false
 tags:
+  - Business
+  - Leadership
+  - Programming
   - Project Management
   - Crisis Management
   - Consulting
-  - Leadership
 ---
 
 # When Projects Go Sideways: Managing Crisis Situations

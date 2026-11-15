@@ -3,8 +3,11 @@ title: "Dragon-Led Growth: DLG for Modern SaaS"
 summary: "A short introduction to Dragon-Led Growth: vision-led company building, sales-led discovery, service-led deployment, and disciplined productization."
 date: "May 31 2026"
 tags:
-  - SaaS
+  - Business
+  - Startups
   - AI
+  - Sales
+  - SaaS
   - Product Strategy
   - Growth Strategy
   - Dragon-Led Growth

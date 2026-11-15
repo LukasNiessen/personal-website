@@ -3,10 +3,12 @@ title: "Teams in IT: How to Structure, Scale and Not Lose Your Mind"
 summary: "How team structures shape the software you build, why Conway's Law still matters, and what strong ownership, platform teams and autonomy actually look like in practice"
 date: "Feb 21 2026"
 tags:
+  - Leadership
+  - Programming
   - IT
   - Teams
-  - Architecture
-  - Organization
+  - Software Architecture
+  - Organizations
 ---
 
 # Teams in IT: How to Structure, Scale and Not Lose Your Mind

@@ -3,7 +3,9 @@ title: "Micro Frontends: When They Make Sense and When They Don't"
 summary: "A system design look at iframes, web components, module federation, and the other ways to split a frontend — plus why you probably shouldn't."
 date: "Feb 14 2026"
 tags:
-  - Architecture
+  - Leadership
+  - Programming
+  - Software Architecture
   - System Design
   - Frontend
   - Microservices

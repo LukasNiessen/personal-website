@@ -3,7 +3,9 @@ title: "Fitness Functions: Automating Your Architecture Decisions"
 summary: "How fitness functions shift governance left - from code architecture testing with ArchUnit to data product governance in a data mesh"
 date: "Feb 3 2026"
 tags:
-  - Architecture
+  - AI
+  - Programming
+  - Software Architecture
   - Fitness Functions
   - Evolutionary Architecture
   - Data Mesh

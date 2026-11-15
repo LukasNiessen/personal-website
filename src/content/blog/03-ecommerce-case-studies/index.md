@@ -4,6 +4,10 @@ summary: "Personal case studies: E-commerce"
 date: "April 05 2022"
 draft: false
 tags:
+  - Business
+  - Startups
+  - Programming
+  - Sales
   - E-Commerce
 ---
 

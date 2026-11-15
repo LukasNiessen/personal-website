@@ -7,11 +7,12 @@ repoUrl: ''
 xLink: ''
 linkedInLink: ''
 tags:
+  - Programming
   - Redis
   - Spring Boot
   - Caching
   - Messaging
-  - Architecture
+  - Software Architecture
 ---
 
 # Redis with Spring Boot: Cache, Pub/Sub, and Beyond

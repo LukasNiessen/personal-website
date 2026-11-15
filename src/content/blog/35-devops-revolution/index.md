@@ -7,6 +7,8 @@ repoUrl: ''
 xLink: ''
 linkedInLink: ''
 tags:
+  - Leadership
+  - Programming
   - DevOps
   - Docker
   - Kubernetes

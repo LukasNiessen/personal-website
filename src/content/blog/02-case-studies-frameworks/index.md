@@ -4,7 +4,10 @@ summary: "Case studies"
 date: "January 01 1970"
 draft: true
 tags:
-  - case studies
+  - Business
+  - Finance
+  - Career
+  - Case Studies
 ---
 
 ## Ask questions

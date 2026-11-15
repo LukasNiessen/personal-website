@@ -4,8 +4,8 @@ summary: "Where IPO money actually goes, how founders get diluted, and when publ
 date: "Nov 13 2026"
 tags:
   - Business
-  - Finance
   - Startups
+  - Finance
   - Corporate Governance
 ---
 

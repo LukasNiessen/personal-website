@@ -7,8 +7,9 @@ repoUrl: "https://github.com/LukasNiessen/relational-db-vs-document-store"
 xLink: "https://x.com/iamlukasniessen/status/1924022357619814522"
 linkedInLink: "https://www.linkedin.com/pulse/relational-vs-document-oriented-database-software-lukas-nie%C3%9Fen-ywdse/"
 tags:
+  - Programming
   - Relational Database
-  - Document-oriented Database
+  - Document-Oriented Database
   - Document Store
 ---
 

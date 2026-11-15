@@ -7,9 +7,10 @@ repoUrl: "https://github.com/LukasNiessen/acid-and-base-explained"
 xLink: "https://x.com/iamlukasniessen/status/1924248827982139869"
 linkedInLink: "https://www.linkedin.com/pulse/eli5-what-exactly-acid-base-transactions-lukas-nie%25C3%259Fen-nqpce/"
 tags:
+  - Programming
   - ACID
   - BASE
-  - Database
+  - Databases
   - Microservices
 ---
 

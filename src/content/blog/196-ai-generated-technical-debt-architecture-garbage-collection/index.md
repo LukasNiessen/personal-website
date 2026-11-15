@@ -4,6 +4,7 @@ summary: "Coding agents can ship correct features while quietly degrading a code
 date: "Sep 12 2026"
 tags:
   - AI
+  - Programming
   - Coding Agents
   - Software Architecture
   - Technical Debt

@@ -3,9 +3,10 @@ title: "Startup-Begriffe, die man kennen sollte"
 summary: "Eine Sammlung der wichtigsten Startup-Begriffe rund um Umsatz, Profitabilität, SaaS-Kennzahlen, Go-to-Market und Fundraising."
 date: "Jun 05 2024"
 tags:
-  - Startups
   - Business
+  - Startups
   - Finance
+  - Sales
   - SaaS
 ---
 

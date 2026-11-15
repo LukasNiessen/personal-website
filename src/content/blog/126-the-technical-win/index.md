@@ -7,8 +7,10 @@ repoUrl: ''
 xLink: ''
 linkedInLink: ''
 tags:
-  - Presales
+  - Business
+  - Programming
   - Sales
+  - Presales
 ---
 
 # Presales: What is the technical win?

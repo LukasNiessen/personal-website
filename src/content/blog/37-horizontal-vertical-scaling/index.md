@@ -7,11 +7,11 @@ repoUrl: ''
 xLink: ''
 linkedInLink: ''
 tags:
+  - Programming
   - Scalability
   - System Design
   - Infrastructure
-  - Team Management
-  - Architecture
+  - Software Architecture
 ---
 
 # Horizontal vs Vertical Scaling: Why Its Like Managing Teams

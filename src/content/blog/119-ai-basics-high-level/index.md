@@ -4,6 +4,7 @@ summary: "Some basics of AI, GenAI, RAG, and agents, less from a tech viewpoint,
 date: "January 03 2025"
 draft: false
 tags:
+  - Business
   - AI
   - GenAI
 ---

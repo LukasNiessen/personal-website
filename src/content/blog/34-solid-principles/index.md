@@ -7,12 +7,13 @@ repoUrl: ''
 xLink: ''
 linkedInLink: ''
 tags:
+  - Programming
   - Software Design
   - SOLID Principles
   - Object-Oriented Programming
   - Clean Code
   - Code Quality
-  - Architecture
+  - Software Architecture
 ---
 
 # SOLID Principles: Making Code That Bends But Never Breaks

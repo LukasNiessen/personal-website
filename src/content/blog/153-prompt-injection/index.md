@@ -3,8 +3,9 @@ title: 'Prompt Injection: The SQL Injection of the AI Era'
 summary: 'What prompt injection is, why OWASP ranks it as the #1 security risk for LLM applications, real-world attacks, and how to defend against it'
 date: 'Jan 27 2026'
 tags:
-  - Security
   - AI
+  - Programming
+  - Security
   - LLM
   - Prompt Injection
 ---

@@ -12,6 +12,11 @@ type Props = {
 
 type SortOrder = "newest" | "oldest" | "title-asc" | "title-desc";
 
+const topicNames = [
+  "Business", "Leadership", "Startups", "Finance", "AI", "Programming",
+  "Politics", "Sales", "Negotiation", "Career", "Productivity",
+];
+
 const controlClass =
   "w-full min-h-11 rounded-lg border border-black/15 dark:border-white/20 bg-white dark:bg-neutral-950 px-3 py-2 text-sm text-black dark:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-warmAccent-secondary";
 
@@ -26,6 +31,13 @@ export default function Blog({ data, tags }: Props) {
     () => [...new Set(data.map((post) => post.data.date.getUTCFullYear()))].sort((a, b) => b - a),
     [data]
   );
+
+  const topics = useMemo(() => {
+    const publishedTags = new Set(data.flatMap((post) => post.data.tags));
+    return topicNames.filter((topic) => publishedTags.has(topic));
+  }, [data]);
+  const detailedTags = tags.filter((tag) => !topicNames.includes(tag));
+  const selectedDetailedTags = detailedTags.filter((tag) => selectedTags.has(tag));
 
   // Derive results during render so the server HTML and first client render
   // contain the same complete list, without waiting for an effect.
@@ -53,7 +65,7 @@ export default function Blog({ data, tags }: Props) {
     });
   }, [data, query, selectedTags, sort, year]);
 
-  const visibleTags = tags.filter((tag) => tag.toLowerCase().includes(tagQuery.trim().toLowerCase()));
+  const visibleTags = detailedTags.filter((tag) => tag.toLowerCase().includes(tagQuery.trim().toLowerCase()));
   const hasFilters = Boolean(query || year || selectedTags.size || sort !== "newest");
 
   function toggleTag(tag: string) {
@@ -73,11 +85,32 @@ export default function Blog({ data, tags }: Props) {
     setTagQuery("");
   }
 
+  function renderTag(tag: string) {
+    return (
+      <li key={tag}>
+        <button
+          type="button"
+          onClick={() => toggleTag(tag)}
+          aria-pressed={selectedTags.has(tag)}
+          aria-controls="blog-results"
+          className={cn(
+            "min-h-9 rounded-full border px-3 py-1.5 text-sm transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-warmAccent-secondary",
+            selectedTags.has(tag)
+              ? "border-sky-700 bg-sky-700 text-white dark:border-sky-300 dark:bg-sky-300 dark:text-black"
+              : "border-black/15 dark:border-white/20 hover:bg-black/5 dark:hover:bg-white/10"
+          )}
+        >
+          {tag}
+        </button>
+      </li>
+    );
+  }
+
   return (
     <div className="space-y-6">
       <section aria-label="Find articles" className="rounded-xl border border-black/10 dark:border-white/15 bg-black/[0.02] dark:bg-white/[0.03] p-4 sm:p-5">
-        <div className="grid gap-4 sm:grid-cols-2">
-          <div className="sm:col-span-2">
+        <div className="grid gap-4 min-[360px]:grid-cols-2">
+          <div className="min-[360px]:col-span-2">
             <label htmlFor="blog-search" className="mb-2 block text-sm font-medium text-black dark:text-white">
               Search articles
             </label>
@@ -114,9 +147,21 @@ export default function Blog({ data, tags }: Props) {
           </div>
         </div>
 
+        {topics.length > 0 && (
+          <fieldset className="mt-5" aria-describedby="blog-filter-help">
+            <legend className="mb-3 text-sm font-medium text-black dark:text-white">Topics</legend>
+            <ul className="flex flex-wrap gap-2">
+              {topics.map(renderTag)}
+            </ul>
+          </fieldset>
+        )}
+        <p id="blog-filter-help" className="mt-3 text-xs text-black/60 dark:text-white/60">
+          Articles must match every selected topic and tag.
+        </p>
+
         <details className="mt-4 border-t border-black/10 dark:border-white/15 pt-4">
           <summary className="cursor-pointer rounded text-sm font-medium text-black dark:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-warmAccent-secondary">
-            Browse tags{selectedTags.size > 0 ? ` (${selectedTags.size} selected)` : ` (${tags.length})`}
+            Browse tags{selectedDetailedTags.length > 0 ? ` (${selectedDetailedTags.length} selected)` : ` (${detailedTags.length})`}
           </summary>
           <div className="mt-4 space-y-3">
             <label htmlFor="blog-tag-search" className="sr-only">Find a tag</label>
@@ -129,27 +174,9 @@ export default function Blog({ data, tags }: Props) {
               autoComplete="off"
               className={controlClass}
             />
-            <p id="blog-tag-help" className="text-xs text-black/60 dark:text-white/60">Articles must match all selected tags.</p>
-            <div className="max-h-56 overflow-y-auto overscroll-contain p-1" role="group" aria-label="Tags" aria-describedby="blog-tag-help">
+            <div className="max-h-56 overflow-y-auto overscroll-contain p-1" role="group" aria-label="Tags" aria-describedby="blog-filter-help">
               <ul className="flex flex-wrap gap-2">
-                {visibleTags.map((tag) => (
-                  <li key={tag}>
-                    <button
-                      type="button"
-                      onClick={() => toggleTag(tag)}
-                      aria-pressed={selectedTags.has(tag)}
-                      aria-controls="blog-results"
-                      className={cn(
-                        "min-h-9 rounded-full border px-3 py-1.5 text-sm transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-warmAccent-secondary",
-                        selectedTags.has(tag)
-                          ? "border-sky-700 bg-sky-700 text-white dark:border-sky-300 dark:bg-sky-300 dark:text-black"
-                          : "border-black/15 dark:border-white/20 hover:bg-black/5 dark:hover:bg-white/10"
-                      )}
-                    >
-                      {tag}
-                    </button>
-                  </li>
-                ))}
+                {visibleTags.map(renderTag)}
               </ul>
               {visibleTags.length === 0 && <p className="py-2 text-sm">No matching tags.</p>}
             </div>
@@ -157,10 +184,10 @@ export default function Blog({ data, tags }: Props) {
         </details>
 
         {selectedTags.size > 0 && (
-          <ul className="mt-4 flex flex-wrap gap-2" aria-label="Selected tags">
+          <ul className="mt-4 flex flex-wrap gap-2" aria-label="Selected filters">
             {[...selectedTags].map((tag) => (
               <li key={tag}>
-                <button type="button" onClick={() => toggleTag(tag)} aria-label={`Remove tag: ${tag}`} className="inline-flex min-h-9 items-center gap-2 rounded-full bg-sky-100 px-3 py-1.5 text-sm text-sky-950 dark:bg-sky-950 dark:text-sky-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-warmAccent-secondary">
+                <button type="button" onClick={() => toggleTag(tag)} aria-label={`Remove ${topics.includes(tag) ? "topic" : "tag"}: ${tag}`} className="inline-flex min-h-9 items-center gap-2 rounded-full bg-sky-100 px-3 py-1.5 text-sm text-sky-950 dark:bg-sky-950 dark:text-sky-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-warmAccent-secondary">
                   {tag}<span aria-hidden="true">×</span>
                 </button>
               </li>
@@ -186,7 +213,7 @@ export default function Blog({ data, tags }: Props) {
         ) : (
           <div className="rounded-xl border border-dashed border-black/20 dark:border-white/20 px-5 py-12 text-center">
             <h2 className="text-lg font-semibold text-black dark:text-white">No articles found</h2>
-            <p className="mt-2 text-sm">Try another search or remove a tag or year filter.</p>
+            <p className="mt-2 text-sm">Try another search or remove a topic, tag, or year filter.</p>
             <button type="button" onClick={resetFilters} className="mt-4 rounded px-3 py-2 text-sm font-medium underline underline-offset-4 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-warmAccent-secondary">Reset filters</button>
           </div>
         )}

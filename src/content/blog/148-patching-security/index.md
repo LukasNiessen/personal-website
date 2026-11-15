@@ -7,6 +7,7 @@ repoUrl: ''
 xLink: ''
 linkedInLink: ''
 tags:
+  - Programming
   - Security
   - DevOps
   - Infrastructure

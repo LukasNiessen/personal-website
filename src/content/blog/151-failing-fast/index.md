@@ -4,10 +4,11 @@ summary: 'Why failing fast is better than failing slow, how circuit breakers emb
 date: 'Jan 25 2026'
 draft: false
 tags:
+  - Programming
   - System Design
   - Resilience
   - Distributed Systems
-  - Architecture
+  - Software Architecture
 ---
 
 # Failing Fast: Why Quick Failures Beat Slow Deaths

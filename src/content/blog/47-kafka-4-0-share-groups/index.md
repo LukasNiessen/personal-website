@@ -7,10 +7,11 @@ repoUrl: ''
 xLink: ''
 linkedInLink: ''
 tags:
+  - Programming
   - Kafka
   - Message Queues
   - Distributed Systems
-  - Architecture
+  - Software Architecture
 ---
 
 # Kafka 4.0: Real Message Queues with Share Groups

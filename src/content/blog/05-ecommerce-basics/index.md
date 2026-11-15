@@ -4,8 +4,10 @@ summary: "The very basics of E-Commerce"
 date: "April 03 2022"
 draft: false
 tags:
+  - Business
+  - Programming
   - E-Commerce
-  - Architecture
+  - Software Architecture
 ---
 
 

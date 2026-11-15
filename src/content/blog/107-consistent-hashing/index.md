@@ -7,7 +7,8 @@ repoUrl: "https://github.com/LukasNiessen/consistent-hashing-explained"
 xLink: "https://x.com/iamlukasniessen/status/1926585484249075723"
 linkedInLink: "https://www.linkedin.com/pulse/consistent-hashing-explained-lukas-nie%25C3%259Fen-efw1e/"
 tags:
-  - Database
+  - Programming
+  - Databases
   - Partitioning
   - Consistency
   - Consistent Hashing

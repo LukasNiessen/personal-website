@@ -3,8 +3,9 @@ title: 'ClawdBot: Setup Guide + How to NOT Get Hacked'
 summary: 'What ClawdBot is, how to set it up, and the security configuration most guides skip that will prevent your server from becoming an open door'
 date: 'Jan 26 2026'
 tags:
-  - Security
   - AI
+  - Programming
+  - Security
   - Self-Hosted
   - Infrastructure
 ---

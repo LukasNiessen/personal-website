@@ -7,9 +7,10 @@ repoUrl: 'https://github.com/LukasNiessen/tdd-bdd-explained'
 xLink: 'https://x.com/iamlukasniessen/status/1923444639769432570'
 linkedInLink: 'https://www.linkedin.com/pulse/data-related-non-functional-requirements-lukas-nie%25C3%259Fen-hvkae/'
 tags:
+  - Programming
   - Reliability
-  - Scalibility
-  - Maintainibility
+  - Scalability
+  - Maintainability
   - Requirements
 ---
 

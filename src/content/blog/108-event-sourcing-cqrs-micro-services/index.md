@@ -4,6 +4,7 @@ summary: "This is a detailed breakdown of a FinTech project from my consulting c
 date: "Jul 1 2025"
 draft: false
 tags:
+  - Programming
   - Consulting
   - FinTech
   - Microservices

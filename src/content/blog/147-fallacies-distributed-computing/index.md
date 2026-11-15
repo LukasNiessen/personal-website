@@ -7,10 +7,11 @@ repoUrl: ''
 xLink: ''
 linkedInLink: ''
 tags:
+  - Programming
   - Distributed Systems
   - System Design
   - Microservices
-  - Cloud
+  - Cloud Computing
 ---
 
 # The 8 Fallacies of Distributed Computing: All You Need To Know + Why It's Still Relevant In 2026

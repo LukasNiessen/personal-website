@@ -6,8 +6,9 @@ draft: false
 repoUrl: "https://github.com/LukasNiessen/distributed-systems-1"
 xLink: "https://x.com/iamlukasniessen/status/1926532454401089572"
 tags:
+  - Programming
   - Scaling
-  - Distributed System
+  - Distributed Systems
 ---
 
 # Single Computers vs Distributed Systems: Why Everything Gets Complicated

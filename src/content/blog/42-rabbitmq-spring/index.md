@@ -7,11 +7,12 @@ repoUrl: ''
 xLink: ''
 linkedInLink: ''
 tags:
+  - Programming
   - RabbitMQ
   - Spring Boot
   - Messaging
   - Integration
-  - Architecture
+  - Software Architecture
 ---
 
 # RabbitMQ and Spring Boot: Beyond Hello World

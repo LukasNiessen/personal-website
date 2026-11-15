@@ -3,7 +3,8 @@ title: "The Sidecar Pattern: Why Every Major Tech Company Runs Proxies on Every 
 summary: "How the sidecar proxy pattern became the industry standard for service-to-service communication, and why the trade-offs are worth it"
 date: 'Mar 23 2026'
 tags:
-  - Architecture
+  - Programming
+  - Software Architecture
   - Microservices
   - Service Mesh
   - Kubernetes

@@ -7,6 +7,7 @@ repoUrl: "https://github.com/LukasNiessen/oidc-explained"
 xLink: "https://x.com/iamlukasniessen/status/1916203313478947318"
 linkedInLink: "https://www.linkedin.com/pulse/eli5-how-does-oidc-work-lukas-nie%C3%9Fen-7mz4e/"
 tags:
+  - Programming
   - ELI5
   - Explained
   - OIDC

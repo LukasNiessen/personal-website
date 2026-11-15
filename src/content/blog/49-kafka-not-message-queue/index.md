@@ -7,10 +7,11 @@ repoUrl: ''
 xLink: ''
 linkedInLink: ''
 tags:
+  - Programming
   - Kafka
   - Message Queues
   - Event Streaming
-  - Architecture
+  - Software Architecture
 ---
 
 # Why Kafka is Not a Real Message Queue

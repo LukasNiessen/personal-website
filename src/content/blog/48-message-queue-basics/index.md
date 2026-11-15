@@ -7,9 +7,10 @@ repoUrl: ''
 xLink: ''
 linkedInLink: ''
 tags:
+  - Programming
   - Message Queues
   - Distributed Systems
-  - Architecture
+  - Software Architecture
   - Messaging
 ---
 

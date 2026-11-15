@@ -4,6 +4,7 @@ summary: "A simple checklist for what REST APIs are"
 date: "June 07 2024"
 draft: false
 tags:
+  - Programming
   - REST
   - API
 ---

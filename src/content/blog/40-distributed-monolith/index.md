@@ -7,7 +7,8 @@ repoUrl: ''
 xLink: ''
 linkedInLink: ''
 tags:
-  - Architecture
+  - Programming
+  - Software Architecture
   - Microservices
   - Anti-patterns
   - System Design

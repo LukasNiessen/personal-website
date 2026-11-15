@@ -7,9 +7,10 @@ repoUrl: ""
 xLink: ""
 linkedInLink: ""
 tags:
+  - Programming
   - Backend for Frontend
   - BFF
-  - Architecture
+  - Software Architecture
   - Microservices
   - Next.js
   - FastAPI

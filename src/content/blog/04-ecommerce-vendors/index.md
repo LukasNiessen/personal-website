@@ -4,6 +4,8 @@ summary: "E-commerce Platform Comparison"
 date: "April 04 2022"
 draft: false
 tags:
+  - Business
+  - Programming
   - E-Commerce
 ---
 

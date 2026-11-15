@@ -4,6 +4,7 @@ summary: "Simplest overview of Authentication Methods"
 date: "June 16 2025"
 draft: false
 tags:
+  - Programming
   - HTTP
   - Authentication
   - Basic Authentication

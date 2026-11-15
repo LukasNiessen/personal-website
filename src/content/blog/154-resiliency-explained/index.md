@@ -3,8 +3,10 @@ title: "Resiliency in System Design: What It Actually Means"
 summary: "Resiliency is more than just keeping systems up. A look at what resiliency really means, the four core concepts behind it, and why the human element matters more than technical patterns."
 date: "Jan 29 2026"
 tags:
+  - Leadership
+  - Programming
   - System Design
-  - Resiliency
+  - Resilience
   - Distributed Systems
   - Microservices
 ---

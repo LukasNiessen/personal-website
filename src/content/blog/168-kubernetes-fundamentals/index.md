@@ -3,6 +3,7 @@ title: "Kubernetes Fundamentals: A Practical Reference"
 summary: "Core concepts, objects, commands, and patterns in Kubernetes - written for someone who knows Docker but is new to K8s"
 date: "Apr 13 2026"
 tags:
+  - Programming
   - Kubernetes
   - Docker
   - DevOps

@@ -7,6 +7,7 @@ repoUrl: "https://github.com/LukasNiessen/cap-theorem-explained"
 xLink: "https://x.com/iamlukasniessen/status/1926315336678133932"
 linkedInLink: "https://www.linkedin.com/pulse/eli5-cap-theorem-system-design-lukas-nie%25C3%259Fen-p20ae/"
 tags:
+  - Programming
   - CAP Theorem
   - Architecture Quantum
 ---

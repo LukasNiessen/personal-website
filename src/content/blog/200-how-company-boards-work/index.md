@@ -4,9 +4,10 @@ summary: "How founders keep or lose control: board seats, shareholder votes, inv
 date: "Nov 13 2026"
 tags:
   - Business
-  - Corporate Governance
   - Leadership
   - Startups
+  - Finance
+  - Corporate Governance
 ---
 
 # Who Can Fire the Founder? How Company Boards Work

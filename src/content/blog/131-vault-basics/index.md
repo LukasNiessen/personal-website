@@ -7,7 +7,8 @@ repoUrl: ''
 xLink: ''
 linkedInLink: ''
 tags:
-  - Vault
+  - Programming
+  - HashiCorp Vault
   - Security
   - DevOps
   - HashiCorp

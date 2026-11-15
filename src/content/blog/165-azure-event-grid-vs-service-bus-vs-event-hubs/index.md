@@ -3,11 +3,12 @@ title: "Azure Event Grid vs Service Bus vs Event Hubs: Picking the Right One"
 summary: "Azure has three messaging services that confuse almost everyone. Here is what each one does, how they differ, and how to pick the right one for your system."
 date: "Mar 23 2026"
 tags:
+  - Programming
   - Azure
   - Messaging
   - Distributed Systems
-  - Architecture
-  - Cloud
+  - Software Architecture
+  - Cloud Computing
 ---
 
 # Azure Event Grid vs Service Bus vs Event Hubs: Picking the Right One

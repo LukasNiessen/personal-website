@@ -7,7 +7,9 @@ repoUrl: ''
 xLink: ''
 linkedInLink: ''
 tags:
-  - Architecture
+  - Leadership
+  - Programming
+  - Software Architecture
   - Decision-Making
   - Team Collaboration
   - Process

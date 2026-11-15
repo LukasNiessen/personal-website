@@ -4,6 +4,8 @@ summary: "Toy project announcement"
 date: "Feb 22 2026"
 tags:
   - AI
+  - Programming
+  - Productivity
   - LLM
   - RAG
   - Research

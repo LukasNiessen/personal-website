@@ -7,9 +7,10 @@ repoUrl: ''
 xLink: ''
 linkedInLink: ''
 tags:
+  - Programming
   - Message Queues
   - Microservices
-  - Architecture
+  - Software Architecture
   - System Design
 ---
 
