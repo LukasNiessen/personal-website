@@ -14,7 +14,7 @@ CATEGORIES = ("gift-promotion", "project-showcase", "educational-story")
 def select(category, count=6, exclude=()):
     if category not in CATEGORIES or not 1 <= count <= 6:
         raise ValueError("Choose an existing category and a count between 1 and 6")
-    manifest = json.loads((ROOT / "corpus.json").read_text())
+    manifest = json.loads((ROOT / "corpus.json").read_text(encoding="utf-8"))
     index = {post["id"]: post for post in manifest["posts"]}
     selected, seen_bodies = [], set()
     for post_id in manifest["curated_examples"][category]:
@@ -26,7 +26,7 @@ def select(category, count=6, exclude=()):
         path = (ROOT / post["path"]).resolve()
         if not path.is_relative_to(ROOT / "posts" / category):
             raise ValueError(f"Example path escapes category: {post_id}")
-        text = path.read_text()
+        text = path.read_text(encoding="utf-8")
         body = text.split("\n\n## Original body\n\n", 1)[1]
         if hashlib.sha256(body.encode()).hexdigest() != post["body_sha256"]:
             raise ValueError(f"Frozen original has changed: {post_id}")

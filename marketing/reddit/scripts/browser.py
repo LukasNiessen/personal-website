@@ -7,11 +7,9 @@ import subprocess
 import sys
 from urllib.parse import parse_qs, urlsplit
 
-import request_guard
-
 
 def run(script, *arguments):
-    source = 'on run argv\nwith timeout of 10 seconds\ntell application "Microsoft Edge"\n' + script + '\nend tell\nend timeout\nend run\n'
+    source = 'on run argv\nwith timeout of 10 seconds\ntell application id "com.microsoft.edgemac"\n' + script + '\nend tell\nend timeout\nend run\n'
     try:
         result = subprocess.run(
             ["osascript", "-", *map(str, arguments)], input=source,
@@ -25,14 +23,18 @@ def run(script, *arguments):
 
 
 def reserve(kind, subreddit=None):
-    result = request_guard.acquire(kind, subreddit=subreddit) if subreddit is not None else request_guard.acquire(kind)
+    from request_guard import acquire
+
+    result = acquire(kind, subreddit=subreddit) if subreddit is not None else acquire(kind)
     if result['status'] != 'reserved':
         raise RuntimeError('No Reddit action performed: ' + json.dumps(result))
     return result
 
 
 def verify_post_target(url, subreddit):
-    subreddit = request_guard.subreddit_name(subreddit)
+    from request_guard import subreddit_name
+
+    subreddit = subreddit_name(subreddit)
     parsed = urlsplit(url)
     if parsed.scheme != 'https' or parsed.hostname not in {'reddit.com', 'www.reddit.com', 'old.reddit.com'}:
         raise ValueError('Post reservations require an HTTPS Reddit URL')
@@ -40,7 +42,7 @@ def verify_post_target(url, subreddit):
     targets = parse_qs(parsed.query).get('sr', [])
     if len(parts) >= 2 and parts[0].lower() == 'r':
         targets.append(parts[1])
-    if any(request_guard.subreddit_name(target) != subreddit for target in targets):
+    if any(subreddit_name(target) != subreddit for target in targets):
         raise ValueError('Subreddit differs from the expected browser URL; no slot reserved')
 
 
@@ -124,8 +126,18 @@ def main(argv=None):
                                  help="Required when this eval makes one network request or submission")
             command.add_argument("--subreddit", help="Required for post evaluations; enforces the weekly cap")
     args = parser.parse_args(argv)
+    if sys.platform != 'darwin':
+        raise RuntimeError('The Edge browser bridge requires macOS Apple Events. You can prepare drafts on this computer.')
     if args.command == "probe":
-        print(json.dumps(probe()))
+        try:
+            print(json.dumps(probe()))
+        except (OSError, ValueError, RuntimeError) as exc:
+            raise RuntimeError(
+                f"{exc}\nOpen Microsoft Edge for macOS and finish its first-run setup. "
+                "Enable View > Developer > Allow JavaScript from Apple Events. "
+                "In System Settings > Privacy & Security > Automation, allow the app running this check "
+                "to control Microsoft Edge, then rerun the probe."
+            ) from exc
     elif args.command == "open":
         print(json.dumps(open_tab(args.url)))
     elif args.command == "status":
