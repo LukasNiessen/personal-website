@@ -142,12 +142,19 @@
       "was_posted_to": true
     },
     "backend": {
-      "checked_at": null,
-      "description": "Historical posting destination; audience not cached.",
-      "expires_at": null,
-      "fetch_status": "missing",
-      "rules_summary": [],
-      "source_urls": [],
+      "checked_at": "2026-11-15",
+      "description": "Backend engineering: languages, frameworks, databases, platforms and hardware.",
+      "expires_at": "2027-01-15",
+      "fetch_status": "ok",
+      "rules_summary": [
+        "Post news, information, tips and techniques related to backend engineering.",
+        "Sidebar prohibits advertisements, jobs and off-topic posts.",
+        "No structured rules returned."
+      ],
+      "source_urls": [
+        "https://www.reddit.com/r/backend/about/",
+        "https://www.reddit.com/r/backend/about/rules/"
+      ],
       "was_posted_to": true
     },
     "bevy": {
@@ -389,6 +396,23 @@
       "source_urls": [],
       "was_posted_to": true
     },
+    "coolgithubprojects": {
+      "checked_at": "2026-11-15",
+      "description": "Share own and discovered GitHub-hosted projects; link-only.",
+      "expires_at": "2027-01-15",
+      "fetch_status": "ok",
+      "rules_summary": [
+        "GitHub projects only; own projects explicitly welcome.",
+        "Suggested title format: description - project title. Language flair automatic.",
+        "Reposts only with new features AND original post at least six months old.",
+        "No structured rules returned; current sidebar supplies guidance."
+      ],
+      "source_urls": [
+        "https://www.reddit.com/r/coolgithubprojects/about/",
+        "https://www.reddit.com/r/coolgithubprojects/about/rules/"
+      ],
+      "was_posted_to": true
+    },
     "cpp": {
       "checked_at": null,
       "description": "Historical posting destination; audience not cached.",
@@ -476,15 +500,19 @@
       "was_posted_to": true
     },
     "devops": {
-      "checked_at": null,
-      "description": "devops ci iac operations; Shark tools, CI architecture checks",
-      "expires_at": null,
-      "fetch_status": "missing",
-      "notes": [
-        "Registry guidance recorded 2026-11-08; not a current rules fetch: thread: Weekly self-promotion thread; affiliation at top. No low-effort AI content or traffic-funnel posts."
+      "checked_at": "2026-11-15",
+      "description": "DevOps news and discussion; promotion routed to weekly thread.",
+      "expires_at": "2027-01-15",
+      "fetch_status": "ok",
+      "rules_summary": [
+        "Self-promotion goes in weekly thread; affiliation must be at top.",
+        "Promotion cannot be sole purpose of account participation in community.",
+        "Self-contained discussion required; no traffic funnels or low-effort/repetitive/primarily LLM-generated content dumps.",
+        "No surveys without moderator approval, jobs, shortenedURLs or personalinfo."
       ],
-      "rules_summary": [],
-      "source_urls": [],
+      "source_urls": [
+        "https://www.reddit.com/r/devops/about/rules/"
+      ],
       "was_posted_to": true
     },
     "devtools": {
@@ -631,21 +659,33 @@
       "was_posted_to": true
     },
     "frontend": {
-      "checked_at": null,
-      "description": "Historical posting destination; audience not cached.",
-      "expires_at": null,
-      "fetch_status": "missing",
-      "rules_summary": [],
-      "source_urls": [],
+      "checked_at": "2026-11-15",
+      "description": "Frontend development; posts need frontend context and source.",
+      "expires_at": "2027-01-15",
+      "fetch_status": "ok",
+      "rules_summary": [
+        "No self-promotion spam; project posts need source repository and frontend technical context.",
+        "Stay on frontend topics; no recruiters.",
+        "ChatGPT comments/posts prohibited."
+      ],
+      "source_urls": [
+        "https://www.reddit.com/r/frontend/about/rules/"
+      ],
       "was_posted_to": true
     },
     "fullstack": {
-      "checked_at": null,
-      "description": "Historical posting destination; audience not cached.",
-      "expires_at": null,
-      "fetch_status": "missing",
-      "rules_summary": [],
-      "source_urls": [],
+      "checked_at": "2026-11-15",
+      "description": "Full-stack development discussion.",
+      "expires_at": "2027-01-15",
+      "fetch_status": "ok",
+      "rules_summary": [
+        "No spam, advertisements or recruitment; no approval requests accepted.",
+        "Tech-related and English-only; no NSFW or politics.",
+        "AI assistance allowed, uninformed generated content prohibited."
+      ],
+      "source_urls": [
+        "https://www.reddit.com/r/fullstack/about/rules/"
+      ],
       "was_posted_to": true
     },
     "futurology": {
@@ -1038,15 +1078,20 @@
       "was_posted_to": true
     },
     "opensourceprojects": {
-      "checked_at": null,
-      "description": "Audience and rules not cached.",
-      "expires_at": null,
-      "fetch_status": "missing",
-      "notes": [
-        "November 13 lookup stopped on HTTP 429; no successful rules observation exists. This is not a community-level ban."
+      "checked_at": "2026-11-15",
+      "description": "Showcase and discuss open-source projects; own code contributions welcome.",
+      "expires_at": "2027-01-15",
+      "fetch_status": "ok",
+      "rules_summary": [
+        "Sidebar invites open-source project showcases, ideas and code contributions.",
+        "No structured rules returned; honor current composer guidance.",
+        "Community is restricted for posting; live submission page denied access on2026-11-15. Rules being readable does not establish posting access."
       ],
-      "rules_summary": [],
-      "source_urls": [],
+      "source_urls": [
+        "https://www.reddit.com/r/opensourceprojects/about/",
+        "https://www.reddit.com/r/opensourceprojects/about/rules/",
+        "https://old.reddit.com/r/OpenSourceProjects/submit?selftext=true"
+      ],
       "was_posted_to": false
     },
     "opentelemetry": {
@@ -1197,7 +1242,7 @@
         "https://www.reddit.com/r/pythoncoding/about/",
         "https://www.reddit.com/r/pythoncoding/about/rules/"
       ],
-      "was_posted_to": false
+      "was_posted_to": true
     },
     "pythonhelp": {
       "checked_at": null,
@@ -1574,12 +1619,19 @@
       "was_posted_to": true
     },
     "softwarearchitecture": {
-      "checked_at": null,
-      "description": "Historical posting destination; audience not cached.",
-      "expires_at": null,
-      "fetch_status": "missing",
-      "rules_summary": [],
-      "source_urls": [],
+      "checked_at": "2026-11-15",
+      "description": "Software architecture, design patterns and methodologies.",
+      "expires_at": "2027-01-15",
+      "fetch_status": "ok",
+      "rules_summary": [
+        "Posts must relate to software architecture; be civil.",
+        "No promotion of personal or business services; no job posts, cryptocurrency or flair abuse.",
+        "AI-generated posts are prohibited."
+      ],
+      "source_urls": [
+        "https://www.reddit.com/r/softwarearchitecture/about/",
+        "https://www.reddit.com/r/softwarearchitecture/about/rules/"
+      ],
       "was_posted_to": true
     },
     "softwaredevelopment": {
@@ -1617,12 +1669,18 @@
       "was_posted_to": true
     },
     "softwaretesting": {
-      "checked_at": null,
-      "description": "Historical posting destination; audience not cached.",
-      "expires_at": null,
-      "fetch_status": "missing",
-      "rules_summary": [],
-      "source_urls": [],
+      "checked_at": "2026-11-15",
+      "description": "Software-testing practice.",
+      "expires_at": "2027-01-15",
+      "fetch_status": "ok",
+      "rules_summary": [
+        "No promotion, self-promotion, vendor activity or links to tools/training/corporate blogs.",
+        "Tool vendors and QA agency employees may not participate.",
+        "Be civil and participate in your discussions; no test requests or commercial research."
+      ],
+      "source_urls": [
+        "https://www.reddit.com/r/softwaretesting/about/rules/"
+      ],
       "was_posted_to": true
     },
     "springboot": {

@@ -1,0 +1,726 @@
+{
+  "date": "2026-11-15",
+  "requested_count": 40,
+  "account": "127001-sweet-127001",
+  "products": [
+    "ArchUnitTS",
+    "ArchUnitPython",
+    "ArchUnitRust",
+    "ArchUnitRuby",
+    "ArchUnitZig"
+  ],
+  "status": "finished-with-shortfall",
+  "history_check": {
+    "submitted": 50,
+    "comments": 2,
+    "relevant_imported": 39,
+    "complete": true
+  },
+  "posting_limit": "Two promotional contributions per community in a rolling seven days; one per community in this campaign.",
+  "drafts": [
+    {
+      "id": "zig-devtools",
+      "product": "ArchUnitZig",
+      "subreddit": "devtools",
+      "category": "project-showcase",
+      "form": "design decision",
+      "title": "A Zig dependency graph needs to know which executable an import belongs to",
+      "body": "The same `@import(\"storage\")` can mean different things in two Zig executables. Drawing one global edge for that name gives you a very convincing wrong diagram.\n\nIn ArchUnitZig, my architecture-testing library, you can describe each compilation root and its module aliases separately. For example, the server's `storage` alias can point to the real persistence module while a test root maps it to a fake. Each gets its own resolution context.\n\nThe useful part is what happens when context is missing: an unknown named import stays visible as unresolved. It doesn't silently disappear from the graph or get guessed from a filename. `@import(\"root\")` follows the selected compilation root too.\n\nA slightly boring detail until you rely on the picture\n\nThis is explicit configuration. The tool doesn't execute `build.zig` and pretend it understands every build script. Once the mappings are there, you can use the graph for dependency rules, focused reports, or an offline HTML export.\n\nIt's free and MIT-licensed. The current v0.0.2 preview targets Zig 0.16.0: https://github.com/dragonsec-ai/ArchUnitZig\n\nThe public acceptance tests include separate application and integration-test roots, plus cases for unresolved aliases and resource imports.",
+      "evidence": {
+        "version": "0.0.2",
+        "public_release": "https://github.com/dragonsec-ai/ArchUnitZig/releases/tag/v0.0.2",
+        "tag_object": "9eacccf9fba4d2782c15555cc501c6ac05e86d14",
+        "commit": "b84f08a852ac62d16ceda852d51687471b8ea03e",
+        "source": [
+          "README.md#zig-dependency-classification",
+          "src/common/extraction/module_resolver.zig",
+          "test/acceptance.zig"
+        ],
+        "status": "public tag matches local HEAD; README and matching acceptance tests inspected; no standalone executable snippet in this draft",
+        "limits": "explicit mappings only; no arbitrary build.zig execution",
+        "verification": "Executed 19 selected Zig tests from git archive v0.0.2 with checksum-pinned Zig0.16.0 and the pinned regex dependency. All passed. Includes positive/negative alias resolution, test/comptime selection, layer assignment and workspace cases."
+      },
+      "status": "submitted",
+      "post_id": "t3_1xx3yia",
+      "created_at": 1794769959.0,
+      "permalink": "https://www.reddit.com/r/devtools/comments/1xx3yia/a_zig_dependency_graph_needs_to_know_which/",
+      "verification": "Author, title, body, formatting, destination and creation timestamp verified in rendered UI; no visible removal notice. Public visibility not guaranteed.",
+      "removed_by_category": null,
+      "moderation_status": "not marked removed in account snapshot"
+    },
+    {
+      "id": "ts-angular-nx-diagram",
+      "product": "ArchUnitTS",
+      "subreddit": "angular",
+      "category": "gift-promotion",
+      "form": "before-and-after",
+      "status": "submitted",
+      "title": "Your Angular Nx dependency diagram can fail a test when the code drifts",
+      "body": "Say your Angular workspace has `feature-orders`, `data-access-orders` and `shared-ui` as separate Nx projects. The feature can use both libraries. Then somebody moves a helper, and data access starts importing from the feature that uses it.\n\nA diagram in the README still looks perfectly fine. Of course it does\n\nOne useful part of my ArchUnitTS library is that you can check the Nx project graph against that diagram:\n\n    import { nxProjectSlices } from 'archunit';\n\n    const diagram = `\n    @startuml\n    component [feature-orders]\n    component [data-access-orders]\n    component [shared-ui]\n    [feature-orders] --> [data-access-orders]\n    [feature-orders] --> [shared-ui]\n    @enduml`;\n\n    const violations = await nxProjectSlices(process.cwd())\n      .should()\n      .ignoringExternalDependencies()\n      .adhereToDiagram(diagram)\n      .check();\n\n    expect(violations).toEqual([]);\n\nThe two intended dependencies pass. Add `data-access-orders -> feature-orders` and the result identifies that pair as a violation. So a refactor that reverses ownership needs a deliberate architecture change, instead of quietly making the data-access library depend on a feature.\n\nThis reads Nx's cached project graph. Generate a fresh graph before running it, and run this from the workspace root. It doesn't inspect Angular's dependency injector or what gets loaded at runtime. The diagram is an allowlist for project dependencies; it doesn't require every arrow to be used.\n\nFree and open source: [ArchUnitTS](https://github.com/LukasNiessen/ArchUnitTS). The example uses the published `archunit` 2.5.5 package.",
+      "evidence": {
+        "package": "archunit@2.5.5",
+        "published_source": "https://registry.npmjs.org/archunit/2.5.5",
+        "source_files": [
+          "src/common/extraction/extract-nx-graph.ts",
+          "src/slices/fluentapi/slices.ts",
+          "src/slices/assertion/admissible-edges.ts",
+          "test/slices/integration/integration.spec.ts"
+        ],
+        "pass_case": "feature-orders -> data-access-orders/shared-ui with npm:@angular/core excluded",
+        "fail_case": "data-access-orders -> feature-orders yields exactly one diagnostic"
+      },
+      "limitations": [
+        "Tested synthetic Nx cache format, not a real Nx command or booted Angular workspace.",
+        "nxProjectSlices reads existing .nx/workspace-data/project-graph.json with legacy .nx/cache fallback; freshness is caller responsibility.",
+        "No runtime, DI or lazy-loading claim.",
+        "Diagram arrows permit edges, do not require all drawn arrows."
+      ],
+      "eligibility": "Fresh cached rules allow consideration; root to verify composer and weekly capacity. Different angle from Nov14 Angular public-api post.",
+      "post_id": "t3_1xx3uia",
+      "created_at": 1794769696.0,
+      "permalink": "https://www.reddit.com/r/angular/comments/1xx3uia/your_angular_nx_dependency_diagram_can_fail_a/",
+      "verification": "Author, title, body, formatting, destination and creation timestamp verified in rendered UI; no visible removal notice. Public visibility not guaranteed.",
+      "removed_by_category": null,
+      "moderation_status": "not marked removed in account snapshot"
+    },
+    {
+      "id": "py-diagram-contract",
+      "product": "ArchUnitPython",
+      "subreddit": "PythonCoding",
+      "category": "gift-promotion",
+      "form": "tiny recipe",
+      "title": "Make the arrows in a Python architecture diagram fail a test when the code disagrees",
+      "body": "An architecture diagram can say `reports -> checkout -> payments` while the code quietly grows a dependency in the other direction. Everything still imports, so the diagram just becomes less true over time.\n\nI work on [ArchUnitPython](https://github.com/LukasNiessen/ArchUnitPython), a free MIT-licensed library. One thing you can do with it is use a small PlantUML component diagram as an allowlist for dependencies between groups of Python files.\n\nFor a project with `src/checkout/`, `src/payments/` and `src/reports/`:\n\n    import re\n    from archunitpython import assert_passes, project_slices\n\n    def test_component_dependencies():\n        diagram = \"\"\"\n    @startuml\n    component [checkout]\n    component [payments]\n    component [reports]\n    [checkout] --> [payments]\n    [reports] --> [checkout]\n    @enduml\n    \"\"\"\n        rule = (\n            project_slices(\"src\")\n            .defined_by_regex(re.compile(r\"/src/([^/]+)/\"))\n            .should()\n            .adhere_to_diagram(diagram)\n        )\n        assert_passes(rule)\n\nSo `checkout/cart.py` importing `payments/api.py` passes. Files inside checkout can use other checkout files too. Add `from reports.sales import ...` inside payments and the test reports the disallowed `payments -> reports` edge, with the source files behind it.\n\nA small detail that matters: these are direct dependency arrows. `reports -> checkout -> payments` doesn't automatically permit reports to import payments directly. You need to make that decision explicitly in the diagram.\n\nThe useful part for a modular monolith is that reorganizing files *within* a component doesn't mean rewriting every cross-component rule. Changing which component is allowed to reach which other component does become a reviewable change.\n\nNothing fancy to run alongside pytest\n\nAvailable in `archunitpython==1.8.1`. The diagram support is a component/dependency subset of PlantUML, and this checks source imports, not Python's runtime object graph.",
+      "evidence": {
+        "published_version": "archunitpython==1.8.1",
+        "release_source": "https://pypi.org/pypi/archunitpython/1.8.1/json",
+        "checked": [
+          "Declared checkout->payments and reports->checkout pass",
+          "Same-component checkout helper->cart passes",
+          "payments->reports fails with ViolatingEdge preserving concrete dependency",
+          "Restoring payment module passes"
+        ],
+        "source": "tests/slices/test_slices.py; installed package slices/projection and UML assertions"
+      },
+      "why_this_community": "Advanced source-focused example turns a component diagram into an executable dependency contract. Distinguishes direct allowed arrows from transitive reachability.",
+      "posting_notes": [
+        "Free open source, no sale, no paywall. Source link included. Root must inspect current composer and account context."
+      ],
+      "status": "removed",
+      "post_id": "t3_1xx3wia",
+      "created_at": 1794769826.0,
+      "permalink": "https://www.reddit.com/r/pythoncoding/comments/1xx3wia/make_the_arrows_in_a_python_architecture_diagram/",
+      "verification": "Author, title, body, formatting, destination and creation timestamp verified in rendered UI; no visible removal notice. Public visibility not guaranteed.",
+      "removed_by_category": "moderator",
+      "moderation_status": "removed by moderator",
+      "moderation_note": "Removal observed in final account snapshot. No reason supplied in available metadata. Not reposted; remains counted in weekly ledger."
+    },
+    {
+      "id": "rust-madeinrust",
+      "product": "ArchUnitRust",
+      "subreddit": "madeinrust",
+      "category": "gift-promotion",
+      "form": "before and after",
+      "title": "A migration exception for one Rust import should not exempt the whole file",
+      "body": "Say you're moving a service away from a legacy adapter, but one import needs to stay for another PR. Excluding the entire service from architecture checks is a pretty big hole for a small exception.\n\nArchUnitRust, my open-source architecture-testing crate, can scope the exception to one member of a grouped import:\n\n    use crate::adapters::{legacy, current}; // archunit: ignore crate::adapters::legacy\n\nHere the `legacy` import is omitted from the dependency graph. `current` is still checked. Remove the comment and the legacy dependency is checked again.\n\nThere's a useful catch: this doesn't suppress a separate qualified reference later in the file. Add `legacy::call()` in a function and that path still creates a dependency. The ignored import still establishes the alias needed to resolve it.\n\nSmall exception, small scope\n\nSo this is a declaration-level escape hatch, not permission to use that adapter anywhere in the file. It's also syntax analysis, not macro expansion or an inventory of everything a particular build executes.\n\nThis behavior ships in the `archunit` 0.0.2 preview on crates.io. MIT licensed: https://github.com/dragonsec-ai/ArchUnitRust",
+      "flair": "AI Assisted",
+      "evidence": {
+        "version": "0.0.2",
+        "source": "published crate src/common/extraction/ignore_directive.rs and README Rust dependency extraction",
+        "verification": "Executed a local fixture with crates.io archunit=0.0.2, offline cached package. Four assertions pass: legacy forbidden before exception; legacy import allowed with scoped exception; current remains forbidden; separate legacy::call still forbidden.",
+        "limits": "ignore only import declaration, aliases retained, separate path references not suppressed; syntax not macro expansion"
+      },
+      "status": "submitted",
+      "required_flair": "AI Assisted",
+      "post_id": "t3_1xx44oq",
+      "created_at": 1794770360.0,
+      "permalink": "https://www.reddit.com/r/madeinrust/comments/1xx44oq/a_migration_exception_for_one_rust_import_should/",
+      "verification": "Author, title, body, formatting, destination and creation timestamp verified in rendered UI; no visible removal notice. Public visibility not guaranteed.",
+      "removed_by_category": null,
+      "moderation_status": "not marked removed in account snapshot"
+    },
+    {
+      "id": "ts-react-hook-context",
+      "product": "ArchUnitTS",
+      "subreddit": "react",
+      "category": "gift-promotion",
+      "form": "result-first",
+      "status": "submitted",
+      "title": "A shared React component can still depend on your checkout context through a hook",
+      "body": "This is the dependency path I mean:\n\n    shared/ui/CartBadge.tsx\n      -> shared/hooks/useCartCount.ts\n        -> features/checkout/CartContext.tsx\n\nThe component looks reusable. It renders a count, and the state access is neatly tucked away in a custom hook. But moving that hook into `shared` hasn't removed the dependency on checkout.\n\nEasy to miss in a component review\n\nIn ArchUnitTS, my open-source architecture testing library, you can pull out that component's import graph:\n\n    import { projectGraph } from 'archunit';\n\n    const graph = projectGraph('tsconfig.json')\n      .reachableFrom('src/shared/ui/CartBadge.tsx');\n\n    await graph.exportAsHTML('reports/cart-badge.html');\n\nFor that direct-import chain, the view reaches through the hook to the context file. Unrelated components stay out of it.\n\nIf the badge is supposed to be shared UI, one way to separate it is to have a checkout-owned wrapper read the context and pass `count` to the badge. The shared component then has no import path back to checkout, while the feature still owns how the count is calculated. You can also keep a boundary test that rejects imports from `shared` into `features`, so the coupling doesn't creep back through the next hook.\n\nThis follows source imports. It doesn't tell you which provider is present at runtime, whether a component will render correctly in Storybook, or what ends up in a bundle.\n\n[Code and docs](https://github.com/LukasNiessen/ArchUnitTS). Available as `archunit` on npm; this example uses 2.5.5.",
+      "evidence": {
+        "package": "archunit@2.5.5",
+        "published_source": "https://registry.npmjs.org/archunit/2.5.5",
+        "pass_case": "TSX compiles; original forward graph includes hook/context and excludes unrelated component; shared boundary yields one violation",
+        "negative_control": "Feature-owned wrapper passes count prop, shared badge context edge disappears, boundary has zero violations",
+        "additional_check": "Exact exportAsHTML snippet executed and report contains context node"
+      },
+      "limitations": [
+        "Static imports only; no runtime context/provider/Storybook/bundle analysis.",
+        "React 18.3.1 fixture compiled, not rendered in browser.",
+        "Forward traversal evidence is direct imports, not blanket guarantee for all re-export chains."
+      ],
+      "eligibility": "Fresh cached r/react rules do not state blanket AI or promotion ban; root verifies composer, history and weekly capacity.",
+      "post_id": "t3_1xx46pd",
+      "created_at": 1794770494.0,
+      "permalink": "https://www.reddit.com/r/react/comments/1xx46pd/a_shared_react_component_can_still_depend_on_your/",
+      "verification": "Author, title, body, formatting, destination and creation timestamp verified in rendered UI; no visible removal notice. Public visibility not guaranteed.",
+      "removed_by_category": null,
+      "moderation_status": "not marked removed in account snapshot"
+    },
+    {
+      "id": "ts-next-invoice-consumers",
+      "product": "ArchUnitTS",
+      "subreddit": "nextjs",
+      "category": "gift-promotion",
+      "form": "tiny-recipe",
+      "status": "submitted",
+      "contribution_type": "show-and-tell-comment",
+      "title": "Find the page and Route Handler that share a server-side query",
+      "body": "I make [ArchUnitTS](https://github.com/LukasNiessen/ArchUnitTS), an open-source architecture testing library. One useful application in an App Router project is checking who uses a server-side query before changing its contract.\n\nFor example, `load-invoices.ts` might feed both an invoices page and an API Route Handler. The page can reach it through another module, so checking only immediate imports misses part of the picture.\n\n    import { projectGraph } from 'archunit';\n\n    const graph = projectGraph('tsconfig.json')\n      .dependentsOf('src/server/invoices/load-invoices.ts');\n\n    console.log(await graph.toMermaid());\n\nWith direct imports, the resulting graph includes both paths:\n\n    app/invoices/page.tsx -> app/server-adapter.ts\n      -> server/invoices/load-invoices.ts\n    app/api/invoices/route.ts\n      -> server/invoices/load-invoices.ts\n\nAn unrelated health Route Handler is left out. A smaller refactoring checklist\n\nThis is static source dependency analysis, not Next.js's route graph or an analysis of `use client`, caching, or Server Actions. It helps identify source consumers; it doesn't prove which routes execute a query at runtime. The API is in the published `archunit` 2.5.5 package.",
+      "evidence": {
+        "package": "archunit@2.5.5",
+        "published_source": "https://registry.npmjs.org/archunit/2.5.5",
+        "pass_case": "Reverse graph includes page via direct-import adapter plus route.ts caller",
+        "negative_control": "Unrelated health route excluded"
+      },
+      "limitations": [
+        "Compiled App-Router-shaped source fixture, no real Next.js build.",
+        "No claim of framework lifecycle, client/server validation, route reachability or cache invalidation analysis.",
+        "Must publish in current designated showcase thread, not standalone."
+      ],
+      "eligibility": "Thread only; root locates current thread and validates thread instructions/capacity.",
+      "parent_thread": "https://www.reddit.com/r/nextjs/comments/1xvew94/weekly_showoff_thread_share_what_youve_created/",
+      "parent_id": "t3_1xvew94",
+      "post_id": "t1_19soqpsd9k3qc",
+      "created_at": 1794770091.0,
+      "permalink": "https://www.reddit.com/r/nextjs/comments/1xvew94/weekly_showoff_thread_share_what_youve_created/19soqpsd9k3qc/",
+      "verification": "Author, title, body, formatting, destination and creation timestamp verified in rendered UI; no visible removal notice. Public visibility not guaranteed.",
+      "removed_by_category": null,
+      "moderation_status": "not marked removed in account snapshot"
+    },
+    {
+      "id": "zig-automatedtesting",
+      "product": "ArchUnitZig",
+      "subreddit": "AutomatedTesting",
+      "category": "gift-promotion",
+      "form": "tiny recipe",
+      "title": "For Zig architecture tests, excluding test files is not enough",
+      "body": "Zig lets tests live beside production code in the same file. So a folder exclusion can be the wrong way to ask which dependencies belong to production.\n\nConsider these two imports:\n\n    comptime { _ = @import(\"production.zig\"); }\n    test \"support\" { _ = @import(\"test_support.zig\"); }\n\nWith ArchUnitZig, my free architecture-testing library, the default dependency graph includes both. For a production-only view, set `options.extraction.include_test_imports = false` on the `CheckOptions` passed to the check.\n\nThat removes the import inside the test declaration. The ordinary `comptime` import stays. Compile-time work can still be part of production, so removing all compile-time dependencies would answer a different question.\n\nThat's the small distinction I wanted to show\n\nYou can keep the complete graph for checking test-support coupling and use the production-only graph for a rule about the application. Both use the same source files; you don't have to move tests into a separate directory just to make the architecture check readable.\n\nThe v0.0.2 preview targets Zig 0.16.0. The test for this exact distinction is in the repo: https://github.com/dragonsec-ai/ArchUnitZig/blob/v0.0.2/src/common/extraction/project_graph.zig",
+      "evidence": {
+        "version": "0.0.2",
+        "commit": "b84f08a852ac62d16ceda852d51687471b8ea03e",
+        "public_release": "https://github.com/dragonsec-ai/ArchUnitZig/releases/tag/v0.0.2",
+        "verification": "Executed 19 selected Zig tests from git archive v0.0.2 with checksum-pinned Zig0.16.0 and the pinned regex dependency. All passed. Includes positive/negative alias resolution, test/comptime selection, layer assignment and workspace cases.",
+        "source": "src/common/extraction/project_graph.zig:test production-only extraction excludes test imports but retains comptime imports"
+      },
+      "status": "submitted",
+      "post_id": "t3_1xx4avr",
+      "created_at": 1794770771.0,
+      "permalink": "https://www.reddit.com/r/AutomatedTesting/comments/1xx4avr/for_zig_architecture_tests_excluding_test_files/",
+      "verification": "Author, title, body, formatting, destination and creation timestamp verified in rendered UI; no visible removal notice. Public visibility not guaranteed.",
+      "removed_by_category": null,
+      "moderation_status": "not marked removed in account snapshot"
+    },
+    {
+      "id": "zig-buildinpublic",
+      "product": "ArchUnitZig",
+      "subreddit": "buildinpublic",
+      "category": "project-showcase",
+      "form": "design decision",
+      "title": "The awkward case in an architecture checker: a file belongs to no layer",
+      "body": "I've been building ArchUnitZig, a free, MIT-licensed architecture-testing library. One design choice is what to do when someone adds a folder that the layer definitions don't cover.\n\nSay a rule allows presentation to call application code. Then someone imports a helper from `src/support/`. That helper belongs to neither layer. Do you ignore the edge because it is outside the policy, or fail because the policy is incomplete?\n\nBoth are useful, annoyingly\n\nThe default leaves unassigned endpoints outside the layer check. That lets you introduce rules gradually in an existing project. If you want complete coverage of the connected dependency graph, `strict_unassigned_dependencies` makes those unassigned endpoints violations instead.\n\nIt still allows the legitimate presentation-to-application dependency, and files in one layer can use their own internals. The extra failure is about the uncovered endpoint, rather than pretending it is a forbidden named layer.\n\nI think this is a more useful choice to expose than silently picking one definition of “the architecture”. Strict mode has a maintenance cost: a new connected area needs a layer assignment. Gradual mode has a coverage gap you need to understand.\n\nIt's in the v0.0.2 preview for Zig 0.16.0: https://github.com/dragonsec-ai/ArchUnitZig",
+      "evidence": {
+        "version": "0.0.2",
+        "commit": "b84f08a852ac62d16ceda852d51687471b8ea03e",
+        "public_release": "https://github.com/dragonsec-ai/ArchUnitZig/releases/tag/v0.0.2",
+        "verification": "Executed 19 selected Zig tests from git archive v0.0.2 with checksum-pinned Zig0.16.0 and the pinned regex dependency. All passed. Includes positive/negative alias resolution, test/comptime selection, layer assignment and workspace cases.",
+        "source": "src/layers/assertion/layer_dependencies.zig tests allowlists reject cross-layer... and strict mode reports unassigned endpoints..."
+      },
+      "status": "submitted",
+      "post_id": "t3_1xx4h37",
+      "created_at": 1794771194.0,
+      "permalink": "https://www.reddit.com/r/buildinpublic/comments/1xx4h37/the_awkward_case_in_an_architecture_checker_a/",
+      "verification": "Author, title, body, formatting, destination and creation timestamp verified in rendered UI; no visible removal notice. Public visibility not guaranteed.",
+      "removed_by_category": null,
+      "moderation_status": "not marked removed in account snapshot"
+    },
+    {
+      "id": "zig-imadethis",
+      "product": "ArchUnitZig",
+      "subreddit": "IMadeThis",
+      "category": "project-showcase",
+      "form": "result or demo first",
+      "title": "I made an architecture checker that keeps identically named Zig files separate across packages",
+      "body": "These are different files:\n\n    api::src/main.zig\n    worker::src/main.zig\n\nA dependency report shouldn't merge them just because both packages use the usual entry-point name.\n\nI made ArchUnitZig, a free architecture-testing library. Its workspace mode keeps package identities in the graph, including local cross-package dependencies. You can select packages explicitly or discover their `build.zig.zon` manifests.\n\nNo guessing from two matching filenames\n\nLocal module aliases need explicit mappings; downloaded package dependencies remain external. Once configured, you can see which package actually depends on your shared module and write rules for that dependency.\n\nIt's an MIT-licensed v0.0.2 preview for Zig 0.16.0. Setup, examples and limitations: https://github.com/dragonsec-ai/ArchUnitZig",
+      "evidence": {
+        "version": "0.0.2",
+        "commit": "b84f08a852ac62d16ceda852d51687471b8ea03e",
+        "public_release": "https://github.com/dragonsec-ai/ArchUnitZig/releases/tag/v0.0.2",
+        "verification": "Executed 19 selected Zig tests from git archive v0.0.2 with checksum-pinned Zig0.16.0 and the pinned regex dependency. All passed. Includes positive/negative alias resolution, test/comptime selection, layer assignment and workspace cases.",
+        "source": "README Zig workspaces; src/common/extraction/project_graph.zig:test discovered workspace graph preserves package identity and cross-package dependencies"
+      },
+      "status": "submitted",
+      "post_id": "t3_1xx4rs2",
+      "created_at": 1794771914.0,
+      "permalink": "https://www.reddit.com/r/IMadeThis/comments/1xx4rs2/i_made_an_architecture_checker_that_keeps/",
+      "verification": "Author, title, body, formatting, destination and creation timestamp verified in rendered UI; no visible removal notice. Public visibility not guaranteed.",
+      "removed_by_category": null,
+      "moderation_status": "not marked removed in account snapshot"
+    },
+    {
+      "id": "py-reverse-imports",
+      "product": "ArchUnitPython",
+      "subreddit": "PythonLibraries",
+      "category": "gift-promotion",
+      "form": "result or demo first",
+      "title": "Before changing a Python module, get a dependency report of the files upstream of it",
+      "body": "`reports/sales.py -> checkout/cart.py -> payments/api.py`\n\nIf you change the payments interface, searching for direct imports finds checkout. The report above also keeps the sales module that reaches it through checkout. That gives you a more useful starting point for reviewing the change.\n\nIn ArchUnitPython, you can export just that part of the import graph:\n\n    from archunitpython import project_graph\n\n    (\n        project_graph(\"src\")\n        .dependents_of(\"payments/api.py\")\n        .export_as_html(\"payment-importers.html\")\n    )\n\nThe path is relative to the scanned root, so here it is `payments/api.py`, without another `src/` prefix. The report includes that module, its direct importers and their importers. An unrelated branch of the project stays out.\n\nMuch less of a wall of arrows\n\nFor the opposite question, what does checkout pull in, use `reachable_from(\"checkout/cart.py\")`. On the chain above that keeps checkout and payments, without the sales module.\n\nThis is source-level import reachability. It doesn't mean every upstream file will break, and it isn't a runtime call graph. It tells you where to start looking rather than claiming to know the outcome of the refactor.\n\nI work on [ArchUnitPython](https://github.com/LukasNiessen/ArchUnitPython). It's free, MIT-licensed, and this is available in `archunitpython==1.8.1`. You can also export Mermaid if you want the small graph in a PR instead of an HTML file.",
+      "evidence": {
+        "published_version": "archunitpython==1.8.1",
+        "checked": [
+          "Reverse query includes payment target, checkout direct caller, reports transitive caller and checkout helper",
+          "Unrelated module pair excluded",
+          "Forward checkout query excludes callers and retains payments",
+          "HTML export generated",
+          "Exact public snippet extracted from draft and executed successfully against released package"
+        ],
+        "source": "installed graph/graph_reporter.py _display_label, _select_nodes; tests/graph/test_graph_reporter.py"
+      },
+      "why_this_community": "Concrete library workflow for planning a module refactor; explains transitive scope and exact path semantics.",
+      "voice_examples_read": [
+        "1wer83k",
+        "1weelhz",
+        "1weepfx",
+        "1uibssl",
+        "1swek3h",
+        "1swex79"
+      ],
+      "voice_notes": "Direct developer explanation, concrete consequence, modest personal judgment, one unobtrusive fragment. No copied claims, titles, backstory, or em dashes.",
+      "status": "submitted",
+      "post_id": "t3_1xx4cym",
+      "created_at": 1794770918.0,
+      "permalink": "https://www.reddit.com/r/pythonlibraries/comments/1xx4cym/before_changing_a_python_module_get_a_dependency/",
+      "verification": "Author, title, body, formatting, destination and creation timestamp verified in rendered UI; no visible removal notice. Public visibility not guaranteed.",
+      "removed_by_category": null,
+      "moderation_status": "not marked removed in account snapshot"
+    },
+    {
+      "id": "ruby-cohesion",
+      "product": "ArchUnitRuby",
+      "subreddit": "ruby",
+      "category": "educational-story",
+      "form": "measured comparison",
+      "title": "Four methods can still be two unrelated jobs: inspecting cohesion in a Ruby class",
+      "body": "A method-count limit wouldn't flag this class:\n\n    class InvoiceService\n      def charge; @gateway.charge; end\n      def refund; @gateway.refund; end\n      def render; @template.render; end\n      def filename; @template.filename; end\n    end\n\nIt's only four methods. But charge/refund operate on one field, while render/filename operate on another. If you're looking for a possible payment/rendering split, that's a more interesting signal than the size alone.\n\nI work on [ArchUnitRuby](https://github.com/dragonsec-ai/ArchUnitRuby), a free MIT-licensed gem. Its LCOM4 implementation counts connected groups of methods through shared fields. On this source it returns 2:\n\n    require 'archunit'\n\n    scope = ArchUnit.metrics('.')\n                    .for_classes_matching('InvoiceService')\n\n    scope.lcom.lcom4.measure.each do |item|\n      puts \"#{item.identifier}: #{item.value}\"\n    end\n\nChange the four methods to charge, refund, void and status, all using `@gateway`, and the same measurement is 1. The method count is still four.\n\nI wouldn't turn that into a universal \"LCOM4 must equal 1\" gate. A constructor touching both fields can connect these groups, and Ruby methods that collaborate through calls won't necessarily share a field. This implementation measures field sharing, not whether your domain model is good.\n\nA useful thing to inspect, though\n\nFor me the interesting use is narrowing a review: find a service with separated groups, look at what each group does, then decide whether splitting it actually makes the code easier to change. The number starts that conversation; it doesn't settle it.\n\nThe measurement API shown here is in the published `archunit` gem, version `1.0.0`.",
+      "evidence": {
+        "published_version": "archunit 1.0.0",
+        "checked": [
+          "Four-method disjoint-fields class measures LCOM4=2",
+          "Four-method shared-field class measures LCOM4=1",
+          "Equality threshold fails disjoint case and passes shared case",
+          "Adding constructor touching both fields connects groups, verifies caveat LCOM4=1"
+        ],
+        "source": "installed lib/archunit/metrics/calculation/lcom.rb connected_components; spec/metrics/calculation/lcom_spec.rb",
+        "limits": [
+          "Method connectivity here is shared fields, not method-call graph",
+          "Displayed class is a source-analysis example, not an initialized application object"
+        ]
+      },
+      "why_this_community": "Useful Ruby-specific metric behavior and honest limits, avoiding yesterday's elementary namespace explanation.",
+      "voice_examples_read": [
+        "1nvfn28",
+        "1n29s7b",
+        "1lol61c",
+        "1kufyms",
+        "1k4pvl3"
+      ],
+      "voice_notes": "Direct developer explanation, concrete consequence, modest personal judgment, one unobtrusive fragment. No copied claims, titles, backstory, or em dashes.",
+      "status": "submitted",
+      "post_id": "t3_1xx42ls",
+      "created_at": 1794770225.0,
+      "permalink": "https://www.reddit.com/r/ruby/comments/1xx42ls/four_methods_can_still_be_two_unrelated_jobs/",
+      "verification": "Author, title, body, formatting, destination and creation timestamp verified in rendered UI; no visible removal notice. Public visibility not guaranteed.",
+      "removed_by_category": null,
+      "moderation_status": "not marked removed in account snapshot"
+    },
+    {
+      "id": "rails-domain-slices",
+      "product": "ArchUnitRuby",
+      "subreddit": "rails",
+      "category": "gift-promotion",
+      "form": "tiny recipe",
+      "title": "Group Rails models, jobs and services by domain in an architecture test",
+      "body": "A billing boundary rarely lives in one directory. You can have `app/models/billing/`, `app/jobs/billing/` and `app/services/billing/`, and still want all of them to count as the same component.\n\nOne useful application of ArchUnitRuby's slices is grouping those paths by the domain name instead of by their Rails role. I work on the library; it's free and MIT-licensed.\n\n    require 'archunit'\n\n    slices = ArchUnit.project_slices('.')\n      .defined_by_regex(%r{app/(?:models|jobs|services)/([^/]+)/})\n\n    diagram = <<~UML\n      @startuml\n      component [orders]\n      component [billing]\n      [orders] --> [billing]\n      @enduml\n    UML\n\n    rule = slices.should\n                 .ignoring_external_slices\n                 .adhere_to_diagram(diagram)\n\n    options = ArchUnit::CheckOptions.new(\n      dependency_analysis: :imports_and_constants\n    )\n    ArchUnit.assert_passes(rule, options)\n\nThe first regex capture becomes the component name. So a job under `orders` referring to `Billing::Invoice` is allowed. A billing model referring to its own `Billing::InvoiceBuilder` service is also allowed, even though those files live under different Rails directories.\n\nBut add a reference to `Orders::ReceiptJob` inside the billing model and the check reports a `billing -> orders` dependency, including the source file and constant-reference evidence.\n\nThat's the boundary I care about here\n\nYou can move behavior between a domain's model and service without changing the cross-domain policy. If billing needs to start reaching into orders, the diagram change makes that decision explicit.\n\nThis is static source analysis with constant references enabled, not a Rails runtime or callback check. The example covers the directories named in the regex, and uncertain constant ownership isn't guessed. The API is available in `archunit` 1.0.0: https://github.com/dragonsec-ai/ArchUnitRuby\n\nWriting assisted by ChatGPT.",
+      "evidence": {
+        "published_version": "archunit 1.0.0",
+        "checked": [
+          "Orders job->Billing model passes",
+          "Billing model->Billing service same-domain passes",
+          "Billing model->Orders job rejected with constant_reference evidence and source file",
+          "Removing reverse edge passes",
+          "Exact public snippet extracted from draft and executed successfully against released package"
+        ],
+        "source": "installed slices fluent API and spec/slices/assertion/adhere_to_diagram_spec.rb",
+        "limits": [
+          "No Rails application booted; Ruby source fixture follows Rails domain folders",
+          "Regex only includes named roles",
+          "Constant analysis opt-in and conservative"
+        ]
+      },
+      "why_this_community": "Rails role folders are projected into business-domain boundaries, while own-domain cross-role use remains permitted.",
+      "posting_notes": [
+        "AI-writing attribution included per cached Rails rule."
+      ],
+      "voice_examples_read": [
+        "1wer83k",
+        "1weelhz",
+        "1weepfx",
+        "1uibssl",
+        "1swek3h",
+        "1swex79"
+      ],
+      "voice_notes": "Direct developer explanation, concrete consequence, modest personal judgment, one unobtrusive fragment. No copied claims, titles, backstory, or em dashes.",
+      "status": "submitted",
+      "post_id": "t3_1xx48uk",
+      "created_at": 1794770635.0,
+      "permalink": "https://www.reddit.com/r/rails/comments/1xx48uk/group_rails_models_jobs_and_services_by_domain_in/",
+      "verification": "Author, title, body, formatting, destination and creation timestamp verified in rendered UI; no visible removal notice. Public visibility not guaranteed.",
+      "removed_by_category": null,
+      "moderation_status": "not marked removed in account snapshot"
+    },
+    {
+      "id": "rust-opensourceprojects",
+      "product": "ArchUnitRust",
+      "subreddit": "OpenSourceProjects",
+      "category": "project-showcase",
+      "form": "result or demo first",
+      "evidence": {
+        "version": "0.0.2",
+        "source": "published crate README slice dependencies; src/slices/assertion/diagram_adherence.rs",
+        "verification": "Executed fixture with crates.io archunit=0.0.2: api->application->domain has zero violations; adding api->domain produces precisely one api/domain violation. Read direct-edge allowlist implementation.",
+        "limits": "Direct dependency allowlist, no existence requirement for every arrow, syntax-only analysis; ignore_external/orphan options explicit"
+      },
+      "status": "skipped",
+      "reason": "Restricted community; selected account is not an approved contributor. Composer denied access. No submission attempted."
+    },
+    {
+      "id": "zig-foss",
+      "product": "ArchUnitZig",
+      "subreddit": "foss",
+      "category": "gift-promotion",
+      "form": "result or demo first",
+      "title": "ArchUnitZig: dependency analysis that also records embedded assets",
+      "body": "A Zig program can depend on a file without importing another Zig module. `@embedFile(\"assets/banner.txt\")` ties the program to that asset, but a code-only dependency picture can leave it out.\n\nArchUnitZig, my MIT-licensed architecture-testing library, keeps that edge as a resource dependency. It also distinguishes project files, compiler modules and unresolved targets, with source locations attached.\n\nUseful when the interesting dependency isn't code\n\nFor example, you can inspect which source file embeds a configuration asset instead of treating the asset as an unrelated extra sitting in the repository. This is static analysis of literal builtins, not a promise to discover arbitrary build-script inputs.\n\nIt's free and open source. The v0.0.2 preview targets Zig 0.16.0; the README documents the dependency categories and current limits: https://github.com/dragonsec-ai/ArchUnitZig#zig-dependency-classification",
+      "evidence": {
+        "version": "0.0.2",
+        "public_release": "https://github.com/dragonsec-ai/ArchUnitZig/releases/tag/v0.0.2",
+        "commit": "b84f08a852ac62d16ceda852d51687471b8ea03e",
+        "verification": "Ran released test/acceptance.zig test public extraction classifies Zig-specific dependencies across spaced paths using pinned Zig0.16.0. Passed. Asserts project-local banner asset embedded_file/resource/resolved, alongside internal/compiler/unresolved distinctions.",
+        "limits": "Literal builtins, no arbitrary build.zig execution, no asset-content inspection or security audit claim"
+      },
+      "status": "submitted",
+      "post_id": "t3_1xx4psn",
+      "created_at": 1794771783.0,
+      "permalink": "https://www.reddit.com/r/foss/comments/1xx4psn/archunitzig_dependency_analysis_that_also_records/",
+      "verification": "Author, title, body, formatting, destination and creation timestamp verified in rendered UI; no visible removal notice. Public visibility not guaranteed.",
+      "removed_by_category": null,
+      "moderation_status": "not marked removed in account snapshot"
+    },
+    {
+      "id": "rust-programmingprojects",
+      "product": "ArchUnitRust",
+      "subreddit": "programmingprojects",
+      "category": "project-showcase",
+      "form": "design decision",
+      "title": "Why ArchUnitRust still sees an import behind a disabled Cargo feature",
+      "body": "One tradeoff in my architecture-testing crate is that it reads Rust source without asking the compiler which feature combination is active. It keeps `cfg` branches together in the dependency graph.\n\nFor example, suppose the core of a project must not depend on its SQLite adapter. This import is still a dependency for the architecture check:\n\n    #[cfg(feature = \"sqlite\")]\n    use crate::sqlite::Connection;\n\nIt doesn't disappear from the check just because the default Cargo features omit `sqlite`. Ordinary imports between files inside the core can remain allowed.\n\nThat is useful if the rule means “keep this boundary in every feature variant represented in the source”. You can catch the feature-gated shortcut while working on the default configuration.\n\nThe price is precision\n\nThis is a conservative source graph. Mutually exclusive branches can appear together, so a cycle in that graph is not proof that the cycle exists in one actual build. It also doesn't expand macros or inspect build-script-generated source. If you need the exact dependency graph of a compiled variant, this analysis isn't that.\n\nThe crate is `archunit` 0.0.2, free and MIT licensed. Project: https://github.com/dragonsec-ai/ArchUnitRust",
+      "evidence": {
+        "version": "0.0.2",
+        "source": "README Known limitations; published crate source extraction uses conservative cfg union",
+        "verification": "Ran fixture against crates.io archunit=0.0.2. core/model import passes; adding #[cfg(feature=\"sqlite\")] use crate::sqlite::Connection fails a core->sqlite rule with default=[] and sqlite=[] declared. Existing diagram/scoped-ignore assertions still pass.",
+        "limits": "Conservative source union, not proof of one compiled variant; no macros or build-script-generated source"
+      },
+      "status": "submitted",
+      "post_id": "t3_1xx4nl2",
+      "created_at": 1794771635.0,
+      "permalink": "https://www.reddit.com/r/programmingprojects/comments/1xx4nl2/why_archunitrust_still_sees_an_import_behind_a/",
+      "verification": "Author, title, body, formatting, destination and creation timestamp verified in rendered UI; no visible removal notice. Public visibility not guaranteed.",
+      "removed_by_category": null,
+      "moderation_status": "not marked removed in account snapshot"
+    },
+    {
+      "id": "ts-express-cycle-scope",
+      "product": "ArchUnitTS",
+      "subreddit": "expressjs",
+      "category": "gift-promotion",
+      "form": "tiny-recipe",
+      "status": "submitted",
+      "title": "The Express middleware import cycle that a middleware-only check misses",
+      "body": "A middleware needs an app setting. It imports your exported `app`, and now the source dependencies look like this:\n\n    app.ts -> routes/orders.ts\n      -> middleware/tenant-context.ts -> app.ts\n\nAll the files in `middleware/` can look fine when checked in isolation. The cycle leaves that folder and comes back through the router.\n\nThis is a useful detail when writing a cycle test with my library, [ArchUnitTS](https://github.com/LukasNiessen/ArchUnitTS):\n\n    import { projectFiles } from 'archunit';\n\n    const violations = await projectFiles('tsconfig.json')\n      .inFolder('src/**')\n      .should()\n      .haveNoCycles()\n      .check();\n\n    expect(violations).toEqual([]);\n\nUse a scope that contains the whole chain. With that example, `src/middleware/**` alone passes because this check looks for cycles within the selected files. `src/**` reports the three-file cycle.\n\nFor middleware that needs the current Express app, [`req.app` is already available](https://expressjs.com/en/5x/api/request/). Using `req.app.get('tenantConfig')` inside the middleware lets you remove the singleton import. Passing the particular dependency into a middleware factory is another option. The app can still import the router and register the middleware; that forward wiring is fine.\n\nOne fewer reason for middleware to know about bootstrap code\n\nThe check follows static imports, not the order Express runs middleware. This API is available in `archunit` 2.5.5 on npm, free and open source.",
+      "evidence": {
+        "package": "archunit@2.5.5",
+        "published_source": "https://registry.npmjs.org/archunit/2.5.5",
+        "source_files": [
+          "src/files/assertion/cycle-free.ts"
+        ],
+        "framework_source": "https://expressjs.com/en/5x/api/request/",
+        "results": [
+          "Compiled TS import topology",
+          "middleware-only selection reports 0 cycles",
+          "src-wide selection reports exactly one cycle with all three files",
+          "Removing middleware singleton import reports 0 cycles, forward wiring remains"
+        ]
+      },
+      "limitations": [
+        "Static topology fixture only; Express runtime not installed or tested.",
+        "Express req.app behavior independently checked in current official Request Object documentation.",
+        "No assertion about runtime import failure, middleware ordering or app settings type safety."
+      ],
+      "eligibility": "Root requested cached eligible expressjs; root checks remaining weekly slot and composer. New cycle-scope lesson instead of yesterday’s forward route graph.",
+      "post_id": "t3_1xx4f0h",
+      "created_at": 1794771055.0,
+      "permalink": "https://www.reddit.com/r/expressjs/comments/1xx4f0h/the_express_middleware_import_cycle_that_a/",
+      "verification": "Author, title, body, formatting, destination and creation timestamp verified in rendered UI; no visible removal notice. Public visibility not guaranteed.",
+      "removed_by_category": null,
+      "moderation_status": "not marked removed in account snapshot"
+    },
+    {
+      "id": "py-type-only-policy",
+      "product": "ArchUnitPython",
+      "subreddit": "PythonProgramming",
+      "category": "educational-story",
+      "form": "design decision",
+      "title": "Should an architecture test count imports inside TYPE_CHECKING?",
+      "body": "Consider this in `src/app/domain/pricing.py`:\n\n    from __future__ import annotations\n    from typing import TYPE_CHECKING\n\n    if TYPE_CHECKING:\n        from app.adapters.store import Store\n\n    def price(store: Store):\n        return 12\n\nThe adapter isn't imported by that guarded block at runtime. But the domain still names `Store`, and moving or renaming that type can still require changing the domain code.\n\nSo whether this should fail an architecture test depends on the policy you're trying to enforce. If domain code mustn't know about adapters at all, the type-only edge matters. If you're deliberately allowing those annotations while checking the other imports, you need to exclude it explicitly.\n\nIn ArchUnitPython, which I work on, imports inside `TYPE_CHECKING` count by default. The same boundary can be checked with them excluded:\n\n    from archunitpython import CheckOptions, assert_passes, project_files\n\n    rule = (\n        project_files(\"src\")\n        .in_path(\"**/domain/**\")\n        .should_not()\n        .depend_on_files()\n        .in_path(\"**/adapters/**\")\n    )\n\n    assert_passes(\n        rule,\n        CheckOptions(ignore_type_checking_imports=True),\n    )\n\nThat passes for the snippet above. Move the `Store` import outside the guard and it fails again, even with the option enabled. Without the option, the guarded version fails too.\n\nA small distinction with quite different consequences\n\nI would choose the policy first, rather than switch the option on just to make a failing test green. This is still static import analysis; excluding typing guards doesn't turn it into a trace of everything Python will execute.\n\n[ArchUnitPython source](https://github.com/LukasNiessen/ArchUnitPython). Free, MIT-licensed; the example works with `archunitpython==1.8.1`.",
+      "evidence": {
+        "published_version": "archunitpython==1.8.1",
+        "checked": [
+          "Complete future-annotations domain snippet guarded adapter import violates default rule",
+          "Same source passes with ignore_type_checking_imports=True",
+          "Ordinary adapter import still violates with option enabled"
+        ],
+        "source": "Existing Nov14 release evidence plus fresh exact-source fixture"
+      },
+      "why_this_community": "Python-specific import/type annotation distinction, showing how policy changes checked dependency edges. Different from yesterday's literal dynamic plugin import post in this community.",
+      "voice_examples_read": [
+        "1nvfn28",
+        "1n29s7b",
+        "1lol61c",
+        "1kufyms",
+        "1k4pvl3"
+      ],
+      "status": "submitted",
+      "post_id": "t3_1xx4ja8",
+      "created_at": 1794771338.0,
+      "permalink": "https://www.reddit.com/r/PythonProgramming/comments/1xx4ja8/should_an_architecture_test_count_imports_inside/",
+      "verification": "Author, title, body, formatting, destination and creation timestamp verified in rendered UI; no visible removal notice. Public visibility not guaranteed.",
+      "removed_by_category": null,
+      "moderation_status": "not marked removed in account snapshot"
+    },
+    {
+      "id": "zig-coolgithubprojects",
+      "product": "ArchUnitZig",
+      "subreddit": "coolgithubprojects",
+      "category": "project-showcase",
+      "form": "direct project link",
+      "contribution_type": "link-post",
+      "title": "Architecture tests and package-aware dependency graphs - ArchUnitZig (my open-source library)",
+      "body": "",
+      "url": "https://github.com/dragonsec-ai/ArchUnitZig",
+      "evidence": {
+        "version": "v0.0.2",
+        "release_source": "https://github.com/dragonsec-ai/ArchUnitZig/releases/tag/v0.0.2",
+        "verification": "Same released source and workspace/alias acceptance tests as the Zig posts in this campaign.",
+        "repost_check": "Visible community search for archunit sorted new/all-time returned no results on2026-11-15. GitHub-only link format honored."
+      },
+      "status": "submitted",
+      "post_id": "t3_1xx4lax",
+      "created_at": 1794771480.0,
+      "permalink": "https://www.reddit.com/r/coolgithubprojects/comments/1xx4lax/architecture_tests_and_packageaware_dependency/",
+      "verification": "Author, community, title, exact GitHub destination and creation timestamp verified in rendered UI; no visible removal notice. Public visibility not guaranteed.",
+      "removed_by_category": null,
+      "moderation_status": "not marked removed in account snapshot"
+    }
+  ],
+  "skips": [
+    {
+      "community": "typescript",
+      "reason": "Rule5 prohibits ChatGPT posts/comments"
+    },
+    {
+      "community": "Angular2",
+      "reason": "Archived; merged into angular"
+    },
+    {
+      "community": "reactjs",
+      "reason": "Raw AI-generated output prohibited; this is an autonomous writing campaign"
+    },
+    {
+      "community": "reactnative",
+      "reason": "Company promotion prohibited; no demonstrated mobile-specific value for this campaign"
+    },
+    {
+      "community": "javascript",
+      "reason": "Own or affiliated content is most of account contributions"
+    },
+    {
+      "community": "nestjs",
+      "reason": "Self-promotion participation ratio not met"
+    },
+    {
+      "community": "node",
+      "reason": "Earlier ArchUnit post moderator-removed; no repeat promotion"
+    },
+    {
+      "community": "vuejs",
+      "reason": "Earlier ArchUnit post removed by Reddit; no repeat promotion"
+    },
+    {
+      "community": "FastAPI",
+      "reason": "Previous ArchUnitPython post remains automod-filtered"
+    },
+    {
+      "community": "django",
+      "reason": "Own-content participation requirement not met"
+    },
+    {
+      "community": "flask",
+      "reason": "AI-written posts prohibited"
+    },
+    {
+      "community": "rust",
+      "reason": "AI-generated posts prohibited"
+    },
+    {
+      "community": "Zig",
+      "reason": "AI comments prohibited and high project bar; autonomous promotion excluded"
+    },
+    {
+      "community": "webdev",
+      "reason": "AI posts/comments prohibited"
+    },
+    {
+      "community": "softwarearchitecture",
+      "reason": "Current rule7 prohibits AI-generated posts"
+    },
+    {
+      "community": "softwareengineering",
+      "reason": "Prior moderator approval required"
+    },
+    {
+      "community": "rustprojects",
+      "reason": "Earlier ArchUnitRust post removed by Reddit"
+    },
+    {
+      "community": "SideProject",
+      "reason": "Earlier ArchUnit family video removed by Reddit"
+    },
+    {
+      "community": "frontend",
+      "reason": "Current rule prohibits ChatGPT posts and comments."
+    },
+    {
+      "community": "backend",
+      "reason": "Sidebar prohibits advertisements."
+    },
+    {
+      "community": "fullstack",
+      "reason": "Advertisements prohibited; no approval route"
+    },
+    {
+      "community": "softwaretesting",
+      "reason": "Self-promotion and tool-vendor participation prohibited"
+    },
+    {
+      "community": "devops",
+      "reason": "Promotion cannot be sole purpose of community participation; selected account lacks qualifying participation."
+    },
+    {
+      "community": "Deno",
+      "reason": "Runtime/import compatibility is not verified in this campaign; no suitable Deno-tested example."
+    },
+    {
+      "community": "Python",
+      "reason": "Existing monthly showcase already contains the library; no repeated project pitch in the same thread or invented current development update."
+    },
+    {
+      "community": "pythontips",
+      "reason": "No distinct tip selected beyond recent verified tips; avoid repeating the same pitch to fill the target."
+    },
+    {
+      "community": "madeinpython",
+      "reason": "Recent posts cover graphs and empty selectors; no sufficiently distinct new project angle selected."
+    },
+    {
+      "community": "rubyonrails",
+      "reason": "Recent custom-load-path post already present; new role-spanning domain example is allocated to rails."
+    },
+    {
+      "community": "bunjs",
+      "reason": "Posting access restricted in cached snapshot"
+    },
+    {
+      "community": "testautomation",
+      "reason": "Posting access restricted in cached snapshot"
+    },
+    {
+      "community": "unittesting",
+      "reason": "Posting access restricted in cached snapshot"
+    },
+    {
+      "community": "rubygems",
+      "reason": "Cached unavailable response (HTTP 403)."
+    },
+    {
+      "community": "pytest",
+      "reason": "Cached unavailable response (HTTP 403)."
+    },
+    {
+      "community": "RubyProgramming",
+      "reason": "Cached unavailable response (HTTP 403)."
+    },
+    {
+      "community": "softwaredevelopment",
+      "reason": "Methodology community excludes tool-release promotion"
+    },
+    {
+      "community": "sideprojects",
+      "reason": "Repeat project updates require meaningful new changes and participation; no fresh update claim fabricated."
+    },
+    {
+      "community": "indiehackers",
+      "reason": "Earlier family promotion moderator-removed; productpromotion limitedonce"
+    },
+    {
+      "community": "rust_gamedev",
+      "reason": "No demonstrated game-development-specific behavior; generic Rust library example insufficient"
+    },
+    {
+      "community": "Bevy",
+      "reason": "No verified engine-specific example; avoid generic Rust promotion"
+    },
+    {
+      "community": "Bun",
+      "reason": "Conflicting cached community metadata; no verified runtime-specific example."
+    },
+    {
+      "community": "OpenSourceProjects",
+      "reason": "Restricted community; selected account is not an approved contributor. Composer denied access. No submission attempted."
+    }
+  ],
+  "submitted_count": 17,
+  "standalone_posts": 16,
+  "showcase_comments": 1,
+  "shortfall": 23,
+  "shortfall_reason": "Community rules, account participation requirements, existing promotions, insufficient distinct technical fit and one restricted community limited the reviewed destination set. One contribution per community; no quota-filling reposts.",
+  "final_audit": {
+    "checked_at": "2026-11-15T19:46:38.947781+00:00",
+    "matched_publications": 17,
+    "exact_title_body_or_url_and_timestamp_match": true,
+    "moderator_removed": 1,
+    "unresolved_reservations": 0,
+    "weekly_cap_respected": true,
+    "global_spacing": "Read/navigation actions at least15 seconds apart; submissions at least120 seconds apart. No HTTP429 or CAPTCHA observed."
+  }
+}
