@@ -1,6 +1,22 @@
 # Browser: Microsoft Edge
 
-Use **Microsoft Edge** on this Mac for Reddit posting through JavaScript from Apple Events. Its stable window and tab IDs let an agent keep working in its own window without relying on whichever tab the user has selected.
+Use **Microsoft Edge** on macOS for Reddit posting through JavaScript from Apple Events. Its stable window and tab IDs let an agent keep working in its own window without relying on whichever tab the user has selected.
+
+## Set up your Mac
+
+1. Install the stable Microsoft Edge app and launch it once to finish any first-run screens. The repository's browser helper targets Edge by its macOS bundle ID. [Download Edge](https://www.microsoft.com/en-us/edge/download)
+2. In Edge's macOS menu bar, open **View → Developer** and check **Allow JavaScript from Apple Events**. Leave it checked if already enabled.
+3. From the repository root, run the following check from the same app you will use for campaigns. For a terminal-based agent, use its usual terminal host.
+
+   ```sh
+   python3 marketing/reddit/scripts/browser.py probe
+   ```
+
+   If macOS asks to let that app control Microsoft Edge, choose **Allow**. To review an earlier decision, open **System Settings → Privacy & Security → Automation**, expand the calling app, and enable Microsoft Edge. Run the probe again after changing a setting. [Apple’s Automation settings](https://support.apple.com/en-au/guide/mac-help/mchl07817563/mac)
+4. Look for `"eventResult": "apple-events-ok"` and `"clicked": true`. The probe creates its own window, tests a local input and button on `about:blank`, and closes its tab. It works without an existing window or a Reddit login.
+5. For publishing, sign in to Reddit yourself in the intended **normal Edge profile**. Open Reddit’s account menu and check the displayed `u/username`. Include it in your first publishing prompt. If you use multiple Edge profiles, confirm the account again in the helper’s dedicated Reddit window. The probe only checks browser control.
+
+## Previous workstation verification
 
 Verified on November 8, 2026: Edge's **View → Developer → Allow JavaScript from Apple Events** is enabled. The blank-page probe changed an input, dispatched an `input` event, clicked a local button, and returned the expected values. After the restart described below, the running Edge **157.0.4341.42** also loaded Reddit's homepage, returned its real rendered DOM through this helper, and passed a reload test. No post was submitted. Safari 27.0.1 exposed `do JavaScript`, but its window-creation calls timed out, so it is not the selected browser.
 
@@ -8,16 +24,13 @@ The earlier crashed/`about:blank` problem was resolved by completing a pending E
 
 The helper's URL guard and execution marker also passed independent checks. The first authorized live campaign on November 8, 2026 verified account identity, text-post composition, flair selection, top-level comments, submission, and rendered code through Edge using Reddit's classic UI. The user selected **u/127001-sweet-127001** for that campaign, overriding the historical corpus account. Four posts and one showcase-thread comment were submitted; FastAPI awaited moderator approval. See the [campaign report](runs/2026-11-08-archunitpython-gift.md). Inspect the current DOM and account again for future campaigns.
 
-## Setup and troubleshooting
+## Troubleshooting
 
-- Log in to the intended Reddit account in Edge's normal profile. Confirm the username before posting.
-- Keep **View → Developer → Allow JavaScript from Apple Events** checked. Check its state before changing it; never blindly toggle it.
-- If macOS requests Automation access, allow the actual calling app (Codex or Terminal) to control Microsoft Edge under **System Settings → Privacy & Security → Automation**. The JavaScript menu option and macOS Automation permission are separate.
 - In the Codex filesystem sandbox, `osascript` returned a connection error. GUI Apple Events worked with the normal sandbox escalation. Use that mechanism if necessary; do not interpret a sandbox error as a missing browser.
 - If new tabs crash after an update, compare the running helper framework versions with the installed app before changing profile data. A stale running version can need a normal restart. Microsoft documents that [restarting applies a downloaded update](https://support.microsoft.com/en-us/edge/microsoft-edge-update-settings). Use the browser's normal session-restoring restart, respect any unsaved-work prompt, and verify the new process version and restored tabs.
 - On a timeout, inspect the dedicated tab and current post state before retrying. A timed-out click may already have succeeded. Do not resubmit blindly.
 
-Safari is a fallback only after another successful probe. Its documented setting is **Safari → Settings → Advanced → Show features for web developers**, then **Developer → Allow JavaScript from Apple Events**. See [Apple's Developer settings](https://developer.apple.com/documentation/safari-developer-tools/developer-settings) and [WebKit's developer-feature instructions](https://webkit.org/web-inspector/enabling-web-inspector/). Installed AppleScript dictionaries were inspected at `/Applications/Safari.app/Contents/Resources/Safari.sdef` and `/Applications/Microsoft Edge.app/Contents/Resources/scripting.sdef`.
+Switching to Safari would require a Safari-specific helper and another successful probe. Its documented setting is **Safari → Settings → Advanced → Show features for web developers**, then **Developer → Allow JavaScript from Apple Events**. See [Apple's Developer settings](https://developer.apple.com/documentation/safari-developer-tools/developer-settings) and [WebKit's developer-feature instructions](https://webkit.org/web-inspector/enabling-web-inspector/). Installed AppleScript dictionaries were inspected at `/Applications/Safari.app/Contents/Resources/Safari.sdef` and `/Applications/Microsoft Edge.app/Contents/Resources/scripting.sdef`.
 
 ## Small browser bridge
 

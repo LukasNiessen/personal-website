@@ -8,13 +8,17 @@ from pathlib import Path
 import re
 import sys
 import tempfile
-from zoneinfo import ZoneInfo
+from zoneinfo import ZoneInfo, ZoneInfoNotFoundError
 
 CACHE = Path(__file__).resolve().parents[1] / 'community-cache.json'
 
 
 def today():
-    return datetime.now(ZoneInfo('Europe/Berlin')).date()
+    try:
+        berlin = ZoneInfo('Europe/Berlin')
+    except ZoneInfoNotFoundError as error:
+        raise ValueError('Missing Europe/Berlin timezone data. Install tzdata in this Python environment.') from error
+    return datetime.now(berlin).date()
 
 
 def name(value):
@@ -34,7 +38,7 @@ def expires(checked):
 def read_cache(path=CACHE):
     if not path.exists():
         return {'schema_version': 1, 'communities': {}}
-    data = json.loads(path.read_text())
+    data = json.loads(path.read_text(encoding='utf-8'))
     if data.get('schema_version') != 1 or not isinstance(data.get('communities'), dict):
         raise ValueError('Invalid cache format; preserve the file and inspect it')
     return data
@@ -42,7 +46,7 @@ def read_cache(path=CACHE):
 
 def write_cache(data, path=CACHE):
     path.parent.mkdir(parents=True, exist_ok=True)
-    with tempfile.NamedTemporaryFile(mode='w', dir=path.parent, delete=False) as handle:
+    with tempfile.NamedTemporaryFile(mode='w', encoding='utf-8', dir=path.parent, delete=False) as handle:
         temporary = Path(handle.name)
         json.dump(data, handle, indent=2, ensure_ascii=False, sort_keys=True)
         handle.write('\n')
@@ -126,7 +130,7 @@ def main():
         return 0
     sub = name(args.subreddit)
     if args.command == 'put':
-        put(data, sub, json.loads(args.file.read_text()))
+        put(data, sub, json.loads(args.file.read_text(encoding='utf-8')))
     elif args.command == 'invalidate':
         if sub in data['communities']:
             data['communities'][sub]['expires_at'] = today().isoformat()

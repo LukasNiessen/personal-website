@@ -6,6 +6,10 @@ Built with Astro, Tailwind CSS, TypeScript, and React. Fully static, hosted on A
 
 Feel free to use this repo however you like, privately or commercially.
 
+## Reddit marketing
+
+The [team setup guide](marketing/reddit/README.md) walks through finding or cloning product repositories, drafting a first post, and checking Edge on a publishing Mac.
+
 ## Dev Commands
 
 | Command            | What It Does                               |

@@ -53,7 +53,7 @@ python3 marketing/reddit/scripts/request_guard.py rate-limit --retry-after '120'
 python3 marketing/reddit/scripts/request_guard.py probe-ok
 ```
 
-Pacing state is local, outside Git, and shared between worktrees on this Mac. Do not delete or relocate it to reset a limit. Once an action slot is granted, use it for one action only. Record every new posting destination with `mark-posted` after verifying the submission.
+Pacing state is local, outside Git, and shared between worktrees for the same macOS user. Do not delete or relocate it to reset a limit. Once an action slot is granted, use it for one action only. Record every new posting destination with `mark-posted` after verifying the submission.
 
 ## Weekly posting cap
 
@@ -81,3 +81,11 @@ python3 marketing/reddit/scripts/request_guard.py cancel-post --reservation pend
 ```
 
 The browser helper prints the reservation ID before executing JavaScript, including when execution later times out. Ambiguous attempts keep their slot until resolved; `status` lists pending reservations. After finding a successful post in account history, confirm that same reservation, even if its ID was already imported. Never cancel because of a timeout, moderation removal or pending approval. Cancellation does not undo global pacing. These are submission records, not a content-duplicate detector.
+
+## Switching publishers
+
+Teammates can draft in parallel. Run live campaigns one at a time. Each Mac and macOS user has its own ledger, even when two people have pulled the same Git revision.
+
+1. Finish the previous run and share its report. On the outgoing publishing Mac, use `request_guard.py status` to check pending submissions, outstanding rate-limit recovery and remaining action spacing. Resolve these on that Mac before handing off.
+2. On the incoming Mac, reconcile the last seven days across the team's publishing accounts using recent run reports and observed activity. Include promotional comments and removed posts. Import the confirmed IDs, community names and actual creation timestamps using `import-posts` above.
+3. Verify the selected account in Edge and check remaining capacity with `status --subreddit NAME`. If the team cannot account for recent contributions in a destination, leave that destination in draft.
